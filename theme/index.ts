@@ -7,15 +7,17 @@ import styles from './styles';
 import colors from './colors';
 
 // Component style overrides.
-import Box from './components/box';
+import Section from './components/section';
 import Button from './components/button';
+import Link from './components/link';
 
 const overrides = {
     colors,
     styles,
     components: {
-        Box,
-        Button
+        Section,
+        Button,
+        Link
     }
 };
 
