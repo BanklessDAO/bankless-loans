@@ -8,7 +8,7 @@ const Section = {
     sizes: {},
     variants: {
         nav: {
-            bg: "liquity.dark",
+            bg: "interactive.dark",
             color: "white",
             w: "100%",
             display: "flex",
@@ -16,11 +16,11 @@ const Section = {
             align: "center"
         },
         white: {
-            bg: "liquity.white",
+            bg: "interactive.white",
             color: "#000"
         },
         blue: {
-            bg: "liquity.blueBg"
+            bg: "background.blue"
         }
     },
     defaultProps: {}

@@ -5,8 +5,8 @@ const Button = {
         outline: {
             bg: "transparent",
             border: "2px solid",
-            borderColor: "liquity.purple",
-            color: "liquity.white"
+            borderColor: "interactive.purple",
+            color: "interactive.white"
         }
     },
     defaultProps: {}

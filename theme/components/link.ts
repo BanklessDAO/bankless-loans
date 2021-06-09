@@ -3,15 +3,15 @@ const Link = {
     sizes: {},
     variants: {
         light: {
-            color:"liquity.white",
+            color:"interactive.white",
             _hover: {
-                color: "liquity.purple"
+                color: "interactive.purple"
             }
         },
         dark: {
-            color:"liquity.dark",
+            color:"interactive.dark",
             _hover: {
-                color: "liquity.purple"
+                color: "interactive.purple"
             }
         }
     },

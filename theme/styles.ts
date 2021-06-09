@@ -1,9 +1,12 @@
 const styles = {
     global: {
+        html: {
+            fontSize: '18px'
+        },
         body: {
-            bg: 'liquity.bg'
+            bg: 'background.gray'
         }
-    }
+    },
 }
 
 export default styles;
