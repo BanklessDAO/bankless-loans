@@ -1,5 +1,25 @@
 const Text = {
+    baseStyle: {
+        fontSize: "1rem",
+        fontWeight: "500",
+        lineHeight: "1.225"
+    },
+    sizes: {},
     variants: {
+        datapoint: {
+            fontSize: 'sm'
+        },
+        bold: {
+            fontWeight: "600"
+        },
+        caption: {
+            fontSize: "14px", // change to relative units.
+            lineHeight: "1.15"
+        },
+        "micro-caption": {
+            fontSize: "12px",
+            lineHeight: "1"
+        },
         dataPointSm: {
             fontWeight: "500",
             fontSize: "30px",
@@ -24,8 +44,8 @@ const Text = {
             lineHeight: "60px",
             letterSpacing: "-1px"
         }
-    }
+    },
+    defaultProps: {}
 }
-
 
 export default Text;
