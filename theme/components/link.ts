@@ -1,5 +1,7 @@
 const Link = {
-    baseStyle: {},
+    baseStyle: {
+        mx: "20px"
+    },
     sizes: {},
     variants: {
         light: {

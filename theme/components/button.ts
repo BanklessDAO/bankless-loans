@@ -1,9 +1,10 @@
 const Button = {
     baseStyle: {
         fontWeight: "medium",
-        boxSizing: "border-box"
+        boxSizing: "border-box",
+        mx: "20px"
     },
-    sizes: { // TODO: Address sizes.
+    sizes: {
         primary: {
             px: "51px",
             py: "23px",
@@ -18,12 +19,6 @@ const Button = {
             fontSize: "1rem",
             lineHeight: "1.225",
         }
-        // md: {
-
-        // },
-        // sm: {
-
-        // }
     },
     variants: { // TODO: Relative units
         solid: {
@@ -41,7 +36,7 @@ const Button = {
             }
         },
         outline: {
-            bg: "interactive.transparentWhite",
+            bg: "none",
             color: "interactive.dark",
             border: "2px solid",
             _hover: {

@@ -4,7 +4,7 @@ const styles = {
             fontSize: '18px'
         },
         body: {
-            bg: 'background.gray'
+            bg: 'background.grey'
         }
     },
 }

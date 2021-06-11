@@ -1,6 +1,7 @@
 const Section = {
     baseStyle: {
-        borderRadius: 18,
+        bg: "interactive.dark",
+        borderRadius: "18px",
         padding: "40px",
         mx: "10px",
         my: "5px"
@@ -9,18 +10,11 @@ const Section = {
     variants: {
         nav: {
             bg: "interactive.dark",
-            color: "white",
-            w: "100%",
+            width: "100%",
             display: "flex",
-            justify: "space-around",
-            align: "center"
-        },
-        white: {
-            bg: "interactive.white",
-            color: "#000"
-        },
-        blue: {
-            bg: "background.blue"
+            justifyContent: "space-around",
+            alignItems: "center",
+            height: "100px"
         }
     },
     defaultProps: {}
