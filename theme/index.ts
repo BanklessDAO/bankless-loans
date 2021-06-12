@@ -1,4 +1,13 @@
 import { extendTheme } from '@chakra-ui/react';
+import { createBreakpoints } from '@chakra-ui/theme-tools';
+
+const breakpoints = createBreakpoints({
+    sm: "30em",
+    md: "48em",
+    lg: "62em",
+    xl: "80em",
+    "2xl": "96em",
+  });
 
 // Global style overrides
 import styles from './styles';
@@ -9,15 +18,19 @@ import fonts from './fonts';
 // Color overrides.
 import colors from './colors';
 
+import borders from './foundations/borders';
+
 // Component style overrides.
 import Section from './components/section';
 import Button from './components/button';
 import Link from './components/link';
 import Text from './components/text';
 import Heading from './components/heading';
+import CheckBox from './components/checkbox';
 
 const overrides = {
     colors,
+    borders,
     styles,
     fonts,
     components: {
@@ -25,7 +38,8 @@ const overrides = {
         Button,
         Link,
         Text,
-        Heading
+        Heading,
+        CheckBox
     }
 };
 

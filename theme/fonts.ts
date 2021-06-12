@@ -1,7 +1,7 @@
 export default {
     fonts: {
-        heading: "Karbon",
-        body: "Karbon"
+        heading: "Karbon, sans-serif",
+        body: "Karbon, sans-serif"
     }
 };
 

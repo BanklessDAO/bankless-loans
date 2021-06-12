@@ -4,6 +4,9 @@ const Link = {
     },
     sizes: {},
     variants: {
+        body: {
+
+        },
         light: {
             color:"interactive.white",
             _hover: {

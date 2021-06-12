@@ -5,12 +5,28 @@ const Button = {
         mx: "20px"
     },
     sizes: {
-        primary: {
-            px: "51px",
-            py: "23px",
-            borderRadius: "24px",
-            fontSize: "24px",
-            lineHeight: "22px",
+        primary:{
+            px: {
+                base: "20px",
+                md: "28px",
+                lg: "51px",
+            },
+            py: {
+                base: "12px",
+                md: "14px",
+                lg: "23px"
+            },
+            borderRadius: {
+                base: "13px",
+                md: "13px",
+                lg: "24px",
+            },
+            fontSize: {
+                base: "18px",
+                md: "18px",
+                lg: "24px"
+            },
+            lineHeight: "22px"
         },
         secondary: {
             px: "20px",
@@ -21,20 +37,22 @@ const Button = {
         }
     },
     variants: { // TODO: Relative units
-        solid: {
-            bg: "interactive.dark",
+        solid: ({ onDark }: { onDark?: boolean }) => ({
+            bg: !onDark ? "interactive.dark": "none",
             color: "interactive.white",
+            border: !onDark ? "none" : "2px solid",
+            borderColor: !onDark ? "rgba(0,0,0,0)": "interactive.purple",
             _hover: {
                 bg: "interactive.darkPurple"
             },
             _active: {
-                bg: "interactive.dark",
+                bg: !onDark ? "interactive.dark" : "interactive.darkPurple"
             },
             _disabled: {
                 bg: "interactive.gray",
                 color: "interactive.transparentWhite"
             }
-        },
+        }),
         outline: {
             bg: "none",
             color: "interactive.dark",
