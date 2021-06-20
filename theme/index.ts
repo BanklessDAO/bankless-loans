@@ -24,6 +24,7 @@ import Button from './components/button';
 import Link from './components/link';
 import Text from './components/text';
 import Heading from './components/heading';
+import Popover from './components/popover';
 
 const overrides = {
     colors,
@@ -35,6 +36,7 @@ const overrides = {
         Link,
         Text,
         Heading,
+        Popover
     }
 };
 

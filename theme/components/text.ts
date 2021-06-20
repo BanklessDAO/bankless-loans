@@ -1,6 +1,6 @@
 const Text = {
     baseStyle: { // html fontsize set to 18px
-        fontSize: {
+        fontSize: { // responsive styles for the defined breakpoints in theme.ts
             base: "1rem",
             md: "1.25rem",
             lg: "1.5rem"

@@ -17,7 +17,20 @@ const Link = {
             color: onDark ? "interactive.grey": "black"
         }
     }),
-    sizes: {},
+    sizes: {
+        lg: {
+            fontSize: '1rem',
+            lineHeight: '1.22rem',
+        },
+        md: {
+            fontSize: '.7778rem',
+            lineHeight: '.8889rem'
+        },
+        sm: {
+            fontSize: '.67rem',
+            lineHeight: '.67rem'
+        }
+    },
     variants: {
         body: {
 
