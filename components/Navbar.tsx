@@ -2,9 +2,8 @@ import {Box, Flex, Text, Stack, useDisclosure, Button} from '@chakra-ui/react'
 import {HamburgerIcon, CloseIcon} from '@chakra-ui/icons'
 import React from 'react'
 import Web3Modal from 'web3modal'
-import WalletConnectProvider from '@walletconnect/web3-provider'
 import {INFURA_ID} from '../constants'
-import { InjectedConnector, FortmaticConnector, PortisConnector } from 'web3-react/dist/connectors'
+import { InjectedConnector, FortmaticConnector, PortisConnector, WalletConnectConnector } from 'web3-react/dist/connectors'
 import { AuthereumConnector } from '@web3-react/authereum-connector'
 
 export default function Navbar() {
@@ -20,7 +19,7 @@ export default function Navbar() {
             package: InjectedConnector
         },
         walletconnect: {
-            package: WalletConnectProvider,
+            package: WalletConnectConnector,
             options: {
                 infuraId: INFURA_ID // required
             }
