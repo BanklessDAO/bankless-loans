@@ -3,8 +3,9 @@ import {HamburgerIcon, CloseIcon} from '@chakra-ui/icons'
 import React from 'react'
 import Web3Modal from 'web3modal'
 import WalletConnectProvider from '@walletconnect/web3-provider'
-import {INFURA_ID} from '../constants/index'
-import { portis } from 'web3modal/dist/providers/connectors'
+import {INFURA_ID} from '../constants'
+import { InjectedConnector, FortmaticConnector, PortisConnector } from 'web3-react/dist/connectors'
+import { AuthereumConnector } from '@web3-react/authereum-connector'
 
 export default function Navbar() {
 
@@ -16,18 +17,30 @@ export default function Navbar() {
 
     const providerOptions = {
         injected: {
-            package: null
+            package: InjectedConnector
         },
         walletconnect: {
             package: WalletConnectProvider,
             options: {
                 infuraId: INFURA_ID // required
             }
+        },
+        portis: {
+            package: PortisConnector,
+            options: {
+                id: '47c91e55-8ecf-45f6-937d-9015bcf65b36'
+            }
+        },
+        fortmatic: { 
+            package: FortmaticConnector,
+            options: {
+              // test api key
+              key: "pk_test_43C2B609E8D78730"
+            }
+        },
+        authereum: {
+            package: AuthereumConnector
         }
-        // portis : {
-        //     op
-            
-        // }
     }
 
     React.useEffect(() => {

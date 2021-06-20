@@ -12,6 +12,8 @@
     "@chakra-ui/react": "^1.6.3",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@web3-react/authereum-connector": "^6.2.0",
+    "@web3-react/core": "^6.1.9",
     "ethers": "^5.3.1",
     "framer-motion": "^4",
     "next": "10.2.3",
