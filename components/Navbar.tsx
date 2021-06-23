@@ -16,7 +16,7 @@ export default function Navbar() {
 
     const providerOptions = {
         injected: {
-            package: InjectedConnector
+            package: null
         },
         walletconnect: {
             package: WalletConnectConnector,
@@ -50,8 +50,10 @@ export default function Navbar() {
         })
     })
     
-    const triggerWeb3Modal = () => {
+    const triggerWeb3Modal = (e: any) => {
+        // let provider = web3Modal.connect()
         web3Modal.connect()
+        
         console.log('web3Modal', web3Modal)
 
     }
