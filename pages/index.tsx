@@ -7,11 +7,10 @@ import {
   Flex, 
   Heading, 
   Button, 
-  Stack, 
-  Container,
-  Center
+  Stack,   
 } from "@chakra-ui/react";
 import styled from '@emotion/styled'
+import Footer from '../components/Footer';
 
 export default function Home() {
 
@@ -114,6 +113,7 @@ export default function Home() {
             </Box>
           </Stack>
         </Box>
-    </Box> 
+        <Footer></Footer> 
+    </Box>
   );
 }
