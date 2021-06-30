@@ -11,7 +11,7 @@ const Button = {
   baseStyle: {
     fontWeight: "bold",
     textTransform: "uppercase",
-    borderRadius: "base", // <-- border radius is same for all variants and sizes
+    borderRadius: "base", // < -- border radius is same for all variants and sizes
   },
   sizes: {
     sm: {

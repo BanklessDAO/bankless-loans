@@ -8,17 +8,13 @@
     "start": "next start"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "@chakra-ui/react": "^1.6.3",
-    "@emotion/react": "^11.4.0",
-    "@emotion/styled": "^11.3.0",
-=======
+
     "@chakra-ui/core": "^0.8.0",
     "@chakra-ui/react": "^1.6.3",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "emotion-theming": "^11.0.0",
->>>>>>> aff0392f89aadc0c350206958b1285c905ed33b5
+
     "framer-motion": "^4.1.17",
     "next": "10.2.3",
     "react": "17.0.2",
