@@ -6,20 +6,16 @@ import Web3Provider from 'web3-react'
 import {connectors} from '../utils/connectors'
 import { useWallet, UseWalletProvider} from 'use-wallet'
 
-function MyApp({ Component, pageProps }: AppProps) {
-  
+function MyApp({ Component, pageProps }: AppProps) {  
   return (
-    // <Web3Provider connectors={connectors} libraryName='ethers.js'>
-    <UseWalletProvider chainId={1} connectors={{
-      portis: { dAppId: 'my-dapp-id-123-xyz' },
-    }}>
+    <UseWalletProvider chainId={1} connectors={connectors}>
       <ChakraProvider>
         <Layout>
           <Component {...pageProps} />
         </Layout>
       </ChakraProvider>
     </UseWalletProvider>
-    // </Web3Provider>
   )
 }
+
 export default MyApp

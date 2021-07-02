@@ -1,16 +1,7 @@
-import {Connectors} from 'web3-react'
+export const connectors = {
+  walletconnect: {rpcUrl: 'https://bridge.walletconnect.org'},
+  portis: { dAppId: 'eebbc594-d786-436c-803a-ad6b30b29efb' },
+  fortmatic: { apiKey: 'pk_live_4A7DF904F7AFC3DB'},
+}
 
-const {InjectedConnector, NetworkOnlyConnector, PortisConnector, WalletConnectConnector} = Connectors
-
-const MetaMask = new InjectedConnector({supportedNetworks: [1,4]})
-
-const Infura = new NetworkOnlyConnector({
-  providerURL: 'https://mainnet.infura.io/v3/a5d75a1abab84f9d8d37e7a67d3363fd'
-})
-
-// const WalletConnect = new WalletConnectConnector({
-
-// })
-
-
-export const connectors = {MetaMask, Infura, }
+export default connectors
