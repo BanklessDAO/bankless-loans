@@ -1,6 +1,7 @@
 import { Flex, useStyleConfig } from '@chakra-ui/react';
 
-export default function StyledFlex(props) {
+
+export default function StyledFlex(props: any) {
 
     const { variant, children, ...rest } = props;
 
