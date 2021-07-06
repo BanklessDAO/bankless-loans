@@ -4,11 +4,12 @@ import Layout from '../components/Layout'
 import {ChakraProvider} from '@chakra-ui/react'
 import {connectors} from '../utils/connectors'
 import { UseWalletProvider} from 'use-wallet'
+import theme from '../theme';
 
-function MyApp({ Component, pageProps }: AppProps) {  
+export default function MyApp({ Component, pageProps }: AppProps) {  
   return (
     //This UseWalletProvider also helps in keeping a wallet's context at app level which can be accessed with useWallet hook anywhere in the app//
-    <UseWalletProvider chainId={1} connectors={connectors}>
+    <UseWalletProvider chainId={4} connectors={connectors}>
       <ChakraProvider>
         <Layout>
           <Component {...pageProps} />
@@ -17,5 +18,3 @@ function MyApp({ Component, pageProps }: AppProps) {
     </UseWalletProvider>
   )
 }
-
-export default MyApp
