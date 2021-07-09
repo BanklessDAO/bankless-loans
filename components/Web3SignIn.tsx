@@ -7,7 +7,7 @@ export default function Web3SignIn() {
     const wallet = useWallet()
 
     const connectWallet = (provider?: string) => {
-        //provider is going to be empty for metamask (any browser wallet)
+        //provider is going to be empty for metamask (browser wallet)
         wallet.connect(provider)
     }
 
@@ -16,7 +16,7 @@ export default function Web3SignIn() {
 
     return(
         <>
-            <Button onClick={onOpen}>Connect Wallet</Button>
+            <Button bg='brand.900' variant='outline' onClick={onOpen} textAlign='center'>Connect Wallet</Button>
             <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose} >
                 <ModalOverlay>
                     <ModalContent mt={150}>

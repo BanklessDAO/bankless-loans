@@ -4,7 +4,7 @@ body {
   margin: 0;
   font-family: Sk-Modernist-Regular, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, 
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background: #D8D9EA; 
+  background: #D8D9EA !important;
 }
 
 a {
