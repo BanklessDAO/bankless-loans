@@ -45,7 +45,7 @@ export default function Home() {
           bg="white"
           borderRadius='18px'
         >     
-          <Heading textAlign="left" size="md" color='#6257DE' fontWeight='900' fontSize='30px' lineHeight='32px' letter-spacing='0.5'>
+          <Heading textAlign="left" size="md" color='#6257DE' fontWeight='900' fontSize='30px' lineHeight='32px' letterSpacing='0.5'>
             Get rewards by depositing LUSD in stability pool
           </Heading>
           <Text textAlign="center" size="sm">
