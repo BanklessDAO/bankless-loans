@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import {useWallet } from 'use-wallet'
 import React from 'react'
 
 import { 
@@ -62,7 +61,7 @@ export default function Home() {
             <Box ><img src=""></img></Box>
           </Box>
         </Box>
-        <Box p="5" rounded="md" w={["100%", "50%"]} borderRadius='18px' bg='green'>
+        <Box p="5" rounded="md" w={["100%", "50%"]} borderRadius='18px' color='#6257DE' bg='white' borderRadius='18px'>
           <Heading textAlign="center">Borrow against collateral</Heading>
           <Stack mt="3" direction={["column", "row"]}>
             <Box h="200px" w={["100%","60%"]} bg="palette.red">Image</Box>
@@ -86,7 +85,7 @@ export default function Home() {
           w={["100%", "25%"]} 
           bg="white"
           borderRadius='18px'>
-          <Heading textAlign="left" size="md" color='#6257DE' fontWeight='900' fontSize='30px' lineHeight='32px' letter-spacing='0.5'>Earn fees by stacking LQTY</Heading>
+          <Heading textAlign="left" size="md" color='#6257DE' fontWeight='900' fontSize='30px' lineHeight='32px' letterSpacing='0.5'>Earn fees by stacking LQTY</Heading>
           <Text mt='20px'>Stake LQTY to earn the fees from borrowing and redemptions</Text>
           <Button size='md' width='200px' height='40px' variant='outline' ml='auto' mr='auto' mt='100px'>Stake LQTY</Button>
           <hr />
@@ -98,7 +97,8 @@ export default function Home() {
         </Box>
       </Stack>
     {/* ------------------------------------------------------------------------------------- */}
-      <Stack direction="column" p="5" bgGradient="linear(to-b, red.500, red.900)">
+    {/* How it works */}
+      <Stack direction="column" p="5" color='#6257DE' bg='white' borderRadius='18px'>
         <Heading>How it works</Heading>
         <Box  display="flex" justifyItems="center" flexDirection="column">
           <Stack justifyContent="center" direction={["column-reverse", "row"]} my="3" spacing="3">
@@ -116,7 +116,7 @@ export default function Home() {
         </Box>
         
       </Stack>
-      <Box mt="3" p="5"  bg="white">
+      <Box mt="3" p="5"  bg="white" borderRadius='18px'  color='#6257DE' >
           <Heading size="md">Fees and charges</Heading>
           <Stack mt="3" justifyContent="space-around" direction={["column","row"]}>
             <Box>
