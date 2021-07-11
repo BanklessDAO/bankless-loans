@@ -27,19 +27,21 @@ import Heading from './components/heading';
 import Popover from './components/popover';
 import Checkbox from './components/checkbox';
 
-const overrides = {
+ const customTheme = extendTheme({
     colors,
     styles,
     fonts,
-    components: {
-        Section,
-        Button,
-        Link,
-        Text,
-        Heading,
-        Popover,
-        Checkbox
-    }
-};
+    // components: {
+    //     Section,
+    //     Button,
+    //     Link,
+    //     Text,
+    //     Heading,
+    //     Popover,
+    //     Checkbox
+    // }
+});
 
-export default extendTheme(overrides);
+// export default extendTheme(overrides);
+
+export default customTheme

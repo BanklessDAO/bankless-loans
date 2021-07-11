@@ -8,7 +8,7 @@ import { ReactNode } from 'react';
 //     children?: ReactNode,
 // }
 
-export default function StyledBox(props) {
+export default function StyledBox(props: any) {
 
 
     const { variant, children, ...rest } = props;
