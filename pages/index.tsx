@@ -61,7 +61,7 @@ export default function Home() {
             <Box ><img src=""></img></Box>
           </Box>
         </Box>
-        <Box p="5" rounded="md" w={["100%", "50%"]} borderRadius='18px' color='#6257DE' bg='white' borderRadius='18px'>
+        <Box p="5" rounded="md" w={["100%", "50%"]} borderRadius='18px' color='#6257DE' bg='white'>
           <Heading textAlign="center">Borrow against collateral</Heading>
           <Stack mt="3" direction={["column", "row"]}>
             <Box h="200px" w={["100%","60%"]} bg="palette.red">Image</Box>
