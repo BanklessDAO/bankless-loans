@@ -133,7 +133,6 @@ export default function Home() {
             </Box>
           </Stack>
         </Box>
-        <Footer></Footer> 
     </Box>
   );
 }
