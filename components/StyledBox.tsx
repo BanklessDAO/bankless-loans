@@ -1,18 +1,12 @@
 import { Box, useStyleConfig } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 
-// TODO: Need to figure out typing props for React
+type Props = {
+    variant?: string,
+    children?: ReactNode,
+}
 
-// type Props {
-//     variant?: string,
-//     children?: ReactNode,
-// }
-
-export default function StyledBox(props: any) {
-
-
-    const { variant, children, ...rest } = props;
-
+export default function StyledBox({variant, children, ...rest}: Props) {
     const styles = useStyleConfig("Section", { variant });
 
     return (

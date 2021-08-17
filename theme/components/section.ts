@@ -17,7 +17,8 @@ const Section = {
             height: "100px"
         }
     },
-    defaultProps: {}
+    defaultProps: {
+    }
 };
 
 export default Section;
