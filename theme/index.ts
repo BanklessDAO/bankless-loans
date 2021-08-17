@@ -31,6 +31,9 @@ import Checkbox from './components/checkbox';
     colors,
     styles,
     fonts,
+    components: {
+      Section
+    }
     // components: {
     //     Section,
     //     Button,
