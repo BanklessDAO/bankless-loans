@@ -1,6 +1,3 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
 import React from 'react'
 
 import {
@@ -11,13 +8,13 @@ import {
   Button,
   Stack,
 } from "@chakra-ui/react";
-import Footer from '../components/Footer';
 import StyledBox from '../components/StyledBox';
 
 export default function Home() {
 
   return (
-    <Box p="5" borderRadius='18px'>
+    <Box p="5" borderRadius='18px'
+    >
       {/* This is her0 section */}
       <Flex
         bg="white"
