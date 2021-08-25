@@ -5,7 +5,7 @@ import {ChakraProvider} from '@chakra-ui/react'
 import connectors from '../utils/connectors'
 import { UseWalletProvider} from 'use-wallet'
 import theme from '../theme';
-import customTheme from '../theme/'
+import customTheme from '../theme'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
