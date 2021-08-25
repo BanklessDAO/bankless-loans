@@ -1,4 +1,4 @@
-import { 
+import {
 Box, Text, Flex, Stack, Spacer
 } from "@chakra-ui/react";
 import Link from 'next/link'
@@ -6,7 +6,14 @@ import Link from 'next/link'
 export default function Footer() {
 
     return (
-        <Box borderRadius='18px' height='150px'  bg='#1E2230' mt='10px' mb='1px' color='white' pt='50' pl='5%' pr='5%'>
+        <Box height='150px' borderRadius='18px'
+            bg='#1E2230'
+            mt='10px'
+            mb='1px'
+            color='white'
+            pt='50'
+            pl='5%'
+            pr='5%'>
             <Flex>
                 <Text font='30px' fontWeight='800'>© Bankless Loans</Text>
                 <Spacer/>
@@ -16,6 +23,6 @@ export default function Footer() {
                     <Link href='/' >Privacy Policy</Link>
                 </Stack>
             </Flex>
-        </Box>        
+        </Box>
     );
 }
