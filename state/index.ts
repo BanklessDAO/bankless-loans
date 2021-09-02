@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import thunk from 'redux-thunk';
-import globalStateReducer from './state/globalState'
+import homeStateReducer from './home/reducer'
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
-    globalState: globalStateReducer,
+    homeState: homeStateReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk)
 })
