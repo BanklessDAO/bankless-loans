@@ -1,4 +1,10 @@
-import React from 'react'
+import Head from 'next/head'
+import Image from 'next/image'
+import styles from '../styles/Home.module.css'
+import React, { useEffect } from 'react'
+import { useAppSelector, useAppDispatch } from '../state/hooks'
+import { selectLiquityState } from '../state/home/hooks'
+import { fetchHomeState } from '../state/home/actions'
 
 import {
   Box,
@@ -11,6 +17,17 @@ import {
 import StyledBox from '../components/StyledBox';
 
 export default function Home() {
+  // Liquity state values presentation
+
+  var liquityState = useAppSelector(selectLiquityState)
+  var lusdDepositAmountString = Math.floor((liquityState?.tokensInStabilityPool ?? 0) / 1000000).toString()
+  var lqtyDepositAmountString = Math.floor((liquityState?.totalLQTYTokensStaked ?? 0) / 1000000).toString()
+
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(fetchHomeState())
+  }, [])
 
   return (
     <Box p="5" borderRadius='18px'
@@ -66,7 +83,7 @@ export default function Home() {
           <hr />
           <Box borderRadius='18px' color='#6257DE'>
             <Text>Already deposited</Text>
-            <Heading>100M LUSD</Heading>
+            <Heading>{lusdDepositAmountString}M LUSD</Heading>
             <Box ><img src=""></img></Box>
           </Box>
         </StyledBox>
@@ -111,7 +128,7 @@ export default function Home() {
           <hr />
           <Box borderRadius='18px'>
             <Text>Already deposited</Text>
-            <Heading>100M LUSD</Heading>
+            <Heading>{lqtyDepositAmountString}M LQTY</Heading>
             <Box ><img src=""></img></Box>
           </Box>
         </StyledBox>
@@ -162,4 +179,3 @@ export default function Home() {
     </Box>
   );
 }
-
