@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import LiquityState from '../../models/LiquityState'
+import LiquityState from '../../../models/LiquityState'
 import { fetchHomeState } from './actions'
 
 export interface HomeState {
