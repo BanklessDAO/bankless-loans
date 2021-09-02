@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import DefaultServiceProvider from '../../services/DefaultServiceProvider'
-import DefaultNetworkProvider from '../../data/network/DefaultNetworkProvider'
+import DefaultServiceProvider from '../../../services/DefaultServiceProvider'
+import DefaultNetworkProvider from '../../../data/network/DefaultNetworkProvider'
 
 /*
   TODO: Keep the active Service references somethere else.
