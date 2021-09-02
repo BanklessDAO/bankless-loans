@@ -20,12 +20,12 @@ class DefaultDiscoveryService implements DiscoveryService {
   async getCurrentState(): Promise<LiquityState> {
     // Get indexed on-chain data
 
-    var liquityState = this.graphQLAPIClient
+    var liquityState = await this.graphQLAPIClient
       .query(
         GLOBAL_STATE_QUERY, 
         {}, 
         (mapper, response) => { 
-          return mapper.mapGlobalState(response.data.globals.currentSystemState)
+          return mapper.mapGlobalState(response.data.globals[0].currentSystemState)
         }
       )
 
