@@ -9,10 +9,8 @@ import {
 import { GraphQLAPIClient } from '../interface/GraphQLAPIClient'
 import GraphQLAPIMapper from "../interface/GraphQLAPIMapper"
 
-const SUBGRAPH_API_KEY = process.env.LIQUITY_SUBGRAPH_API_KEY
-const SUBGRAPH_ID = constants.LIQUITY_SUBGRAPH_ID
 const client = new ApolloClient({
-  uri: `https://gateway.thegraph.com/api/${SUBGRAPH_API_KEY}/subgraphs/id/${SUBGRAPH_ID}`,
+  uri: `https://api.thegraph.com/subgraphs/name/liquity/liquity`,
   cache: new InMemoryCache()
 })
 
