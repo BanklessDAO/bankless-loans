@@ -1,9 +1,9 @@
-export { BorrowContext, default } from './create'
+export { BorrowContext, default } from './create';
 
 /* Global typing for Borrow*/
 
 export type BorrowProps = {
-    loan: string
+    loan: string;
     addLoan: (name: string) => void;
-    children?: JSX.Element
-}
+    children?: JSX.Element;
+};
