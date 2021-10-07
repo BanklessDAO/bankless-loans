@@ -30,3 +30,4 @@
 `npm install`
 `npm run dev`
 
+Note: On Windows dev env, the app might complain about missing graphql. If this happens, just run `npm install graphql` and restart the server.
