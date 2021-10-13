@@ -17,8 +17,11 @@ type Props = {
     mt?: string;
 };
 
-export default function StyledBox({ variant, children }: Props): JSX.Element {
-    const styles = useStyleConfig('Section', { variant });
+
+const StyledBox = ({variant, children}: Props): JSX.Element => {
+    const styles = useStyleConfig("Section", { variant });
 
     return <Box __css={styles}>{children}</Box>;
 }
+
+export default StyledBox

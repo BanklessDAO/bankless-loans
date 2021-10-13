@@ -9,8 +9,6 @@ import {
 import Link from 'next/link';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import React from 'react';
-import Web3SignIn from './Web3SignIn';
-import StyledBox from './StyledBox';
 
 export default function Navbar() {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -55,10 +53,15 @@ export default function Navbar() {
                 ml={{ base: 'auto', md: '0px' }}
                 spacing={8}
             >
-                <Link href='/create'>Borrow</Link>
-                <Link href='/deposit'>Deposit</Link>
-                <Link href='stake'>Stake</Link>
-                <Web3SignIn />
+                <Link href='/Dashboard'>
+                    Borrow
+                </Link>
+                <Link href='/deposit'>
+                    Deposit
+                </Link>
+                <Link href='stake'>
+                    Stake
+                </Link>
             </Stack>
         </Flex>
     );
