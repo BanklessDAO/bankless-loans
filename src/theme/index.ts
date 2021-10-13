@@ -1,12 +1,5 @@
 import { extendTheme } from '@chakra-ui/react';
 import { createBreakpoints } from '@chakra-ui/theme-tools';
-import { StepsStyleConfig as Steps } from 'chakra-ui-steps';
-
-const theme = extendTheme({
-  components: {
-    Steps,
-  },
-});
 
 const breakpoints = createBreakpoints({
     sm: "30em",
@@ -39,7 +32,6 @@ import Checkbox from './components/checkbox';
     styles,
     fonts,
     components: {
-      Steps,
       Section
     }
     // components: {
