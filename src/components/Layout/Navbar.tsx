@@ -2,8 +2,7 @@ import {Box, Flex, Text, Stack, useDisclosure, Button} from '@chakra-ui/react'
 import Link from 'next/link'
 import {HamburgerIcon, CloseIcon} from '@chakra-ui/icons'
 import React from 'react'
-import Web3SignIn from './Web3SignIn'
-import StyledBox from './StyledBox'
+import Web3SignIn from '../Web3SignIn'
 
 
 export default function Navbar() {
@@ -47,7 +46,7 @@ export default function Navbar() {
                 ml={{base: 'auto', md: '0px'}}
                 spacing={8}
             >
-                <Link href='/borrow/create'>
+                <Link href='/Dashboard'>
                     Borrow
                 </Link>
                 <Link href='/deposit'>

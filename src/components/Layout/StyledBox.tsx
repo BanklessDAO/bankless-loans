@@ -6,7 +6,7 @@ type Props = {
     children?: ReactNode,
 }
 
-export default function StyledBox({variant, children, ...rest}: Props) {
+const StyledBox = ({variant, children, ...rest}: Props): JSX.Element => {
     const styles = useStyleConfig("Section", { variant });
 
     return (
@@ -15,3 +15,5 @@ export default function StyledBox({variant, children, ...rest}: Props) {
         </Box>
     )
 }
+
+export default StyledBox
