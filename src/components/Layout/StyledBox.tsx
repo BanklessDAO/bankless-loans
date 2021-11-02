@@ -2,6 +2,7 @@ import { Box, useStyleConfig } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 
 type Props = {
+    h: string,
     variant?: string,
     children?: ReactNode,
 }

@@ -38,7 +38,7 @@ export default function Home() {
 
             {/* About Liquity section - this section cover TVL, LUSD, LQTY */}
             <Stack direction={['column', 'row']} my='3' spacing='3'>
-                <StyledBox
+                <Box
                     h='500px'
                     display='flex'
                     flexDirection='column'
@@ -82,8 +82,8 @@ export default function Home() {
                             <img src=''></img>
                         </Box>
                     </Box>
-                </StyledBox>
-                <StyledBox
+                </Box>
+                <Box
                     p='5'
                     rounded='md'
                     w={['100%', '50%']}
@@ -113,8 +113,8 @@ export default function Home() {
                         <Text>some other info there</Text>
                         <Text>and some more</Text>
                     </Stack>
-                </StyledBox>
-                <StyledBox
+                </Box>
+                <Box
                     h='500px'
                     display='flex'
                     flexDirection='column'
@@ -157,7 +157,7 @@ export default function Home() {
                             <img src=''></img>
                         </Box>
                     </Box>
-                </StyledBox>
+                </Box>
             </Stack>
             {/* ------------------------------------------------------------------------------------- */}
             {/* How it works */}
@@ -209,7 +209,7 @@ export default function Home() {
                     </Stack>
                 </Box>
             </Stack>
-            <StyledBox mt='3' p='5' bg='white' color='#6257DE'>
+            <Box mt='3' p='5' bg='white' color='#6257DE'>
                 <Heading size='md'>Fees and charges</Heading>
                 <Stack
                     mt='3'
@@ -235,7 +235,7 @@ export default function Home() {
                         <Text fontSize='xs'>description</Text>
                     </Box>
                 </Stack>
-            </StyledBox>
+            </Box>
         </Box>
     );
 }

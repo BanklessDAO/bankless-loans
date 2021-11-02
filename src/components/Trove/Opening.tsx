@@ -1,50 +1,52 @@
-import { Flex, Button } from '@chakra-ui/react'
-import StyledBox from '../Layout/StyledBox'
+import { useState } from 'react'
+import { Box, Flex, Button } from '@chakra-ui/react'
 import { EditableRow } from './Editor'
+import {
+  Decimal,
+} from "@liquity/lib-base";
 
 export const Opening = (): JSX.Element => {
-  return (
-    <StyledBox
-      h="calc(100vh - 300px)"
-      display="flex"
-      flexDirection="column"
-      justifyContent="space-around"
-      p="5"
-      w={["100%", "70%"]}
-      bg="gray"
-    >
-      <EditableRow
-          placeholder="Collateral"
-          inputId="amount-lp"
-          amount=''
-          unit=''
-          editingState=''
-          editedAmount=''
-          setEditedAmount=''
-          maxAmount=''
-          maxedOut=''
-        //   setEditedAmount={(amount: string) => setCollateral(Decimal.from(amount))}
-        />
+    const editingState = useState<string>();
+    const [collateral, setCollateral] = useState<Decimal>(Decimal.ZERO);
+    const [borrowAmount, setBorrowAmount] = useState<Decimal>(Decimal.ZERO);
+    return (
+        <Box
+            h="calc(100vh - 300px)"
+            display="flex"
+            flexDirection="column"
+            justifyContent="space-around"
+            p="5"
+            w={["100%", "70%"]}
+            bg="gray"
+        >
+            <EditableRow
+                label='collateral'
+                inputID="amount-lp"
+                amount=''
+                unit=''
+                editedAmount=''
+                editingState={editingState}
+                maxAmount=''
+                setEditedAmount={(amount: string) => setCollateral(Decimal.from(amount))}
+            />
 
-        <EditableRow
-          placeholder="Borrow"
-          inputId="amount-lp"
-          amount=''
-          unit=''
-          editingState=''
-          editedAmount=''
-          setEditedAmount=''
-          maxAmount=''
-          maxedOut=''
-        //   setEditedAmount={(amount: string) => setCollateral(Decimal.from(amount))}
-        />
-        <Flex>
-            <Button variant="cancel">
-            Cancel
-            </Button>
+            <EditableRow
+                label='borrow'
+                inputID="amount-lp"
+                amount=''
+                unit=''
+                editedAmount=''
+                editingState={editingState}
+                maxAmount=''
+                setEditedAmount={(amount: string) => setCollateral(Decimal.from(amount))}
+            />
+            <Flex>
+                <Button variant="cancel">
+                Cancel
+                </Button>
 
-            <Button>Confirm</Button>
-        </Flex>
-    </StyledBox>
-  )
+                <Button>Confirm</Button>
+            </Flex>
+        </Box>
+    )
 }

@@ -1,7 +1,7 @@
 declare module 'TroveType' {
     interface Trove {
-        loan: string
-        addLoan: (name: string) => void
+        // loan: string
+        // addLoan: (name: string) => void
         children?: JSX.Element
     }
 
@@ -29,3 +29,4 @@ declare module 'TroveType' {
         maxedOut?: boolean
     };
 }
+
