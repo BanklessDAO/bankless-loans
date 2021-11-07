@@ -1,13 +1,12 @@
-import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Layout from '../components/Layout/Layout'
-import {ChakraProvider} from '@chakra-ui/react'
+import { ChakraProvider } from '@chakra-ui/react'
 import { Provider } from 'react-redux'
 import { store } from '../state'
-import { UseWalletProvider} from 'use-wallet'
+import { UseWalletProvider } from 'use-wallet'
 import customTheme from '../theme'
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
     //This UseWalletProvider also helps in keeping a wallet's context at app level which can be accessed with useWallet hook anywhere in the app//
     <UseWalletProvider chainId={4}>
@@ -21,3 +20,5 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     </UseWalletProvider>
   )
 }
+
+export default MyApp
