@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import { store } from '../state'
 import { UseWalletProvider } from 'use-wallet'
 import customTheme from '../theme'
+import { BatchedWebSocketAugmentedWeb3Provider } from "@liquity/providers";
 
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
