@@ -53,15 +53,20 @@ export default function Navbar() {
                 ml={{ base: 'auto', md: '0px' }}
                 spacing={8}
             >
-                <Link href='/Dashboard'>
+                <Link href='/'>
                     Borrow
                 </Link>
-                <Link href='/deposit'>
+                {/* <Link href='/deposit'>
                     Deposit
                 </Link>
                 <Link href='stake'>
                     Stake
+<<<<<<< HEAD
                 </Link>
+=======
+                </Link> */}
+                {/* <Web3SignIn /> */}
+>>>>>>> 8a6a386 (Add components and connectivity to Liquity backend)
             </Stack>
         </Flex>
     );
