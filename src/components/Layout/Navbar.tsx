@@ -46,16 +46,16 @@ export default function Navbar() {
                 ml={{base: 'auto', md: '0px'}}
                 spacing={8}
             >
-                <Link href='/Dashboard'>
+                <Link href='/'>
                     Borrow
                 </Link>
-                <Link href='/deposit'>
+                {/* <Link href='/deposit'>
                     Deposit
                 </Link>
                 <Link href='stake'>
                     Stake
-                </Link>
-                <Web3SignIn />
+                </Link> */}
+                {/* <Web3SignIn /> */}
             </Stack>
         </Flex>
     )
