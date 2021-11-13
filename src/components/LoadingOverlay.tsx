@@ -7,6 +7,6 @@ export const LoadingOverlay: React.FC = () => (
         size='14px'
         style={{ display: 'flex', justifyContent: 'flex-end' }}
     >
-        <Spinner size='28px' color='text' />
+        <Spinner size='lg' color='text' />
     </Container>
 )

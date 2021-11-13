@@ -1,19 +1,19 @@
-import { Container } from '@chakra-ui/react'
+import { Grid, Box } from '@chakra-ui/react'
 
 import { Trove } from '../components/Trove/Trove'
 import { SystemStats } from '../components/SystemStats'
 
 const Dashboard = (): JSX.Element => {
     return (
-        <Container variant='columns'>
-            <Container variant='left'>
+        <Grid display='flex'>
+            <Box>
                 <Trove />
-            </Container>
+            </Box>
 
-            <Container variant='right'>
+            <Box>
                 <SystemStats />
-            </Container>
-        </Container>
+            </Box>
+        </Grid>
     )
 }
 

@@ -84,7 +84,7 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
                 height: '100vh',
             }}
         >
-            <Spinner color='text' size='32px' />
+            <Spinner color='text' size='lg' />
             <Heading>Loading...</Heading>
         </Flex>
     )
