@@ -98,7 +98,7 @@ export const SystemStats: React.FC<SystemStatsProps> = ({
         frontendTag === AddressZero ? '100' : kickbackRate?.mul(100).prettify()
 
     return (
-        <Box {...{ variant }}>
+        <Box {...{ variant }} sx={{ width: '356px' }}>
             {showBalances && <Balances />}
 
             <Heading>Liquity statistics</Heading>
@@ -173,7 +173,7 @@ export const SystemStats: React.FC<SystemStatsProps> = ({
             </Statistic>
             {}
 
-            <Heading as='h2' sx={{ mt: 3, fontWeight: 'body' }}>
+            {/* <Heading as='h2' sx={{ mt: 3, fontWeight: 'body' }}>
                 Frontend
             </Heading>
             {kickbackRatePct && (
@@ -203,7 +203,7 @@ export const SystemStats: React.FC<SystemStatsProps> = ({
                         </GitHubCommit>
                     )}
                 </Box>
-            </Box>
+            </Box> */}
         </Box>
     )
 }

@@ -30,7 +30,7 @@ export const Row: React.FC<RowProps> = ({
                     pt: '12px',
                     position: 'absolute',
 
-                    fontSize: 1,
+                    fontSize: '14px',
                     border: 1,
                     borderColor: 'transparent',
                 }}
@@ -130,7 +130,7 @@ export const StaticAmounts: React.FC<StaticAmountsProps> = ({
                             sx={{
                                 color: pendingColor,
                                 opacity: 0.8,
-                                fontSize: '0.666em',
+                                fontSize: '22px',
                             }}
                             value={pendingAmount}
                         />
@@ -145,30 +145,24 @@ export const StaticAmounts: React.FC<StaticAmountsProps> = ({
 
 const staticStyle = {
     flexGrow: 1,
-
-    mb: 0,
-    pl: 3,
-    pr: '11px',
-    pb: 0,
-    pt: '28px',
-
-    fontSize: 3,
-
+    marginBottom: 0,
+    paddingLeft: 3,
+    paddingRight: '11px',
+    paddingBottom: 0,
+    paddingTop: '28px',
+    fontSize: '22px',
     border: 1,
     borderColor: 'transparent',
 }
 
 const editableStyle = {
     flexGrow: 1,
-
-    mb: [2, 3],
-    pl: 3,
-    pr: '11px',
-    pb: 2,
-    pt: '28px',
-
-    fontSize: 4,
-
+    marginBottom: [2, 3],
+    paddingLeft: 3,
+    paddingRight: '11px',
+    paddingBottom: 2,
+    paddingTop: '28px',
+    fontSize: '22px',
     boxShadow: [1, 2],
     border: 1,
     borderColor: 'muted',
@@ -185,7 +179,7 @@ export const StaticRow: React.FC<StaticRowProps> = ({
 }) => (
     <Row
         {...{ label, labelId, labelFor, infoIcon }}
-        sx={{ mt: [-2, -3], pb: [2, 3] }}
+        sx={{ marginTop: [-2, -3], paddingBottom: [2, 3] }}
     >
         <StaticAmounts {...props} />
     </Row>
@@ -245,6 +239,7 @@ export const EditableRow: React.FC<EditableRowProps> = ({
     return editing === inputID ? (
         <Row {...{ label, labelFor: inputID, unit }}>
             <Input
+                fontSize='22px'
                 autoFocus
                 id={inputID}
                 type='number'
@@ -276,6 +271,7 @@ export const EditableRow: React.FC<EditableRowProps> = ({
             <StaticAmounts
                 sx={{
                     ...editableStyle,
+                    fontSize: '22px',
                     bg: invalid ? 'invalid' : 'background',
                 }}
                 labelledBy={`${inputID}-label`}
@@ -292,7 +288,12 @@ export const EditableRow: React.FC<EditableRowProps> = ({
             >
                 {maxAmount && (
                     <Button
-                        sx={{ fontSize: 1, p: 1, px: 3 }}
+                        sx={{
+                            fontSize: '22px',
+                            padding: 1,
+                            paddingX: 3,
+                            height: '40px',
+                        }}
                         onClick={event => {
                             setEditedAmount(maxAmount)
                             event.stopPropagation()
