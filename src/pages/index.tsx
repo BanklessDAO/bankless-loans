@@ -7,7 +7,6 @@ import { LiquityStoreProvider } from '../components/LiquityStoreProvider'
 
 import { useLiquity } from '../hooks/LiquityContext'
 import { TransactionMonitor } from '../components/Transaction'
-import { UserAccount } from '../components/UserAccount'
 import { SystemStatsPopup } from '../components/SystemStatsPopup'
 import Dashboard from './Dashboard'
 
@@ -34,16 +33,15 @@ const LiquityFrontend = ({ loader }: LiquityFrontendProps): JSX.Element => {
         <LiquityStoreProvider {...{ loader }} store={liquity.store}>
             <TroveViewProvider>
                 <Flex sx={{ flexDirection: 'column', minHeight: '100%' }}>
-                    <UserAccount />
                     <SystemStatsPopup />
 
                     <Container
-                        variant='main'
                         sx={{
                             display: 'flex',
-                            flexGrow: 1,
                             flexDirection: 'column',
                             alignItems: 'center',
+                            width: '100vw',
+                            maxWidth: '912px',
                         }}
                     >
                         <Dashboard />

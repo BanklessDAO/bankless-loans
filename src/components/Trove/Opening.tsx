@@ -157,7 +157,10 @@ export const Opening: React.FC = () => {
                     infoIcon={
                         <InfoIcon
                             tooltip={
-                                <Box variant='tooltip' sx={{ width: '200px' }}>
+                                <Box
+                                    variant='tooltip'
+                                    sx={{ fontSize: '22px', width: '200px' }}
+                                >
                                     An amount set aside to cover the
                                     liquidator’s gas costs if your Trove needs
                                     to be liquidated. The amount increases your
@@ -178,7 +181,10 @@ export const Opening: React.FC = () => {
                     infoIcon={
                         <InfoIcon
                             tooltip={
-                                <Box variant='tooltip' sx={{ width: '240px' }}>
+                                <Box
+                                    variant='tooltip'
+                                    sx={{ fontSize: '22px', width: '240px' }}
+                                >
                                     This amount is deducted from the borrowed
                                     amount as a one-time fee. There are no
                                     recurring fees for borrowing, which is thus
@@ -197,7 +203,10 @@ export const Opening: React.FC = () => {
                     infoIcon={
                         <InfoIcon
                             tooltip={
-                                <Box variant='tooltip' sx={{ width: '240px' }}>
+                                <Box
+                                    variant='tooltip'
+                                    sx={{ fontSize: '22px', width: '240px' }}
+                                >
                                     The total amount of LUSD your Trove will
                                     hold.{' '}
                                     {isDirty && (
@@ -241,7 +250,7 @@ export const Opening: React.FC = () => {
 
                     {gasEstimationState.type === 'inProgress' ? (
                         <Button disabled>
-                            <Spinner size='24px' sx={{ color: 'background' }} />
+                            <Spinner size='md' sx={{ color: 'background' }} />
                         </Button>
                     ) : stableTroveChange ? (
                         <TroveAction
