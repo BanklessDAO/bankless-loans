@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Container, Text, Flex, Input, Button } from '@chakra-ui/react'
+import { FormLabel, Text, Flex, Input, Button } from '@chakra-ui/react'
 
 import { Icon } from '../Icon'
 
@@ -21,7 +21,7 @@ export const Row: React.FC<RowProps> = ({
 }) => {
     return (
         <Flex sx={{ alignItems: 'stretch', ...sx }}>
-            <Container
+            <FormLabel
                 id={labelId}
                 htmlFor={labelFor}
                 sx={{
@@ -39,7 +39,7 @@ export const Row: React.FC<RowProps> = ({
                     {label}
                     {infoIcon && infoIcon}
                 </Flex>
-            </Container>
+            </FormLabel>
             {children}
         </Flex>
     )
@@ -239,13 +239,13 @@ export const EditableRow: React.FC<EditableRowProps> = ({
     return editing === inputID ? (
         <Row {...{ label, labelFor: inputID, unit }}>
             <Input
+                size='md'
                 fontSize='22px'
                 autoFocus
                 id={inputID}
                 type='number'
                 step='any'
                 defaultValue={editedAmount}
-                {...{ invalid }}
                 onChange={e => {
                     try {
                         setEditedAmount(e.target.value)
@@ -283,7 +283,6 @@ export const EditableRow: React.FC<EditableRowProps> = ({
                     color,
                     pendingAmount,
                     pendingColor,
-                    invalid,
                 }}
             >
                 {maxAmount && (

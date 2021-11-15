@@ -1,12 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import {
-    Container,
-    Flex,
-    Button,
-    Box,
-    Heading,
-    Spinner,
-} from '@chakra-ui/react'
+import { Flex, Button, Box, Heading, Spinner } from '@chakra-ui/react'
 import {
     LiquityStoreState,
     Decimal,
@@ -108,7 +101,13 @@ export const Opening: React.FC = () => {
     }, [collateral, borrowAmount])
 
     return (
-        <Container>
+        <Box
+            maxW='md'
+            borderWidth='3px'
+            borderRadius='lg'
+            overflow='hidden'
+            padding='8px'
+        >
             <Heading>
                 Trove
                 {isDirty && !isTransactionPending && (
@@ -159,7 +158,15 @@ export const Opening: React.FC = () => {
                             tooltip={
                                 <Box
                                     variant='tooltip'
-                                    sx={{ fontSize: '22px', width: '200px' }}
+                                    maxW='sm'
+                                    borderWidth='1px'
+                                    borderRadius='lg'
+                                    overflow='hidden'
+                                    sx={{
+                                        fontSize: '22px',
+                                        width: '200px',
+                                        bg: 'rgb(99, 99, 206)',
+                                    }}
                                 >
                                     An amount set aside to cover the
                                     liquidator’s gas costs if your Trove needs
@@ -183,7 +190,15 @@ export const Opening: React.FC = () => {
                             tooltip={
                                 <Box
                                     variant='tooltip'
-                                    sx={{ fontSize: '22px', width: '240px' }}
+                                    maxW='sm'
+                                    borderWidth='1px'
+                                    borderRadius='lg'
+                                    overflow='hidden'
+                                    sx={{
+                                        fontSize: '22px',
+                                        width: '240px',
+                                        bg: 'rgb(99, 99, 206)',
+                                    }}
                                 >
                                     This amount is deducted from the borrowed
                                     amount as a one-time fee. There are no
@@ -205,7 +220,15 @@ export const Opening: React.FC = () => {
                             tooltip={
                                 <Box
                                     variant='tooltip'
-                                    sx={{ fontSize: '22px', width: '240px' }}
+                                    maxW='sm'
+                                    borderWidth='1px'
+                                    borderRadius='lg'
+                                    overflow='hidden'
+                                    sx={{
+                                        fontSize: '22px',
+                                        width: '240px',
+                                        bg: 'rgb(99, 99, 206)',
+                                    }}
                                 >
                                     The total amount of LUSD your Trove will
                                     hold.{' '}
@@ -267,6 +290,6 @@ export const Opening: React.FC = () => {
                 </Flex>
             </Box>
             {isTransactionPending && <LoadingOverlay />}
-        </Container>
+        </Box>
     )
 }

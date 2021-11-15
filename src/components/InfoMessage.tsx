@@ -21,6 +21,6 @@ export const InfoMessage: React.FC<InfoMessageProps> = ({
             <Heading as='h3'>{title}</Heading>
         </Flex>
 
-        <Text sx={{ fontSize: 2 }}>{children}</Text>
+        <Text sx={{ fontSize: '14px' }}>{children}</Text>
     </Box>
 )

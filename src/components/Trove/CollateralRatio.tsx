@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Box, Container } from '@chakra-ui/react'
+import { Flex, Box, Tooltip } from '@chakra-ui/react'
 
 import {
     CRITICAL_COLLATERAL_RATIO,
@@ -56,9 +56,11 @@ export const CollateralRatio: React.FC<CollateralRatioProps> = ({
                     infoIcon={
                         <InfoIcon
                             tooltip={
-                                <Container
-                                    variant='tooltip'
-                                    sx={{ width: '220px' }}
+                                <Tooltip
+                                    sx={{
+                                        width: '220px',
+                                        bg: 'rgb(99, 99, 206)',
+                                    }}
                                 >
                                     The ratio between the dollar value of the
                                     collateral and the debt (in LUSD) you are
@@ -69,7 +71,7 @@ export const CollateralRatio: React.FC<CollateralRatioProps> = ({
                                     Recovery Mode. A Collateral Ratio above 200%
                                     or 250% is recommended for additional
                                     safety.
-                                </Container>
+                                </Tooltip>
                             }
                         />
                     }
