@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react'
-import { Container, Flex, Button, Box, Heading } from '@chakra-ui/react'
+import { Flex, Button, Box, Heading } from '@chakra-ui/react'
 import {
     LiquityStoreState,
     Decimal,
@@ -202,7 +202,13 @@ export const Adjusting: React.FC = () => {
     }
 
     return (
-        <Container>
+        <Box
+            maxW='md'
+            borderWidth='3px'
+            borderRadius='lg'
+            overflow='hidden'
+            padding='8px'
+        >
             <Heading>
                 Trove
                 {isDirty && !isTransactionPending && (
@@ -351,6 +357,6 @@ export const Adjusting: React.FC = () => {
                 </Flex>
             </Box>
             {isTransactionPending && <LoadingOverlay />}
-        </Container>
+        </Box>
     )
 }

@@ -98,7 +98,15 @@ export const SystemStats: React.FC<SystemStatsProps> = ({
         frontendTag === AddressZero ? '100' : kickbackRate?.mul(100).prettify()
 
     return (
-        <Box {...{ variant }} sx={{ width: '356px' }}>
+        <Box
+            {...{ variant }}
+            sx={{ width: '356px', ml: '10px' }}
+            maxW='md'
+            borderWidth='3px'
+            borderRadius='lg'
+            overflow='hidden'
+            padding='8px'
+        >
             {showBalances && <Balances />}
 
             <Heading>Liquity statistics</Heading>
