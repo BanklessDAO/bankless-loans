@@ -5,7 +5,7 @@ import { SystemStats } from '../components/SystemStats'
 
 const Dashboard = (): JSX.Element => {
     return (
-        <Grid display='flex'>
+        <Grid display='flex' flexDirection={{ base: 'column', lg: 'row' }}>
             <Box>
                 <Trove />
             </Box>

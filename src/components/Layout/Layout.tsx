@@ -1,13 +1,13 @@
-import { Fragment } from "react"
-import Navbar  from "./Navbar"
+import { Fragment } from 'react'
+import Navbar from './Navbar'
 import Footer from './Footer'
 
-export default function Layout({children}:any) {
-    return(
+export default function Layout({ children }: any) {
+    return (
         <Fragment>
-            <Navbar/>
+            <Navbar />
             {children}
-            <Footer/>
+            {/* <Footer/> */}
         </Fragment>
     )
 }
