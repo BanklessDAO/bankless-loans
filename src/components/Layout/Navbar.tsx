@@ -2,7 +2,6 @@ import { Box, Flex, Text, Stack, useDisclosure, Button } from '@chakra-ui/react'
 import Link from 'next/link'
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 import React from 'react'
-import Web3SignIn from '../Web3SignIn'
 
 export default function Navbar() {
     const { isOpen, onOpen, onClose } = useDisclosure()
