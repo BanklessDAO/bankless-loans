@@ -13,8 +13,8 @@
         "es6": true
     },
     "extends": [
-        "plugin:@next/next/recommended",
         "plugin:@typescript-eslint/recommended",
+        "next",
         "prettier"
     ],
     "plugins": [
