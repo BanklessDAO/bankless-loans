@@ -1,10 +1,8 @@
 import React from 'react'
 import { Flex, Container } from '@chakra-ui/react'
 import { Wallet } from '@ethersproject/wallet'
-
 import { Decimal, Difference, Trove } from '@liquity/lib-base'
 import { LiquityStoreProvider } from '../components/LiquityStoreProvider'
-
 import { useLiquity } from '../hooks/LiquityContext'
 import { TransactionMonitor } from '../components/Transaction'
 import { SystemStatsPopup } from '../components/SystemStatsPopup'

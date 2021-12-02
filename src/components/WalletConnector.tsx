@@ -2,10 +2,8 @@ import React, { useEffect, useReducer, useState } from 'react'
 import { useWeb3React } from '@web3-react/core'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 import { Button, Text, Flex, Link, Box } from '@chakra-ui/react'
-
 import { injectedConnector } from '../connectors/injectedConnector'
 import { useAuthorizedConnection } from '../hooks/useAuthorizedConnection'
-
 import { RetryDialog } from './RetryDialog'
 import { ConnectionConfirmationDialog } from './ConnectionConfirmationDialog'
 import { MetaMaskIcon } from './MetaMaskIcon'

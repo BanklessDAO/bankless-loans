@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react'
 import { Button, Flex, Spinner } from '@chakra-ui/react'
-
 import { LiquityStoreState } from '@liquity/lib-base'
 import { useLiquitySelector } from '../hooks/useLiquitySelector'
-
 import { useLiquity } from '../hooks/LiquityContext'
-
 import { Transaction, useMyTransactionState } from './Transaction'
 import { useTroveView } from './Trove/context/TroveViewContext'
 

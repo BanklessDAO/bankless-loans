@@ -13,15 +13,12 @@ import {
 } from '@ethersproject/abstract-provider'
 import { hexDataSlice, hexDataLength } from '@ethersproject/bytes'
 import { defaultAbiCoder } from '@ethersproject/abi'
-
 import {
     EthersTransactionOverrides,
     EthersTransactionCancelledError,
 } from '@liquity/lib-ethers'
 import { SentLiquityTransaction, LiquityReceipt } from '@liquity/lib-base'
-
 import { useLiquity } from '../hooks/LiquityContext'
-
 import { Icon } from './Icon'
 import { Tooltip, TooltipProps, Hoverable } from './Tooltip'
 
