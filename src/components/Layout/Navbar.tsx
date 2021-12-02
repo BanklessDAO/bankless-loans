@@ -1,19 +1,12 @@
-import {
-    Box,
-    Flex,
-    Text,
-    Stack,
-    useDisclosure,
-    Button,
-} from '@chakra-ui/react';
-import Link from 'next/link';
-import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
-import React from 'react';
+import { Box, Flex, Text, Stack, useDisclosure, Button } from '@chakra-ui/react'
+import Link from 'next/link'
+import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
+import React from 'react'
 
 export default function Navbar() {
-    const { isOpen, onOpen, onClose } = useDisclosure();
+    const { isOpen, onOpen, onClose } = useDisclosure()
 
-    const handleToggle = () => (isOpen ? onClose() : onOpen());
+    const handleToggle = () => (isOpen ? onClose() : onOpen())
 
     return (
         <Flex
@@ -53,21 +46,15 @@ export default function Navbar() {
                 ml={{ base: 'auto', md: '0px' }}
                 spacing={8}
             >
-                <Link href='/'>
-                    Borrow
-                </Link>
+                <Link href='/'>Borrow</Link>
                 {/* <Link href='/deposit'>
                     Deposit
                 </Link>
                 <Link href='stake'>
                     Stake
-<<<<<<< HEAD
-                </Link>
-=======
                 </Link> */}
                 {/* <Web3SignIn /> */}
->>>>>>> 8a6a386 (Add components and connectivity to Liquity backend)
             </Stack>
         </Flex>
-    );
+    )
 }
