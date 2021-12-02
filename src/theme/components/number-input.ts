@@ -2,8 +2,6 @@ const NumberInput = {
     parts: [
         "root",
         "field",
-        "stepper",
-        "stepperGroup"
     ],
     baseStyle: {
 
