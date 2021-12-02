@@ -1,6 +1,5 @@
 import React from 'react'
 import { Text, Box } from '@chakra-ui/react'
-
 import { WaitingDialog } from './WaitingDialog'
 
 type ConnectionConfirmationDialogProps = {

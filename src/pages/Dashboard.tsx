@@ -1,5 +1,4 @@
 import { Grid, Box } from '@chakra-ui/react'
-
 import { Trove } from '../components/Trove/Trove'
 import { SystemStats } from '../components/SystemStats'
 

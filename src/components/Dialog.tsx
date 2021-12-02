@@ -1,6 +1,5 @@
 import React from 'react'
 import { Heading, Flex, Button, Box } from '@chakra-ui/react'
-
 import { Icon } from './Icon'
 
 type DialogIntent = 'success' | 'warning' | 'danger' | 'info'

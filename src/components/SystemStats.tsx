@@ -3,7 +3,6 @@ import { Box, Heading, Link, Text } from '@chakra-ui/react'
 import { AddressZero } from '@ethersproject/constants'
 import { Decimal, Percent, LiquityStoreState } from '@liquity/lib-base'
 import { useLiquitySelector } from '../hooks/useLiquitySelector'
-
 import { useLiquity } from '../hooks/LiquityContext'
 import { Statistic } from './Statistic'
 

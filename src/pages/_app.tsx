@@ -14,7 +14,7 @@ import { DisposableWalletProvider } from '../testUtils/DisposableWalletProvider'
 
 declare global {
     interface Window {
-        ethereum: Record<string, unknown>
+        ethereum: any
     }
 }
 

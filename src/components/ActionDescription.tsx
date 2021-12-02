@@ -1,5 +1,4 @@
-import { Box, Flex, Stack, Text } from '@chakra-ui/react'
-
+import { Box, Flex, Text } from '@chakra-ui/react'
 import { Icon } from './Icon'
 
 export const ActionDescription: React.FC = ({ children }) => (

@@ -1,5 +1,4 @@
 import { Box, Flex, Text } from '@chakra-ui/react'
-
 import { Icon } from './Icon'
 
 export const ErrorDescription: React.FC = ({ children }) => (

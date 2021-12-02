@@ -1,11 +1,9 @@
 import React from 'react'
 import { Text, Flex, Box, Heading } from '@chakra-ui/react'
-
 import { LiquityStoreState } from '@liquity/lib-base'
 import { useLiquitySelector } from '../hooks/useLiquitySelector'
 import { useLiquity } from '../hooks/LiquityContext'
 import { shortenAddress } from '../utils/shortenAddress'
-
 import { Icon } from './Icon'
 
 const select = ({
@@ -34,7 +32,6 @@ export const UserAccount: React.FC = () => {
                     </Text>
                 </Flex>
             </Flex>
-
             <Flex sx={{ alignItems: 'center' }}>
                 <Icon name='wallet' size='lg' />
 

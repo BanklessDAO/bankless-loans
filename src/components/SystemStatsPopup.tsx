@@ -1,9 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { Container, Flex, Button } from '@chakra-ui/react'
-
 import { LiquityStoreState } from '@liquity/lib-base'
 import { useLiquitySelector } from '../hooks/useLiquitySelector'
-
 import { Icon } from './Icon'
 import { SystemStats } from './SystemStats'
 

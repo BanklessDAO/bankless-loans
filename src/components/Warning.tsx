@@ -1,5 +1,4 @@
 import { Box, Flex, Text } from '@chakra-ui/react'
-
 import { Icon } from './Icon'
 
 export const Warning: React.FC = ({ children }) => (
@@ -8,10 +7,8 @@ export const Warning: React.FC = ({ children }) => (
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-around',
-
             mb: [2, 3],
             p: 3,
-
             border: 1,
             borderRadius: '8px',
             borderColor: 'warning',

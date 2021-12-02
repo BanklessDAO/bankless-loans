@@ -1,6 +1,5 @@
 import React from 'react'
 import { Box, Button, Flex } from '@chakra-ui/react'
-
 import { Dialog } from './Dialog'
 
 type RetryDialogProps = {
