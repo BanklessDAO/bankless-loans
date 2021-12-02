@@ -1,16 +1,4 @@
 {
-    "env": {
-        "browser": true,
-        "node": true,
-        "es6": true
-    },
-    "extends": [
-        "prettier",
-        "plugin:@typescript-eslint/recommended"
-    ],
-    "ignorePatterns": [
-        "dist"
-    ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaFeatures": {
@@ -19,12 +7,26 @@
         "sourceType": "module",
         "experimentalObjectRestSpread": true
     },
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6": true
+    },
+    "extends": [
+        "plugin:@next/next/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier"
+    ],
     "plugins": [
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "prettier"
     ],
     "settings": {
         "react": {
             "version": "detect"
         }
-    }
+    },
+    "ignorePatterns": [
+        "dist"
+    ]
 }
