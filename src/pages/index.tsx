@@ -5,7 +5,7 @@ import { Decimal, Difference, Trove } from '@liquity/lib-base'
 import { LiquityStoreProvider } from '../components/LiquityStoreProvider'
 import { useLiquity } from '../hooks/LiquityContext'
 import { TransactionMonitor } from '../components/Transaction'
-import { SystemStatsPopup } from '../components/SystemStatsPopup'
+// import { SystemStatsPopup } from '../components/SystemStatsPopup'
 import Dashboard from './Dashboard'
 
 import { TroveViewProvider } from '../components/Trove/context/TroveViewProvider'
@@ -31,7 +31,7 @@ const LiquityFrontend = ({ loader }: LiquityFrontendProps): JSX.Element => {
         <LiquityStoreProvider {...{ loader }} store={liquity.store}>
             <TroveViewProvider>
                 <Flex sx={{ flexDirection: 'column', minHeight: '100%' }}>
-                    <SystemStatsPopup />
+                    {/* <SystemStatsPopup /> */}
 
                     <Container
                         sx={{

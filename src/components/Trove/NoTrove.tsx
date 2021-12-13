@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useCallback } from 'react'
 import { Heading, Box, Flex, Button } from '@chakra-ui/react'
 import { InfoMessage } from '../InfoMessage'
 import { useTroveView } from './context/TroveViewContext'
 
-export const NoTrove: React.FC = props => {
+export const NoTrove: React.FC = (/* props */) => {
     const { dispatchEvent } = useTroveView()
 
     const handleOpenTrove = useCallback(() => {

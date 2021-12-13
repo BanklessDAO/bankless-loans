@@ -101,195 +101,201 @@ export const Opening: React.FC = () => {
     }, [collateral, borrowAmount])
 
     return (
-        <Box
-            maxW='md'
-            borderWidth='3px'
-            borderRadius='lg'
-            overflow='hidden'
-            padding='8px'
+        <Flex
+            w='100vw'
+            h='calc(100vh - 4rem)'
+            alignItems='center'
+            justifyContent='center'
         >
-            <Heading>
-                Trove
-                {isDirty && !isTransactionPending && (
-                    <Button
-                        variant='titleIcon'
-                        sx={{ ':enabled:hover': { color: 'danger' } }}
-                        onClick={reset}
-                    >
-                        <Icon name='history' size='lg' />
-                    </Button>
-                )}
-            </Heading>
-
-            <Box sx={{ p: [2, 3] }}>
-                <EditableRow
-                    label='Collateral'
-                    inputID='trove-collateral'
-                    amount={collateral.prettify(4)}
-                    maxAmount={maxCollateral.toString()}
-                    maxedOut={collateralMaxedOut}
-                    editingState={editingState}
-                    unit='ETH'
-                    editedAmount={collateral.toString(4)}
-                    setEditedAmount={(amount: string) =>
-                        setCollateral(Decimal.from(amount))
-                    }
-                />
-
-                <EditableRow
-                    label='Borrow'
-                    inputID='trove-borrow-amount'
-                    amount={borrowAmount.prettify()}
-                    unit={'LUSD'}
-                    editingState={editingState}
-                    editedAmount={borrowAmount.toString(2)}
-                    setEditedAmount={(amount: string) =>
-                        setBorrowAmount(Decimal.from(amount))
-                    }
-                />
-
-                <StaticRow
-                    label='Liquidation Reserve'
-                    inputID='trove-liquidation-reserve'
-                    amount={`${LUSD_LIQUIDATION_RESERVE}`}
-                    unit={'LUSD'}
-                    infoIcon={
-                        <InfoIcon
-                            tooltip={
-                                <Box
-                                    variant='tooltip'
-                                    maxW='sm'
-                                    borderWidth='1px'
-                                    borderRadius='lg'
-                                    overflow='hidden'
-                                    sx={{
-                                        fontSize: '22px',
-                                        width: '200px',
-                                        bg: 'rgb(99, 99, 206)',
-                                    }}
-                                >
-                                    An amount set aside to cover the
-                                    liquidator’s gas costs if your Trove needs
-                                    to be liquidated. The amount increases your
-                                    debt and is refunded if you close your Trove
-                                    by fully paying off its net debt.
-                                </Box>
-                            }
-                        />
-                    }
-                />
-
-                <StaticRow
-                    label='Borrowing Fee'
-                    inputID='trove-borrowing-fee'
-                    amount={fee.prettify(2)}
-                    pendingAmount={feePct.toString(2)}
-                    unit={'LUSD'}
-                    infoIcon={
-                        <InfoIcon
-                            tooltip={
-                                <Box
-                                    variant='tooltip'
-                                    maxW='sm'
-                                    borderWidth='1px'
-                                    borderRadius='lg'
-                                    overflow='hidden'
-                                    sx={{
-                                        fontSize: '22px',
-                                        width: '240px',
-                                        bg: 'rgb(99, 99, 206)',
-                                    }}
-                                >
-                                    This amount is deducted from the borrowed
-                                    amount as a one-time fee. There are no
-                                    recurring fees for borrowing, which is thus
-                                    interest-free.
-                                </Box>
-                            }
-                        />
-                    }
-                />
-
-                <StaticRow
-                    label='Total debt'
-                    inputID='trove-total-debt'
-                    amount={totalDebt.prettify(2)}
-                    unit={'LUSD'}
-                    infoIcon={
-                        <InfoIcon
-                            tooltip={
-                                <Box
-                                    variant='tooltip'
-                                    maxW='sm'
-                                    borderWidth='1px'
-                                    borderRadius='lg'
-                                    overflow='hidden'
-                                    sx={{
-                                        fontSize: '22px',
-                                        width: '240px',
-                                        bg: 'rgb(99, 99, 206)',
-                                    }}
-                                >
-                                    The total amount of LUSD your Trove will
-                                    hold.{' '}
-                                    {isDirty && (
-                                        <>
-                                            You will need to repay{' '}
-                                            {totalDebt
-                                                .sub(LUSD_LIQUIDATION_RESERVE)
-                                                .prettify(2)}{' '}
-                                            LUSD to reclaim your collateral (
-                                            {LUSD_LIQUIDATION_RESERVE.toString()}{' '}
-                                            LUSD Liquidation Reserve excluded).
-                                        </>
-                                    )}
-                                </Box>
-                            }
-                        />
-                    }
-                />
-
-                <CollateralRatio value={collateralRatio} />
-
-                {description ?? (
-                    <ActionDescription>
-                        Start by entering the amount of ETH you'd like to
-                        deposit as collateral.
-                    </ActionDescription>
-                )}
-
-                <ExpensiveTroveChangeWarning
-                    troveChange={stableTroveChange}
-                    maxBorrowingRate={maxBorrowingRate}
-                    borrowingFeeDecayToleranceMinutes={60}
-                    gasEstimationState={gasEstimationState}
-                    setGasEstimationState={setGasEstimationState}
-                />
-
-                <Flex variant='layout.actions'>
-                    <Button variant='cancel' onClick={handleCancelPressed}>
-                        Cancel
-                    </Button>
-
-                    {gasEstimationState.type === 'inProgress' ? (
-                        <Button disabled>
-                            <Spinner size='md' sx={{ color: 'background' }} />
-                        </Button>
-                    ) : stableTroveChange ? (
-                        <TroveAction
-                            transactionId={TRANSACTION_ID}
-                            change={stableTroveChange}
-                            maxBorrowingRate={maxBorrowingRate}
-                            borrowingFeeDecayToleranceMinutes={60}
+            <Box
+                w='100%'
+                maxW='md'
+                borderWidth={1}
+                borderRadius='lg'
+                overflow='hidden'
+                padding='8px'
+            >
+                <Heading>
+                    Trove
+                    {isDirty && !isTransactionPending && (
+                        <Button
+                            variant='titleIcon'
+                            sx={{ ':enabled:hover': { color: 'danger' } }}
+                            onClick={reset}
                         >
-                            Confirm
-                        </TroveAction>
-                    ) : (
-                        <Button disabled>Confirm</Button>
+                            <Icon name='history' size='lg' />
+                        </Button>
                     )}
-                </Flex>
+                </Heading>
+                <Box w='full' sx={{ p: [2, 3] }}>
+                    <EditableRow
+                        label='Collateral'
+                        inputID='trove-collateral'
+                        amount={collateral.prettify(4)}
+                        maxAmount={maxCollateral.toString()}
+                        maxedOut={collateralMaxedOut}
+                        editingState={editingState}
+                        unit='ETH'
+                        editedAmount={collateral.toString(4)}
+                        setEditedAmount={(amount: string) =>
+                            setCollateral(Decimal.from(amount))
+                        }
+                    />
+                    <EditableRow
+                        label='Borrow'
+                        inputID='trove-borrow-amount'
+                        amount={borrowAmount.prettify()}
+                        unit={'LUSD'}
+                        editingState={editingState}
+                        editedAmount={borrowAmount.toString(2)}
+                        setEditedAmount={(amount: string) =>
+                            setBorrowAmount(Decimal.from(amount))
+                        }
+                    />
+                    <StaticRow
+                        label='Liquidation Reserve'
+                        inputID='trove-liquidation-reserve'
+                        amount={`${LUSD_LIQUIDATION_RESERVE}`}
+                        unit={'LUSD'}
+                        infoIcon={
+                            <InfoIcon
+                                tooltip={
+                                    <Box
+                                        variant='tooltip'
+                                        maxW='sm'
+                                        borderWidth='1px'
+                                        borderRadius='lg'
+                                        overflow='hidden'
+                                        sx={{
+                                            fontSize: '22px',
+                                            width: '200px',
+                                            bg: 'rgb(99, 99, 206)',
+                                        }}
+                                    >
+                                        An amount set aside to cover the
+                                        liquidator&apos;s gas costs if your
+                                        Trove needs to be liquidated. The amount
+                                        increases your debt and is refunded if
+                                        you close your Trove by fully paying off
+                                        its net debt.
+                                    </Box>
+                                }
+                            />
+                        }
+                    />
+                    <StaticRow
+                        label='Borrowing Fee'
+                        inputID='trove-borrowing-fee'
+                        amount={fee.prettify(2)}
+                        pendingAmount={feePct.toString(2)}
+                        unit={'LUSD'}
+                        infoIcon={
+                            <InfoIcon
+                                tooltip={
+                                    <Box
+                                        variant='tooltip'
+                                        maxW='sm'
+                                        borderWidth='1px'
+                                        borderRadius='lg'
+                                        overflow='hidden'
+                                        sx={{
+                                            fontSize: '22px',
+                                            width: '240px',
+                                            bg: 'rgb(99, 99, 206)',
+                                        }}
+                                    >
+                                        This amount is deducted from the
+                                        borrowed amount as a one-time fee. There
+                                        are no recurring fees for borrowing,
+                                        which is thus interest-free.
+                                    </Box>
+                                }
+                            />
+                        }
+                    />
+                    <StaticRow
+                        label='Total debt'
+                        inputID='trove-total-debt'
+                        amount={totalDebt.prettify(2)}
+                        unit={'LUSD'}
+                        infoIcon={
+                            <InfoIcon
+                                tooltip={
+                                    <Box
+                                        variant='tooltip'
+                                        maxW='sm'
+                                        borderWidth='1px'
+                                        borderRadius='lg'
+                                        overflow='hidden'
+                                        sx={{
+                                            fontSize: '22px',
+                                            width: '240px',
+                                            bg: 'rgb(99, 99, 206)',
+                                        }}
+                                    >
+                                        The total amount of LUSD your Trove will
+                                        hold.{' '}
+                                        {isDirty && (
+                                            <>
+                                                You will need to repay{' '}
+                                                {totalDebt
+                                                    .sub(
+                                                        LUSD_LIQUIDATION_RESERVE
+                                                    )
+                                                    .prettify(2)}{' '}
+                                                LUSD to reclaim your collateral
+                                                (
+                                                {LUSD_LIQUIDATION_RESERVE.toString()}{' '}
+                                                LUSD Liquidation Reserve
+                                                excluded).
+                                            </>
+                                        )}
+                                    </Box>
+                                }
+                            />
+                        }
+                    />
+                    <CollateralRatio value={collateralRatio} />
+                    {description ?? (
+                        <ActionDescription>
+                            Start by entering the amount of ETH you&apos;d like
+                            to deposit as collateral.
+                        </ActionDescription>
+                    )}
+                    <ExpensiveTroveChangeWarning
+                        troveChange={stableTroveChange}
+                        maxBorrowingRate={maxBorrowingRate}
+                        borrowingFeeDecayToleranceMinutes={60}
+                        gasEstimationState={gasEstimationState}
+                        setGasEstimationState={setGasEstimationState}
+                    />
+                    <Flex variant='layout.actions'>
+                        <Button variant='cancel' onClick={handleCancelPressed}>
+                            Cancel
+                        </Button>
+                        {gasEstimationState.type === 'inProgress' ? (
+                            <Button disabled>
+                                <Spinner
+                                    size='md'
+                                    sx={{ color: 'background' }}
+                                />
+                            </Button>
+                        ) : stableTroveChange ? (
+                            <TroveAction
+                                transactionId={TRANSACTION_ID}
+                                change={stableTroveChange}
+                                maxBorrowingRate={maxBorrowingRate}
+                                borrowingFeeDecayToleranceMinutes={60}
+                            >
+                                Confirm
+                            </TroveAction>
+                        ) : (
+                            <Button disabled>Confirm</Button>
+                        )}
+                    </Flex>
+                </Box>
+                {isTransactionPending && <LoadingOverlay />}
             </Box>
-            {isTransactionPending && <LoadingOverlay />}
-        </Box>
+        </Flex>
     )
 }

@@ -1,4 +1,10 @@
-import { Box, Flex, Text, Stack, useDisclosure, Button } from '@chakra-ui/react'
+import {
+    Box,
+    Flex,
+    Text,
+    Stack,
+    useDisclosure /* Button */,
+} from '@chakra-ui/react'
 import Link from 'next/link'
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 import React from 'react'
@@ -12,8 +18,7 @@ export default function Navbar() {
     return (
         <Flex
             as='nav'
-            h='130px'
-            borderRadius='18px'
+            h={16}
             w='100%'
             bg='#1E2230'
             align='center'

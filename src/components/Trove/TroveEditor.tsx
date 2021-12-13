@@ -127,7 +127,6 @@ export const TroveEditor: React.FC<TroveEditorProps> = ({
 
                 {children}
             </Box>
-
             {changePending && <LoadingOverlay />}
         </Container>
     )

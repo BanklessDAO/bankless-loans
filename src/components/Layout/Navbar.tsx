@@ -1,4 +1,4 @@
-import { Box, Flex, Text, Stack, useDisclosure, Button } from '@chakra-ui/react'
+import { Box, Flex, Stack, useDisclosure } from '@chakra-ui/react'
 import Link from 'next/link'
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 import React from 'react'
@@ -11,31 +11,38 @@ export default function Navbar() {
     return (
         <Flex
             as='nav'
-            h='130px'
-            borderRadius='18px'
+            h={16}
             w='100%'
-            bg='#1E2230'
+            px={4}
+            bg='#121212'
+            // borderBottomWidth={1}
             align='center'
             justify='space-between'
             wrap='wrap'
             color='white'
         >
             <Flex h='100%' alignItems='center'>
-                <Text fontSize='28px' color='white' ml='43px'>
+                {/* <Text fontSize='28px' color='white' >
                     Bankless Loans
-                </Text>
+                </Text> */}
             </Flex>
 
-            <Box display={{ base: 'block', md: 'none' }} onClick={handleToggle}>
+            <Box
+                display={{ base: 'block', md: 'none' }}
+                px={1.5}
+                py={1}
+                bgColor='#212121'
+                borderRadius={5}
+                onClick={handleToggle}
+            >
                 {isOpen ? (
-                    <CloseIcon color='white' mr='43px' fontSize='15px' />
+                    <CloseIcon color='white' fontSize='15px' />
                 ) : (
-                    <HamburgerIcon color='white' mr='43px' fontSize='25px' />
+                    <HamburgerIcon color='white' fontSize='28px' />
                 )}
             </Box>
 
             <Stack
-                bg='#1E2230'
                 direction={{ base: 'column', md: 'row' }}
                 display={{ base: isOpen ? 'block' : 'none', md: 'flex' }}
                 width={{ base: '92%', md: 'auto' }}
