@@ -157,16 +157,22 @@ export const Opening: React.FC = () => {
                         <InfoIcon
                             tooltip={
                                 <Box
-                                    variant='tooltip'
-                                    maxW='sm'
                                     borderWidth='1px'
-                                    borderRadius='lg'
+                                    borderRadius='md'
+                                    borderColor='#aaa'
                                     overflow='hidden'
                                     sx={{
-                                        fontSize: '22px',
-                                        width: '200px',
-                                        bg: 'rgb(99, 99, 206)',
+                                        padding: '10px',
+                                        bg: '#a7a7e3',
+                                        fontSize: '1em',
+                                        color: '#333',
+                                        minW: '12.5vw',
+                                        height: 'auto',
+                                        maxW: '33vm',
+                                        fontStyle: 'italic',
                                     }}
+                                    md={{}}
+                                    lg={{}}
                                 >
                                     An amount set aside to cover the
                                     liquidator’s gas costs if your Trove needs
@@ -189,16 +195,22 @@ export const Opening: React.FC = () => {
                         <InfoIcon
                             tooltip={
                                 <Box
-                                    variant='tooltip'
-                                    maxW='sm'
                                     borderWidth='1px'
-                                    borderRadius='lg'
+                                    borderRadius='md'
+                                    borderColor='#aaa'
                                     overflow='hidden'
                                     sx={{
-                                        fontSize: '22px',
-                                        width: '240px',
-                                        bg: 'rgb(99, 99, 206)',
+                                        padding: '10px',
+                                        bg: '#a7a7e3',
+                                        fontSize: '1em',
+                                        color: '#333',
+                                        minW: '12.5vw',
+                                        height: 'auto',
+                                        maxW: '33vm',
+                                        fontStyle: 'italic',
                                     }}
+                                    md={{}}
+                                    lg={{}}
                                 >
                                     This amount is deducted from the borrowed
                                     amount as a one-time fee. There are no
@@ -217,18 +229,25 @@ export const Opening: React.FC = () => {
                     unit={'LUSD'}
                     infoIcon={
                         <InfoIcon
+                            placement='right'
                             tooltip={
                                 <Box
-                                    variant='tooltip'
-                                    maxW='sm'
                                     borderWidth='1px'
-                                    borderRadius='lg'
+                                    borderRadius='md'
+                                    borderColor='#aaa'
                                     overflow='hidden'
                                     sx={{
-                                        fontSize: '22px',
-                                        width: '240px',
-                                        bg: 'rgb(99, 99, 206)',
+                                        padding: '10px',
+                                        bg: '#a7a7e3',
+                                        fontSize: '1em',
+                                        color: '#333',
+                                        minW: '12.5vw',
+                                        height: 'auto',
+                                        maxW: '33vm',
+                                        fontStyle: 'italic',
                                     }}
+                                    md={{}}
+                                    lg={{}}
                                 >
                                     The total amount of LUSD your Trove will
                                     hold.{' '}
@@ -253,7 +272,7 @@ export const Opening: React.FC = () => {
 
                 {description ?? (
                     <ActionDescription>
-                        Start by entering the amount of ETH you'd like to
+                        Start by entering the amount of ETH you&apos;d like to
                         deposit as collateral.
                     </ActionDescription>
                 )}

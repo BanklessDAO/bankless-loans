@@ -1,18 +1,11 @@
 const Popover = {
-    parts: [
-        "field",
-        "addon"
-    ],
+    parts: ['field', 'addon'],
     baseStyle: {
-        
+        background: 'red',
     },
-    sizes: {
-
-    },
-    variants: {
-
-    },
-    defaultProps: {}
+    sizes: {},
+    variants: {},
+    defaultProps: {},
 }
 
-export default Popover;
+export default Popover
