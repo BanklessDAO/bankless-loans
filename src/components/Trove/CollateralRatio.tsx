@@ -56,11 +56,23 @@ export const CollateralRatio: React.FC<CollateralRatioProps> = ({
                     infoIcon={
                         <InfoIcon
                             tooltip={
-                                <Tooltip
+                                <Box
+                                    borderWidth='1px'
+                                    borderRadius='md'
+                                    borderColor='#aaa'
+                                    overflow='hidden'
                                     sx={{
-                                        width: '220px',
-                                        bg: 'rgb(99, 99, 206)',
+                                        padding: '10px',
+                                        bg: '#a7a7e3',
+                                        fontSize: '1em',
+                                        color: '#333',
+                                        minW: '12.5vw',
+                                        height: 'auto',
+                                        maxW: '33vm',
+                                        fontStyle: 'italic',
                                     }}
+                                    md={{}}
+                                    lg={{}}
                                 >
                                     The ratio between the dollar value of the
                                     collateral and the debt (in LUSD) you are
@@ -71,7 +83,7 @@ export const CollateralRatio: React.FC<CollateralRatioProps> = ({
                                     Recovery Mode. A Collateral Ratio above 200%
                                     or 250% is recommended for additional
                                     safety.
-                                </Tooltip>
+                                </Box>
                             }
                         />
                     }

@@ -109,7 +109,11 @@ export const TroveEditor: React.FC<TroveEditorProps> = ({
                     infoIcon={
                         <InfoIcon
                             tooltip={
-                                <Box variant='tooltip' sx={{ width: '240px' }}>
+                                <Box
+                                    bg='rgb(25,25,255)'
+                                    variant='tooltip'
+                                    sx={{ width: '240px' }}
+                                >
                                     This amount is deducted from the borrowed
                                     amount as a one-time fee. There are no
                                     recurring fees for borrowing, which is thus

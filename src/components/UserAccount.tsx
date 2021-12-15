@@ -22,7 +22,7 @@ export const UserAccount: React.FC = () => {
         useLiquitySelector(select)
 
     return (
-        <Box sx={{ display: ['none', 'flex'] }}>
+        <Box sx={{ display: ['flex', 'flex'] }}>
             <Flex sx={{ alignItems: 'center' }}>
                 <Icon name='user-circle' size='lg' />
                 <Flex sx={{ ml: 3, mr: 4, flexDirection: 'column' }}>

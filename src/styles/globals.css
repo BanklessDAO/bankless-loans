@@ -15,3 +15,11 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.tippy-popper[x-placement=top] .tippy-tooltip.mythemename-theme [x-arrow] {
+  border-top: 7px solid red; /* your color here */
+}
+
+.tippy-popper[x-placement=bottom] .tippy-tooltip.mythemename-theme [x-arrow] {
+  border-bottom: 7px solid red; /* your color here */
+}

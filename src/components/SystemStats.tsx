@@ -116,14 +116,60 @@ export const SystemStats: React.FC<SystemStatsProps> = ({
 
             <Statistic
                 name='Borrowing Fee'
-                tooltip="The Borrowing Fee is a one-off fee charged as a percentage of the borrowed amount (in LUSD) and is part of a Trove's debt. The fee varies between 0.5% and 5% depending on LUSD redemption volumes."
+                tooltip={
+                    <Box
+                        borderWidth='1px'
+                        borderRadius='md'
+                        borderColor='#aaa'
+                        overflow='hidden'
+                        sx={{
+                            padding: '10px',
+                            bg: '#a7a7e3',
+                            fontSize: '0.8em',
+                            color: '#333',
+                            minW: '12.5vw',
+                            height: 'auto',
+                            maxW: '33vm',
+                            fontStyle: 'italic',
+                        }}
+                        md={{}}
+                        lg={{}}
+                    >
+                        The Borrowing Fee is a one-off fee charged as a
+                        percentage of the borrowed amount (in LUSD) and is part
+                        of a Trove&apos;s debt. The fee varies between 0.5% and
+                        5% depending on LUSD redemption volumes.
+                    </Box>
+                }
             >
                 {borrowingFeePct.toString(2)}
             </Statistic>
-
             <Statistic
                 name='TVL'
-                tooltip='The Total Value Locked (TVL) is the total value of Ether locked as collateral in the system, given in ETH and USD.'
+                tooltip={
+                    <Box
+                        borderWidth='1px'
+                        borderRadius='md'
+                        borderColor='#aaa'
+                        overflow='hidden'
+                        sx={{
+                            padding: '10px',
+                            bg: '#a7a7e3',
+                            fontSize: '0.8em',
+                            color: '#333',
+                            minW: '12.5vw',
+                            height: 'auto',
+                            maxW: '33vm',
+                            fontStyle: 'italic',
+                        }}
+                        md={{}}
+                        lg={{}}
+                    >
+                        The Total Value Locked (TVL) is the total value of Ether
+                        locked as collateral in the system, given in ETH and
+                        USD.
+                    </Box>
+                }
             >
                 {total.collateral.shorten()}{' '}
                 <Text sx={{ fontSize: 1 }}>&nbsp;ETH</Text>
@@ -134,21 +180,85 @@ export const SystemStats: React.FC<SystemStatsProps> = ({
             </Statistic>
             <Statistic
                 name='Troves'
-                tooltip='The total number of active Troves in the system.'
+                tooltip={
+                    <Box
+                        borderWidth='1px'
+                        borderRadius='md'
+                        borderColor='#aaa'
+                        overflow='hidden'
+                        sx={{
+                            padding: '10px',
+                            bg: '#a7a7e3',
+                            fontSize: '0.8em',
+                            color: '#333',
+                            minW: '12.5vw',
+                            height: 'auto',
+                            maxW: '33vm',
+                            fontStyle: 'italic',
+                        }}
+                        md={{}}
+                        lg={{}}
+                    >
+                        The total number of active Troves in the system.
+                    </Box>
+                }
             >
                 {Decimal.from(numberOfTroves).prettify(0)}
             </Statistic>
             <Statistic
                 name='LUSD supply'
-                tooltip='The total LUSD minted by the Liquity Protocol.'
+                tooltip={
+                    <Box
+                        borderWidth='1px'
+                        borderRadius='md'
+                        borderColor='#aaa'
+                        overflow='hidden'
+                        sx={{
+                            padding: '10px',
+                            bg: '#a7a7e3',
+                            fontSize: '0.8em',
+                            color: '#333',
+                            minW: '12.5vw',
+                            height: 'auto',
+                            maxW: '33vm',
+                            fontStyle: 'italic',
+                        }}
+                        md={{}}
+                        lg={{}}
+                    >
+                        The total LUSD minted by the Liquity Protocol.
+                    </Box>
+                }
             >
                 {total.debt.shorten()}
             </Statistic>
             {lusdInStabilityPoolPct && (
                 <Statistic
                     name='LUSD in Stability Pool'
-                    tooltip='The total LUSD currently held in the Stability Pool, expressed as an amount and a fraction of the LUSD supply.
-        '
+                    tooltip={
+                        <Box
+                            borderWidth='1px'
+                            borderRadius='md'
+                            borderColor='#aaa'
+                            overflow='hidden'
+                            sx={{
+                                padding: '10px',
+                                bg: '#a7a7e3',
+                                fontSize: '0.8em',
+                                color: '#333',
+                                minW: '12.5vw',
+                                height: 'auto',
+                                maxW: '33vm',
+                                fontStyle: 'italic',
+                            }}
+                            md={{}}
+                            lg={{}}
+                        >
+                            The total LUSD currently held in the Stability Pool,
+                            expressed as an amount and a fraction of the LUSD
+                            supply.
+                        </Box>
+                    }
                 >
                     {lusdInStabilityPool.shorten()}
                     <Text sx={{ fontSize: 1 }}>
@@ -158,19 +268,91 @@ export const SystemStats: React.FC<SystemStatsProps> = ({
             )}
             <Statistic
                 name='Staked LQTY'
-                tooltip='The total amount of LQTY that is staked for earning fee revenue.'
+                tooltip={
+                    <Box
+                        borderWidth='1px'
+                        borderRadius='md'
+                        borderColor='#aaa'
+                        overflow='hidden'
+                        sx={{
+                            padding: '10px',
+                            bg: '#a7a7e3',
+                            fontSize: '0.8em',
+                            color: '#333',
+                            minW: '12.5vw',
+                            height: 'auto',
+                            maxW: '33vm',
+                            fontStyle: 'italic',
+                        }}
+                        md={{}}
+                        lg={{}}
+                    >
+                        The total amount of LQTY that is staked for earning fee
+                        revenue.
+                    </Box>
+                }
             >
                 {totalStakedLQTY.shorten()}
             </Statistic>
             <Statistic
                 name='Total Collateral Ratio'
-                tooltip='The ratio of the Dollar value of the entire system collateral at the current ETH:USD price, to the entire system debt.'
+                tooltip={
+                    <Box
+                        borderWidth='1px'
+                        borderRadius='md'
+                        borderColor='#aaa'
+                        overflow='hidden'
+                        sx={{
+                            padding: '10px',
+                            bg: '#a7a7e3',
+                            fontSize: '0.8em',
+                            color: '#333',
+                            minW: '12.5vw',
+                            height: 'auto',
+                            maxW: '33vm',
+                            fontStyle: 'italic',
+                        }}
+                        md={{}}
+                        lg={{}}
+                    >
+                        The ratio of the Dollar value of the entire system
+                        collateral at the current ETH:USD price, to the entire
+                        system debt.
+                    </Box>
+                }
             >
                 {totalCollateralRatioPct.prettify()}
             </Statistic>
             <Statistic
                 name='Recovery Mode'
-                tooltip="Recovery Mode is activated when the Total Collateral Ratio (TCR) falls below 150%. When active, your Trove can be liquidated if its collateral ratio is below the TCR. The maximum collateral you can lose from liquidation is capped at 110% of your Trove's debt. Operations are also restricted that would negatively impact the TCR."
+                tooltip={
+                    <Box
+                        borderWidth='1px'
+                        borderRadius='md'
+                        borderColor='#aaa'
+                        overflow='hidden'
+                        sx={{
+                            padding: '10px',
+                            bg: '#a7a7e3',
+                            fontSize: '0.8em',
+                            color: '#333',
+                            minW: '12.5vw',
+                            height: 'auto',
+                            maxW: '33vm',
+                            fontStyle: 'italic',
+                        }}
+                        md={{}}
+                        lg={{}}
+                    >
+                        Recovery Mode is activated when the Total Collateral
+                        Ratio (TCR) falls below 150%. When active, your Trove
+                        can be liquidated if its collateral ratio is below the
+                        TCR. The maximum collateral you can lose from
+                        liquidation is capped at 110% of your Trove&#39;s debt.
+                        Operations are also restricted that would negatively
+                        impact the TCR.
+                    </Box>
+                }
             >
                 {total.collateralRatioIsBelowCritical(price) ? (
                     <Box color='danger'>Yes</Box>
