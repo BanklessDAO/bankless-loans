@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Box, Tooltip } from '@chakra-ui/react'
+import { Flex, Box } from '@chakra-ui/react'
 
 import {
     CRITICAL_COLLATERAL_RATIO,
