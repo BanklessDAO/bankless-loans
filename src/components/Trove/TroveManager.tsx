@@ -257,7 +257,7 @@ export const TroveManager: React.FC<TroveManagerProps> = ({
             {description ??
                 (openingNewTrove ? (
                     <ActionDescription>
-                        Start by entering the amount of ETH you'd like to
+                        Start by entering the amount of ETH you&apos;d like to
                         deposit as collateral.
                     </ActionDescription>
                 ) : (
