@@ -49,12 +49,9 @@ export const Opening: React.FC = () => {
         useLiquitySelector(selector)
     const borrowingRate = fees.borrowingRate()
     const editingState = useState<string>()
-
     const [collateral, setCollateral] = useState<Decimal>(Decimal.ZERO)
     const [borrowAmount, setBorrowAmount] = useState<Decimal>(Decimal.ZERO)
-
     const maxBorrowingRate = borrowingRate.add(0.005)
-
     const fee = borrowAmount.mul(borrowingRate)
     const feePct = new Percent(borrowingRate)
     const totalDebt = borrowAmount.add(LUSD_LIQUIDATION_RESERVE).add(fee)
@@ -68,27 +65,22 @@ export const Opening: React.FC = () => {
         !collateral.isZero && !borrowAmount.isZero
             ? trove.collateralRatio(price)
             : undefined
-
     const [troveChange, description] = validateTroveChange(
         EMPTY_TROVE,
         trove,
         borrowingRate,
         validationContext
     )
-
     const stableTroveChange = useStableTroveChange(troveChange)
     const [gasEstimationState, setGasEstimationState] =
         useState<GasEstimationState>({ type: 'idle' })
-
     const transactionState = useMyTransactionState(TRANSACTION_ID)
     const isTransactionPending =
         transactionState.type === 'waitingForApproval' ||
         transactionState.type === 'waitingForConfirmation'
-
     const handleCancelPressed = useCallback(() => {
         dispatchEvent('CANCEL_ADJUST_TROVE_PRESSED')
     }, [dispatchEvent])
-
     const reset = useCallback(() => {
         setCollateral(Decimal.ZERO)
         setBorrowAmount(Decimal.ZERO)
