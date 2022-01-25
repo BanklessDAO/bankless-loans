@@ -91,10 +91,11 @@ export const Opening: React.FC = () => {
             setBorrowAmount(LUSD_MINIMUM_NET_DEBT)
         }
     }, [collateral, borrowAmount])
-
+    //will need to address hard-coded width for mobile
     return (
         <Box
             maxW='md'
+            minWidth='504px'
             borderWidth='3px'
             borderRadius='lg'
             overflow='hidden'
