@@ -1,15 +1,6 @@
 import React, { useState } from 'react'
-import {
-    FormLabel,
-    Text,
-    Flex,
-    NumberInput,
-    NumberInputField,
-    Button,
-} from '@chakra-ui/react'
-
+import { FormLabel, Text, Flex, Input, Button } from '@chakra-ui/react'
 import { Icon } from '../Icon'
-import { escapeRegExp } from '../../utils'
 
 type RowProps = {
     label: string
@@ -37,13 +28,13 @@ export const Row: React.FC<RowProps> = ({
                     pl: 3,
                     pt: '12px',
                     position: 'absolute',
-
                     fontSize: '14px',
                     border: 1,
                     borderColor: 'transparent',
+                    zIndex: 1000,
                 }}
             >
-                <Flex sx={{ alignItems: 'center' }}>
+                <Flex sx={{ alignItems: 'center', justifyContent: 'center' }}>
                     {label}
                     {infoIcon && infoIcon}
                 </Flex>
@@ -150,22 +141,21 @@ export const StaticAmounts: React.FC<StaticAmountsProps> = ({
 
 const staticStyle = {
     flexGrow: 1,
-    marginBottom: 0,
+    marginBottom: 3,
     paddingLeft: 3,
     paddingRight: '11px',
-    paddingBottom: 0,
     paddingTop: '28px',
     fontSize: '22px',
     border: 1,
-    borderColor: 'transparent',
+    borderColor: 'muted',
+    borderRadius: '10px',
 }
 
 const editableStyle = {
     flexGrow: 1,
-    marginBottom: [2, 3],
+    marginBottom: 3,
     paddingLeft: 3,
     paddingRight: '11px',
-    paddingBottom: 2,
     paddingTop: '28px',
     fontSize: '22px',
     boxShadow: [1, 2],
@@ -240,27 +230,29 @@ export const EditableRow: React.FC<EditableRowProps> = ({
 }) => {
     const [editing, setEditing] = editingState
     const [invalid, setInvalid] = useState(false)
-    const inputRegex = RegExp(`^\\d*(?:\\\\[.])?\\d*$`) // match escaped "." characters via in a non-capturing group
-    const enforcer = (nextUserInput: string) => {
-        if (
-            nextUserInput === '' ||
-            inputRegex.test(escapeRegExp(nextUserInput))
-        ) {
-            console.log('nextUserINput true')
-            setEditedAmount(nextUserInput)
-        }
-    }
 
     return editing === inputID ? (
-        <Row {...{ label, labelFor: inputID, unit }}>
-            <NumberInput
+        <Row
+            {...{ label, labelFor: inputID, unit }}
+            sx={{
+                bg: invalid ? 'salmon' : 'background',
+                borderRadius: '10px',
+                marginBottom: '16px',
+                height: '70px',
+            }}
+        >
+            <Input
                 size='md'
-                defaultValue={editedAmount}
                 autoFocus
+                id={inputID}
+                type='number'
+                defaultValue={editedAmount}
+                inputMode='decimal'
+                autoComplete='off'
+                autoCorrect='off'
                 onChange={e => {
-                    const value = e.target.value
                     try {
-                        enforcer(value.replace(/,/g, '.'))
+                        setEditedAmount(e.target.value)
                         setInvalid(false)
                     } catch {
                         setInvalid(true)
@@ -274,10 +266,10 @@ export const EditableRow: React.FC<EditableRowProps> = ({
                 sx={{
                     ...editableStyle,
                     fontWeight: 'medium',
+                    marginTop: '12px',
+                    bg: 'transparent',
                 }}
-            >
-                <NumberInputField />
-            </NumberInput>
+            />
         </Row>
     ) : (
         <Row labelId={`${inputID}-label`} {...{ label, unit }}>
@@ -285,6 +277,9 @@ export const EditableRow: React.FC<EditableRowProps> = ({
                 sx={{
                     ...editableStyle,
                     fontSize: '22px',
+                    bg: invalid ? 'salmon' : 'background',
+                    marginBottom: '16px',
+                    height: '70px',
                 }}
                 labelledBy={`${inputID}-label`}
                 onClick={() => setEditing(inputID)}
@@ -304,6 +299,7 @@ export const EditableRow: React.FC<EditableRowProps> = ({
                             padding: 1,
                             paddingX: 3,
                             height: '40px',
+                            marginBottom: '10px',
                         }}
                         onClick={event => {
                             setEditedAmount(maxAmount)
