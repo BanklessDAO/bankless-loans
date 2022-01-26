@@ -8,8 +8,8 @@ export type LiquityFrontendConfig = {
 }
 
 const defaultConfig: LiquityFrontendConfig = {
-    frontendTag: '0x0000000000000000000000000000000000000000',
-    infuraApiKey: 'a5d75a1abab84f9d8d37e7a67d3363fd',
+    frontendTag: process.env.FRONTEND_TAG,
+    infuraApiKey: process.env.INFURA_ID,
     testnetOnly: true,
 }
 
