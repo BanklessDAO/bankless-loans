@@ -47,6 +47,7 @@ export default function Navbar() {
                 spacing={8}
             >
                 <Link href='/'>Borrow</Link>
+                <Link href='/Pool'>Stability Pool</Link>
             </Stack>
         </Flex>
     )
