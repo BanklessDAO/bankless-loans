@@ -137,7 +137,16 @@ export const StabilityDepositEditor: React.FC<StabilityDepositEditorProps> = ({
                                     tooltip={
                                         <Box
                                             variant='tooltip'
-                                            sx={{ width: '240px' }}
+                                            sx={{
+                                                padding: '10px',
+                                                bg: '#a7a7e3',
+                                                fontSize: '1em',
+                                                color: '#333',
+                                                minW: '12.5vw',
+                                                height: 'auto',
+                                                maxW: '33vm',
+                                                fontStyle: 'italic',
+                                            }}
                                         >
                                             Although the LQTY rewards accrue
                                             every minute, the value on the UI

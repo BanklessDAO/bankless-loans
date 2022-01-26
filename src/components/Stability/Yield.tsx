@@ -59,7 +59,19 @@ export const Yield: React.FC = () => {
             <Text>LQTY APR {aprPercentage.toString(2)}%</Text>
             <InfoIcon
                 tooltip={
-                    <Box variant='tooltip' sx={{ width: ['220px', '518px'] }}>
+                    <Box
+                        variant='tooltip'
+                        sx={{
+                            padding: '10px',
+                            bg: '#a7a7e3',
+                            fontSize: '1em',
+                            color: '#333',
+                            minW: '12.5vw',
+                            height: 'auto',
+                            maxW: '33vm',
+                            fontStyle: 'italic',
+                        }}
+                    >
                         <p>
                             An <Text sx={{ fontWeight: 'bold' }}>estimate</Text>{' '}
                             of the LQTY return on the LUSD deposited to the
