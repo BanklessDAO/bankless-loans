@@ -13,6 +13,7 @@ export const NoTrove: React.FC = props => {
     return (
         <Box
             maxW='md'
+            minWidth='504px'
             borderWidth='3px'
             borderRadius='lg'
             overflow='hidden'
