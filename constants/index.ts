@@ -1,2 +1,1 @@
-export const INFURA_ID = 'a5d75a1abab84f9d8d37e7a67d3363fd'
 export const LIQUITY_SUBGRAPH_ID = '0x147676a5e327080386bcc227e103a73dd2979049-0'
