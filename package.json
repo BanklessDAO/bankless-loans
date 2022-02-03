@@ -46,8 +46,6 @@
     "use-wallet": "^0.13.1"
   },
   "devDependencies": {
-    "@liquity/lib-base": "^3.0.0",
-    "@liquity/lib-ethers": "^3.2.2",
     "@next/eslint-plugin-next": "^12.0.4",
     "@types/node": "^17.0.14",
     "@types/react": "17.0.8",
