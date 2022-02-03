@@ -13,14 +13,23 @@
         "es6": true
     },
     "extends": [
-        "plugin:@next/next/recommended",
         "plugin:@typescript-eslint/recommended",
+        "next",
         "prettier"
     ],
     "plugins": [
         "@typescript-eslint",
         "prettier"
     ],
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    "rules": {
+        "react/prop-types": "off",
+        "react/jsx-key": [1, { "checkFragmentShorthand": true }]
+    },
     "ignorePatterns": [
         "dist"
     ]
