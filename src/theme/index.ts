@@ -28,7 +28,7 @@ import Heading from './components/heading'
 import Popover from './components/popover'
 import Checkbox from './components/checkbox'
 
-const customTheme = extendTheme({
+const customTheme: any = extendTheme({
     colors,
     styles,
     fonts,
