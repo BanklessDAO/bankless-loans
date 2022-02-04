@@ -1,14 +1,10 @@
 import { Heading, Box, Flex, Button } from '@chakra-ui/react'
-
 import { LiquityStoreState } from '@liquity/lib-base'
 import { useLiquitySelector } from '../../hooks/useLiquitySelector'
-
 import { COIN, GT } from '../../strings'
-
 import { DisabledEditableRow, StaticRow } from '../Trove/Editor'
 import { LoadingOverlay } from '../LoadingOverlay'
 import { Icon } from '../Icon'
-
 import { useStakingView } from './context/StakingViewContext'
 import { StakingGainsAction } from './StakingGainsAction'
 
@@ -20,13 +16,11 @@ const select = ({ lqtyStake, totalStakedLQTY }: LiquityStoreState) => ({
 export const ReadOnlyStake: React.FC = () => {
     const { changePending, dispatch } = useStakingView()
     const { lqtyStake, totalStakedLQTY } = useLiquitySelector(select)
-
     const poolShare = lqtyStake.stakedLQTY.mulDiv(100, totalStakedLQTY)
 
     return (
         <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
             <Heading>Staking</Heading>
-
             <Box sx={{ p: [2, 3] }}>
                 <DisabledEditableRow
                     label='Stake'
@@ -70,7 +64,6 @@ export const ReadOnlyStake: React.FC = () => {
                     <StakingGainsAction />
                 </Flex>
             </Box>
-
             {changePending && <LoadingOverlay />}
         </Box>
     )

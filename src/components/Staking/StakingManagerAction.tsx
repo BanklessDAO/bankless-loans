@@ -1,7 +1,5 @@
 import { Button } from '@chakra-ui/react'
-
 import { Decimal, LQTYStakeChange } from '@liquity/lib-base'
-
 import { useLiquity } from '../../hooks/LiquityContext'
 import { useTransactionFunction } from '../Transaction'
 

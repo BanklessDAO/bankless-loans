@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Heading, Box, Button } from '@chakra-ui/react'
-
 import {
     Decimal,
     Decimalish,
@@ -9,13 +8,10 @@ import {
     LQTYStake,
 } from '@liquity/lib-base'
 import { useLiquitySelector } from '../../hooks/useLiquitySelector'
-
 import { COIN, GT } from '../../strings'
-
 import { Icon } from '../Icon'
 import { EditableRow, StaticRow } from '../Trove/Editor'
 import { LoadingOverlay } from '../LoadingOverlay'
-
 import { useStakingView } from './context/StakingViewContext'
 
 const select = ({ lqtyBalance, totalStakedLQTY }: LiquityStoreState) => ({
@@ -42,16 +38,12 @@ export const StakingEditor: React.FC<StakingEditorProps> = ({
     const { lqtyBalance, totalStakedLQTY } = useLiquitySelector(select)
     const { changePending } = useStakingView()
     const editingState = useState<string>()
-
     const edited = !editedLQTY.eq(originalStake.stakedLQTY)
-
     const maxAmount = originalStake.stakedLQTY.add(lqtyBalance)
     const maxedOut = editedLQTY.eq(maxAmount)
-
     const totalStakedLQTYAfterChange = totalStakedLQTY
         .sub(originalStake.stakedLQTY)
         .add(editedLQTY)
-
     const originalPoolShare = originalStake.stakedLQTY.mulDiv(
         100,
         totalStakedLQTY
@@ -75,7 +67,6 @@ export const StakingEditor: React.FC<StakingEditorProps> = ({
                     </Button>
                 )}
             </Heading>
-
             <Box sx={{ p: [2, 3] }}>
                 <EditableRow
                     label='Stake'
@@ -90,7 +81,6 @@ export const StakingEditor: React.FC<StakingEditorProps> = ({
                         dispatch({ type: 'setStake', newValue })
                     }
                 />
-
                 {newPoolShare.infinite ? (
                     <StaticRow
                         label='Pool share'
@@ -109,7 +99,6 @@ export const StakingEditor: React.FC<StakingEditorProps> = ({
                         unit='%'
                     />
                 )}
-
                 {!originalStake.isEmpty && (
                     <>
                         <StaticRow
@@ -132,10 +121,8 @@ export const StakingEditor: React.FC<StakingEditorProps> = ({
                         />
                     </>
                 )}
-
                 {children}
             </Box>
-
             {changePending && <LoadingOverlay />}
         </Box>
     )
