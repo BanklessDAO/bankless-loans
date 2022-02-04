@@ -36,9 +36,6 @@ const reduce = (
     state: StakeManagerState,
     action: StakeManagerAction
 ): StakeManagerState => {
-    // console.log(state);
-    // console.log(action);
-
     const { originalStake, editedLQTY } = state
 
     switch (action.type) {
@@ -63,7 +60,6 @@ const reduce = (
             }
         }
     }
-
     return state
 }
 
@@ -135,7 +131,6 @@ export const StakingManager: React.FC = () => {
         init
     )
     const lqtyBalance = useLiquitySelector(selectLQTYBalance)
-
     const change = originalStake.whatChanged(editedLQTY)
     const [validChange, description] = !change
         ? [undefined, undefined]
@@ -159,7 +154,6 @@ export const StakingManager: React.FC = () => {
           ]
 
     const makingNewStake = originalStake.isEmpty
-
     return (
         <StakingEditor
             title={'Staking'}
@@ -185,7 +179,6 @@ export const StakingManager: React.FC = () => {
                 >
                     Cancel
                 </Button>
-
                 {validChange ? (
                     <StakingManagerAction change={validChange}>
                         Confirm
