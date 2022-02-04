@@ -48,6 +48,7 @@ export default function Navbar() {
             >
                 <Link href='/'>Borrow</Link>
                 <Link href='/Pool'>Stability Pool</Link>
+                <Link href='/Stake'>Stake LQTY</Link>
             </Stack>
         </Flex>
     )
