@@ -12,6 +12,7 @@
 #### Configured with:
 - [ESLint](https://eslint.org/)
 - [Prettier](https://prettier.io/)
+- [Husky](https://typicode.github.io/husky/#/)
 
 ### Tools/Services:
 - [Liquity](https://www.liquity.org/)
@@ -22,12 +23,13 @@
 - Get familiar with [Liquity](https://www.liquity.org/) project.
 - Check out issues.
 - Start a discussion.
-- Ping @pradhumnapancholi or @birdman if help is needed.
+- Ping @birdman if help is needed.
 
 ### Setup
 
 `git clone https://github.com/BanklessDAO/bankless-loans.git`
-`npm install`
-`npm run dev`
+`yarn install`
+`yarn prepare`
+`yarn dev`
 
-Note: On Windows dev env, the app might complain about missing graphql. If this happens, just run `npm install graphql` and restart the server.
+Note: On Windows dev env, the app might complain about missing graphql. If this happens, just run `yarn install graphql` and restart the server.
