@@ -6,6 +6,7 @@ import { DisabledEditableRow } from './Editor'
 import { useTroveView } from './context/TroveViewContext'
 import { Icon } from '../Icon'
 import { CollateralRatio } from './CollateralRatio'
+import StyledContainer from '../../components/Layout/StyledBox'
 
 const select = ({ trove, price }: LiquityStoreState) => ({ trove, price })
 
@@ -22,7 +23,7 @@ export const ReadOnlyTrove: React.FC = () => {
 
     // console.log("READONLY TROVE", trove.collateral.prettify(4));
     return (
-        <Container>
+        <StyledContainer>
             <Heading>Trove</Heading>
             <Box sx={{ p: [2, 3] }}>
                 <Box>
@@ -53,6 +54,6 @@ export const ReadOnlyTrove: React.FC = () => {
                     </Button>
                 </Flex>
             </Box>
-        </Container>
+        </StyledContainer>
     )
 }
