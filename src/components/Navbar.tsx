@@ -12,7 +12,7 @@ export default function Navbar() {
     return (
         <Flex
             as='nav'
-            h='130px'
+            h={16}
             borderRadius='18px'
             w='100%'
             bg='#1E2230'

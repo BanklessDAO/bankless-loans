@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import Navbar from './Navbar'
 
-export default function Layout({ children }: any) {
+export default function Layout({ children }: JSX.ElementChildrenAttribute) {
     return (
         <Fragment>
             <Navbar />
