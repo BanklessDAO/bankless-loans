@@ -64,6 +64,4 @@ const customTheme = extendTheme({
     // }
 })
 
-// export default extendTheme(overrides);
-
 export default customTheme
