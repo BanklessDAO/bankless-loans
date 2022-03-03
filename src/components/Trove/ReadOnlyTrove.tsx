@@ -20,17 +20,24 @@ export const ReadOnlyTrove: React.FC = () => {
     const { trove, price } = useLiquitySelector(select)
 
     return (
-        <Flex w='555px' h='622px' alignItems='center' justifyContent='center'>
+        <Flex
+            w='555px'
+            minHeight='622px'
+            alignItems='center'
+            justifyContent='center'
+        >
             <Box
                 w='100%'
                 maxW='md'
                 borderWidth={1}
                 borderRadius='31px'
                 overflow='hidden'
-                padding='8px'
+                padding={[32, 34, 34, 105]}
+                bg='#131313'
+                color='#FFFFFF'
             >
                 <Heading>Trove</Heading>
-                <Box sx={{ p: [2, 3] }}>
+                <Box>
                     <Box>
                         <DisabledEditableRow
                             label='Collateral'
