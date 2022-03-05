@@ -11,24 +11,33 @@ export const NoTrove: React.FC = props => {
     }, [dispatchEvent])
 
     return (
-        <Box
-            maxW='md'
-            minWidth='504px'
-            borderWidth='3px'
-            borderRadius='lg'
-            overflow='hidden'
-            padding='8px'
+        <Flex
+            w='555px'
+            minHeight='622px'
+            alignItems='center'
+            justifyContent='center'
         >
-            <Heading>Trove</Heading>
-            <Box sx={{ p: [2, 3] }}>
-                <InfoMessage title="You haven't borrowed any LUSD yet.">
-                    You can borrow LUSD by opening a Trove.
-                </InfoMessage>
+            <Box
+                w='100%'
+                maxW='md'
+                borderWidth={1}
+                borderRadius='31px'
+                overflow='hidden'
+                padding={[32, 34, 34, 105]}
+                bg='#131313'
+                color='#FFFFFF'
+            >
+                <Heading>Trove</Heading>
+                <Box sx={{ p: [2, 3] }}>
+                    <InfoMessage title="You haven't borrowed any LUSD yet.">
+                        You can borrow LUSD by opening a Trove.
+                    </InfoMessage>
 
-                <Flex variant='layout.actions'>
-                    <Button onClick={handleOpenTrove}>Open Trove</Button>
-                </Flex>
+                    <Flex variant='layout.actions'>
+                        <Button onClick={handleOpenTrove}>Open Trove</Button>
+                    </Flex>
+                </Box>
             </Box>
-        </Box>
+        </Flex>
     )
 }

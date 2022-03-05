@@ -1,4 +1,4 @@
-import { Grid, Box } from '@chakra-ui/react'
+import { Flex, Grid, Box } from '@chakra-ui/react'
 import { Wallet } from '@ethersproject/wallet'
 import { Decimal, Difference, Trove } from '@liquity/lib-base'
 import { useLiquity } from '../hooks/LiquityContext'
@@ -26,11 +26,18 @@ const Stake = ({ loader }: LiquityFrontendProps): JSX.Element => {
     return (
         <LiquityStoreProvider {...{ loader }} store={liquity.store}>
             <StakingViewProvider>
-                <Grid display='flex' justifyContent='center'>
+                <Flex
+                    sx={{
+                        flexDirection: 'column',
+                        minHeight: '100%',
+                        height: '100vh',
+                        bg: '#363636',
+                    }}
+                >
                     <Box minWidth='504px'>
                         <Staking />
                     </Box>
-                </Grid>
+                </Flex>
             </StakingViewProvider>
         </LiquityStoreProvider>
     )
