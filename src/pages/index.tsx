@@ -30,7 +30,14 @@ const LiquityFrontend = ({ loader }: LiquityFrontendProps): JSX.Element => {
     return (
         <LiquityStoreProvider {...{ loader }} store={liquity.store}>
             <TroveViewProvider>
-                <Flex sx={{ flexDirection: 'column', minHeight: '100%' }}>
+                <Flex
+                    sx={{
+                        flexDirection: 'column',
+                        minHeight: '100%',
+                        height: '100vh',
+                        bg: '#363636',
+                    }}
+                >
                     <SystemStatsPopup />
 
                     <Container
