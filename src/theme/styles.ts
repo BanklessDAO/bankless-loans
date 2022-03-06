@@ -6,7 +6,7 @@ const styles = {
             fontSize: '18px',
         },
         body: {
-            bg: 'background.grey',
+            bg: '#363636',
         },
         tippyPopper: {
             bg: '#ff0000',
