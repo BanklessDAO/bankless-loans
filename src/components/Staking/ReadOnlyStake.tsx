@@ -19,52 +19,68 @@ export const ReadOnlyStake: React.FC = () => {
     const poolShare = lqtyStake.stakedLQTY.mulDiv(100, totalStakedLQTY)
 
     return (
-        <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
-            <Heading>Staking</Heading>
-            <Box sx={{ p: [2, 3] }}>
-                <DisabledEditableRow
-                    label='Stake'
-                    inputID='stake-lqty'
-                    amount={lqtyStake.stakedLQTY.prettify()}
-                    unit={GT}
-                />
+        <Flex
+            w='555px'
+            minHeight='418px'
+            alignItems='center'
+            justifyContent='center'
+        >
+            <Box
+                w='100%'
+                h='100%'
+                maxW='md'
+                borderRadius='31px'
+                overflow='hidden'
+                padding={[10, 34, 34, 5]}
+                bg='#131313'
+                color='#FFFFFF'
+            >
+                <Heading>Staking</Heading>
+                <Box sx={{ p: [2, 3] }}>
+                    <DisabledEditableRow
+                        label='Stake'
+                        inputID='stake-lqty'
+                        amount={lqtyStake.stakedLQTY.prettify()}
+                        unit={GT}
+                    />
 
-                <StaticRow
-                    label='Pool share'
-                    inputID='stake-share'
-                    amount={poolShare.prettify(4)}
-                    unit='%'
-                />
+                    <StaticRow
+                        label='Pool share'
+                        inputID='stake-share'
+                        amount={poolShare.prettify(4)}
+                        unit='%'
+                    />
 
-                <StaticRow
-                    label='Redemption gain'
-                    inputID='stake-gain-eth'
-                    amount={lqtyStake.collateralGain.prettify(4)}
-                    color={lqtyStake.collateralGain.nonZero && 'success'}
-                    unit='ETH'
-                />
+                    <StaticRow
+                        label='Redemption gain'
+                        inputID='stake-gain-eth'
+                        amount={lqtyStake.collateralGain.prettify(4)}
+                        color={lqtyStake.collateralGain.nonZero && 'success'}
+                        unit='ETH'
+                    />
 
-                <StaticRow
-                    label='Issuance gain'
-                    inputID='stake-gain-lusd'
-                    amount={lqtyStake.lusdGain.prettify()}
-                    color={lqtyStake.lusdGain.nonZero && 'success'}
-                    unit={COIN}
-                />
+                    <StaticRow
+                        label='Issuance gain'
+                        inputID='stake-gain-lusd'
+                        amount={lqtyStake.lusdGain.prettify()}
+                        color={lqtyStake.lusdGain.nonZero && 'success'}
+                        unit={COIN}
+                    />
 
-                <Flex variant='layout.actions'>
-                    <Button
-                        variant='outline'
-                        onClick={() => dispatch({ type: 'startAdjusting' })}
-                    >
-                        <Icon name='pen' size='sm' />
-                        &nbsp;Adjust
-                    </Button>
+                    <Flex variant='layout.actions'>
+                        <Button
+                            variant='outline'
+                            onClick={() => dispatch({ type: 'startAdjusting' })}
+                        >
+                            <Icon name='pen' size='sm' />
+                            &nbsp;Adjust
+                        </Button>
 
-                    <StakingGainsAction />
-                </Flex>
+                        <StakingGainsAction />
+                    </Flex>
+                </Box>
+                {changePending && <LoadingOverlay />}
             </Box>
-            {changePending && <LoadingOverlay />}
-        </Box>
+        </Flex>
     )
 }

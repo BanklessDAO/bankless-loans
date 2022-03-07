@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Heading, Box, Button } from '@chakra-ui/react'
+import { Flex, Heading, Box, Button } from '@chakra-ui/react'
 
 import {
     Decimal,
@@ -63,109 +63,131 @@ export const StabilityDepositEditor: React.FC<StabilityDepositEditorProps> = ({
         Difference.between(newPoolShare, originalPoolShare).nonZero
 
     return (
-        <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
-            <Heading>
-                Stability Pool
-                {edited && !changePending && (
-                    <Button
-                        variant='titleIcon'
-                        sx={{ ':enabled:hover': { color: 'danger' } }}
-                        onClick={() => dispatch({ type: 'revert' })}
-                    >
-                        <Icon name='history' size='lg' />
-                    </Button>
-                )}
-            </Heading>
+        <Flex
+            w='555px'
+            height='622px'
+            alignItems='center'
+            justifyContent='center'
+        >
+            <Box
+                w='100%'
+                h='100%'
+                maxW='md'
+                borderRadius='31px'
+                overflow='hidden'
+                padding={[10, 34, 34, 5]}
+                bg='#131313'
+                color='#FFFFFF'
+            >
+                <Heading>
+                    Stability Pool
+                    {edited && !changePending && (
+                        <Button
+                            variant='titleIcon'
+                            sx={{ ':enabled:hover': { color: 'danger' } }}
+                            onClick={() => dispatch({ type: 'revert' })}
+                        >
+                            <Icon name='history' size='lg' />
+                        </Button>
+                    )}
+                </Heading>
 
-            <Box sx={{ p: [2, 3] }}>
-                <EditableRow
-                    label='Deposit'
-                    inputID='deposit-lqty'
-                    amount={editedLUSD.prettify()}
-                    maxAmount={maxAmount.toString()}
-                    maxedOut={maxedOut}
-                    unit={COIN}
-                    {...{ editingState }}
-                    editedAmount={editedLUSD.toString(2)}
-                    setEditedAmount={newValue =>
-                        dispatch({ type: 'setDeposit', newValue })
-                    }
-                />
-
-                {newPoolShare.infinite ? (
-                    <StaticRow
-                        label='Pool share'
-                        inputID='deposit-share'
-                        amount='N/A'
-                    />
-                ) : (
-                    <StaticRow
-                        label='Pool share'
-                        inputID='deposit-share'
-                        amount={newPoolShare.prettify(4)}
-                        pendingAmount={poolShareChange?.prettify(4).concat('%')}
-                        pendingColor={
-                            poolShareChange?.positive ? 'success' : 'danger'
+                <Box sx={{ p: [2, 3] }}>
+                    <EditableRow
+                        label='Deposit'
+                        inputID='deposit-lqty'
+                        amount={editedLUSD.prettify()}
+                        maxAmount={maxAmount.toString()}
+                        maxedOut={maxedOut}
+                        unit={COIN}
+                        {...{ editingState }}
+                        editedAmount={editedLUSD.toString(2)}
+                        setEditedAmount={newValue =>
+                            dispatch({ type: 'setDeposit', newValue })
                         }
-                        unit='%'
                     />
-                )}
 
-                {!originalDeposit.isEmpty && (
-                    <>
+                    {newPoolShare.infinite ? (
                         <StaticRow
-                            label='Liquidation gain'
-                            inputID='deposit-gain'
-                            amount={originalDeposit.collateralGain.prettify(4)}
-                            color={
-                                originalDeposit.collateralGain.nonZero &&
-                                'success'
-                            }
-                            unit='ETH'
+                            label='Pool share'
+                            inputID='deposit-share'
+                            amount='N/A'
                         />
+                    ) : (
+                        <StaticRow
+                            label='Pool share'
+                            inputID='deposit-share'
+                            amount={newPoolShare.prettify(4)}
+                            pendingAmount={poolShareChange
+                                ?.prettify(4)
+                                .concat('%')}
+                            pendingColor={
+                                poolShareChange?.positive ? 'success' : 'danger'
+                            }
+                            unit='%'
+                        />
+                    )}
 
-                        <StaticRow
-                            label='Reward'
-                            inputID='deposit-reward'
-                            amount={originalDeposit.lqtyReward.prettify()}
-                            color={
-                                originalDeposit.lqtyReward.nonZero && 'success'
-                            }
-                            unit={GT}
-                            infoIcon={
-                                <InfoIcon
-                                    tooltip={
-                                        <Box
-                                            variant='tooltip'
-                                            sx={{
-                                                padding: '10px',
-                                                bg: '#a7a7e3',
-                                                fontSize: '1em',
-                                                color: '#333',
-                                                minW: '12.5vw',
-                                                height: 'auto',
-                                                maxW: '33vm',
-                                                fontStyle: 'italic',
-                                            }}
-                                        >
-                                            Although the LQTY rewards accrue
-                                            every minute, the value on the UI
-                                            only updates when a user transacts
-                                            with the Stability Pool. Therefore
-                                            you may receive more rewards than is
-                                            displayed when you claim or adjust
-                                            your deposit.
-                                        </Box>
-                                    }
-                                />
-                            }
-                        />
-                    </>
-                )}
-                {children}
+                    {!originalDeposit.isEmpty && (
+                        <>
+                            <StaticRow
+                                label='Liquidation gain'
+                                inputID='deposit-gain'
+                                amount={originalDeposit.collateralGain.prettify(
+                                    4
+                                )}
+                                color={
+                                    originalDeposit.collateralGain.nonZero &&
+                                    'success'
+                                }
+                                unit='ETH'
+                            />
+
+                            <StaticRow
+                                label='Reward'
+                                inputID='deposit-reward'
+                                amount={originalDeposit.lqtyReward.prettify()}
+                                color={
+                                    originalDeposit.lqtyReward.nonZero &&
+                                    'success'
+                                }
+                                unit={GT}
+                                infoIcon={
+                                    <InfoIcon
+                                        tooltip={
+                                            <Box
+                                                variant='tooltip'
+                                                sx={{
+                                                    padding: '10px',
+                                                    bg: '#a7a7e3',
+                                                    fontSize: '1em',
+                                                    color: '#333',
+                                                    minW: '12.5vw',
+                                                    height: 'auto',
+                                                    maxW: '33vm',
+                                                    fontStyle: 'italic',
+                                                }}
+                                            >
+                                                Although the LQTY rewards accrue
+                                                every minute, the value on the
+                                                UI only updates when a user
+                                                transacts with the Stability
+                                                Pool. Therefore you may receive
+                                                more rewards than is displayed
+                                                when you claim or adjust your
+                                                deposit.
+                                            </Box>
+                                        }
+                                    />
+                                }
+                            />
+                        </>
+                    )}
+                    {children}
+                </Box>
+
+                {changePending && <LoadingOverlay />}
             </Box>
-
-            {changePending && <LoadingOverlay />}
-        </Box>
+        </Flex>
     )
 }

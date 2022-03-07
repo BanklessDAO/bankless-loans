@@ -54,7 +54,7 @@ export default function Navbar() {
                     <Link href='/Stake'>Stake LQTY</Link>
                 </Stack>
             </Flex>
-            <Flex w='150px'></Flex>
+            <Flex w='150px'>Connect Wallet</Flex>
         </Flex>
     )
 }
