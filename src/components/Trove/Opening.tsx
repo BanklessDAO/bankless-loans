@@ -122,7 +122,7 @@ export const Opening: React.FC = () => {
                     )}
                 </Heading>
 
-                <Box w='full' sx={{ p: [2, 3] }}>
+                <Box w='full'>
                     <EditableRow
                         label='Collateral'
                         inputID='trove-collateral'
