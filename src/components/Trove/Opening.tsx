@@ -94,18 +94,20 @@ export const Opening: React.FC = () => {
     //will need to address hard-coded width for mobile
     return (
         <Flex
-            w='100vw'
-            h='calc(100vh - 4rem)'
+            w='555px'
+            height='622px'
             alignItems='center'
             justifyContent='center'
         >
             <Box
+                w='100%'
+                h='100%'
                 maxW='md'
-                minWidth='504px'
-                borderWidth='3px'
-                borderRadius='lg'
+                borderRadius='31px'
                 overflow='hidden'
-                padding='8px'
+                padding={[10, 34, 34, 5]}
+                bg='#131313'
+                color='#FFFFFF'
             >
                 <Heading>
                     Trove

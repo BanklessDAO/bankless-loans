@@ -141,7 +141,6 @@ export const StaticAmounts: React.FC<StaticAmountsProps> = ({
 
 const staticStyle = {
     flexGrow: 1,
-    marginBottom: 3,
     paddingLeft: 3,
     paddingRight: '11px',
     paddingTop: '28px',
@@ -172,10 +171,7 @@ export const StaticRow: React.FC<StaticRowProps> = ({
     infoIcon,
     ...props
 }) => (
-    <Row
-        {...{ label, labelId, labelFor, infoIcon }}
-        sx={{ marginTop: [-2, -3], paddingBottom: [2, 3] }}
-    >
+    <Row {...{ label, labelId, labelFor, infoIcon }}>
         <StaticAmounts {...props} />
     </Row>
 )
@@ -278,7 +274,6 @@ export const EditableRow: React.FC<EditableRowProps> = ({
                     ...editableStyle,
                     fontSize: '22px',
                     bg: invalid ? 'salmon' : 'background',
-                    marginBottom: '16px',
                     height: '70px',
                 }}
                 labelledBy={`${inputID}-label`}
