@@ -7,20 +7,37 @@ export const NoStake: React.FC = () => {
     const { dispatch } = useStakingView()
 
     return (
-        <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
-            <Heading>Staking</Heading>
-            <Box sx={{ p: [2, 3] }}>
-                <InfoMessage title={`You have not staked ${GT} yet.`}>
-                    Stake {GT} to earn a share of borrowing and redemption fees.
-                </InfoMessage>
-                <Flex variant='layout.actions'>
-                    <Button
-                        onClick={() => dispatch({ type: 'startAdjusting' })}
-                    >
-                        Start staking
-                    </Button>
-                </Flex>
+        <Flex
+            w='555px'
+            height='432px'
+            alignItems='center'
+            justifyContent='center'
+        >
+            <Box
+                w='100%'
+                h='100%'
+                maxW='md'
+                borderWidth={1}
+                borderRadius='31px'
+                overflow='hidden'
+                bg='#131313'
+                color='#FFFFFF'
+            >
+                <Heading>Staking</Heading>
+                <Box sx={{ p: [2, 3] }}>
+                    <InfoMessage title={`You have not staked ${GT} yet.`}>
+                        Stake {GT} to earn a share of borrowing and redemption
+                        fees.
+                    </InfoMessage>
+                    <Flex variant='layout.actions'>
+                        <Button
+                            onClick={() => dispatch({ type: 'startAdjusting' })}
+                        >
+                            Start staking
+                        </Button>
+                    </Flex>
+                </Box>
             </Box>
-        </Box>
+        </Flex>
     )
 }

@@ -26,18 +26,20 @@ const Stake = ({ loader }: LiquityFrontendProps): JSX.Element => {
     return (
         <LiquityStoreProvider {...{ loader }} store={liquity.store}>
             <StakingViewProvider>
-                <Flex
-                    sx={{
-                        flexDirection: 'column',
-                        minHeight: '100%',
-                        height: '100vh',
-                        bg: '#363636',
-                    }}
-                >
-                    <Box minWidth='504px'>
-                        <Staking />
-                    </Box>
-                </Flex>
+                <Grid display='flex' justifyContent='center' bg='#363636'>
+                    <Flex
+                        sx={{
+                            flexDirection: 'column',
+                            minHeight: '100%',
+                            height: '100vh',
+                            bg: '#363636',
+                        }}
+                    >
+                        <Box minWidth='504px'>
+                            <Staking />
+                        </Box>
+                    </Flex>
+                </Grid>
             </StakingViewProvider>
         </LiquityStoreProvider>
     )
