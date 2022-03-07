@@ -144,7 +144,7 @@ const staticStyle = {
     paddingLeft: 3,
     paddingRight: '11px',
     paddingTop: '28px',
-    fontSize: '22px',
+    fontSize: '18px',
     border: 1,
     borderColor: 'muted',
     borderRadius: '10px',
