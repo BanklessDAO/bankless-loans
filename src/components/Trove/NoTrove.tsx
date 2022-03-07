@@ -13,17 +13,17 @@ export const NoTrove: React.FC = props => {
     return (
         <Flex
             w='555px'
-            minHeight='622px'
+            height='432px'
             alignItems='center'
             justifyContent='center'
         >
             <Box
                 w='100%'
+                h='100%'
                 maxW='md'
                 borderWidth={1}
                 borderRadius='31px'
                 overflow='hidden'
-                padding={[32, 34, 34, 105]}
                 bg='#131313'
                 color='#FFFFFF'
             >

@@ -2,9 +2,9 @@ import { extendTheme } from '@chakra-ui/react'
 import styled from '@emotion/styled'
 
 const palette = {
-  red: '#dd1111',
-  light: '#ffcccc',
-  background: "gray.300"
+    red: '#dd1111',
+    light: '#ffcccc',
+    background: "#131313",
 }
 
 const Button = {
@@ -62,13 +62,13 @@ const theme = extendTheme({
       },
       div: {
         borderRadius: "lg",
-        
+
       }
     }
   },
   components: {
     Button,
-    
+
   }
 })
 
