@@ -22,17 +22,17 @@ export const ReadOnlyTrove: React.FC = () => {
     return (
         <Flex
             w='555px'
-            minHeight='622px'
+            minHeight='418px'
             alignItems='center'
             justifyContent='center'
         >
             <Box
                 w='100%'
+                h='100%'
                 maxW='md'
-                borderWidth={1}
                 borderRadius='31px'
                 overflow='hidden'
-                padding={[32, 34, 34, 105]}
+                padding={[10, 34, 34, 5]}
                 bg='#131313'
                 color='#FFFFFF'
             >

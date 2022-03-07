@@ -14,7 +14,7 @@ export default function Navbar() {
             h='130px'
             borderRadius='18px'
             w='100%'
-            bg='#1E2230'
+            bg='#131313'
             align='center'
             justify='space-between'
             wrap='wrap'
