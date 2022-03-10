@@ -32,7 +32,6 @@ const Pool = ({ loader }: LiquityFrontendProps): JSX.Element => {
                             flexDirection: 'column',
                             minHeight: '100%',
                             height: '100vh',
-                            bg: '#363636',
                         }}
                     >
                         <Stability />
