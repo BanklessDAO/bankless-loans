@@ -71,7 +71,7 @@ export const Dialog: React.FC<DialogProps> = ({
             {icon || iconFromIntent(intent)}
             <Heading
                 as='h1'
-                sx={{ textAlign: 'center', fontSize: [2, 3], px: [3, 0] }}
+                sx={{ textAlign: 'center', fontSize: '1em', px: [3, 0] }}
             >
                 {title}
             </Heading>
