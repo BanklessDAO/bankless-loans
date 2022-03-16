@@ -6,7 +6,7 @@ import { LiquityStoreProvider } from '../components/LiquityStoreProvider'
 import { useLiquity } from '../hooks/LiquityContext'
 import { TransactionMonitor } from '../components/Transaction'
 import { SystemStatsPopup } from '../components/SystemStatsPopup'
-import Dashboard from './Dashboard'
+import Dashboard from './dashboard'
 
 import { TroveViewProvider } from '../components/Trove/context/TroveViewProvider'
 
