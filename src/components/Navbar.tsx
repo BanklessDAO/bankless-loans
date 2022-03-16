@@ -1,4 +1,4 @@
-import { Box, Flex, Text, Stack, useDisclosure, Button } from '@chakra-ui/react'
+import { Box, Flex, Text, Stack, useDisclosure } from '@chakra-ui/react'
 import Link from 'next/link'
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 import React from 'react'
