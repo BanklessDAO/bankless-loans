@@ -16,6 +16,12 @@ a {
   box-sizing: border-box;
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 .tippy-popper[x-placement=top] .tippy-tooltip.mythemename-theme [x-arrow] {
   border-top: 7px solid red; /* your color here */
 }
