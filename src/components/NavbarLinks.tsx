@@ -56,7 +56,7 @@ const ListItem: React.FC<any> = ({ currentPath, children, link, ...props }) => (
     </StyledLi>
 )
 
-export default function NavLinks() {
+export default function NavbarLinks() {
     const { isOpen } = useDisclosure()
     const router = useRouter()
     const [_, pathname] = router.pathname.split('/')
