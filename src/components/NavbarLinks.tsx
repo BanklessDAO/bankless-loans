@@ -5,12 +5,25 @@ import styled from '@emotion/styled'
 
 import Link from 'next/link'
 
+const StyledUl = styled.ul`
+    background-color: #131313;
+    display: flex;
+    border-radius: 18px;
+    border: 0.8px solid #7d7d7d;
+    list-style: none;
+    padding: 4px;
+`
+
 const StyledLi = styled.li<any>`
     height: fit-content;
     background-color: ${props => (props.active ? '#242424' : 'transparent')};
     border-radius: 13px;
     min-width: 125px;
     display: flex;
+    margin-right: 10px;
+    &:last-child {
+        margin-right: 0;
+    }
 `
 
 const StyledA = styled.a`
@@ -57,7 +70,6 @@ const ListItem: React.FC<any> = ({ currentPath, children, link, ...props }) => (
 )
 
 export default function NavbarLinks() {
-    const { isOpen } = useDisclosure()
     const router = useRouter()
     const [_, pathname] = router.pathname.split('/')
     const allPaths = [
@@ -81,30 +93,11 @@ export default function NavbarLinks() {
         },
     ]
 
-    console.log('path ::', pathname)
     return (
-        <>
-            <Stack
-                as='ul'
-                bg='#131313'
-                direction={{ base: 'column', md: 'row' }}
-                display={{ base: isOpen ? 'block' : 'none', md: 'flex' }}
-                width={{ base: '92%', md: 'auto' }}
-                height={{ base: 'fit-content', lg: 'auto' }}
-                alignItems='center'
-                //this keeps it centered on mobile but allowing "space-between" on Navbar//
-                mr={{ base: 'auto', md: '43px' }}
-                ml={{ base: 'auto', md: '0px' }}
-                padding={'4px'}
-                spacing={'8px'}
-                listStyleType={'none'}
-                borderRadius={'18px'}
-                border={'0.8px solid #7D7D7D'}
-            >
-                {allPaths.map(path => (
-                    <ListItem {...path} currentPath={pathname} />
-                ))}
-            </Stack>
-        </>
+        <StyledUl>
+            {allPaths.map(path => (
+                <ListItem {...path} currentPath={pathname} />
+            ))}
+        </StyledUl>
     )
 }
