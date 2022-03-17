@@ -26,32 +26,31 @@ const StyledLi = styled.li<any>`
     }
 `
 
-const StyledA = styled.a`
+const StyledA = styled.a<any>`
     height: 100%;
     text-align: center;
     width: 100%;
     font-size: 18px;
     padding: 6px 0;
     border-radius: 13px;
-    color: white;
+    color: ${props => (props.active ? 'white' : '#A1A1A1')};
     :hover {
-        // color: magenta
         li & {
             background-color: #242424;
+            color: white;
         }
     }
     :focus,
     :active {
         li & {
             background-color: #242424;
+            color: white;
         }
     }
 `
 
 const ListLink: React.FC<any> = ({ text, ...props }) => (
-    <StyledA {...props} active={true}>
-        {text}
-    </StyledA>
+    <StyledA {...props}>{text}</StyledA>
 )
 
 const ListItem: React.FC<any> = ({ currentPath, children, link, ...props }) => (
@@ -64,7 +63,16 @@ const ListItem: React.FC<any> = ({ currentPath, children, link, ...props }) => (
         }
     >
         <Link href={`/${link?.path === 'borrow' ? '' : link.path}`}>
-            <ListLink tabIndex='0' currentPath={currentPath} {...link} />
+            <ListLink
+                tabIndex='0'
+                currentPath={currentPath}
+                active={
+                    currentPath === '' && link?.path === 'borrow'
+                        ? true
+                        : currentPath === link.path
+                }
+                {...link}
+            />
         </Link>
     </StyledLi>
 )
