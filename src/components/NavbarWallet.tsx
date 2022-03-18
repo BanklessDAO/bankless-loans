@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from '@emotion/styled'
-
+import Image from 'next/image'
 const StyledSection = styled.section`
     background-color: #131313;
     display: flex;
+    margin-right: 10px;
     padding: 4px 10px;
     border-radius: 18px;
     align-items: center;
@@ -26,13 +27,11 @@ const StyledFigure = styled.figure`
 
 export default function NavbarWallet() {
     return (
-        <>
-            <StyledSection>
-                <p>0xd4eb...534C</p>
-                <StyledFigure>
-                    <img src='walletIcon.jpg'></img>
-                </StyledFigure>
-            </StyledSection>
-        </>
+        <StyledSection>
+            <p>0xd4eb...534C</p>
+            <StyledFigure>
+                <Image src='walletIcon.jpg' />
+            </StyledFigure>
+        </StyledSection>
     )
 }
