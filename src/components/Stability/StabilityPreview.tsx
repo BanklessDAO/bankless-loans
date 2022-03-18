@@ -7,7 +7,7 @@ import {
     StaticAmounts,
     Row,
     DisabledEditableRow,
-} from './Editor'
+} from '../Trove/Editor'
 
 const editableStyle = {
     flexGrow: 1,
@@ -21,7 +21,7 @@ const editableStyle = {
     borderColor: 'muted',
 }
 
-export const StaticTrove: React.FC = () => {
+export const StabilityPreview: React.FC = () => {
     //will need to address hard-coded width for mobile
     return (
         <Flex
@@ -40,7 +40,7 @@ export const StaticTrove: React.FC = () => {
                 bg='#131313'
                 color='#FFFFFF'
             >
-                <Heading>Trove</Heading>
+                <Heading>Stability</Heading>
 
                 <DisabledEditableRow
                     label='Stake'

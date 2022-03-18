@@ -20,7 +20,9 @@ import {
     ModalCloseButton,
     useDisclosure,
 } from '@chakra-ui/react'
-import { StaticTrove } from '../components/Trove/StaticTrove'
+import { TrovePreview } from './Trove/TrovePreview'
+import { StabilityPreview } from './Stability/StabilityPreview'
+import { StakingPreview } from './Staking/StakingPreview'
 
 interface MaybeHasMetaMask {
     ethereum?: {
@@ -66,28 +68,31 @@ export const WalletConnector: React.FC<WalletConnectorProps> = ({
         }
     }, [active])
 
-    // if (!triedAuthorizedConnection) {
-    //     return <>{loader}</>
-    // }
+    if (!triedAuthorizedConnection) {
+        return <>{loader}</>
+    }
 
     if (connectionState.type != 'active') {
         return <>{children}</>
     }
 
-    const staticTrove = router.pathname == '/' && <StaticTrove />
+    const trovePreview = router.pathname == '/' && <TrovePreview />
+    const stabilityPreview = router.pathname == '/Pool' && <StabilityPreview />
+    const stakingPreview = router.pathname == '/Stake' && <StakingPreview />
 
     return (
         <>
             {console.log('router path', router.pathname)}
-            {staticTrove}
-            {/* <Flex
+            <Flex
                 sx={{
                     height: '100vh',
                     justifyContent: 'center',
                     alignItems: 'center',
                 }}
-            > */}
-            {/* <StaticTrove />
+            >
+                {trovePreview}
+                {stabilityPreview}
+                {stakingPreview}
                 <Button
                     onClick={() => {
                         dispatch({
@@ -109,7 +114,7 @@ export const WalletConnector: React.FC<WalletConnectorProps> = ({
                         </>
                     )}
                 </Button>
-            </Flex> */}
+            </Flex>
             {console.log('connection state', connectionState.type)}
             {connectionState.type === 'failed' && (
                 <Modal
