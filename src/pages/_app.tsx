@@ -111,21 +111,23 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
     return (
         <EthersWeb3ReactProvider>
             <ChakraProvider theme={customTheme}>
-                <WalletConnector loader={loader}>
-                    <LiquityProvider
-                        loader={loader}
-                        unsupportedNetworkFallback={unsupportedNetworkFallback}
-                        unsupportedMainnetFallback={
-                            <UnsupportedMainnetFallback />
-                        }
-                    >
-                        <TransactionProvider>
-                            <Layout>
+                <Layout>
+                    <WalletConnector loader={loader}>
+                        <LiquityProvider
+                            loader={loader}
+                            unsupportedNetworkFallback={
+                                unsupportedNetworkFallback
+                            }
+                            unsupportedMainnetFallback={
+                                <UnsupportedMainnetFallback />
+                            }
+                        >
+                            <TransactionProvider>
                                 <Component {...pageProps} />
-                            </Layout>
-                        </TransactionProvider>
-                    </LiquityProvider>
-                </WalletConnector>
+                            </TransactionProvider>
+                        </LiquityProvider>
+                    </WalletConnector>
+                </Layout>
             </ChakraProvider>
         </EthersWeb3ReactProvider>
     )
