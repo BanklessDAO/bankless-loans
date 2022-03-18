@@ -17,42 +17,56 @@ export const ReadOnlyTrove: React.FC = () => {
     const handleCloseTrove = useCallback(() => {
         dispatchEvent('CLOSE_TROVE_PRESSED')
     }, [dispatchEvent])
-
     const { trove, price } = useLiquitySelector(select)
 
-    // console.log("READONLY TROVE", trove.collateral.prettify(4));
     return (
-        <Container>
-            <Heading>Trove</Heading>
-            <Box sx={{ p: [2, 3] }}>
+        <Flex
+            w='555px'
+            minHeight='418px'
+            alignItems='center'
+            justifyContent='center'
+        >
+            <Box
+                w='100%'
+                h='100%'
+                maxW='md'
+                borderRadius='31px'
+                overflow='hidden'
+                padding={[10, 34, 34, 5]}
+                bg='#131313'
+                color='#FFFFFF'
+            >
+                <Heading>Trove</Heading>
                 <Box>
-                    <DisabledEditableRow
-                        label='Collateral'
-                        inputID='trove-collateral'
-                        amount={trove.collateral.prettify(4)}
-                        unit='ETH'
-                    />
+                    <Box>
+                        <DisabledEditableRow
+                            label='Collateral'
+                            inputID='trove-collateral'
+                            amount={trove.collateral.prettify(4)}
+                            unit='ETH'
+                        />
 
-                    <DisabledEditableRow
-                        label='Debt'
-                        inputID='trove-debt'
-                        amount={trove.debt.prettify()}
-                        unit={'LUSD'}
-                    />
+                        <DisabledEditableRow
+                            label='Debt'
+                            inputID='trove-debt'
+                            amount={trove.debt.prettify()}
+                            unit={'LUSD'}
+                        />
 
-                    <CollateralRatio value={trove.collateralRatio(price)} />
+                        <CollateralRatio value={trove.collateralRatio(price)} />
+                    </Box>
+
+                    <Flex variant='layout.actions'>
+                        <Button variant='outline' onClick={handleCloseTrove}>
+                            Close Trove
+                        </Button>
+                        <Button onClick={handleAdjustTrove}>
+                            <Icon name='pen' size='sm' />
+                            &nbsp;Adjust
+                        </Button>
+                    </Flex>
                 </Box>
-
-                <Flex variant='layout.actions'>
-                    <Button variant='outline' onClick={handleCloseTrove}>
-                        Close Trove
-                    </Button>
-                    <Button onClick={handleAdjustTrove}>
-                        <Icon name='pen' size='sm' />
-                        &nbsp;Adjust
-                    </Button>
-                </Flex>
             </Box>
-        </Container>
+        </Flex>
     )
 }

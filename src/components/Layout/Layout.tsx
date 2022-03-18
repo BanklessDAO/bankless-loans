@@ -9,8 +9,7 @@ const StyledMain = styled.main`
     max-width: 1440px;
     margin: 0 auto;
 `
-
-export default function Layout({ children }: any) {
+export default function Layout({ children }: JSX.ElementChildrenAttribute) {
     return (
         <StyledMain>
             <Navbar />
