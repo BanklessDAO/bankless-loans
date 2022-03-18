@@ -1,4 +1,5 @@
 import React, { useEffect, useReducer, useState } from 'react'
+import { useRouter } from 'next/router'
 import { useWeb3React } from '@web3-react/core'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 import { walletReducer } from '../hooks/walletReducer'
@@ -19,6 +20,7 @@ import {
     ModalCloseButton,
     useDisclosure,
 } from '@chakra-ui/react'
+import { StaticTrove } from '../components/Trove/StaticTrove'
 
 interface MaybeHasMetaMask {
     ethereum?: {
@@ -41,6 +43,7 @@ export const WalletConnector: React.FC<WalletConnectorProps> = ({
     })
     const [isMetaMask, setIsMetaMask] = useState(false)
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const router = useRouter()
 
     useEffect(() => {
         const detectMetaMask = () =>
@@ -63,23 +66,28 @@ export const WalletConnector: React.FC<WalletConnectorProps> = ({
         }
     }, [active])
 
-    if (!triedAuthorizedConnection) {
-        return <>{loader}</>
-    }
+    // if (!triedAuthorizedConnection) {
+    //     return <>{loader}</>
+    // }
 
-    if (connectionState.type === 'active') {
+    if (connectionState.type != 'active') {
         return <>{children}</>
     }
 
+    const staticTrove = router.pathname == '/' && <StaticTrove />
+
     return (
         <>
-            <Flex
+            {console.log('router path', router.pathname)}
+            {staticTrove}
+            {/* <Flex
                 sx={{
                     height: '100vh',
                     justifyContent: 'center',
                     alignItems: 'center',
                 }}
-            >
+            > */}
+            {/* <StaticTrove />
                 <Button
                     onClick={() => {
                         dispatch({
@@ -101,7 +109,7 @@ export const WalletConnector: React.FC<WalletConnectorProps> = ({
                         </>
                     )}
                 </Button>
-            </Flex>
+            </Flex> */}
             {console.log('connection state', connectionState.type)}
             {connectionState.type === 'failed' && (
                 <Modal
