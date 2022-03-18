@@ -5,6 +5,11 @@ import NavbarLinks from 'components/NavbarLinks'
 import NavbarWallet from 'components/NavbarWallet'
 import NavbarTheme from 'components/NavbarTheme'
 
+const StyledSection = styled.section`
+    display: flex;
+    align-items: center;
+`
+
 export default function Navbar() {
     return (
         <Flex
