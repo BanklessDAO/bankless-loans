@@ -1,29 +1,16 @@
 import React from 'react'
-import { Stack, useDisclosure } from '@chakra-ui/react'
+import { HStack, useDisclosure } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import styled from '@emotion/styled'
 
 import Link from 'next/link'
 
-const StyledUl = styled.ul`
-    background-color: #131313;
-    display: flex;
-    border-radius: 18px;
-    border: 0.8px solid #7d7d7d;
-    list-style: none;
-    padding: 4px;
-`
-
 const StyledLi = styled.li<any>`
     height: fit-content;
     background-color: ${props => (props.active ? '#242424' : 'transparent')};
     border-radius: 13px;
-    min-width: 125px;
+    min-width: 136px;
     display: flex;
-    margin-right: 10px;
-    &:last-child {
-        margin-right: 0;
-    }
 `
 
 const StyledA = styled.a<any>`
@@ -102,10 +89,20 @@ export default function NavbarLinks() {
     ]
 
     return (
-        <StyledUl>
+        <HStack
+            display='flex'
+            justifyContent='center'
+            alignItems='center'
+            bg='#131313'
+            borderRadius={18}
+            border='0.8px solid #7d7d7d'
+            p={1}
+            as='ul'
+            spacing={1.5}
+        >
             {allPaths.map(path => (
                 <ListItem {...path} currentPath={pathname} />
             ))}
-        </StyledUl>
+        </HStack>
     )
 }
