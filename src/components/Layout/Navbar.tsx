@@ -1,14 +1,8 @@
 import React from 'react'
-import { Flex, Box } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 import Logo from 'components/Logo'
 import NavbarLinks from 'components/NavbarLinks'
 import NavbarWallet from 'components/NavbarWallet'
-import NavbarTheme from 'components/NavbarTheme'
-
-const StyledSection = styled.section`
-    display: flex;
-    align-items: center;
-`
 
 export default function Navbar() {
     return (
