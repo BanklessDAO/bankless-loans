@@ -1,96 +1,99 @@
 import React from 'react'
-import { HStack, useDisclosure } from '@chakra-ui/react'
+import { HStack, Box, Link } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import styled from '@emotion/styled'
+import NextLink from 'next/link'
 
-import Link from 'next/link'
+type Path = {
+    text: string
+    path: string
+}
 
-const StyledLi = styled.li<any>`
-    height: fit-content;
-    background-color: ${props => (props.active ? '#242424' : 'transparent')};
-    border-radius: 13px;
-    min-width: 136px;
-    display: flex;
-`
+const PATH_DATA: Array<Path> = [
+    {
+        text: 'Borrow',
+        path: 'borrow',
+    },
 
-const StyledA = styled.a<any>`
-    height: 100%;
-    text-align: center;
-    width: 100%;
-    font-size: 18px;
-    padding: 6px 0;
-    border-radius: 13px;
-    color: ${props => (props.active ? 'white' : '#A1A1A1')};
-    :hover {
-        li & {
-            background-color: #242424;
-            color: white;
+    {
+        path: 'pool',
+        text: 'Stability Pool',
+    },
+
+    {
+        path: 'stake',
+        text: 'Stake LQTY',
+    },
+]
+
+const NavbarMenuListItem = ({
+    path,
+    routerPathname,
+    text,
+}: {
+    path: string
+    routerPathname: string
+    text: string
+}) => {
+    function setLinkBg(linkPath: string, routePath: string) {
+        if (routePath === '' && linkPath === 'borrow') {
+            return '#242424'
+        }
+        if (linkPath === routePath) {
+            return '#242424'
+        } else {
+            return 'transparent'
         }
     }
-    :focus,
-    :active {
-        li & {
-            background-color: #242424;
-            color: white;
+
+    function setLinkColor(linkPath: string, routePath: string) {
+        if (routePath === '' && linkPath === 'borrow') {
+            return 'whiteAlpha.0'
+        }
+        if (linkPath !== routePath) {
+            return '#A1A1A1'
+        } else {
+            return 'whiteAlpha.0'
         }
     }
-`
-
-const ListLink: React.FC<any> = ({ text, ...props }) => (
-    <StyledA {...props}>{text}</StyledA>
-)
-
-const ListItem: React.FC<any> = ({ currentPath, children, link, ...props }) => (
-    <StyledLi
-        {...props}
-        active={
-            currentPath === '' && link?.path === 'borrow'
-                ? true
-                : currentPath === link.path
-        }
-    >
-        <Link href={`/${link?.path === 'borrow' ? '' : link.path}`}>
-            <ListLink
-                tabIndex='0'
-                currentPath={currentPath}
-                active={
-                    currentPath === '' && link?.path === 'borrow'
-                        ? true
-                        : currentPath === link.path
-                }
-                {...link}
-            />
-        </Link>
-    </StyledLi>
-)
-
-export default function NavbarLinks() {
-    const router = useRouter()
-    const [_, pathname] = router.pathname.split('/')
-    const allPaths = [
-        {
-            link: {
-                text: 'Borrow',
-                path: 'borrow',
-            },
-        },
-        {
-            link: {
-                path: 'pool',
-                text: 'Stability Pool',
-            },
-        },
-        {
-            link: {
-                path: 'stake',
-                text: 'Stake LQTY',
-            },
-        },
-    ]
 
     return (
-        <HStack
+        <Box
+            as='li'
             display='flex'
+            h='fit-content'
+            minW='136px'
+            borderRadius='13px'
+            bg={setLinkBg(path, routerPathname)}
+        >
+            <NextLink href={path === 'borrow' ? '/' : `/${path}`} passHref>
+                <Link
+                    h='100%'
+                    w='100%'
+                    borderRadius='13px'
+                    p='6px 0'
+                    fontSize='18px'
+                    textAlign='center'
+                    color={setLinkColor(path, routerPathname)}
+                    textDecoration='none'
+                    _hover={{ textDecoration: 'none' }}
+                >
+                    {text}
+                </Link>
+            </NextLink>
+        </Box>
+    )
+}
+
+const NavbarMenuList = ({
+    linkPaths,
+    routerPathname,
+}: {
+    linkPaths: Array<Path>
+    routerPathname: string
+}) => {
+    return (
+        <HStack
+            display={{ base: 'none', md: 'flex' }}
             justifyContent='center'
             alignItems='center'
             bg='#131313'
@@ -100,9 +103,21 @@ export default function NavbarLinks() {
             as='ul'
             spacing={1.5}
         >
-            {allPaths.map(path => (
-                <ListItem {...path} currentPath={pathname} />
+            {linkPaths.map((linkData: any) => (
+                <NavbarMenuListItem
+                    {...linkData}
+                    routerPathname={routerPathname}
+                />
             ))}
         </HStack>
+    )
+}
+
+export default function NavbarLinks() {
+    const router = useRouter()
+    const [_, routerPathname] = router.pathname.split('/')
+
+    return (
+        <NavbarMenuList linkPaths={PATH_DATA} routerPathname={routerPathname} />
     )
 }
