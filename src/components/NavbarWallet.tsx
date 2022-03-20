@@ -1,37 +1,31 @@
 import React from 'react'
-import styled from '@emotion/styled'
 import Image from 'next/image'
-const StyledSection = styled.section`
-    background-color: #131313;
-    display: flex;
-    margin-right: 10px;
-    padding: 4px 10px;
-    border-radius: 18px;
-    align-items: center;
-    border: 0.8px solid #7d7d7d;
-    & > * {
-        margin-right: 10px;
-    }
+import { Box, Text, chakra, HStack } from '@chakra-ui/react'
+import walletImage from '../../public/walletIcon.jpg'
 
-    & > *:last-child {
-        margin-right: 0;
-    }
-`
-
-const StyledFigure = styled.figure`
-    padding: 6px 0;
-    & > img {
-        border-radius: 50%;
-    }
-`
+const ChakraNextImage = chakra(Image)
 
 export default function NavbarWallet() {
     return (
-        <StyledSection>
-            <p>0xd4eb...534C</p>
-            <StyledFigure>
-                <Image src='walletIcon.jpg' />
-            </StyledFigure>
-        </StyledSection>
+        <HStack
+            bg='#131313'
+            spacing={2}
+            p={2}
+            borderRadius='18px'
+            alignItems='center'
+            border='0.8px solid #7d7d7d'
+            mr={1}
+        >
+            <Text as='p' ml={2}>
+                0xd4eb...534C
+            </Text>
+            <Box as='figure' h='28px' w='28px'>
+                <ChakraNextImage
+                    src={walletImage}
+                    alt='wallet image'
+                    borderRadius='50%'
+                />
+            </Box>
+        </HStack>
     )
 }
