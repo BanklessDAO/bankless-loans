@@ -56,7 +56,6 @@ const customTheme = extendTheme({
     },
     // components: {
     //     Section,
-    //     Button,
     //     Link,
     //     Text,
     //     Heading,
