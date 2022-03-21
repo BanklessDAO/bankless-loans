@@ -1750,14 +1750,14 @@
     "@ethersproject/strings" "^5.5.0"
 
 "@fontsource/open-sans@^4.5.5":
-  version "4.5.5"
-  resolved "https://registry.yarnpkg.com/@fontsource/open-sans/-/open-sans-4.5.5.tgz#f42ede921cc807cf7b96896691348d75dafbf70c"
-  integrity sha512-h1oUPSQpoMnDrnzIZTVS9PPBFhWXS87v6/cd9FY2Xc+GKbOVcjPZxcvUDU1TnCie2QSoYY9aifERRV/d8JHtWQ==
+  "integrity" "sha512-bQuNS0H1VL1VLC6FwmReHlpJaICVe/seODU3Q9cpTQbJ5OtRD4TwWMrAjfTxqcFNollA6O0AlE4BnRSWMQLfvw=="
+  "resolved" "https://registry.npmjs.org/@fontsource/open-sans/-/open-sans-4.5.6.tgz"
+  "version" "4.5.6"
 
 "@fontsource/space-grotesk@^4.5.3":
-  version "4.5.3"
-  resolved "https://registry.yarnpkg.com/@fontsource/space-grotesk/-/space-grotesk-4.5.3.tgz#8921c58f6df83796fe6a0604d362d3f40daaa472"
-  integrity sha512-uhCiGA3DXiT7BLCcbKzSDlgUp6Pct50+WObzLJvee8qnA2ezH/cfWlIU3+3ydc1poxQuR6+jJN2Cd8XjpOB9lg==
+  "integrity" "sha512-uhCiGA3DXiT7BLCcbKzSDlgUp6Pct50+WObzLJvee8qnA2ezH/cfWlIU3+3ydc1poxQuR6+jJN2Cd8XjpOB9lg=="
+  "resolved" "https://registry.npmjs.org/@fontsource/space-grotesk/-/space-grotesk-4.5.3.tgz"
+  "version" "4.5.3"
 
 "@fortawesome/fontawesome-common-types@^0.2.36":
   "integrity" "sha512-a/7BiSgobHAgBWeN7N0w+lAhInrGxksn13uK7231n2m8EDPE3BMCl9NZLTGrj9ZXfCmC6LM0QLqXidIizVQ6yg=="
