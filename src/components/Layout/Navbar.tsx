@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex } from '@chakra-ui/react'
+import { Flex, Box } from '@chakra-ui/react'
 import Logo from 'components/Logo'
 import NavbarLinks from 'components/NavbarLinks'
 import NavbarWallet from 'components/NavbarWallet'
@@ -11,16 +11,17 @@ export default function Navbar() {
             as='nav'
             height='130px'
             width='100%'
-            justifyContent='space-between'
+            justifyContent={['center', 'center', 'space-between']}
             alignItems='center'
-            padding='0 5vw'
+            padding='28px 5vw'
+            position='relative'
         >
             <Logo />
             <NavbarLinks />
             <Flex
                 as='section'
                 alignItems='center'
-                display={{ base: 'none', md: 'flex' }}
+                display={['none', 'none', 'flex']}
             >
                 <NavbarWallet />
                 <NavbarTheme />

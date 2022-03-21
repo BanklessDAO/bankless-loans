@@ -93,7 +93,7 @@ const NavbarMenuList = ({
 }) => {
     return (
         <HStack
-            display={{ base: 'none', md: 'flex' }}
+            display={['none', 'none', 'flex']}
             justifyContent='center'
             alignItems='center'
             bg='#131313'
