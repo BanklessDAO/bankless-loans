@@ -69,7 +69,7 @@ export const StakingPreview: React.FC = () => {
                     />
 
                     <Flex variant='layout.actions'>
-                        <Button disabled>Connect Wallet</Button>
+                        <Button>Connect Wallet</Button>
                     </Flex>
                 </Box>
             </Box>

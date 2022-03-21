@@ -4,6 +4,7 @@ import Logo from 'components/Logo'
 import NavbarLinks from 'components/NavbarLinks'
 import NavbarWallet from 'components/NavbarWallet'
 
+
 export default function Navbar() {
     return (
         <Flex
