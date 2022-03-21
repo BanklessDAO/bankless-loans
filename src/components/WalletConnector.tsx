@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { useWeb3React } from '@web3-react/core'
 import { useWalletReducer } from '../hooks/useWalletReducer'
 import { useWalletContext } from '../hooks/WalletContext'
+import { useWalletConnection } from '../hooks/useWalletConnection'
 import { Button, Text, Flex, Link, Box } from '@chakra-ui/react'
 import { injectedConnector } from '../connectors/injectedConnector'
 import { useAuthorizedConnection } from '../hooks/useAuthorizedConnection'
@@ -34,13 +35,28 @@ export const WalletConnector: React.FC<WalletConnectorProps> = ({
 }) => {
     const { active, activate, error, deactivate } = useWeb3React<unknown>()
     const triedAuthorizedConnection = useAuthorizedConnection()
-    // const { connectionState, dispatch } = useWalletContext()
+    const [tried, setTried] = useState(false)
     const [isMetaMask, setIsMetaMask] = useState(false)
     const [connectionState, dispatch] = useReducer(useWalletReducer, {
         type: 'inactive',
     })
     const { isOpen, onOpen, onClose } = useDisclosure()
     const router = useRouter()
+
+    useEffect(() => {
+        const tryToActivateIfAuthorized = async () => {
+            try {
+                if (await injectedConnector.isAuthorized()) {
+                    await activate(injectedConnector, undefined, true)
+                } else {
+                    throw new Error('Unauthorized')
+                }
+            } catch {
+                setTried(true)
+            }
+        }
+        tryToActivateIfAuthorized()
+    }, [activate])
 
     useEffect(() => {
         const detectMetaMask = () =>
@@ -82,6 +98,7 @@ export const WalletConnector: React.FC<WalletConnectorProps> = ({
                 }}
             >
                 <Button
+                    variant='active'
                     onClick={() => {
                         dispatch({
                             type: 'startActivating',
@@ -90,17 +107,7 @@ export const WalletConnector: React.FC<WalletConnectorProps> = ({
                         activate(injectedConnector)
                     }}
                 >
-                    {isMetaMask ? (
-                        <>
-                            <MetaMaskIcon />
-                            <Box sx={{ ml: 2 }}>Connect to MetaMask</Box>
-                        </>
-                    ) : (
-                        <>
-                            <Icon name='plug' size='lg' />
-                            <Box sx={{ ml: 2 }}>Connect wallet</Box>
-                        </>
-                    )}
+                    <Box sx={{ ml: 2 }}>Connect wallet</Box>
                 </Button>
             </Flex>
             {console.log(
