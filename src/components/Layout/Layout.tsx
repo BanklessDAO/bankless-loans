@@ -1,11 +1,15 @@
-import { Fragment } from 'react'
+import { Container, VStack } from '@chakra-ui/react'
 import Navbar from './Navbar'
+import NavbarMobile from '../NavbarMobile'
 
 export default function Layout({ children }: JSX.ElementChildrenAttribute) {
     return (
-        <Fragment>
-            <Navbar />
-            {children}
-        </Fragment>
+        <Container maxW='container.xl' p={0}>
+            <VStack align='center' as='main' position='relative' height='100vh'>
+                <Navbar />
+                {children}
+                <NavbarMobile />
+            </VStack>
+        </Container>
     )
 }

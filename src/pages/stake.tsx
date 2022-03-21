@@ -31,7 +31,7 @@ const Stake = ({ loader }: LiquityFrontendProps): JSX.Element => {
                         sx={{
                             flexDirection: 'column',
                             minHeight: '100%',
-                            height: '100vh',
+                            height: 'fit-content',
                         }}
                     >
                         <Box minWidth='504px'>
