@@ -24,7 +24,6 @@ export default function Navbar() {
                 display={['none', 'none', 'flex']}
             >
                 <NavbarWallet />
-                <NavbarTheme />
             </Flex>
         </Flex>
     )
