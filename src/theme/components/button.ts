@@ -111,6 +111,11 @@ const Button = {
                 color: 'interactive.transparentWhite',
             },
         },
+        active: {
+            bg: '#6D29FE',
+            color: '#FFFFFF',
+            borderRadius: '6px',
+        },
     },
     defaultProps: {},
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import { Box, Text, chakra, HStack } from '@chakra-ui/react'
 import walletImage from '../../public/walletIcon.jpg'
+import { WalletConnector } from './WalletConnector'
 
 const ChakraNextImage = chakra(Image)
 
