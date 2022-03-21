@@ -22,6 +22,9 @@ const editableStyle = {
 }
 
 export const TrovePreview: React.FC = () => {
+    const handleConnectWallet = useCallback(() => {
+        dispatchEvent('ADJUST_TROVE_PRESSED')
+    }, [dispatchEvent])
     //will need to address hard-coded width for mobile
     return (
         <Flex
@@ -69,7 +72,7 @@ export const TrovePreview: React.FC = () => {
                     />
 
                     <Flex variant='layout.actions'>
-                        <Button disabled>Connect Wallet</Button>
+                        <Button>Connect Wallet</Button>
                     </Flex>
                 </Box>
             </Box>
