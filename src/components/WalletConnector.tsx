@@ -103,7 +103,10 @@ export const WalletConnector: React.FC<WalletConnectorProps> = ({
                     )}
                 </Button>
             </Flex>
-            {console.log('connection state', connectionState.type)}
+            {console.log(
+                'connection state WalletConnector',
+                connectionState.type
+            )}
             {connectionState.type === 'failed' && (
                 <Modal
                     isOpen={connectionState.type === 'failed'}
