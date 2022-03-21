@@ -1,7 +1,6 @@
 import React, { useEffect, useReducer, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useWeb3React } from '@web3-react/core'
-import { AbstractConnector } from '@web3-react/abstract-connector'
 import { useWalletReducer } from '../hooks/useWalletReducer'
 import { useWalletContext } from '../hooks/WalletContext'
 import { Button, Text, Flex, Link, Box } from '@chakra-ui/react'
@@ -9,17 +8,13 @@ import { injectedConnector } from '../connectors/injectedConnector'
 import { useAuthorizedConnection } from '../hooks/useAuthorizedConnection'
 import { RetryDialog } from './RetryDialog'
 import { ConnectionConfirmationDialog } from './ConnectionConfirmationDialog'
-import { useWalletConnection } from '../hooks/useWalletConnection'
 import { MetaMaskIcon } from './MetaMaskIcon'
 import { Icon } from './Icon'
 import {
     Modal,
     ModalOverlay,
     ModalContent,
-    ModalHeader,
-    ModalFooter,
     ModalBody,
-    ModalCloseButton,
     useDisclosure,
 } from '@chakra-ui/react'
 
@@ -39,11 +34,11 @@ export const WalletConnector: React.FC<WalletConnectorProps> = ({
 }) => {
     const { active, activate, error, deactivate } = useWeb3React<unknown>()
     const triedAuthorizedConnection = useAuthorizedConnection()
-    const { connectionState, dispatch } = useWalletContext()
+    // const { connectionState, dispatch } = useWalletContext()
     const [isMetaMask, setIsMetaMask] = useState(false)
-    // const [connectionState, dispatch] = useReducer(useWalletReducer, {
-    //     type: 'inactive',
-    // })
+    const [connectionState, dispatch] = useReducer(useWalletReducer, {
+        type: 'inactive',
+    })
     const { isOpen, onOpen, onClose } = useDisclosure()
     const router = useRouter()
 
