@@ -9,7 +9,7 @@ interface MaybeHasMetaMask {
     }
 }
 
-type ConnectionState =
+export type ConnectionState =
     | { type: 'inactive' }
     | {
           type:
@@ -21,15 +21,15 @@ type ConnectionState =
           connector: AbstractConnector
       }
 
-type ConnectionAction =
+export type ConnectionAction =
     | { type: 'startActivating'; connector: AbstractConnector }
     | { type: 'fail'; error: Error }
     | { type: 'finishActivating' | 'retry' | 'cancel' | 'deactivate' }
 
-export const walletReducer: React.Reducer<ConnectionState, ConnectionAction> = (
-    state,
-    action
-) => {
+export const useWalletReducer: React.Reducer<
+    ConnectionState,
+    ConnectionAction
+> = (state, action) => {
     switch (action.type) {
         case 'startActivating':
             return {
