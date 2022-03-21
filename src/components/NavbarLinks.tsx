@@ -64,6 +64,7 @@ const NavbarMenuListItem = ({
             minW='136px'
             borderRadius='13px'
             bg={setLinkBg(path, routerPathname)}
+            _hover={{ backgroundColor: '#242424' }}
         >
             <NextLink href={path === 'borrow' ? '/' : `/${path}`} passHref>
                 <Link
