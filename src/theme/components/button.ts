@@ -112,8 +112,8 @@ const Button = {
             },
         },
         active: {
-            bg: '#6D29FE',
-            color: '#FFFFFF',
+            bg: 'interactive.darkPurple',
+            color: 'interactive.white',
             borderRadius: '6px',
         },
     },
