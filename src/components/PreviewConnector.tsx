@@ -46,8 +46,8 @@ export const PreviewConnector: React.FC<PreviewConnectorProps> = ({
     const { isOpen, onOpen, onClose } = useDisclosure()
     const router = useRouter()
     const trovePreview = router.pathname == '/' && <TrovePreview />
-    const stabilityPreview = router.pathname == '/Pool' && <StabilityPreview />
-    const stakingPreview = router.pathname == '/Stake' && <StakingPreview />
+    const stabilityPreview = router.pathname == '/pool' && <StabilityPreview />
+    const stakingPreview = router.pathname == '/stake' && <StakingPreview />
 
     useEffect(() => {
         const detectMetaMask = () =>
