@@ -15,13 +15,11 @@ import {
 } from '@chakra-ui/react'
 import Image from 'next/image'
 import { useWeb3React } from '@web3-react/core'
-import { CoinbaseWallet } from '../config/connectors'
-import { WalletConnect } from '../config/connectors'
-import { Injected } from '../config/connectors'
-import styles from '../styles/Web3SignIn.module.css'
-import { injectedConnector } from '../connectors/injectedConnector'
+import { CoinbaseWallet } from '../connectors/connectors'
+import { WalletConnect } from '../connectors/connectors'
+import { Injected } from '../connectors/connectors'
 import { useWalletReducer } from '../hooks/useWalletReducer'
-import { InjectedConnector } from '@web3-react/injected-connector'
+import { useWalletContext } from '../hooks/WalletContext'
 
 type WalletProviderModalProps = {
     isOpen: boolean
@@ -38,6 +36,7 @@ export const WalletProviderModal = ({
     const [connectionState, dispatch] = useReducer(useWalletReducer, {
         type: 'inactive',
     })
+    // const { connectionState, dispatch } = useWalletContext()
     const setProvider = (type: string) => {
         window.localStorage.setItem('provider', type)
     }
@@ -63,9 +62,9 @@ export const WalletProviderModal = ({
                                 onClick={() => {
                                     dispatch({
                                         type: 'startActivating',
-                                        connector: injectedConnector,
+                                        connector: Injected,
                                     })
-                                    activate(injectedConnector)
+                                    activate(Injected)
                                     setProvider('injected')
                                     closeModal()
                                 }}

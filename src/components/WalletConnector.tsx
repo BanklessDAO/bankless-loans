@@ -2,7 +2,7 @@ import React, { useEffect, useReducer, useState } from 'react'
 import { useWeb3React } from '@web3-react/core'
 import { useWalletReducer } from '../hooks/useWalletReducer'
 import { Button, Text, Flex, Link, Box } from '@chakra-ui/react'
-import { injectedConnector } from '../connectors/injectedConnector'
+import { Injected } from '../connectors/connectors'
 import { useAuthorizedConnection } from '../hooks/useAuthorizedConnection'
 import { RetryDialog } from './RetryDialog'
 import { ConnectionConfirmationDialog } from './ConnectionConfirmationDialog'
@@ -16,7 +16,7 @@ import {
     useDisclosure,
 } from '@chakra-ui/react'
 import { WalletProviderModal } from './WalletProviderModal'
-import { connectors } from '../config/connectors'
+import { connectors } from '../connectors/connectors'
 
 interface MaybeHasMetaMask {
     ethereum?: {
@@ -41,16 +41,16 @@ export const WalletConnector: React.FC<WalletConnectorProps> = ({
     })
     const { isOpen, onOpen, onClose } = useDisclosure()
 
-    useEffect(() => {
-        const provider = window.localStorage.getItem('provider')
-        if (provider) activate(connectors[provider as keyof object])
-    }, [activate])
+    // useEffect(() => {
+    //     const provider = window.localStorage.getItem('provider')
+    //     if (provider) activate(connectors[provider as keyof object])
+    // }, [activate])
 
     useEffect(() => {
         const tryToActivateIfAuthorized = async () => {
             try {
-                if (await injectedConnector.isAuthorized()) {
-                    await activate(injectedConnector, undefined, true)
+                if (await Injected.isAuthorized()) {
+                    await activate(Injected, undefined, true)
                 } else {
                     throw new Error('Unauthorized')
                 }

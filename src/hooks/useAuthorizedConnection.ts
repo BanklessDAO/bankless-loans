@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useWeb3React } from '@web3-react/core'
-import { injectedConnector } from '../connectors/injectedConnector'
+import { injectedConnector } from '../connectors/connectors'
 
 /**
  * React hook that tries to activate the InjectedConnector if the app's already authorized in the
