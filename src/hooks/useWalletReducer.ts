@@ -30,7 +30,6 @@ export const useWalletReducer: React.Reducer<
     ConnectionState,
     ConnectionAction
 > = (state, action) => {
-    console.log('useWalletReducer', action.type)
     switch (action.type) {
         case 'startActivating':
             return {

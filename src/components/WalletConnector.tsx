@@ -15,6 +15,7 @@ import {
     ModalBody,
     useDisclosure,
 } from '@chakra-ui/react'
+import { WalletProviderModal } from './WalletProviderModal'
 
 interface MaybeHasMetaMask {
     ethereum?: {
@@ -91,18 +92,11 @@ export const WalletConnector: React.FC<WalletConnectorProps> = ({
                     alignItems: 'center',
                 }}
             >
-                <Button
-                    variant='active'
-                    onClick={() => {
-                        dispatch({
-                            type: 'startActivating',
-                            connector: injectedConnector,
-                        })
-                        activate(injectedConnector)
-                    }}
-                >
-                    <Box sx={{ ml: 2 }}>Connect wallet</Box>
-                </Button>
+                <WalletProviderModal
+                    isOpen={isOpen}
+                    closeModal={onClose}
+                    onOpen={onOpen}
+                />
             </Flex>
             {connectionState.type === 'failed' && (
                 <Modal
