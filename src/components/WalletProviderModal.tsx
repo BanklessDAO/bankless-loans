@@ -21,6 +21,7 @@ import { Injected } from '../config/connectors'
 import styles from '../styles/Web3SignIn.module.css'
 import { injectedConnector } from '../connectors/injectedConnector'
 import { useWalletReducer } from '../hooks/useWalletReducer'
+import { InjectedConnector } from '@web3-react/injected-connector'
 
 type WalletProviderModalProps = {
     isOpen: boolean
@@ -59,19 +60,15 @@ export const WalletProviderModal = ({
                         <VStack>
                             <Button
                                 variant='outline'
-                                onClick={
-                                    // () => {
-                                    // activate(Injected);
-                                    // setProvider("injected");
-                                    // closeModal();
-                                    () => {
-                                        dispatch({
-                                            type: 'startActivating',
-                                            connector: injectedConnector,
-                                        })
-                                        activate(injectedConnector)
-                                    }
-                                }
+                                onClick={() => {
+                                    dispatch({
+                                        type: 'startActivating',
+                                        connector: injectedConnector,
+                                    })
+                                    activate(injectedConnector)
+                                    setProvider('injected')
+                                    closeModal()
+                                }}
                                 w='100%'
                             >
                                 <HStack
@@ -90,19 +87,15 @@ export const WalletProviderModal = ({
                             </Button>
                             <Button
                                 variant='outline'
-                                onClick={
-                                    // () => {
-                                    // activate(WalletConnect);
-                                    // setProvider("walletConnect");
-                                    // closeModal();
-                                    () => {
-                                        dispatch({
-                                            type: 'startActivating',
-                                            connector: WalletConnect,
-                                        })
-                                        activate(WalletConnect)
-                                    }
-                                }
+                                onClick={() => {
+                                    dispatch({
+                                        type: 'startActivating',
+                                        connector: WalletConnect,
+                                    })
+                                    activate(WalletConnect)
+                                    setProvider('walletConnect')
+                                    closeModal()
+                                }}
                                 w='100%'
                             >
                                 <HStack
@@ -121,18 +114,15 @@ export const WalletProviderModal = ({
                             </Button>
                             <Button
                                 variant='outline'
-                                onClick={
-                                    // () => {
-                                    // activate(CoinbaseWallet);
-                                    // closeModal();
-                                    () => {
-                                        dispatch({
-                                            type: 'startActivating',
-                                            connector: CoinbaseWallet,
-                                        })
-                                        activate(CoinbaseWallet)
-                                    }
-                                }
+                                onClick={() => {
+                                    dispatch({
+                                        type: 'startActivating',
+                                        connector: CoinbaseWallet,
+                                    })
+                                    activate(CoinbaseWallet)
+                                    setProvider('coinbaseWallet')
+                                    closeModal()
+                                }}
                                 w='100%'
                             >
                                 <HStack
