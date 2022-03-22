@@ -16,6 +16,7 @@ import {
     useDisclosure,
 } from '@chakra-ui/react'
 import { WalletProviderModal } from './WalletProviderModal'
+import { connectors } from '../config/connectors'
 
 interface MaybeHasMetaMask {
     ethereum?: {
@@ -39,6 +40,11 @@ export const WalletConnector: React.FC<WalletConnectorProps> = ({
         type: 'inactive',
     })
     const { isOpen, onOpen, onClose } = useDisclosure()
+
+    useEffect(() => {
+        const provider = window.localStorage.getItem('provider')
+        if (provider) activate(connectors[provider as keyof object])
+    }, [activate])
 
     useEffect(() => {
         const tryToActivateIfAuthorized = async () => {
