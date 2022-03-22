@@ -12,6 +12,12 @@ const colors = {
         grey: '#CECECE',
         white: '#FFFFFF',
         transparentWhite: 'rgba(255, 255, 255, 0.35)',
+        gray: {
+            '13': '#131313',
+            '24': '#242424',
+            '7D': '#7D7D7D',
+            A1: '#A1A1A1',
+        },
     },
     supplementary: {
         green: '#1EC02E',

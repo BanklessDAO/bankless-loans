@@ -36,10 +36,10 @@ const NavbarMenuListItem = ({
 }) => {
     function setLinkBg(linkPath: string, routePath: string) {
         if (routePath === '' && linkPath === 'borrow') {
-            return '#242424'
+            return 'interactive.gray.24'
         }
         if (linkPath === routePath) {
-            return '#242424'
+            return 'interactive.gray.24'
         } else {
             return 'transparent'
         }
@@ -47,12 +47,12 @@ const NavbarMenuListItem = ({
 
     function setLinkColor(linkPath: string, routePath: string) {
         if (routePath === '' && linkPath === 'borrow') {
-            return 'whiteAlpha.0'
+            return 'interactive.white'
         }
         if (linkPath !== routePath) {
-            return '#A1A1A1'
+            return 'interactive.gray.A1'
         } else {
-            return 'whiteAlpha.0'
+            return 'interactive.white'
         }
     }
 
@@ -64,7 +64,7 @@ const NavbarMenuListItem = ({
             minW='136px'
             borderRadius='13px'
             bg={setLinkBg(path, routerPathname)}
-            _hover={{ backgroundColor: '#242424' }}
+            _hover={{ backgroundColor: 'interactive.gray.24' }}
         >
             <NextLink href={path === 'borrow' ? '/' : `/${path}`} passHref>
                 <Link
@@ -97,9 +97,11 @@ const NavbarMenuList = ({
             display={['none', 'none', 'flex']}
             justifyContent='center'
             alignItems='center'
-            bg='#131313'
+            bg='interactive.gray.13'
             borderRadius={18}
-            border='0.8px solid #7d7d7d'
+            borderWidth='1.6px'
+            borderStyle='solid'
+            borderColor='interactive.gray.7D'
             p={1}
             as='ul'
             spacing={1.5}

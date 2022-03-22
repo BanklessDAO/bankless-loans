@@ -14,14 +14,22 @@ export default function NavbarWallet({
 }: Props) {
     return (
         <HStack
-            bg='#131313'
+            bg='interactive.gray.13'
             p={2}
             borderRadius='18px'
             alignItems='center'
-            border='0.8px solid #7d7d7d'
+            borderWidth='1.6px'
+            borderStyle='solid'
+            borderColor='interactive.gray.7D'
             mr={1}
         >
-            <Text as='p' isTruncated noOfLines={0} maxWidth='126px'>
+            <Text
+                as='p'
+                isTruncated
+                noOfLines={0}
+                maxWidth='126px'
+                color='interactive.white'
+            >
                 {walletAddress}
             </Text>
             <Box as='figure' h='28px' w='28px' ml={2}>
