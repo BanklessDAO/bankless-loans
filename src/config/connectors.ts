@@ -17,3 +17,9 @@ export const WalletConnect = new WalletConnectConnector({
 export const Injected = new InjectedConnector({
     supportedChainIds: [1, 3, 4, 5, 42],
 })
+
+export const connectors: object = {
+    injected: Injected,
+    walletConnect: WalletConnect,
+    coinbaseWallet: CoinbaseWallet,
+}
