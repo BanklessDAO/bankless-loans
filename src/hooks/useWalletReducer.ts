@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer, useState } from 'react'
 import { useWeb3React } from '@web3-react/core'
 import { AbstractConnector } from '@web3-react/abstract-connector'
-import { injectedConnector } from '../connectors/injectedConnector'
+import { Injected } from '../connectors/connectors'
 
 interface MaybeHasMetaMask {
     ethereum?: {
@@ -40,9 +40,7 @@ export const useWalletReducer: React.Reducer<
             return {
                 type: 'active',
                 connector:
-                    state.type === 'inactive'
-                        ? injectedConnector
-                        : state.connector,
+                    state.type === 'inactive' ? Injected : state.connector,
             }
         case 'fail':
             if (state.type !== 'inactive') {
