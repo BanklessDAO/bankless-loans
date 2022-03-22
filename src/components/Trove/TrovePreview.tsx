@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import { Flex, Button, Box, Heading } from '@chakra-ui/react'
-
+import React from 'react'
+import { Flex, Box, Heading } from '@chakra-ui/react'
+import { WalletConnector } from '../WalletConnector'
 import {
     EditableRow,
     StaticRow,
@@ -21,15 +21,12 @@ const editableStyle = {
     borderColor: 'muted',
 }
 
-export const TrovePreview: React.FC = () => {
-    const handleConnectWallet = useCallback(() => {
-        dispatchEvent('ADJUST_TROVE_PRESSED')
-    }, [dispatchEvent])
+export const TrovePreview = (): JSX.Element => {
     //will need to address hard-coded width for mobile
     return (
         <Flex
             w='555px'
-            height='622px'
+            height='400px'
             alignItems='center'
             justifyContent='center'
         >
@@ -46,34 +43,23 @@ export const TrovePreview: React.FC = () => {
                 <Heading>Trove</Heading>
 
                 <DisabledEditableRow
-                    label='Stake'
+                    label='Collateral'
                     inputID='stake-lqty'
                     amount={'0.000'}
                     unit={'ETH'}
                 />
 
                 <DisabledEditableRow
-                    label='Stake'
+                    label='Borrow'
                     inputID='stake-lqty'
                     amount={'0.000'}
                     unit={'LUSD'}
                 />
 
-                <Box w='full'>
-                    <StaticAmounts
-                        inputID='static-trove'
-                        amount='0.000'
-                        sx={{
-                            ...editableStyle,
-                            fontSize: '22px',
-                            bg: 'background',
-                            height: '70px',
-                        }}
-                    />
-
-                    <Flex variant='layout.actions'>
-                        <Button>Connect Wallet</Button>
-                    </Flex>
+                <Box ml='10px' w='full' h='100px'>
+                    <h3>Please connect your wallet to use our services</h3>
+                    <br />
+                    <WalletConnector />
                 </Box>
             </Box>
         </Flex>

@@ -1,9 +1,6 @@
 import React, { useEffect, useReducer, useState } from 'react'
-import { useRouter } from 'next/router'
 import { useWeb3React } from '@web3-react/core'
 import { useWalletReducer } from '../hooks/useWalletReducer'
-import { useWalletContext } from '../hooks/WalletContext'
-import { useWalletConnection } from '../hooks/useWalletConnection'
 import { Button, Text, Flex, Link, Box } from '@chakra-ui/react'
 import { injectedConnector } from '../connectors/injectedConnector'
 import { useAuthorizedConnection } from '../hooks/useAuthorizedConnection'
@@ -41,7 +38,6 @@ export const WalletConnector: React.FC<WalletConnectorProps> = ({
         type: 'inactive',
     })
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const router = useRouter()
 
     useEffect(() => {
         const tryToActivateIfAuthorized = async () => {
@@ -89,10 +85,8 @@ export const WalletConnector: React.FC<WalletConnectorProps> = ({
 
     return (
         <>
-            {console.log('router path', router.pathname)}
             <Flex
                 sx={{
-                    height: '100vh',
                     justifyContent: 'center',
                     alignItems: 'center',
                 }}
@@ -110,10 +104,6 @@ export const WalletConnector: React.FC<WalletConnectorProps> = ({
                     <Box sx={{ ml: 2 }}>Connect wallet</Box>
                 </Button>
             </Flex>
-            {console.log(
-                'connection state WalletConnector',
-                connectionState.type
-            )}
             {connectionState.type === 'failed' && (
                 <Modal
                     isOpen={connectionState.type === 'failed'}
@@ -159,7 +149,6 @@ export const WalletConnector: React.FC<WalletConnectorProps> = ({
                     </ModalContent>
                 </Modal>
             )}
-
             {connectionState.type === 'activating' && (
                 <Modal
                     isOpen={connectionState.type === 'activating'}
@@ -203,7 +192,6 @@ export const WalletConnector: React.FC<WalletConnectorProps> = ({
                     </ModalContent>
                 </Modal>
             )}
-
             {connectionState.type === 'rejectedByUser' && (
                 <Modal
                     isOpen={connectionState.type === 'rejectedByUser'}
@@ -227,7 +215,6 @@ export const WalletConnector: React.FC<WalletConnectorProps> = ({
                     </ModalContent>
                 </Modal>
             )}
-
             {connectionState.type === 'alreadyPending' && (
                 <Modal
                     isOpen={connectionState.type === 'alreadyPending'}
