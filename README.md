@@ -6,7 +6,8 @@
 #### Built with:
 - [Next.js](https://nextjs.org/) (with TypeScript)
 - [Chakra-UI](https://chakra-ui.com/) (with styled components for customization)
-- [UseWallet](https://www.npmjs.com/package/use-wallet)
+- [Liquity SDK](https://github.com/liquity/dev)
+- [web3-react](https://www.npmjs.com/package/web3-react)
 - [Ethers](https://docs.ethers.io/v5/)
 
 #### Configured with:
