@@ -2,17 +2,14 @@ import React from 'react'
 import Image from 'next/image'
 import { Box, Text, chakra, HStack } from '@chakra-ui/react'
 import walletImage from '../../public/walletIcon.jpg'
-import { WalletConnector } from './WalletConnector'
+import { useWeb3React } from '@web3-react/core'
+import { truncateAddress } from '../utils'
 
 const ChakraNextImage = chakra(Image)
 
-type Props = {
-    walletAddress?: string
-}
-
-export default function NavbarWallet({
-    walletAddress = '0x820C24163f64AcB6AA6fa094B3F2444A6Ab1bCe9',
-}: Props) {
+export const NavbarWallet = (): JSX.Element => {
+    const { account } = useWeb3React()
+    const address = account ? account : ''
     return (
         <HStack
             bg='interactive.gray.13'
@@ -31,7 +28,7 @@ export default function NavbarWallet({
                 maxWidth='126px'
                 color='interactive.white'
             >
-                {walletAddress}
+                {truncateAddress(address)}
             </Text>
             <Box as='figure' h='28px' w='28px' ml={2}>
                 <ChakraNextImage

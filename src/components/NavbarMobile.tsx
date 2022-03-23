@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Container } from '@chakra-ui/react'
-import NavbarWallet from './NavbarWallet'
+import { NavbarWallet } from './NavbarWallet'
 
 export default function NavbarMobile() {
     return (
