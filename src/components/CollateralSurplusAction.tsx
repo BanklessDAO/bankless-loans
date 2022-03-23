@@ -28,7 +28,7 @@ export const CollateralSurplusAction: React.FC = () => {
     }, [myTransactionState.type, dispatchEvent])
 
     return myTransactionState.type === 'waitingForApproval' ? (
-        <Flex variant='layout.actions'>
+        <Flex>
             <Button disabled sx={{ mx: 2 }}>
                 <Spinner sx={{ mr: 2, color: 'white' }} size='20px' />
                 Waiting for your approval
@@ -36,7 +36,7 @@ export const CollateralSurplusAction: React.FC = () => {
         </Flex>
     ) : myTransactionState.type !== 'waitingForConfirmation' &&
       myTransactionState.type !== 'confirmed' ? (
-        <Flex variant='layout.actions'>
+        <Flex>
             <Transaction
                 id={myTransactionId}
                 send={liquity.claimCollateralSurplus.bind(liquity, undefined)}
