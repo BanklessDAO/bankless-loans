@@ -26,17 +26,7 @@ const Pool = ({ loader }: LiquityFrontendProps): JSX.Element => {
     return (
         <LiquityStoreProvider {...{ loader }} store={liquity.store}>
             <StabilityViewProvider>
-                <Grid display='flex' justifyContent='center' bg='#363636'>
-                    <Flex
-                        sx={{
-                            flexDirection: 'column',
-                            minHeight: '100%',
-                            height: '100vh',
-                        }}
-                    >
-                        <Stability />
-                    </Flex>
-                </Grid>
+                <Stability />
             </StabilityViewProvider>
         </LiquityStoreProvider>
     )
