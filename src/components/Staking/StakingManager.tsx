@@ -170,7 +170,7 @@ export const StakingManager: React.FC = () => {
                     </ActionDescription>
                 ))}
 
-            <Flex variant='layout.actions'>
+            <Flex>
                 <Button
                     variant='darkGrey'
                     onClick={() =>

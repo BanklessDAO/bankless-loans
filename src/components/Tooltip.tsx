@@ -60,7 +60,6 @@ export function Tooltip<C extends React.ReactElement<Hoverable>>({
 
             {show && (
                 <Box
-                    variant='tooltip'
                     ref={setPopperElement}
                     style={styles.popper}
                     {...attributes.popper}

@@ -71,8 +71,6 @@ export const CollateralRatio: React.FC<CollateralRatioProps> = ({
                                         maxW: '33vm',
                                         fontStyle: 'italic',
                                     }}
-                                    md={{}}
-                                    lg={{}}
                                 >
                                     The ratio between the dollar value of the
                                     collateral and the debt (in LUSD) you are

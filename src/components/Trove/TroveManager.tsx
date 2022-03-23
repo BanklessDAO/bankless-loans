@@ -267,8 +267,8 @@ export const TroveManager: React.FC<TroveManagerProps> = ({
                     </ActionDescription>
                 ))}
 
-            <Flex variant='layout.actions'>
-                <Button variant='darkGrey' onClick={handleCancel}>
+            <Flex>
+                <Button variant='cancel' onClick={handleCancel}>
                     Cancel
                 </Button>
 

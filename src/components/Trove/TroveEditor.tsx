@@ -84,10 +84,7 @@ export const TroveEditor: React.FC<TroveEditorProps> = ({
                         infoIcon={
                             <InfoIcon
                                 tooltip={
-                                    <Box
-                                        variant='tooltip'
-                                        sx={{ width: '200px' }}
-                                    >
+                                    <Box sx={{ width: '200px' }}>
                                         An amount set aside to cover the
                                         liquidator’s gas costs if your Trove
                                         needs to be liquidated. The amount
@@ -112,7 +109,6 @@ export const TroveEditor: React.FC<TroveEditorProps> = ({
                             tooltip={
                                 <Box
                                     bg='rgb(25,25,255)'
-                                    variant='tooltip'
                                     sx={{ width: '240px' }}
                                 >
                                     This amount is deducted from the borrowed
