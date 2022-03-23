@@ -15,6 +15,7 @@ import { useStabilityView } from './context/StabilityViewContext'
 import { RemainingLQTY } from './RemainingLQTY'
 import { Yield } from './Yield'
 import { InfoIcon } from '../InfoIcon'
+import { CardBase } from 'components/Layout/CardBase'
 
 const selector = ({
     stabilityDeposit,
@@ -57,7 +58,7 @@ export const ActiveDeposit: React.FC = () => {
     }, [transactionState.type, dispatchEvent])
 
     return (
-        <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
+        <CardBase>
             <Heading>
                 Stability Pool
                 {!isWaitingForTransaction && (
@@ -154,6 +155,6 @@ export const ActiveDeposit: React.FC = () => {
             </Box>
 
             {isWaitingForTransaction && <LoadingOverlay />}
-        </Box>
+        </CardBase>
     )
 }
