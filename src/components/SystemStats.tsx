@@ -132,8 +132,6 @@ export const SystemStats: React.FC<SystemStatsProps> = ({
                             maxW: '33vm',
                             fontStyle: 'italic',
                         }}
-                        md={{}}
-                        lg={{}}
                     >
                         The Borrowing Fee is a one-off fee charged as a
                         percentage of the borrowed amount (in LUSD) and is part
@@ -162,8 +160,6 @@ export const SystemStats: React.FC<SystemStatsProps> = ({
                             maxW: '33vm',
                             fontStyle: 'italic',
                         }}
-                        md={{}}
-                        lg={{}}
                     >
                         The Total Value Locked (TVL) is the total value of Ether
                         locked as collateral in the system, given in ETH and
@@ -196,8 +192,6 @@ export const SystemStats: React.FC<SystemStatsProps> = ({
                             maxW: '33vm',
                             fontStyle: 'italic',
                         }}
-                        md={{}}
-                        lg={{}}
                     >
                         The total number of active Troves in the system.
                     </Box>
@@ -223,8 +217,6 @@ export const SystemStats: React.FC<SystemStatsProps> = ({
                             maxW: '33vm',
                             fontStyle: 'italic',
                         }}
-                        md={{}}
-                        lg={{}}
                     >
                         The total LUSD minted by the Liquity Protocol.
                     </Box>
@@ -251,8 +243,6 @@ export const SystemStats: React.FC<SystemStatsProps> = ({
                                 maxW: '33vm',
                                 fontStyle: 'italic',
                             }}
-                            md={{}}
-                            lg={{}}
                         >
                             The total LUSD currently held in the Stability Pool,
                             expressed as an amount and a fraction of the LUSD
@@ -284,8 +274,6 @@ export const SystemStats: React.FC<SystemStatsProps> = ({
                             maxW: '33vm',
                             fontStyle: 'italic',
                         }}
-                        md={{}}
-                        lg={{}}
                     >
                         The total amount of LQTY that is staked for earning fee
                         revenue.
@@ -312,8 +300,6 @@ export const SystemStats: React.FC<SystemStatsProps> = ({
                             maxW: '33vm',
                             fontStyle: 'italic',
                         }}
-                        md={{}}
-                        lg={{}}
                     >
                         The ratio of the Dollar value of the entire system
                         collateral at the current ETH:USD price, to the entire
@@ -341,8 +327,6 @@ export const SystemStats: React.FC<SystemStatsProps> = ({
                             maxW: '33vm',
                             fontStyle: 'italic',
                         }}
-                        md={{}}
-                        lg={{}}
                     >
                         Recovery Mode is activated when the Total Collateral
                         Ratio (TCR) falls below 150%. When active, your Trove

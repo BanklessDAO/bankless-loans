@@ -24,10 +24,7 @@ export const Statistic: React.FC<StatisticProps> = ({
             >
                 <Flex>{name}</Flex>
                 {tooltip && (
-                    <InfoIcon
-                        size='xs'
-                        tooltip={<Box variant='tooltip'>{tooltip}</Box>}
-                    />
+                    <InfoIcon size='xs' tooltip={<Box>{tooltip}</Box>} />
                 )}
             </Flex>
             <Flex

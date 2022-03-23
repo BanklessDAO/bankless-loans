@@ -20,7 +20,7 @@ export default function Footer() {
             }}
         >
             <Flex>
-                <Text font='30px' fontWeight='800'>
+                <Text sx={{ font: '30px', fontWeight: '800' }}>
                     © Bankless Loans
                 </Text>
                 <Spacer />

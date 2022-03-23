@@ -38,7 +38,6 @@ export const ReadOnlyTrove: React.FC = () => {
                         amount={trove.debt.prettify()}
                         unit={'LUSD'}
                     />
-
                     <CollateralRatio value={trove.collateralRatio(price)} />
                 </Box>
                 <Flex variant='layout.actions'>
