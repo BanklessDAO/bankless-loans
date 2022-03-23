@@ -26,7 +26,6 @@ import {
     Text,
     Link,
 } from '@chakra-ui/react'
-import { WalletProviderModal } from './WalletProviderModal'
 import { connectors } from '../connectors/connectors'
 
 interface MaybeHasMetaMask {
