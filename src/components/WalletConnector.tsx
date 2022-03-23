@@ -1,7 +1,9 @@
 import React, { useEffect, useReducer, useState } from 'react'
 import { useWeb3React } from '@web3-react/core'
+import Image from 'next/image'
+import { CoinbaseWallet } from '../connectors/connectors'
+import { WalletConnect } from '../connectors/connectors'
 import { useWalletReducer } from '../hooks/useWalletReducer'
-import { Button, Text, Flex, Link, Box } from '@chakra-ui/react'
 import { Injected } from '../connectors/connectors'
 import { useAuthorizedConnection } from '../hooks/useAuthorizedConnection'
 import { RetryDialog } from './RetryDialog'
@@ -9,11 +11,20 @@ import { ConnectionConfirmationDialog } from './ConnectionConfirmationDialog'
 import { MetaMaskIcon } from './MetaMaskIcon'
 import { Icon } from './Icon'
 import {
+    Flex,
+    useDisclosure,
+    Button,
     Modal,
     ModalOverlay,
     ModalContent,
+    ModalHeader,
     ModalBody,
-    useDisclosure,
+    VStack,
+    HStack,
+    Box,
+    ModalCloseButton,
+    Text,
+    Link,
 } from '@chakra-ui/react'
 import { WalletProviderModal } from './WalletProviderModal'
 import { connectors } from '../connectors/connectors'
@@ -45,6 +56,10 @@ export const WalletConnector: React.FC<WalletConnectorProps> = ({
     //     const provider = window.localStorage.getItem('provider')
     //     if (provider) activate(connectors[provider as keyof object])
     // }, [activate])
+
+    const setProvider = (type: string) => {
+        window.localStorage.setItem('provider', type)
+    }
 
     useEffect(() => {
         const tryToActivateIfAuthorized = async () => {
@@ -98,11 +113,104 @@ export const WalletConnector: React.FC<WalletConnectorProps> = ({
                     alignItems: 'center',
                 }}
             >
-                <WalletProviderModal
-                    isOpen={isOpen}
-                    closeModal={onClose}
-                    onOpen={onOpen}
-                />
+                <Button variant='active' onClick={onOpen}>
+                    <Box sx={{ ml: 2 }}>Connect wallet</Box>
+                </Button>
+                <Modal isOpen={isOpen} onClose={onClose} isCentered>
+                    <ModalOverlay />
+                    <ModalContent w='300px'>
+                        <ModalHeader>Select Wallet</ModalHeader>
+                        <ModalCloseButton
+                            _focus={{
+                                boxShadow: 'none',
+                            }}
+                        />
+                        <ModalBody paddingBottom='1.5rem'>
+                            <VStack>
+                                <Button
+                                    variant='outline'
+                                    onClick={() => {
+                                        dispatch({
+                                            type: 'startActivating',
+                                            connector: Injected,
+                                        })
+                                        activate(Injected)
+                                        setProvider('injected')
+                                        onClose()
+                                    }}
+                                    w='100%'
+                                >
+                                    <HStack
+                                        w='100%'
+                                        justifyContent='center'
+                                        sx={{ borderRadius: '3px' }}
+                                    >
+                                        <Image
+                                            src='/metamask-logo.png'
+                                            alt='Metamask Logo'
+                                            width={25}
+                                            height={25}
+                                        />
+                                        <Text>Metamask</Text>
+                                    </HStack>
+                                </Button>
+                                <Button
+                                    variant='outline'
+                                    onClick={() => {
+                                        dispatch({
+                                            type: 'startActivating',
+                                            connector: WalletConnect,
+                                        })
+                                        activate(WalletConnect)
+                                        setProvider('walletConnect')
+                                    }}
+                                    w='100%'
+                                >
+                                    <HStack
+                                        w='100%'
+                                        justifyContent='center'
+                                        sx={{ borderRadius: '3px' }}
+                                    >
+                                        <Image
+                                            src='/wallet-connect.png'
+                                            alt='Wallet Connect Logo'
+                                            width={26}
+                                            height={26}
+                                        />
+                                        <Text>Wallet Connect</Text>
+                                    </HStack>
+                                </Button>
+                                <Button
+                                    variant='outline'
+                                    onClick={() => {
+                                        dispatch({
+                                            type: 'startActivating',
+                                            connector: CoinbaseWallet,
+                                        })
+                                        activate(CoinbaseWallet)
+                                        setProvider('coinbaseWallet')
+                                        onClose()
+                                    }}
+                                    w='100%'
+                                >
+                                    <HStack
+                                        w='100%'
+                                        justifyContent='center'
+                                        sx={{ borderRadius: '3px' }}
+                                    >
+                                        <Image
+                                            src='/cbw.png'
+                                            alt='Coinbase Wallet Logo'
+                                            width={25}
+                                            height={25}
+                                        />
+                                        <Text>Coinbase Wallet</Text>
+                                    </HStack>
+                                </Button>
+                            </VStack>
+                        </ModalBody>
+                    </ModalContent>
+                </Modal>
             </Flex>
             {connectionState.type === 'failed' && (
                 <Modal
