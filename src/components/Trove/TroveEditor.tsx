@@ -16,6 +16,7 @@ import { StaticRow } from './Editor'
 import { LoadingOverlay } from '../LoadingOverlay'
 import { CollateralRatio } from './CollateralRatio'
 import { InfoIcon } from '../InfoIcon'
+import { CardBase } from '../Layout/CardBase'
 
 type TroveEditorProps = {
     original: Trove
@@ -56,7 +57,7 @@ export const TroveEditor: React.FC<TroveEditorProps> = ({
     )
 
     return (
-        <Container>
+        <CardBase>
             <Heading>Trove</Heading>
 
             <Box sx={{ p: [2, 3] }}>
@@ -133,6 +134,6 @@ export const TroveEditor: React.FC<TroveEditorProps> = ({
             </Box>
 
             {changePending && <LoadingOverlay />}
-        </Container>
+        </CardBase>
     )
 }
