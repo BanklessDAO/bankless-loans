@@ -29,7 +29,7 @@ export const RedeemedTrove: React.FC = () => {
                         : 'You can borrow LUSD by opening a Trove.'}
                 </InfoMessage>
 
-                <Flex variant='layout.actions'>
+                <Flex>
                     {hasSurplusCollateral && <CollateralSurplusAction />}
                     {!hasSurplusCollateral && (
                         <Button variant='mainPurple' onClick={handleOpenTrove}>

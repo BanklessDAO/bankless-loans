@@ -150,7 +150,7 @@ export const StabilityDepositManager: React.FC = () => {
                     </ActionDescription>
                 ))}
 
-            <Flex variant='layout.actions'>
+            <Flex>
                 <Button variant='cancel' onClick={handleCancel}>
                     Cancel
                 </Button>
