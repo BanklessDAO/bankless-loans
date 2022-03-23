@@ -14,7 +14,7 @@ export default function NavbarMobile() {
             <Box
                 bg='#101010'
                 h='92px'
-                position='absolute'
+                position='sticky'
                 bottom={0}
                 w='100%'
                 borderRadius='30px 30px 0px 0px'
