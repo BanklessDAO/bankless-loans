@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Container } from '@chakra-ui/react'
+import { VStack, Container } from '@chakra-ui/react'
 import { Wallet } from '@ethersproject/wallet'
 import { Decimal, Difference, Trove } from '@liquity/lib-base'
 import { LiquityStoreProvider } from '../components/LiquityStoreProvider'
@@ -30,27 +30,10 @@ const LiquityFrontend = ({ loader }: LiquityFrontendProps): JSX.Element => {
     return (
         <LiquityStoreProvider {...{ loader }} store={liquity.store}>
             <TroveViewProvider>
-                <Flex
-                    sx={{
-                        flexDirection: 'column',
-                        minHeight: '100%',
-                        height: '100vh',
-                    }}
-                >
+                <VStack height='100vh' overflow='hidden'>
                     <SystemStatsPopup />
-
-                    <Container
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                            width: '100vw',
-                            maxWidth: '912px',
-                        }}
-                    >
-                        <Dashboard />
-                    </Container>
-                </Flex>
+                    <Dashboard />
+                </VStack>
             </TroveViewProvider>
             <TransactionMonitor />
         </LiquityStoreProvider>
