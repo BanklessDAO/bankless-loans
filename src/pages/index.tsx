@@ -30,7 +30,7 @@ const LiquityFrontend = ({ loader }: LiquityFrontendProps): JSX.Element => {
     return (
         <LiquityStoreProvider {...{ loader }} store={liquity.store}>
             <TroveViewProvider>
-                <VStack height='100vh' overflow='hidden'>
+                <VStack maxHeight='662px' overflow='hidden' flex='1'>
                     <SystemStatsPopup />
                     <Dashboard />
                 </VStack>
