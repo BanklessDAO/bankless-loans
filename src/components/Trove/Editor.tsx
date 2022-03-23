@@ -19,7 +19,7 @@ export const Row: React.FC<RowProps> = ({
     infoIcon,
 }) => {
     return (
-        <Flex sx={{ alignItems: 'stretch', ...sx }}>
+        <Flex sx={{ alignItems: 'stretch', ...sx }} position='relative'>
             <FormLabel
                 id={labelId}
                 htmlFor={labelFor}
@@ -235,6 +235,7 @@ export const EditableRow: React.FC<EditableRowProps> = ({
                 borderRadius: '10px',
                 marginBottom: '16px',
                 height: '70px',
+                position: 'relative',
             }}
         >
             <Input
