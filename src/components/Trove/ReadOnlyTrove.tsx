@@ -6,6 +6,7 @@ import { DisabledEditableRow } from './Editor'
 import { useTroveView } from './context/TroveViewContext'
 import { Icon } from '../Icon'
 import { CollateralRatio } from './CollateralRatio'
+import { CardBase } from '../Layout/CardBase'
 
 const select = ({ trove, price }: LiquityStoreState) => ({ trove, price })
 
@@ -20,53 +21,37 @@ export const ReadOnlyTrove: React.FC = () => {
     const { trove, price } = useLiquitySelector(select)
 
     return (
-        <Flex
-            w='555px'
-            minHeight='418px'
-            alignItems='center'
-            justifyContent='center'
-        >
-            <Box
-                w='100%'
-                h='100%'
-                maxW='md'
-                borderRadius='31px'
-                overflow='hidden'
-                padding={[10, 34, 34, 5]}
-                bg='#131313'
-                color='#FFFFFF'
-            >
-                <Heading>Trove</Heading>
+        <CardBase>
+            <Heading>Trove</Heading>
+            <Box overflow='hidden' h='500px'>
                 <Box>
-                    <Box>
-                        <DisabledEditableRow
-                            label='Collateral'
-                            inputID='trove-collateral'
-                            amount={trove.collateral.prettify(4)}
-                            unit='ETH'
-                        />
+                    <DisabledEditableRow
+                        label='Collateral'
+                        inputID='trove-collateral'
+                        amount={trove.collateral.prettify(4)}
+                        unit='ETH'
+                    />
 
-                        <DisabledEditableRow
-                            label='Debt'
-                            inputID='trove-debt'
-                            amount={trove.debt.prettify()}
-                            unit={'LUSD'}
-                        />
+                    <DisabledEditableRow
+                        label='Debt'
+                        inputID='trove-debt'
+                        amount={trove.debt.prettify()}
+                        unit={'LUSD'}
+                    />
 
-                        <CollateralRatio value={trove.collateralRatio(price)} />
-                    </Box>
-
-                    <Flex variant='layout.actions'>
-                        <Button variant='outline' onClick={handleCloseTrove}>
-                            Close Trove
-                        </Button>
-                        <Button onClick={handleAdjustTrove}>
-                            <Icon name='pen' size='sm' />
-                            &nbsp;Adjust
-                        </Button>
-                    </Flex>
+                    <CollateralRatio value={trove.collateralRatio(price)} />
                 </Box>
+
+                <Flex variant='layout.actions'>
+                    <Button variant='outline' onClick={handleCloseTrove}>
+                        Close Trove
+                    </Button>
+                    <Button onClick={handleAdjustTrove}>
+                        <Icon name='pen' size='sm' />
+                        &nbsp;Adjust
+                    </Button>
+                </Flex>
             </Box>
-        </Flex>
+        </CardBase>
     )
 }
