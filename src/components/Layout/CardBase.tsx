@@ -9,10 +9,10 @@ export const CardBase: React.FC = ({ children }) => {
         <Box
             as='article'
             overflow='auto'
-            h='100%'
+            h='fit-content'
             minH='432px'
-            w='100%'
-            maxW={[`${width - stylesPaddingTotal}px`, '550px', '550px']}
+            w='100vw'
+            maxW={[`${width - stylesPaddingTotal}px`, '555px', '555px']}
             borderWidth={1}
             borderRadius='31px'
             bg='interactive.gray.13'
