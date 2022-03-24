@@ -2,7 +2,8 @@ import { VStack } from '@chakra-ui/react'
 
 export const VStackBase: React.FC = ({ children }) => (
     <VStack
-        maxHeight='662px'
+        maxHeight='960px'
+        m={0}
         h='fit-content'
         overflow='hidden'
         flex='1'
