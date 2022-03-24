@@ -5,6 +5,7 @@ import { useLiquity } from '../hooks/LiquityContext'
 import { Staking } from '../components/Staking/Staking'
 import { StakingViewProvider } from '../components/Staking/context/StakingViewProvider'
 import { LiquityStoreProvider } from 'components/LiquityStoreProvider'
+import { VStackBase } from 'components/Layout/VStackBase'
 
 type LiquityFrontendProps = {
     loader?: React.ReactNode
@@ -26,7 +27,9 @@ const Stake = ({ loader }: LiquityFrontendProps): JSX.Element => {
     return (
         <LiquityStoreProvider {...{ loader }} store={liquity.store}>
             <StakingViewProvider>
-                <Staking />
+                <VStackBase>
+                    <Staking />
+                </VStackBase>
             </StakingViewProvider>
         </LiquityStoreProvider>
     )
