@@ -6,7 +6,7 @@ export const VStackBase: React.FC = ({ children }) => (
         h='fit-content'
         overflow='hidden'
         flex='1'
-        py='80px'
+        py={['0px', '0px', '80px']}
         justifyContent={['flex-start', 'flex-start', 'flex-start']}
     >
         {children}
