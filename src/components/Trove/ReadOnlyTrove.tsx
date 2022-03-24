@@ -23,7 +23,7 @@ export const ReadOnlyTrove: React.FC = () => {
     return (
         <CardBase>
             <Heading>Trove</Heading>
-            <Box overflow='hidden'>
+            <Box overflow='hidden' m={0}>
                 <Box>
                     <DisabledEditableRow
                         label='Collateral'
