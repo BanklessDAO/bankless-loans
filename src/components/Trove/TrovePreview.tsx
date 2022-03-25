@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Box, Heading } from '@chakra-ui/react'
+import { Flex, Box, Heading, useDisclosure } from '@chakra-ui/react'
 import { WalletConnector } from '../WalletConnector'
 import {
     EditableRow,
@@ -23,6 +23,7 @@ const editableStyle = {
 
 export const TrovePreview = (): JSX.Element => {
     //will need to address hard-coded width for mobile
+    const { isOpen, onOpen, onClose } = useDisclosure()
     return (
         <Flex
             w='555px'
@@ -59,7 +60,11 @@ export const TrovePreview = (): JSX.Element => {
                 <Box ml='10px' w='full' h='100px'>
                     <h3>Please connect your wallet to use our services</h3>
                     <br />
-                    <WalletConnector />
+                    <WalletConnector
+                        isOpen={isOpen}
+                        onOpen={onOpen}
+                        onClose={onClose}
+                    />
                 </Box>
             </Box>
         </Flex>
