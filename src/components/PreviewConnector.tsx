@@ -21,6 +21,7 @@ import {
 import { TrovePreview } from './Trove/TrovePreview'
 import { StabilityPreview } from './Stability/StabilityPreview'
 import { StakingPreview } from './Staking/StakingPreview'
+import { connectors } from '../connectors/connectors'
 
 interface MaybeHasMetaMask {
     ethereum?: {
@@ -47,6 +48,11 @@ export const PreviewConnector: React.FC<PreviewConnectorProps> = ({
     const trovePreview = router.pathname == '/' && <TrovePreview />
     const stabilityPreview = router.pathname == '/pool' && <StabilityPreview />
     const stakingPreview = router.pathname == '/stake' && <StakingPreview />
+
+    useEffect(() => {
+        const provider = window.localStorage.getItem('provider')
+        if (provider) activate(connectors[provider as keyof object])
+    }, [activate])
 
     useEffect(() => {
         const detectMetaMask = () =>
