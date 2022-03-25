@@ -1,13 +1,11 @@
 import React from 'react'
-import { Flex, Box } from '@chakra-ui/react'
+import { Flex, Box, useDisclosure } from '@chakra-ui/react'
 import Logo from 'components/Logo'
 import NavbarLinks from 'components/NavbarLinks'
-import { NavbarWallet } from 'components/NavbarWallet'
 import { WalletConnector } from 'components/WalletConnector'
-import { useWeb3React } from '@web3-react/core'
 
 export default function Navbar() {
-    const { active } = useWeb3React<unknown>()
+    const { isOpen, onOpen, onClose } = useDisclosure()
     return (
         <Flex
             as='nav'
@@ -25,7 +23,11 @@ export default function Navbar() {
                 alignItems='center'
                 display={['none', 'none', 'flex']}
             >
-                {active ? <NavbarWallet /> : <WalletConnector />}
+                <WalletConnector
+                    isOpen={isOpen}
+                    onOpen={onOpen}
+                    onClose={onClose}
+                />
             </Flex>
         </Flex>
     )
