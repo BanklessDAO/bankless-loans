@@ -9353,10 +9353,10 @@ mock-fs@^4.1.0:
   resolved "https://registry.yarnpkg.com/mock-fs/-/mock-fs-4.14.0.tgz#ce5124d2c601421255985e6e94da80a7357b1b18"
   integrity sha512-qYvlv/exQ4+svI3UOvPUpLDF0OMX5euvUH0Ny4N5QyRyhNdgAgUrVH3iUINSzEPLvx0kbo/Bp28GJKIqvE7URw==
 
-mrm-core@^6.1.7:
-  version "6.1.7"
-  resolved "https://registry.yarnpkg.com/mrm-core/-/mrm-core-6.1.7.tgz#709193e789290c1c45d54b59c94ea8c5a9dfd5c1"
-  integrity sha512-jLGWrkupcgGIsLerrI/xmM/dFHbaoehRsuVbgYBrxYKXNMRBHN3Mgkd8cw+/ZCCoiZEXF8/SaZol0GCp6oBQ9g==
+mrm-core@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/mrm-core/-/mrm-core-7.0.0.tgz#3dda89d9b99d972907e4479bcd3772b3fc6c236a"
+  integrity sha512-NB22azURu3CMDN/VWvC5QO5zAUECe0VIPr+QWft+dxeeSz/mbsNAXt4GxaepA1VUGrddPMUmQuWikFPoaPKMbw==
   dependencies:
     babel-code-frame "^6.26.0"
     comment-json "^2.2.0"
@@ -9379,10 +9379,10 @@ mrm-core@^6.1.7:
     webpack-merge "^4.2.2"
     yaml "^2.0.0-1"
 
-mrm@^3.0.8:
-  version "3.0.10"
-  resolved "https://registry.yarnpkg.com/mrm/-/mrm-3.0.10.tgz#ccb29a26b321e758ec380bb6df1eef0d3c7e4dee"
-  integrity sha512-aRByZsPXMM8W0NHNH9afkKyk5OW4bB5pYNRIN+8iSVfpMAzqeMejmj/yIYcdFNJTksXmdPMfTaucm2NYdh4xIw==
+mrm@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/mrm/-/mrm-4.0.0.tgz#180f3d8bfa9af0306040ac95e301847a4a3fd0d5"
+  integrity sha512-Iz5ZF1Iy4aU2o/pQDuadnyc+u6DtXIEhAaKYyLHT+leLjC/mz6p/Uf6V8x8ITyQwilM13HiNNsFfED/0MHkmPA==
   dependencies:
     git-username "^1.0.0"
     glob "^7.1.6"
@@ -9395,7 +9395,7 @@ mrm@^3.0.8:
     longest "^2.0.1"
     middleearth-names "^1.1.0"
     minimist "^1.2.0"
-    mrm-core "^6.1.7"
+    mrm-core "^7.0.0"
     semver-utils "^1.1.4"
     update-notifier "^4.1.0"
     user-home "^2.0.0"
