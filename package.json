@@ -32,7 +32,7 @@
     "@web3-react/core": "^6.1.9",
     "@web3-react/injected-connector": "^6.0.7",
     "ethers": "^5.3.1",
-    "framer-motion": "^4",
+    "framer-motion": "^5",
     "graphql": "^15.7.2",
     "graphql-tag": "^2.12.5",
     "mrm": "^4.0.0",
