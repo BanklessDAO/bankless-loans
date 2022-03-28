@@ -13,6 +13,7 @@ import { Web3ReactProvider } from '@web3-react/core'
 import { DisposableWalletProvider } from '../testUtils/DisposableWalletProvider'
 import WalletContext from 'hooks/WalletContext'
 import { useWalletReducer } from 'hooks/useWalletReducer'
+import { ModalProvider, useModal } from 'hooks/ModalContext'
 
 declare global {
     interface Window {
@@ -85,6 +86,8 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
         connectionState,
         dispatch,
     }
+    const modal = useModal()
+
     const loader = (
         <Flex
             sx={{
@@ -121,23 +124,29 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
         <EthersWeb3ReactProvider>
             <ChakraProvider theme={customTheme}>
                 <WalletContext.Provider value={providerState}>
-                    <Layout>
-                        <PreviewConnector loader={loader}>
-                            <LiquityProvider
-                                loader={loader}
-                                unsupportedNetworkFallback={
-                                    unsupportedNetworkFallback
-                                }
-                                unsupportedMainnetFallback={
-                                    <UnsupportedMainnetFallback />
-                                }
-                            >
-                                <TransactionProvider>
-                                    <Component {...pageProps} />
-                                </TransactionProvider>
-                            </LiquityProvider>
-                        </PreviewConnector>
-                    </Layout>
+                    <ModalProvider
+                        isModalOpen={modal.isModalOpen}
+                        openModal={modal.openModal}
+                        closeModal={modal.closeModal}
+                    >
+                        <Layout>
+                            <PreviewConnector loader={loader}>
+                                <LiquityProvider
+                                    loader={loader}
+                                    unsupportedNetworkFallback={
+                                        unsupportedNetworkFallback
+                                    }
+                                    unsupportedMainnetFallback={
+                                        <UnsupportedMainnetFallback />
+                                    }
+                                >
+                                    <TransactionProvider>
+                                        <Component {...pageProps} />
+                                    </TransactionProvider>
+                                </LiquityProvider>
+                            </PreviewConnector>
+                        </Layout>
+                    </ModalProvider>
                 </WalletContext.Provider>
             </ChakraProvider>
         </EthersWeb3ReactProvider>

@@ -11,9 +11,9 @@ import { ConnectionConfirmationDialog } from './ConnectionConfirmationDialog'
 import { MetaMaskIcon } from './MetaMaskIcon'
 import { Icon } from './Icon'
 import { NavbarWallet } from './NavbarWallet'
+import { useModal } from 'hooks/ModalContext'
 import {
     Flex,
-    useDisclosure,
     Button,
     Modal,
     ModalOverlay,
@@ -42,13 +42,7 @@ type WalletConnectorProps = {
     onClose: () => void
 }
 
-export const WalletConnector = ({
-    children,
-    loader,
-    isOpen,
-    onOpen,
-    onClose,
-}: WalletConnectorProps) => {
+export const WalletConnector = ({ children, loader }: WalletConnectorProps) => {
     const { active, activate, error, deactivate } = useWeb3React<unknown>()
     const triedAuthorizedConnection = useAuthorizedConnection()
     const [tried, setTried] = useState(false)
@@ -58,6 +52,7 @@ export const WalletConnector = ({
     })
     const [isAccount, setIsAccount] = useState(false)
     const [isConnected, setIsConnected] = useState(false)
+    const modal = useModal()
     const disconnect = () => {
         return deactivate()
     }
@@ -67,24 +62,24 @@ export const WalletConnector = ({
     //     if (provider) activate(connectors[provider as keyof object])
     // }, [activate])
 
-    const setProvider = (type: string) => {
-        window.localStorage.setItem('provider', type)
-    }
+    // const setProvider = (type: string) => {
+    //     window.localStorage.setItem('provider', type)
+    // }
 
-    useEffect(() => {
-        const tryToActivateIfAuthorized = async () => {
-            try {
-                if (await Injected.isAuthorized()) {
-                    await activate(Injected, undefined, true)
-                } else {
-                    throw new Error('Unauthorized')
-                }
-            } catch {
-                setTried(true)
-            }
-        }
-        tryToActivateIfAuthorized()
-    }, [activate])
+    // useEffect(() => {
+    //     const tryToActivateIfAuthorized = async () => {
+    //         try {
+    //             if (await Injected.isAuthorized()) {
+    //                 await activate(Injected, undefined, true)
+    //             } else {
+    //                 throw new Error('Unauthorized')
+    //             }
+    //         } catch {
+    //             setTried(true)
+    //         }
+    //     }
+    //     tryToActivateIfAuthorized()
+    // }, [activate])
 
     useEffect(() => {
         const detectMetaMask = () =>
@@ -114,7 +109,7 @@ export const WalletConnector = ({
         return <>{loader}</>
     }
 
-    // if (connectionState.type === 'active' && isConnected) {
+    // if (connectionState.type === 'active') {
     //     return <>{children}</>
     // }
 
@@ -127,31 +122,34 @@ export const WalletConnector = ({
                 }}
             >
                 {connectionState.type === 'active' && isConnected ? (
-                    <NavbarWallet onClick={onOpen} />
+                    <NavbarWallet onClick={modal.openModal} />
                 ) : (
-                    <Button variant='active' onClick={onOpen}>
+                    <Button variant='active' onClick={modal.openModal}>
                         <Box sx={{ ml: 2 }}>Connect wallet</Box>
                     </Button>
                 )}
-                <Modal isOpen={isOpen} onClose={onClose} isCentered>
-                    <ModalOverlay />
-                    <ModalContent w='300px'>
-                        <ModalHeader>Select Wallet</ModalHeader>
-                        <ModalCloseButton
-                            _focus={{
-                                boxShadow: 'none',
-                            }}
-                        />
-                        {connectionState.type === 'active' &&
-                        isConnected &&
-                        isAccount ? (
+                {connectionState.type === 'active' && isAccount && (
+                    <Modal
+                        isOpen={modal.isModalOpen}
+                        onClose={modal.closeModal}
+                        isCentered
+                    >
+                        <ModalOverlay />
+                        <ModalContent w='300px'>
+                            <ModalHeader></ModalHeader>
+                            <ModalCloseButton
+                                _focus={{
+                                    boxShadow: 'none',
+                                }}
+                            />
                             <ModalBody paddingBottom='1.5rem'>
                                 <VStack>
                                     <Button
                                         variant='outline'
                                         onClick={() => {
                                             setIsAccount(false)
-                                            onClose()
+                                            modal.closeModal()
+                                            modal.openModal()
                                         }}
                                         w='100%'
                                     >
@@ -167,7 +165,7 @@ export const WalletConnector = ({
                                         onClick={() => {
                                             disconnect()
                                             setIsConnected(false)
-                                            onClose()
+                                            modal.closeModal()
                                         }}
                                         w='100%'
                                     >
@@ -180,7 +178,23 @@ export const WalletConnector = ({
                                     </Button>
                                 </VStack>
                             </ModalBody>
-                        ) : (
+                        </ModalContent>
+                    </Modal>
+                )}
+                {(connectionState.type !== 'active' || !isAccount) && (
+                    <Modal
+                        isOpen={modal.isModalOpen}
+                        onClose={modal.closeModal}
+                        isCentered
+                    >
+                        <ModalOverlay />
+                        <ModalContent w='300px'>
+                            <ModalHeader>Select Wallet</ModalHeader>
+                            <ModalCloseButton
+                                _focus={{
+                                    boxShadow: 'none',
+                                }}
+                            />
                             <ModalBody paddingBottom='1.5rem'>
                                 <VStack>
                                     <Button
@@ -191,8 +205,7 @@ export const WalletConnector = ({
                                                 connector: Injected,
                                             })
                                             activate(Injected)
-                                            setProvider('injected')
-                                            onClose()
+                                            modal.closeModal()
                                         }}
                                         w='100%'
                                     >
@@ -218,8 +231,7 @@ export const WalletConnector = ({
                                                 connector: WalletConnect,
                                             })
                                             activate(WalletConnect)
-                                            setProvider('walletConnect')
-                                            onClose()
+                                            modal.closeModal()
                                         }}
                                         w='100%'
                                     >
@@ -245,8 +257,7 @@ export const WalletConnector = ({
                                                 connector: CoinbaseWallet,
                                             })
                                             activate(CoinbaseWallet)
-                                            setProvider('coinbaseWallet')
-                                            onClose()
+                                            modal.closeModal()
                                         }}
                                         w='100%'
                                     >
@@ -266,14 +277,14 @@ export const WalletConnector = ({
                                     </Button>
                                 </VStack>
                             </ModalBody>
-                        )}
-                    </ModalContent>
-                </Modal>
+                        </ModalContent>
+                    </Modal>
+                )}
             </Flex>
             {connectionState.type === 'failed' && (
                 <Modal
                     isOpen={connectionState.type === 'failed'}
-                    onClose={onClose}
+                    onClose={modal.closeModal()}
                 >
                     <ModalOverlay />
                     <ModalContent>
@@ -318,7 +329,7 @@ export const WalletConnector = ({
             {connectionState.type === 'activating' && (
                 <Modal
                     isOpen={connectionState.type === 'activating'}
-                    onClose={onClose}
+                    onClose={modal.closeModal()}
                 >
                     <ModalOverlay />
                     <ModalContent>
@@ -361,7 +372,7 @@ export const WalletConnector = ({
             {connectionState.type === 'rejectedByUser' && (
                 <Modal
                     isOpen={connectionState.type === 'rejectedByUser'}
-                    onClose={onClose}
+                    onClose={modal.closeModal()}
                 >
                     <ModalOverlay />
                     <ModalContent>
@@ -384,7 +395,7 @@ export const WalletConnector = ({
             {connectionState.type === 'alreadyPending' && (
                 <Modal
                     isOpen={connectionState.type === 'alreadyPending'}
-                    onClose={onClose}
+                    onClose={modal.closeModal()}
                 >
                     <ModalOverlay />
                     <ModalContent>

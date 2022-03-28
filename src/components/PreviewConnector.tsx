@@ -50,11 +50,6 @@ export const PreviewConnector: React.FC<PreviewConnectorProps> = ({
     const stakingPreview = router.pathname == '/stake' && <StakingPreview />
 
     useEffect(() => {
-        const provider = window.localStorage.getItem('provider')
-        if (provider) activate(connectors[provider as keyof object])
-    }, [activate])
-
-    useEffect(() => {
         const detectMetaMask = () =>
             (window as MaybeHasMetaMask).ethereum?.isMetaMask ?? false
         setIsMetaMask(detectMetaMask)
