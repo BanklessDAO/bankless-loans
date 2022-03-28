@@ -6,9 +6,9 @@ const colors = {
     interactive: {
         dark: '#1E2230',
         dimmedBlue: '#4C5E9D',
-        purple: '#6257DE',
-        darkPurple: '#4234D0',
-        darkGrey: '#9393A1',
+        purple: '#6d29fe',
+        darkPurple: '#20113f',
+        darkGrey: '#2f2f2f',
         grey: '#CECECE',
         white: '#FFFFFF',
         transparentWhite: 'rgba(255, 255, 255, 0.35)',
