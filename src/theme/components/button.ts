@@ -76,6 +76,20 @@ const Button = {
             flex: '1',
             _hover: {
                 bg: 'interactive.grey',
+                // some views change color to black on hover, future bug will need fix
+                color: 'white',
+            },
+        },
+        max: {
+            bg: 'interactive.grey',
+            fontSize: '22px',
+            color: 'white',
+            py: 1,
+            px: 3,
+            height: '40px',
+            marginBottom: '10px',
+            _hover: {
+                bg: 'interactive.darkGrey',
                 color: '#000000',
             },
         },

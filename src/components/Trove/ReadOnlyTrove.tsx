@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { Container, Heading, Box, Flex, Button } from '@chakra-ui/react'
+import { Container, Heading, Box, Flex, Button, Spacer } from '@chakra-ui/react'
 import { useLiquitySelector } from '../../hooks/useLiquitySelector'
 import { LiquityStoreState } from '@liquity/lib-base'
 import { DisabledEditableRow } from './Editor'
@@ -41,12 +41,11 @@ export const ReadOnlyTrove: React.FC = () => {
 
                     <CollateralRatio value={trove.collateralRatio(price)} />
                 </Box>
-
                 <Flex variant='layout.actions'>
-                    <Button variant='outline' onClick={handleCloseTrove}>
+                    <Button variant='darkGrey' onClick={handleCloseTrove}>
                         Close Trove
                     </Button>
-                    <Button onClick={handleAdjustTrove}>
+                    <Button variant='mainPurple' onClick={handleAdjustTrove}>
                         <Icon name='pen' size='sm' />
                         &nbsp;Adjust
                     </Button>

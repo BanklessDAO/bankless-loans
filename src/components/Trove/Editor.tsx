@@ -290,13 +290,7 @@ export const EditableRow: React.FC<EditableRowProps> = ({
             >
                 {maxAmount && (
                     <Button
-                        sx={{
-                            fontSize: '22px',
-                            padding: 1,
-                            paddingX: 3,
-                            height: '40px',
-                            marginBottom: '10px',
-                        }}
+                        variant='max'
                         onClick={event => {
                             setEditedAmount(maxAmount)
                             event.stopPropagation()

@@ -273,12 +273,12 @@ export const Opening: React.FC = () => {
                 />
 
                 <Flex variant='layout.actions'>
-                    <Button variant='cancel' onClick={handleCancelPressed}>
+                    <Button variant='darkGrey' onClick={handleCancelPressed}>
                         Cancel
                     </Button>
 
                     {gasEstimationState.type === 'inProgress' ? (
-                        <Button disabled>
+                        <Button variant='darkGrey' disabled>
                             <Spinner size='md' sx={{ color: 'background' }} />
                         </Button>
                     ) : stableTroveChange ? (
