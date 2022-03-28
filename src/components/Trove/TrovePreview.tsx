@@ -8,6 +8,7 @@ import {
     Row,
     DisabledEditableRow,
 } from './Editor'
+import { useModal } from 'hooks/ModalContext'
 
 const editableStyle = {
     flexGrow: 1,
@@ -24,6 +25,7 @@ const editableStyle = {
 export const TrovePreview = (): JSX.Element => {
     //will need to address hard-coded width for mobile
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const modal = useModal()
     return (
         <Flex
             w='555px'
@@ -61,9 +63,9 @@ export const TrovePreview = (): JSX.Element => {
                     <h3>Please connect your wallet to use our services</h3>
                     <br />
                     <WalletConnector
-                        isOpen={isOpen}
-                        onOpen={onOpen}
-                        onClose={onClose}
+                        isOpen={modal.isModalOpen}
+                        onOpen={modal.openModal}
+                        onClose={modal.closeModal}
                     />
                 </Box>
             </Box>

@@ -3,9 +3,10 @@ import { Flex, Box, useDisclosure } from '@chakra-ui/react'
 import Logo from 'components/Logo'
 import NavbarLinks from 'components/NavbarLinks'
 import { WalletConnector } from 'components/WalletConnector'
+import { useModal } from 'hooks/ModalContext'
 
 export default function Navbar() {
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const modal = useModal()
     return (
         <Flex
             as='nav'
@@ -24,9 +25,9 @@ export default function Navbar() {
                 display={['none', 'none', 'flex']}
             >
                 <WalletConnector
-                    isOpen={isOpen}
-                    onOpen={onOpen}
-                    onClose={onClose}
+                    isOpen={modal.isModalOpen}
+                    onOpen={modal.openModal}
+                    onClose={modal.closeModal}
                 />
             </Flex>
         </Flex>
