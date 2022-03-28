@@ -20,5 +20,9 @@ export const StakingManagerAction: React.FC<StakingActionProps> = ({
             : liquity.send.unstakeLQTY.bind(liquity.send, change.unstakeLQTY)
     )
 
-    return <Button onClick={sendTransaction}>{children}</Button>
+    return (
+        <Button variant='mainPurple' onClick={sendTransaction}>
+            {children}
+        </Button>
+    )
 }
