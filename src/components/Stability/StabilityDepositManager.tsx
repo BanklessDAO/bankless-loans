@@ -163,7 +163,9 @@ export const StabilityDepositManager: React.FC = () => {
                         Confirm
                     </StabilityDepositAction>
                 ) : (
-                    <Button disabled>Confirm</Button>
+                    <Button variant='darkPurple' disabled>
+                        Confirm
+                    </Button>
                 )}
             </Flex>
         </StabilityDepositEditor>
