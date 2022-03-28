@@ -16,6 +16,7 @@ export const StakingGainsAction: React.FC = () => {
     )
     return (
         <Button
+            variant='darkPurple'
             onClick={sendTransaction}
             disabled={collateralGain.isZero && lusdGain.isZero}
         >

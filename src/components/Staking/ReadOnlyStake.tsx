@@ -55,7 +55,7 @@ export const ReadOnlyStake: React.FC = () => {
 
                 <Flex variant='layout.actions'>
                     <Button
-                        variant='outline'
+                        variant='darkGrey'
                         onClick={() => dispatch({ type: 'startAdjusting' })}
                     >
                         <Icon name='pen' size='sm' />
