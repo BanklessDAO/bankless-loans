@@ -333,7 +333,7 @@ export const Adjusting: React.FC = () => {
                 />
 
                 <Flex variant='layout.actions'>
-                    <Button variant='cancel' onClick={handleCancelPressed}>
+                    <Button variant='darkGrey' onClick={handleCancelPressed}>
                         Cancel
                     </Button>
 
@@ -347,7 +347,9 @@ export const Adjusting: React.FC = () => {
                             Confirm
                         </TroveAction>
                     ) : (
-                        <Button disabled>Confirm</Button>
+                        <Button variant='mainPurple' disabled>
+                            Confirm
+                        </Button>
                     )}
                 </Flex>
             </Box>
