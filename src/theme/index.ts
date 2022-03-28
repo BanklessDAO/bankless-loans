@@ -36,6 +36,7 @@ const customTheme = extendTheme({
         Section,
         Box,
         Container,
+        Button,
     },
     layerStyles: {
         baseStyle: {
