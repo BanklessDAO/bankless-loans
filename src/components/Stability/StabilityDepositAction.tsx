@@ -41,5 +41,9 @@ export const StabilityDepositAction: React.FC<StabilityDepositActionProps> = ({
               )
     )
 
-    return <Button onClick={sendTransaction}>{children}</Button>
+    return (
+        <Button variant='mainPurple' onClick={sendTransaction}>
+            {children}
+        </Button>
+    )
 }

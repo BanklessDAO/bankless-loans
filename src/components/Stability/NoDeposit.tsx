@@ -36,7 +36,11 @@ export const NoDeposit: React.FC = () => {
                     >
                         <Yield />
                     </Flex>
-                    <Button onClick={handleOpenTrove}>Deposit</Button>
+                </Flex>
+                <Flex>
+                    <Button variant='mainPurple' onClick={handleOpenTrove}>
+                        Deposit
+                    </Button>
                 </Flex>
             </Box>
         </CardBase>
