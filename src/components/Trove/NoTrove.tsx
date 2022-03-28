@@ -20,7 +20,9 @@ export const NoTrove: React.FC = props => {
                 </InfoMessage>
 
                 <Flex variant='layout.actions'>
-                    <Button onClick={handleOpenTrove}>Open Trove</Button>
+                    <Button variant='mainPurple' onClick={handleOpenTrove}>
+                        Open Trove
+                    </Button>
                 </Flex>
             </Box>
         </CardBase>
