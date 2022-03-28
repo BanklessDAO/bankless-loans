@@ -66,20 +66,20 @@ export const WalletConnector = ({ children, loader }: WalletConnectorProps) => {
     //     window.localStorage.setItem('provider', type)
     // }
 
-    // useEffect(() => {
-    //     const tryToActivateIfAuthorized = async () => {
-    //         try {
-    //             if (await Injected.isAuthorized()) {
-    //                 await activate(Injected, undefined, true)
-    //             } else {
-    //                 throw new Error('Unauthorized')
-    //             }
-    //         } catch {
-    //             setTried(true)
-    //         }
-    //     }
-    //     tryToActivateIfAuthorized()
-    // }, [activate])
+    useEffect(() => {
+        const tryToActivateIfAuthorized = async () => {
+            try {
+                if (await Injected.isAuthorized()) {
+                    await activate(Injected, undefined, true)
+                } else {
+                    throw new Error('Unauthorized')
+                }
+            } catch {
+                setTried(true)
+            }
+        }
+        tryToActivateIfAuthorized()
+    }, [activate])
 
     useEffect(() => {
         const detectMetaMask = () =>
@@ -284,7 +284,7 @@ export const WalletConnector = ({ children, loader }: WalletConnectorProps) => {
             {connectionState.type === 'failed' && (
                 <Modal
                     isOpen={connectionState.type === 'failed'}
-                    onClose={modal.closeModal()}
+                    onClose={() => modal.closeModal()}
                 >
                     <ModalOverlay />
                     <ModalContent>
@@ -329,7 +329,7 @@ export const WalletConnector = ({ children, loader }: WalletConnectorProps) => {
             {connectionState.type === 'activating' && (
                 <Modal
                     isOpen={connectionState.type === 'activating'}
-                    onClose={modal.closeModal()}
+                    onClose={() => modal.closeModal()}
                 >
                     <ModalOverlay />
                     <ModalContent>
@@ -372,7 +372,7 @@ export const WalletConnector = ({ children, loader }: WalletConnectorProps) => {
             {connectionState.type === 'rejectedByUser' && (
                 <Modal
                     isOpen={connectionState.type === 'rejectedByUser'}
-                    onClose={modal.closeModal()}
+                    onClose={() => modal.closeModal()}
                 >
                     <ModalOverlay />
                     <ModalContent>
@@ -395,7 +395,7 @@ export const WalletConnector = ({ children, loader }: WalletConnectorProps) => {
             {connectionState.type === 'alreadyPending' && (
                 <Modal
                     isOpen={connectionState.type === 'alreadyPending'}
-                    onClose={modal.closeModal()}
+                    onClose={() => modal.closeModal()}
                 >
                     <ModalOverlay />
                     <ModalContent>
