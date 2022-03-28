@@ -123,12 +123,12 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
     return (
         <EthersWeb3ReactProvider>
             <ChakraProvider theme={customTheme}>
-                <WalletContext.Provider value={providerState}>
-                    <ModalProvider
-                        isModalOpen={modal.isModalOpen}
-                        openModal={modal.openModal}
-                        closeModal={modal.closeModal}
-                    >
+                <ModalProvider
+                    isModalOpen={modal.isModalOpen}
+                    openModal={modal.openModal}
+                    closeModal={modal.closeModal}
+                >
+                    <WalletContext.Provider value={providerState}>
                         <Layout>
                             <PreviewConnector loader={loader}>
                                 <LiquityProvider
@@ -146,8 +146,8 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
                                 </LiquityProvider>
                             </PreviewConnector>
                         </Layout>
-                    </ModalProvider>
-                </WalletContext.Provider>
+                    </WalletContext.Provider>
+                </ModalProvider>
             </ChakraProvider>
         </EthersWeb3ReactProvider>
     )
