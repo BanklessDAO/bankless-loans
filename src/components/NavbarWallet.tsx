@@ -16,17 +16,8 @@ export const NavbarWallet = ({ onClick }: NavbarWalletProps): JSX.Element => {
     const address = account ? account : ''
 
     return (
-        <Button onClick={onClick} sx={{ bg: 'transparent' }}>
-            <HStack
-                bg='interactive.gray.13'
-                p={2}
-                borderRadius='18px'
-                alignItems='center'
-                borderWidth='1.6px'
-                borderStyle='solid'
-                borderColor='interactive.gray.7D'
-                mr={1}
-            >
+        <Button variant='wallet' onClick={onClick}>
+            <HStack>
                 <Text
                     as='p'
                     isTruncated
