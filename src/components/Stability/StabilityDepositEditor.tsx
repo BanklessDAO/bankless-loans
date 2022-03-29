@@ -137,7 +137,6 @@ export const StabilityDepositEditor: React.FC<StabilityDepositEditorProps> = ({
                                 <InfoIcon
                                     tooltip={
                                         <Box
-                                            variant='tooltip'
                                             sx={{
                                                 padding: '10px',
                                                 bg: '#a7a7e3',

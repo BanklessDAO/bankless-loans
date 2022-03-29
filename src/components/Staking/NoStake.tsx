@@ -14,7 +14,7 @@ export const NoStake: React.FC = () => {
                 <InfoMessage title={`You have not staked ${GT} yet.`}>
                     Stake {GT} to earn a share of borrowing and redemption fees.
                 </InfoMessage>
-                <Flex variant='layout.actions'>
+                <Flex>
                     <Button
                         variant='mainPurple'
                         onClick={() => dispatch({ type: 'startAdjusting' })}

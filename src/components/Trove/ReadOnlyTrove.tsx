@@ -40,7 +40,7 @@ export const ReadOnlyTrove: React.FC = () => {
                     />
                     <CollateralRatio value={trove.collateralRatio(price)} />
                 </Box>
-                <Flex variant='layout.actions'>
+                <Flex>
                     <Button variant='darkGrey' onClick={handleCloseTrove}>
                         Close Trove
                     </Button>
