@@ -28,6 +28,7 @@ import {
     selectForTroveChangeValidation,
     validateTroveChange,
 } from './validation/validateTroveChange'
+import { CardBase } from 'components/Layout/CardBase'
 
 const selector = (state: LiquityStoreState) => {
     const { fees, price, accountBalance } = state
@@ -93,14 +94,7 @@ export const Opening: React.FC = () => {
     }, [collateral, borrowAmount])
     //will need to address hard-coded width for mobile
     return (
-        <Box
-            maxW='md'
-            minWidth='504px'
-            borderWidth='3px'
-            borderRadius='lg'
-            overflow='hidden'
-            padding='8px'
-        >
+        <CardBase>
             <Heading>
                 Trove
                 {isDirty && !isTransactionPending && (
@@ -114,7 +108,7 @@ export const Opening: React.FC = () => {
                 )}
             </Heading>
 
-            <Box sx={{ p: [2, 3] }}>
+            <Box w='full'>
                 <EditableRow
                     label='Collateral'
                     inputID='trove-collateral'
@@ -279,12 +273,12 @@ export const Opening: React.FC = () => {
                 />
 
                 <Flex variant='layout.actions'>
-                    <Button variant='cancel' onClick={handleCancelPressed}>
+                    <Button variant='darkGrey' onClick={handleCancelPressed}>
                         Cancel
                     </Button>
 
                     {gasEstimationState.type === 'inProgress' ? (
-                        <Button disabled>
+                        <Button variant='darkGrey' disabled>
                             <Spinner size='md' sx={{ color: 'background' }} />
                         </Button>
                     ) : stableTroveChange ? (
@@ -302,6 +296,6 @@ export const Opening: React.FC = () => {
                 </Flex>
             </Box>
             {isTransactionPending && <LoadingOverlay />}
-        </Box>
+        </CardBase>
     )
 }

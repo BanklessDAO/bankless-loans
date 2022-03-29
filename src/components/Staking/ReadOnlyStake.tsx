@@ -7,6 +7,7 @@ import { LoadingOverlay } from '../LoadingOverlay'
 import { Icon } from '../Icon'
 import { useStakingView } from './context/StakingViewContext'
 import { StakingGainsAction } from './StakingGainsAction'
+import { CardBase } from 'components/Layout/CardBase'
 
 const select = ({ lqtyStake, totalStakedLQTY }: LiquityStoreState) => ({
     lqtyStake,
@@ -19,7 +20,7 @@ export const ReadOnlyStake: React.FC = () => {
     const poolShare = lqtyStake.stakedLQTY.mulDiv(100, totalStakedLQTY)
 
     return (
-        <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
+        <CardBase>
             <Heading>Staking</Heading>
             <Box sx={{ p: [2, 3] }}>
                 <DisabledEditableRow
@@ -54,7 +55,7 @@ export const ReadOnlyStake: React.FC = () => {
 
                 <Flex variant='layout.actions'>
                     <Button
-                        variant='outline'
+                        variant='darkGrey'
                         onClick={() => dispatch({ type: 'startAdjusting' })}
                     >
                         <Icon name='pen' size='sm' />
@@ -65,6 +66,6 @@ export const ReadOnlyStake: React.FC = () => {
                 </Flex>
             </Box>
             {changePending && <LoadingOverlay />}
-        </Box>
+        </CardBase>
     )
 }

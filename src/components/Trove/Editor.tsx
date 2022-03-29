@@ -19,7 +19,7 @@ export const Row: React.FC<RowProps> = ({
     infoIcon,
 }) => {
     return (
-        <Flex sx={{ alignItems: 'stretch', ...sx }}>
+        <Flex sx={{ alignItems: 'stretch', ...sx }} position='relative'>
             <FormLabel
                 id={labelId}
                 htmlFor={labelFor}
@@ -141,11 +141,10 @@ export const StaticAmounts: React.FC<StaticAmountsProps> = ({
 
 const staticStyle = {
     flexGrow: 1,
-    marginBottom: 3,
     paddingLeft: 3,
     paddingRight: '11px',
     paddingTop: '28px',
-    fontSize: '22px',
+    fontSize: '18px',
     border: 1,
     borderColor: 'muted',
     borderRadius: '10px',
@@ -172,10 +171,7 @@ export const StaticRow: React.FC<StaticRowProps> = ({
     infoIcon,
     ...props
 }) => (
-    <Row
-        {...{ label, labelId, labelFor, infoIcon }}
-        sx={{ marginTop: [-2, -3], paddingBottom: [2, 3] }}
-    >
+    <Row {...{ label, labelId, labelFor, infoIcon }}>
         <StaticAmounts {...props} />
     </Row>
 )
@@ -239,6 +235,7 @@ export const EditableRow: React.FC<EditableRowProps> = ({
                 borderRadius: '10px',
                 marginBottom: '16px',
                 height: '70px',
+                position: 'relative',
             }}
         >
             <Input
@@ -278,7 +275,6 @@ export const EditableRow: React.FC<EditableRowProps> = ({
                     ...editableStyle,
                     fontSize: '22px',
                     bg: invalid ? 'salmon' : 'background',
-                    marginBottom: '16px',
                     height: '70px',
                 }}
                 labelledBy={`${inputID}-label`}
@@ -294,13 +290,7 @@ export const EditableRow: React.FC<EditableRowProps> = ({
             >
                 {maxAmount && (
                     <Button
-                        sx={{
-                            fontSize: '22px',
-                            padding: 1,
-                            paddingX: 3,
-                            height: '40px',
-                            marginBottom: '10px',
-                        }}
+                        variant='max'
                         onClick={event => {
                             setEditedAmount(maxAmount)
                             event.stopPropagation()

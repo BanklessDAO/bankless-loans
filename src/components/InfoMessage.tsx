@@ -11,7 +11,7 @@ export const InfoMessage: React.FC<InfoMessageProps> = ({
     children,
     icon,
 }) => (
-    <Box sx={{ mx: 1, mb: 3 }}>
+    <Box sx={{ mx: 1, mb: 1 }}>
         <Flex sx={{ alignItems: 'center', mb: '10px' }}>
             <Box sx={{ mr: '12px', fontSize: '20px' }}>
                 {icon || <Icon name='info-circle' />}
@@ -20,6 +20,6 @@ export const InfoMessage: React.FC<InfoMessageProps> = ({
             <Heading as='h3'>{title}</Heading>
         </Flex>
 
-        <Text sx={{ fontSize: '14px' }}>{children}</Text>
+        <Text sx={{ fontSize: '10px' }}>{children}</Text>
     </Box>
 )

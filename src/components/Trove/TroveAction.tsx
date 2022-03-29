@@ -36,5 +36,9 @@ export const TroveAction: React.FC<TroveActionProps> = ({
               })
     )
 
-    return <Button onClick={sendTransaction}>{children}</Button>
+    return (
+        <Button variant='mainPurple' onClick={sendTransaction}>
+            {children}
+        </Button>
+    )
 }

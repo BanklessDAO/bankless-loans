@@ -5,6 +5,7 @@ import { LiquityStoreState } from '@liquity/lib-base'
 import { useLiquitySelector } from '../../hooks/useLiquitySelector'
 import { useTroveView } from './context/TroveViewContext'
 import { InfoMessage } from '../InfoMessage'
+import { CardBase } from 'components/Layout/CardBase'
 
 const select = ({ collateralSurplusBalance }: LiquityStoreState) => ({
     hasSurplusCollateral: !collateralSurplusBalance.isZero,
@@ -19,7 +20,7 @@ export const LiquidatedTrove: React.FC = () => {
     }, [dispatchEvent])
 
     return (
-        <Container>
+        <CardBase>
             <Heading>Trove</Heading>
             <Box sx={{ p: [2, 3] }}>
                 <InfoMessage title='Your Trove has been liquidated.'>
@@ -31,10 +32,12 @@ export const LiquidatedTrove: React.FC = () => {
                 <Flex variant='layout.actions'>
                     {hasSurplusCollateral && <CollateralSurplusAction />}
                     {!hasSurplusCollateral && (
-                        <Button onClick={handleOpenTrove}>Open Trove</Button>
+                        <Button variant='mainPurple' onClick={handleOpenTrove}>
+                            Open Trove
+                        </Button>
                     )}
                 </Flex>
             </Box>
-        </Container>
+        </CardBase>
     )
 }

@@ -4,6 +4,7 @@ import { InfoMessage } from '../InfoMessage'
 import { useStabilityView } from './context/StabilityViewContext'
 import { RemainingLQTY } from './RemainingLQTY'
 import { Yield } from './Yield'
+import { CardBase } from 'components/Layout/CardBase'
 
 export const NoDeposit: React.FC = () => {
     const { dispatchEvent } = useStabilityView()
@@ -13,7 +14,7 @@ export const NoDeposit: React.FC = () => {
     }, [dispatchEvent])
 
     return (
-        <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
+        <CardBase>
             <Heading>
                 Stability Pool
                 <Flex sx={{ justifyContent: 'flex-end' }}>
@@ -35,9 +36,13 @@ export const NoDeposit: React.FC = () => {
                     >
                         <Yield />
                     </Flex>
-                    <Button onClick={handleOpenTrove}>Deposit</Button>
+                </Flex>
+                <Flex>
+                    <Button variant='mainPurple' onClick={handleOpenTrove}>
+                        Deposit
+                    </Button>
                 </Flex>
             </Box>
-        </Box>
+        </CardBase>
     )
 }

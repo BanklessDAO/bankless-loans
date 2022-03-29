@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Heading, Box, Button } from '@chakra-ui/react'
+import { Flex, Heading, Box, Button } from '@chakra-ui/react'
 import {
     Decimal,
     Decimalish,
@@ -12,6 +12,7 @@ import { COIN, GT } from '../../strings'
 import { Icon } from '../Icon'
 import { EditableRow, StaticRow } from '../Trove/Editor'
 import { LoadingOverlay } from '../LoadingOverlay'
+import { CardBase } from '../Layout/CardBase'
 import { useStakingView } from './context/StakingViewContext'
 
 const select = ({ lqtyBalance, totalStakedLQTY }: LiquityStoreState) => ({
@@ -54,7 +55,7 @@ export const StakingEditor: React.FC<StakingEditorProps> = ({
         Difference.between(newPoolShare, originalPoolShare).nonZero
 
     return (
-        <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
+        <CardBase>
             <Heading>
                 {title}
                 {edited && !changePending && (
@@ -124,6 +125,6 @@ export const StakingEditor: React.FC<StakingEditorProps> = ({
                 {children}
             </Box>
             {changePending && <LoadingOverlay />}
-        </Box>
+        </CardBase>
     )
 }

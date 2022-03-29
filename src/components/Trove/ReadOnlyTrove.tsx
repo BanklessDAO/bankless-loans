@@ -1,11 +1,12 @@
 import React, { useCallback } from 'react'
-import { Container, Heading, Box, Flex, Button } from '@chakra-ui/react'
+import { Container, Heading, Box, Flex, Button, Spacer } from '@chakra-ui/react'
 import { useLiquitySelector } from '../../hooks/useLiquitySelector'
 import { LiquityStoreState } from '@liquity/lib-base'
 import { DisabledEditableRow } from './Editor'
 import { useTroveView } from './context/TroveViewContext'
 import { Icon } from '../Icon'
 import { CollateralRatio } from './CollateralRatio'
+import { CardBase } from '../Layout/CardBase'
 
 const select = ({ trove, price }: LiquityStoreState) => ({ trove, price })
 
@@ -17,14 +18,12 @@ export const ReadOnlyTrove: React.FC = () => {
     const handleCloseTrove = useCallback(() => {
         dispatchEvent('CLOSE_TROVE_PRESSED')
     }, [dispatchEvent])
-
     const { trove, price } = useLiquitySelector(select)
 
-    // console.log("READONLY TROVE", trove.collateral.prettify(4));
     return (
-        <Container>
+        <CardBase>
             <Heading>Trove</Heading>
-            <Box sx={{ p: [2, 3] }}>
+            <Box overflow='hidden' m={0}>
                 <Box>
                     <DisabledEditableRow
                         label='Collateral'
@@ -42,17 +41,16 @@ export const ReadOnlyTrove: React.FC = () => {
 
                     <CollateralRatio value={trove.collateralRatio(price)} />
                 </Box>
-
                 <Flex variant='layout.actions'>
-                    <Button variant='outline' onClick={handleCloseTrove}>
+                    <Button variant='darkGrey' onClick={handleCloseTrove}>
                         Close Trove
                     </Button>
-                    <Button onClick={handleAdjustTrove}>
+                    <Button variant='mainPurple' onClick={handleAdjustTrove}>
                         <Icon name='pen' size='sm' />
                         &nbsp;Adjust
                     </Button>
                 </Flex>
             </Box>
-        </Container>
+        </CardBase>
     )
 }

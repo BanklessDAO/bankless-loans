@@ -23,7 +23,8 @@
     "typeRoots": [
       "./types",
       "./node_modules/@types"
-    ]
+    ],
+    "incremental": true
   },
   "include": [
     "next-env.d.ts",
@@ -34,5 +35,5 @@
   "exclude": [
     "node_modules",
     "typings"
-  ],
+  ]
 }

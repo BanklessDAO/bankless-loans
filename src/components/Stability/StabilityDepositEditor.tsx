@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Heading, Box, Button } from '@chakra-ui/react'
+import { Flex, Heading, Box, Button } from '@chakra-ui/react'
 
 import {
     Decimal,
@@ -17,6 +17,7 @@ import { Icon } from '../Icon'
 import { EditableRow, StaticRow } from '../Trove/Editor'
 import { LoadingOverlay } from '../LoadingOverlay'
 import { InfoIcon } from '../InfoIcon'
+import { CardBase } from 'components/Layout/CardBase'
 
 const select = ({ lusdBalance, lusdInStabilityPool }: LiquityStoreState) => ({
     lusdBalance,
@@ -63,7 +64,7 @@ export const StabilityDepositEditor: React.FC<StabilityDepositEditorProps> = ({
         Difference.between(newPoolShare, originalPoolShare).nonZero
 
     return (
-        <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
+        <CardBase>
             <Heading>
                 Stability Pool
                 {edited && !changePending && (
@@ -166,6 +167,6 @@ export const StabilityDepositEditor: React.FC<StabilityDepositEditorProps> = ({
             </Box>
 
             {changePending && <LoadingOverlay />}
-        </Box>
+        </CardBase>
     )
 }
