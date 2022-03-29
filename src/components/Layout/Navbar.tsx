@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Box, useDisclosure } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 import Logo from 'components/Logo'
 import NavbarLinks from 'components/NavbarLinks'
 import { WalletConnector } from 'components/WalletConnector'

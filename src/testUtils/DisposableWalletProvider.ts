@@ -83,8 +83,6 @@ export class DisposableWalletProvider {
                 )
         }
 
-        //console.log({ method, params });
-
         const response = await fetch(this.url, {
             method: 'POST',
             headers: {
@@ -99,8 +97,6 @@ export class DisposableWalletProvider {
         })
 
         const json = await response.json()
-
-        //console.log(json);
 
         if (json.error) {
             const { message, ...rest } = json.error
