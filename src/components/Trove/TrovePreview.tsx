@@ -24,7 +24,6 @@ const editableStyle = {
 
 export const TrovePreview = (): JSX.Element => {
     //will need to address hard-coded width for mobile
-    const { isOpen, onOpen, onClose } = useDisclosure()
     const modal = useModal()
     return (
         <Flex

@@ -43,7 +43,8 @@ type WalletConnectorProps = {
 }
 
 export const WalletConnector = ({ children, loader }: WalletConnectorProps) => {
-    const { active, activate, error, deactivate } = useWeb3React<unknown>()
+    const { account, active, activate, error, deactivate } =
+        useWeb3React<unknown>()
     const triedAuthorizedConnection = useAuthorizedConnection()
     const [tried, setTried] = useState(false)
     const [isMetaMask, setIsMetaMask] = useState(false)
@@ -53,9 +54,6 @@ export const WalletConnector = ({ children, loader }: WalletConnectorProps) => {
     const [isAccount, setIsAccount] = useState(false)
     const [isConnected, setIsConnected] = useState(false)
     const modal = useModal()
-    const disconnect = () => {
-        return deactivate()
-    }
 
     // useEffect(() => {
     //     const provider = window.localStorage.getItem('provider')
