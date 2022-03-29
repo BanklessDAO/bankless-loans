@@ -116,6 +116,19 @@ const Button = {
             color: 'interactive.white',
             borderRadius: '6px',
         },
+        wallet: {
+            bg: 'interactive.gray.13',
+            p: 2,
+            borderRadius: '18px',
+            alignItems: 'center',
+            borderWidth: '1.6px',
+            borderStyle: 'solid',
+            borderColor: 'interactive.gray.7D',
+            mr: 1,
+            _hover: {
+                bg: 'interactive.gray.24',
+            },
+        },
     },
     defaultProps: {},
 }
