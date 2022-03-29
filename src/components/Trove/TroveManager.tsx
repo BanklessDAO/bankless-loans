@@ -62,15 +62,11 @@ const reduce = (
     state: TroveManagerState,
     action: TroveManagerAction
 ): TroveManagerState => {
-    // console.log(state);
-    // console.log(action);
-
     const { original, edited, changePending, debtDirty, addedMinimumDebt } =
         state
 
     switch (action.type) {
         case 'startChange': {
-            console.log('starting change')
             return { ...state, changePending: true }
         }
 

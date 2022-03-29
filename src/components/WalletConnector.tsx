@@ -7,8 +7,6 @@ import { useWalletReducer } from '../hooks/useWalletReducer'
 import { Injected } from '../connectors/connectors'
 import { useAuthorizedConnection } from '../hooks/useAuthorizedConnection'
 import { RetryDialog } from './RetryDialog'
-import { ConnectionConfirmationDialog } from './ConnectionConfirmationDialog'
-import { MetaMaskIcon } from './MetaMaskIcon'
 import { Icon } from './Icon'
 import { NavbarWallet } from './NavbarWallet'
 import { useModal } from 'hooks/ModalContext'
@@ -55,15 +53,6 @@ export const WalletConnector = ({ children, loader }: WalletConnectorProps) => {
     const [isConnected, setIsConnected] = useState(false)
     const modal = useModal()
 
-    // useEffect(() => {
-    //     const provider = window.localStorage.getItem('provider')
-    //     if (provider) activate(connectors[provider as keyof object])
-    // }, [activate])
-
-    // const setProvider = (type: string) => {
-    //     window.localStorage.setItem('provider', type)
-    // }
-
     useEffect(() => {
         const tryToActivateIfAuthorized = async () => {
             try {
@@ -94,7 +83,6 @@ export const WalletConnector = ({ children, loader }: WalletConnectorProps) => {
 
     useEffect(() => {
         if (active) {
-            console.log('isConnected', isConnected)
             setIsConnected(true)
             setIsAccount(true)
             dispatch({ type: 'finishActivating' })
@@ -107,10 +95,6 @@ export const WalletConnector = ({ children, loader }: WalletConnectorProps) => {
         return <>{loader}</>
     }
 
-    // if (connectionState.type === 'active') {
-    //     return <>{children}</>
-    // }
-
     return (
         <>
             <Flex
@@ -119,10 +103,10 @@ export const WalletConnector = ({ children, loader }: WalletConnectorProps) => {
                     alignItems: 'center',
                 }}
             >
-                {connectionState.type === 'active' && isConnected ? (
+                {connectionState.type === 'active' || account ? (
                     <NavbarWallet onClick={modal.openModal} />
                 ) : (
-                    <Button variant='active' onClick={modal.openModal}>
+                    <Button variant='mainPurple' onClick={modal.openModal}>
                         <Box sx={{ ml: 2 }}>Connect wallet</Box>
                     </Button>
                 )}
@@ -156,22 +140,6 @@ export const WalletConnector = ({ children, loader }: WalletConnectorProps) => {
                                             justifyContent='center'
                                         >
                                             <Text>Change</Text>
-                                        </HStack>
-                                    </Button>
-                                    <Button
-                                        variant='outline'
-                                        onClick={() => {
-                                            disconnect()
-                                            setIsConnected(false)
-                                            modal.closeModal()
-                                        }}
-                                        w='100%'
-                                    >
-                                        <HStack
-                                            w='100%'
-                                            justifyContent='center'
-                                        >
-                                            <Text>Disconnect</Text>
                                         </HStack>
                                     </Button>
                                 </VStack>
@@ -321,49 +289,6 @@ export const WalletConnector = ({ children, loader }: WalletConnectorProps) => {
                                 </Flex>
                             </RetryDialog>
                         </ModalBody>
-                    </ModalContent>
-                </Modal>
-            )}
-            {connectionState.type === 'activating' && (
-                <Modal
-                    isOpen={connectionState.type === 'activating'}
-                    onClose={() => modal.closeModal()}
-                >
-                    <ModalOverlay />
-                    <ModalContent>
-                        <ConnectionConfirmationDialog
-                            title={
-                                isMetaMask
-                                    ? 'Confirm connection in MetaMask'
-                                    : 'Confirm connection in your wallet'
-                            }
-                            icon={
-                                isMetaMask ? (
-                                    <MetaMaskIcon />
-                                ) : (
-                                    <Icon name='wallet' size='lg' />
-                                )
-                            }
-                            onCancel={() => dispatch({ type: 'cancel' })}
-                        >
-                            <Text sx={{ textAlign: 'center' }}>
-                                Confirm the request that&apos;s just appeared.
-                                {isMetaMask ? (
-                                    <>
-                                        {' '}
-                                        If you can&apos;t see a request, open
-                                        your MetaMask extension via your
-                                        browser.
-                                    </>
-                                ) : (
-                                    <>
-                                        {' '}
-                                        If you can&apos;t see a request, you
-                                        might have to open your wallet.
-                                    </>
-                                )}
-                            </Text>
-                        </ConnectionConfirmationDialog>
                     </ModalContent>
                 </Modal>
             )}
