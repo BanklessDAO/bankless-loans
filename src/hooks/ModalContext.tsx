@@ -9,8 +9,7 @@ interface ModalContextProps {
 }
 
 const ModalContext = createContext({} as ModalContextProps)
-// Provider component that wraps your app and makes modal object ...
-// ... available to any child component that calls useModal().
+
 export function ModalProvider({ children }: ModalContextProps) {
     const modal = useModalDisclosure()
     return (
@@ -18,13 +17,10 @@ export function ModalProvider({ children }: ModalContextProps) {
     )
 }
 
-// Hook for child components to get the modal object ...
-// ... and re-render when it changes.
 export const useModal = () => {
     return useContext(ModalContext)
 }
 
-// Provider hook that creates modal object and handles state
 function useModalDisclosure() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const isModalOpen = isOpen

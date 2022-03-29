@@ -53,7 +53,7 @@ export const ReadOnlyStake: React.FC = () => {
                     unit={COIN}
                 />
 
-                <Flex variant='layout.actions'>
+                <Flex>
                     <Button
                         variant='darkGrey'
                         onClick={() => dispatch({ type: 'startAdjusting' })}
