@@ -1,26 +1,8 @@
 import React from 'react'
-import { Flex, Box, Heading, useDisclosure } from '@chakra-ui/react'
+import { Flex, Box, Heading } from '@chakra-ui/react'
 import { WalletConnector } from '../WalletConnector'
-import {
-    EditableRow,
-    StaticRow,
-    StaticAmounts,
-    Row,
-    DisabledEditableRow,
-} from './Editor'
+import { DisabledEditableRow } from './Editor'
 import { useModal } from 'hooks/ModalContext'
-
-const editableStyle = {
-    flexGrow: 1,
-    marginBottom: 3,
-    paddingLeft: 3,
-    paddingRight: '11px',
-    paddingTop: '28px',
-    fontSize: '22px',
-    boxShadow: [1, 2],
-    border: 1,
-    borderColor: 'muted',
-}
 
 export const TrovePreview = (): JSX.Element => {
     //will need to address hard-coded width for mobile
