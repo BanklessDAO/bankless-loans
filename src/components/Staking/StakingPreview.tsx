@@ -1,28 +1,13 @@
 import React from 'react'
 import { Flex, Box, Heading } from '@chakra-ui/react'
 import { WalletConnector } from '../WalletConnector'
-import {
-    EditableRow,
-    StaticRow,
-    StaticAmounts,
-    Row,
-    DisabledEditableRow,
-} from '../Trove/Editor'
-
-const editableStyle = {
-    flexGrow: 1,
-    marginBottom: 3,
-    paddingLeft: 3,
-    paddingRight: '11px',
-    paddingTop: '28px',
-    fontSize: '22px',
-    boxShadow: [1, 2],
-    border: 1,
-    borderColor: 'muted',
-}
+import { DisabledEditableRow } from '../Trove/Editor'
+import { useModal } from 'hooks/ModalContext'
 
 export const StakingPreview = (): JSX.Element => {
     //will need to address hard-coded width for mobile
+    const modal = useModal()
+
     return (
         <Flex
             w='555px'
@@ -52,7 +37,11 @@ export const StakingPreview = (): JSX.Element => {
                 <Box ml='10px' w='full' h='100px'>
                     <h3>Please connect your wallet to use our services</h3>
                     <br />
-                    <WalletConnector />
+                    <WalletConnector
+                        isOpen={modal.isModalOpen}
+                        onOpen={modal.openModal}
+                        onClose={modal.closeModal}
+                    />
                 </Box>
             </Box>
         </Flex>

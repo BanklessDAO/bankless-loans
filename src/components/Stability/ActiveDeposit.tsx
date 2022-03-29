@@ -136,7 +136,7 @@ export const ActiveDeposit: React.FC = () => {
                 </Box>
 
                 <Flex>
-                    <Button variant='outline' onClick={handleAdjustDeposit}>
+                    <Button variant='darkGrey' onClick={handleAdjustDeposit}>
                         <Icon name='pen' size='sm' />
                         &nbsp;Adjust
                     </Button>

@@ -158,8 +158,6 @@ export const Opening: React.FC = () => {
                                         maxW: '33vm',
                                         fontStyle: 'italic',
                                     }}
-                                    md={{}}
-                                    lg={{}}
                                 >
                                     An amount set aside to cover the
                                     liquidator’s gas costs if your Trove needs
@@ -196,8 +194,6 @@ export const Opening: React.FC = () => {
                                         maxW: '33vm',
                                         fontStyle: 'italic',
                                     }}
-                                    md={{}}
-                                    lg={{}}
                                 >
                                     This amount is deducted from the borrowed
                                     amount as a one-time fee. There are no
@@ -233,8 +229,6 @@ export const Opening: React.FC = () => {
                                         maxW: '33vm',
                                         fontStyle: 'italic',
                                     }}
-                                    md={{}}
-                                    lg={{}}
                                 >
                                     The total amount of LUSD your Trove will
                                     hold.{' '}
@@ -272,7 +266,7 @@ export const Opening: React.FC = () => {
                     setGasEstimationState={setGasEstimationState}
                 />
 
-                <Flex variant='layout.actions'>
+                <Flex>
                     <Button variant='darkGrey' onClick={handleCancelPressed}>
                         Cancel
                     </Button>

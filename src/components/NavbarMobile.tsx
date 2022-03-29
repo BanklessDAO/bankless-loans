@@ -1,8 +1,10 @@
 import React from 'react'
 import { Box, Container } from '@chakra-ui/react'
 import { NavbarWallet } from './NavbarWallet'
+import { useModal } from 'hooks/ModalContext'
 
 export default function NavbarMobile() {
+    const modal = useModal()
     return (
         <Container
             maxW='container.xl'
@@ -23,7 +25,7 @@ export default function NavbarMobile() {
                 alignItems='center'
                 justifyContent='center'
             >
-                <NavbarWallet />
+                <NavbarWallet onClick={modal.openModal} />
             </Box>
         </Container>
     )

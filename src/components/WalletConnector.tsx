@@ -50,7 +50,6 @@ export const WalletConnector = ({ children, loader }: WalletConnectorProps) => {
         type: 'inactive',
     })
     const [isAccount, setIsAccount] = useState(false)
-    const [isConnected, setIsConnected] = useState(false)
     const modal = useModal()
 
     useEffect(() => {
@@ -83,13 +82,12 @@ export const WalletConnector = ({ children, loader }: WalletConnectorProps) => {
 
     useEffect(() => {
         if (active) {
-            setIsConnected(true)
             setIsAccount(true)
             dispatch({ type: 'finishActivating' })
         } else {
             dispatch({ type: 'deactivate' })
         }
-    }, [active, dispatch, isConnected])
+    }, [active, dispatch])
 
     if (!triedAuthorizedConnection) {
         return <>{loader}</>
