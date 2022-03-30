@@ -1,9 +1,10 @@
 import React from 'react'
-import { Flex } from '@chakra-ui/react'
+import { Flex, IconButton, Link } from '@chakra-ui/react'
 import Logo from 'components/Logo'
 import NavbarLinks from 'components/NavbarLinks'
 import { WalletConnector } from 'components/WalletConnector'
 import { useModal } from 'hooks/ModalContext'
+import NextLink from 'next/link'
 
 export default function Navbar() {
     const modal = useModal()
@@ -17,7 +18,14 @@ export default function Navbar() {
             padding='28px 5vw'
             position='relative'
         >
-            <Logo />
+            <NextLink href='/' passHref>
+                <Link
+                    _focus={{ boxShadow: 'none' }}
+                    _hover={{ bg: 'transparent' }}
+                >
+                    <Logo />
+                </Link>
+            </NextLink>
             <NavbarLinks />
             <Flex
                 as='section'
