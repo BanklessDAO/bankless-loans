@@ -111,7 +111,9 @@ export const StaticAmounts: React.FC<StaticAmountsProps> = ({
             <Flex
                 sx={{ alignItems: 'center', justifyContent: 'space-between' }}
             >
-                <Text sx={{ color, fontWeight: 'medium' }}>{amount}</Text>
+                <Text sx={{ color, fontWeight: 'medium', minWidth: '97px' }}>
+                    {amount}
+                </Text>
                 {unit && (
                     <>
                         &nbsp;
@@ -274,7 +276,7 @@ export const EditableRow: React.FC<EditableRowProps> = ({
                 sx={{
                     ...editableStyle,
                     fontSize: '22px',
-                    bg: invalid ? 'salmon' : 'background',
+                    bg: invalid ? 'salmon' : 'interactive.gray.2F',
                     height: '70px',
                 }}
                 labelledBy={`${inputID}-label`}
