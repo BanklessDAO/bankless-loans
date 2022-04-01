@@ -156,8 +156,8 @@ const editableStyle = {
     flexGrow: 1,
     marginBottom: 3,
     paddingLeft: 3,
-    paddingRight: '11px',
-    paddingTop: '28px',
+    paddingRight: 3,
+    paddingTop: 6,
     fontSize: '22px',
     boxShadow: [1, 2],
     border: 1,
@@ -233,10 +233,10 @@ export const EditableRow: React.FC<EditableRowProps> = ({
         <Row
             {...{ label, labelFor: inputID, unit }}
             sx={{
-                bg: invalid ? 'salmon' : 'background',
+                bg: invalid ? 'salmon' : 'interactive.gray.2F',
                 borderRadius: '10px',
-                marginBottom: '16px',
-                height: '70px',
+                marginBottom: 3,
+                height: '69px',
                 position: 'relative',
             }}
         >
@@ -275,10 +275,9 @@ export const EditableRow: React.FC<EditableRowProps> = ({
             <StaticAmounts
                 sx={{
                     ...editableStyle,
-                    fontSize: '22px',
                     position: 'relative',
                     bg: invalid ? 'salmon' : 'interactive.gray.2F',
-                    height: '70px',
+                    height: '69px',
                 }}
                 labelledBy={`${inputID}-label`}
                 onClick={() => setEditing(inputID)}
