@@ -46,9 +46,6 @@ const NavbarMenuListItem = ({
     }
 
     function setLinkColor(linkPath: string, routePath: string) {
-        if (routePath === '' && linkPath === 'borrow') {
-            return 'interactive.white'
-        }
         if (linkPath !== routePath) {
             return 'interactive.gray.A1'
         } else {
