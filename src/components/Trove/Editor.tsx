@@ -276,6 +276,7 @@ export const EditableRow: React.FC<EditableRowProps> = ({
                 sx={{
                     ...editableStyle,
                     fontSize: '22px',
+                    position: 'relative',
                     bg: invalid ? 'salmon' : 'interactive.gray.2F',
                     height: '70px',
                 }}
@@ -299,7 +300,7 @@ export const EditableRow: React.FC<EditableRowProps> = ({
                         }}
                         disabled={maxedOut}
                     >
-                        max
+                        <Text>max</Text>
                     </Button>
                 )}
             </StaticAmounts>

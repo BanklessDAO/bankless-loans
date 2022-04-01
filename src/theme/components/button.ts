@@ -1,3 +1,8 @@
+const easeInTransition = (property: string) => {
+    const transitionTime = 175
+    return `${property} ${transitionTime}ms ease-in`
+}
+
 const Button = {
     baseStyle: {
         fontWeight: 'medium',
@@ -82,16 +87,32 @@ const Button = {
             },
         },
         max: {
+            maxHeight: 10,
+            position: 'absolute',
+            top: 'calc(50% - 22.5px)',
+            right: 3,
+            m: 0,
+            p: 0,
             bg: 'interactive.grey',
-            fontSize: '22px',
-            color: 'white',
-            py: 1,
-            px: 3,
-            height: '40px',
-            marginBottom: '10px',
+            transition: easeInTransition('background'),
+            zIndex: '2',
             _hover: {
-                bg: 'interactive.darkGrey',
-                color: '#000000',
+                bg: 'interactive.gray.24',
+                transition: easeInTransition('background'),
+                '&  > *': {
+                    color: 'interactive.grey',
+                    transition: easeInTransition('color'),
+                },
+            },
+            '& > *': {
+                py: 3,
+                px: 5,
+                color: 'black',
+                fontFamily: 'fonts.buttons.max',
+                fontWeight: 800,
+                fontSize: '1em',
+                textTransform: 'uppercase',
+                transition: easeInTransition('color'),
             },
         },
         outline: {
@@ -119,7 +140,7 @@ const Button = {
         },
         wallet: {
             bg: 'interactive.gray.13',
-            p: 2,
+            py: '20px',
             borderRadius: '18px',
             alignItems: 'center',
             borderWidth: '1.6px',
