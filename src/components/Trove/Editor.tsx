@@ -1,5 +1,12 @@
 import React, { useState } from 'react'
-import { FormLabel, Text, Flex, Input, Button } from '@chakra-ui/react'
+import {
+    FormLabel,
+    Text,
+    Flex,
+    Input,
+    Button,
+    keyframes,
+} from '@chakra-ui/react'
 import { Icon } from '../Icon'
 
 type RowProps = {
@@ -164,6 +171,11 @@ const editableStyle = {
     borderColor: 'muted',
 }
 
+const graytransition = keyframes`
+  to {background: #242424;}
+  from {background: #2F2F2F;}
+`
+
 type StaticRowProps = RowProps & StaticAmountsProps
 
 export const StaticRow: React.FC<StaticRowProps> = ({
@@ -233,11 +245,12 @@ export const EditableRow: React.FC<EditableRowProps> = ({
         <Row
             {...{ label, labelFor: inputID, unit }}
             sx={{
-                bg: invalid ? 'salmon' : 'interactive.gray.2F',
+                bg: invalid ? 'salmon' : 'interactive.gray.24',
                 borderRadius: '10px',
                 marginBottom: 3,
                 height: '69px',
                 position: 'relative',
+                animation: `${graytransition} forwards 250ms ease-out`,
             }}
         >
             <Input
