@@ -22,9 +22,9 @@ export const PreviewConnector: React.FC<PreviewConnectorProps> = ({
         type: 'inactive',
     })
     const router = useRouter()
-    const trovePreview = router.pathname == '/' && <TrovePreview />
-    const stabilityPreview = router.pathname == '/pool' && <StabilityPreview />
-    const stakingPreview = router.pathname == '/stake' && <StakingPreview />
+    const trovePreview = router.pathname === '/borrow' && <TrovePreview />
+    const stabilityPreview = router.pathname === '/pool' && <StabilityPreview />
+    const stakingPreview = router.pathname === '/stake' && <StakingPreview />
 
     useEffect(() => {
         if (error) {
@@ -45,7 +45,7 @@ export const PreviewConnector: React.FC<PreviewConnectorProps> = ({
         return <>{loader}</>
     }
 
-    if (connectionState.type === 'active') {
+    if (connectionState.type === 'active' || router.pathname === '/') {
         return <>{children}</>
     }
 
