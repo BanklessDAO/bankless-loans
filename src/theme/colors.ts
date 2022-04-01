@@ -18,6 +18,7 @@ const colors = {
             '2F': '#2F2F2F',
             '7D': '#7D7D7D',
             A1: '#A1A1A1',
+            B5: '#B5B5B5',
         },
     },
     supplementary: {
