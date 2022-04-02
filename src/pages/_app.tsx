@@ -1,6 +1,14 @@
 import { ReactNode, useEffect, useReducer } from 'react'
 import type { AppProps } from 'next/app'
-import { Flex, Heading, Spinner, Box, useColorMode } from '@chakra-ui/react'
+import {
+    Flex,
+    Heading,
+    Spinner,
+    Box,
+    LightMode,
+    DarkMode,
+    GlobalStyle,
+} from '@chakra-ui/react'
 import { Icon } from '../components/Icon'
 import { Layout } from '../components/Layout/Layout'
 import { ChakraProvider } from '@chakra-ui/react'
@@ -79,8 +87,23 @@ const EthersWeb3ReactProvider = ({ children }: appProps): JSX.Element => {
     )
 }
 
+export const ColorModeWrapper = ({ children }: appProps) => {
+    const { pathname: page } = useRouter()
+    const allowedRoutes = ['/']
+    return allowedRoutes.includes(page) ? (
+        <LightMode>
+            <GlobalStyle />
+            {children}
+        </LightMode>
+    ) : (
+        <DarkMode>
+            <GlobalStyle />
+            {children}
+        </DarkMode>
+    )
+}
+
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
-    const { colorMode, toggleColorMode } = useColorMode()
     const [connectionState, dispatch] = useReducer(useWalletReducer, {
         type: 'inactive',
     })
@@ -89,20 +112,20 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
         dispatch,
     }
     const modal = useModal()
-    const { pathname: page } = useRouter()
-    const allowedRoutes = ['/']
 
     const loader = (
-        <Flex
-            sx={{
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '100vh',
-            }}
-        >
-            <Spinner color='text' size='lg' />
-            <Heading>Loading...</Heading>
-        </Flex>
+        <ColorModeWrapper>
+            <Flex
+                sx={{
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: '100vh',
+                }}
+            >
+                <Spinner color='text' size='lg' />
+                <Heading>Loading...</Heading>
+            </Flex>
+        </ColorModeWrapper>
     )
 
     const unsupportedNetworkFallback = (chainId: number) => (
@@ -134,7 +157,7 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
                 >
                     <WalletContext.Provider value={providerState}>
                         <Layout>
-                            <PreviewConnector loader={loader}>
+                            <PreviewConnector>
                                 <LiquityProvider
                                     loader={loader}
                                     unsupportedNetworkFallback={
