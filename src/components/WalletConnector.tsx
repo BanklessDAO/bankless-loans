@@ -40,7 +40,7 @@ type WalletConnectorProps = {
     onClose: () => void
 }
 
-export const WalletConnector = ({ children, loader }: WalletConnectorProps) => {
+export const WalletConnector = ({ loader }: WalletConnectorProps) => {
     const { account, active, activate, error, deactivate } =
         useWeb3React<unknown>()
     const triedAuthorizedConnection = useAuthorizedConnection()
