@@ -7,6 +7,7 @@ import { useAuthorizedConnection } from '../hooks/useAuthorizedConnection'
 import { TrovePreview } from './Trove/TrovePreview'
 import { StabilityPreview } from './Stability/StabilityPreview'
 import { StakingPreview } from './Staking/StakingPreview'
+import Landing from '../pages/landing'
 
 type PreviewConnectorProps = {
     loader?: React.ReactNode

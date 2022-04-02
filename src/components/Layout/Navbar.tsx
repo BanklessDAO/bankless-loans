@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, IconButton, Link } from '@chakra-ui/react'
+import { Flex, IconButton, Link, useColorMode } from '@chakra-ui/react'
 import Logo from 'components/Logo'
 import NavbarLinks from 'components/NavbarLinks'
 import { WalletConnector } from 'components/WalletConnector'
@@ -8,6 +8,7 @@ import NextLink from 'next/link'
 
 export default function Navbar() {
     const modal = useModal()
+    const { colorMode, toggleColorMode } = useColorMode()
     return (
         <Flex
             as='nav'
@@ -22,6 +23,7 @@ export default function Navbar() {
                 <Link
                     _focus={{ boxShadow: 'none' }}
                     _hover={{ bg: 'transparent' }}
+                    onClick={toggleColorMode}
                 >
                     <Logo />
                 </Link>
