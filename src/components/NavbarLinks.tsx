@@ -35,9 +35,6 @@ const NavbarMenuListItem = ({
     text: string
 }) => {
     function setLinkBg(linkPath: string, routePath: string) {
-        if (routePath === '' && linkPath === 'borrow') {
-            return 'interactive.gray.24'
-        }
         if (linkPath === routePath) {
             return 'interactive.gray.24'
         } else {

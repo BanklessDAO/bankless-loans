@@ -1,11 +1,21 @@
 import React from 'react'
-import { Box, Text, Flex, Heading, Button, Stack } from '@chakra-ui/react'
+import {
+    Box,
+    Text,
+    Flex,
+    Heading,
+    Button,
+    Stack,
+    GlobalStyle,
+    DarkMode,
+} from '@chakra-ui/react'
 
 export default function Landing() {
     return (
         <Box>
+            <GlobalStyle />
             <Flex direction='column'>
-                <Heading color='#FFFFFF'>Become Bankless,</Heading>
+                <Heading color='#FFFFFF'>Become Bankless</Heading>
                 <Heading color='#FFFFFF'>
                     Take out an interest-free loan
                 </Heading>

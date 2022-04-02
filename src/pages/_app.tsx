@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useReducer } from 'react'
 import type { AppProps } from 'next/app'
-import { Flex, Heading, Spinner, Box } from '@chakra-ui/react'
+import { Flex, Heading, Spinner, Box, useColorMode } from '@chakra-ui/react'
 import { Icon } from '../components/Icon'
 import { Layout } from '../components/Layout/Layout'
 import { ChakraProvider } from '@chakra-ui/react'
@@ -14,6 +14,7 @@ import { DisposableWalletProvider } from '../testUtils/DisposableWalletProvider'
 import WalletContext from 'hooks/WalletContext'
 import { useWalletReducer } from 'hooks/useWalletReducer'
 import { ModalProvider, useModal } from 'hooks/ModalContext'
+import { useRouter } from 'next/router'
 
 declare global {
     interface Window {
@@ -79,6 +80,7 @@ const EthersWeb3ReactProvider = ({ children }: appProps): JSX.Element => {
 }
 
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
+    const { colorMode, toggleColorMode } = useColorMode()
     const [connectionState, dispatch] = useReducer(useWalletReducer, {
         type: 'inactive',
     })
@@ -87,6 +89,8 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
         dispatch,
     }
     const modal = useModal()
+    const { pathname: page } = useRouter()
+    const allowedRoutes = ['/']
 
     const loader = (
         <Flex
