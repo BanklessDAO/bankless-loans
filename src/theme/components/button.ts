@@ -77,16 +77,8 @@ const Button = {
             flex: '1',
             _hover: {
                 bg: 'interactive.grey',
-                // some views change color to black on hover, future bug will need fix
+                // some views change color to black on hover, futmaure bug will need fix
                 color: 'white',
-            },
-        },
-        transparent: {
-            bg: 'none',
-            fontSize: '24px',
-            flex: '1',
-            _hover: {
-                fontWeight: 'bold',
             },
         },
         max: {
