@@ -16,9 +16,10 @@ export const ErrorDescription: React.FC = ({ children }) => (
             borderColor: 'danger',
             boxShadow: 2,
             bg: '#370b0b',
+            fontSize: '18px',
         }}
     >
-        <Flex sx={{ alignItems: 'center' }}>
+        <Flex align='center' direction='row' wrap='wrap'>
             <Icon name='exclamation-triangle' size='lg' color='#fee500' />
             <Text sx={{ ml: 2 }}>{children}</Text>
         </Flex>
