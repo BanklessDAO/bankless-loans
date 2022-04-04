@@ -2,7 +2,7 @@ import React, { useEffect, useReducer } from 'react'
 import { useRouter } from 'next/router'
 import { useWeb3React } from '@web3-react/core'
 import { useWalletReducer } from '../hooks/useWalletReducer'
-import { Flex } from '@chakra-ui/react'
+import { Flex, DarkMode, GlobalStyle } from '@chakra-ui/react'
 import { useAuthorizedConnection } from '../hooks/useAuthorizedConnection'
 import { TrovePreview } from './Trove/TrovePreview'
 import { StabilityPreview } from './Stability/StabilityPreview'
@@ -50,7 +50,8 @@ export const PreviewConnector: React.FC<PreviewConnectorProps> = ({
     }
 
     return (
-        <>
+        <DarkMode>
+            <GlobalStyle />
             <Flex
                 sx={{
                     height: '100vh',
@@ -62,6 +63,6 @@ export const PreviewConnector: React.FC<PreviewConnectorProps> = ({
                 {stabilityPreview}
                 {stakingPreview}
             </Flex>
-        </>
+        </DarkMode>
     )
 }

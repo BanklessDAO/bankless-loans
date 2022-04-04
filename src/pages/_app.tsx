@@ -31,24 +31,27 @@ declare global {
 }
 
 const UnsupportedMainnetFallback: React.FC = () => (
-    <Flex
-        sx={{
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '100vh',
-            textAlign: 'center',
-        }}
-    >
-        <Heading sx={{ mb: 3 }}>
-            <Icon name='exclamation-triangle' /> This app is for testing
-            purposes only.
-        </Heading>
+    <DarkMode>
+        <GlobalStyle />
+        <Flex
+            sx={{
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '100vh',
+                textAlign: 'center',
+            }}
+        >
+            <Heading sx={{ mb: 3 }}>
+                <Icon name='exclamation-triangle' /> This app is for testing
+                purposes only.
+            </Heading>
 
-        <Box>
-            Please change your network to Ropsten, Rinkeby, Kovan or Görli.
-        </Box>
-    </Flex>
+            <Box>
+                Please change your network to Ropsten, Rinkeby, Kovan or Görli.
+            </Box>
+        </Flex>
+    </DarkMode>
 )
 
 type appProps = {
