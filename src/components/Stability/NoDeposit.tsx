@@ -26,7 +26,7 @@ export const NoDeposit: React.FC = () => {
                     You can earn ETH and LQTY rewards by depositing LUSD.
                 </InfoMessage>
 
-                <Flex variant='layout.actions'>
+                <Flex>
                     <Flex
                         sx={{
                             justifyContent: 'flex-start',

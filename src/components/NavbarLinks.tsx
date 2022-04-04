@@ -106,8 +106,9 @@ const NavbarMenuList = ({
             as='ul'
             spacing={1.5}
         >
-            {linkPaths.map((linkData: any) => (
+            {linkPaths.map((linkData, index) => (
                 <NavbarMenuListItem
+                    key={index}
                     {...linkData}
                     routerPathname={routerPathname}
                 />

@@ -1,10 +1,12 @@
 import React from 'react'
-import { Flex, Box } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 import Logo from 'components/Logo'
 import NavbarLinks from 'components/NavbarLinks'
-import NavbarWallet from 'components/NavbarWallet'
+import { WalletConnector } from 'components/WalletConnector'
+import { useModal } from 'hooks/ModalContext'
 
 export default function Navbar() {
+    const modal = useModal()
     return (
         <Flex
             as='nav'
@@ -22,7 +24,11 @@ export default function Navbar() {
                 alignItems='center'
                 display={['none', 'none', 'flex']}
             >
-                <NavbarWallet />
+                <WalletConnector
+                    isOpen={modal.isModalOpen}
+                    onOpen={modal.openModal}
+                    onClose={modal.closeModal}
+                />
             </Flex>
         </Flex>
     )

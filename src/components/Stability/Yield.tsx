@@ -60,7 +60,6 @@ export const Yield: React.FC = () => {
             <InfoIcon
                 tooltip={
                     <Box
-                        variant='tooltip'
                         sx={{
                             padding: '10px',
                             bg: '#a7a7e3',

@@ -19,7 +19,7 @@ export const NoTrove: React.FC = props => {
                     You can borrow LUSD by opening a Trove.
                 </InfoMessage>
 
-                <Flex variant='layout.actions'>
+                <Flex>
                     <Button variant='mainPurple' onClick={handleOpenTrove}>
                         Open Trove
                     </Button>

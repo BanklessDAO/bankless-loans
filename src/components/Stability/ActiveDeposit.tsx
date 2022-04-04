@@ -106,7 +106,6 @@ export const ActiveDeposit: React.FC = () => {
                                 <InfoIcon
                                     tooltip={
                                         <Box
-                                            variant='tooltip'
                                             sx={{
                                                 padding: '10px',
                                                 bg: '#a7a7e3',
@@ -136,7 +135,7 @@ export const ActiveDeposit: React.FC = () => {
                     </Flex>
                 </Box>
 
-                <Flex variant='layout.actions'>
+                <Flex>
                     <Button variant='darkGrey' onClick={handleAdjustDeposit}>
                         <Icon name='pen' size='sm' />
                         &nbsp;Adjust
