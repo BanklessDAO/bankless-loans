@@ -18,14 +18,15 @@ const Text = {
             fontWeight: 'extrabold',
             letterSpacing: 'tighter',
             lineHeight: 'none',
+            textAlign: 'center',
         },
         'home-subtitle': {
-            as: 'h3',
+            as: 'h4',
             color: '#D8D8D8',
-            fontSize: ['md', 'lg', 'xl', '2xl'],
+            fontSize: ['md', 'lg', 'xl', '24px'],
             fontWeight: '400',
             letterSpacing: 'tight',
-            size: 'lg',
+            textAlign: 'center',
         },
         'sitemap-title': {
             fontSize: 'sm',
