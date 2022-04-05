@@ -9,10 +9,10 @@ import {
     Text,
     GlobalStyle,
     LightMode,
+    Icon,
 } from '@chakra-ui/react'
 import { GlassCard } from '../components/Layout/GlassCard'
 import { Lifebuoy, PalmUp, Blocks } from '../components/LandingLogos'
-import { Icon } from '@chakra-ui/react'
 import { Footer } from '../components/Layout/Footer'
 
 export default function Landing() {

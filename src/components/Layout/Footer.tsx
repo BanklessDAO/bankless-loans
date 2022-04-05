@@ -1,35 +1,95 @@
-import { Box, Text, Flex, Stack, Spacer } from '@chakra-ui/react'
-import Link from 'next/link'
+import * as React from 'react'
+import Image from 'next/image'
+import {
+    Box,
+    Button,
+    Container,
+    VStack,
+    HStack,
+    Stack,
+    Text,
+    Icon,
+    Center,
+    Link,
+} from '@chakra-ui/react'
+import { Discord } from '../../components/LandingLogos'
+import logo from '../../../public/bankless-logo.png'
 
-export default function Footer() {
+export const Footer: React.FC = () => {
     return (
-        <Box
-            height='150px'
-            borderRadius='18px'
-            bg='#1E2230'
-            mt='10px'
-            mb='1px'
-            color='white'
-            pt='50'
-            pl='5%'
-            pr='5%'
-            style={{
-                position: 'fixed',
-                bottom: '0px',
-                width: '100%',
-            }}
-        >
-            <Flex>
-                <Text sx={{ font: '30px', fontWeight: '800' }}>
-                    © Bankless Loans
-                </Text>
-                <Spacer />
-                {/* TODO: Need to work on those two pages to get links working */}
-                <Stack direction={['column', 'row']} spacing='35px'>
-                    <Link href='/'>Terms of use</Link>
-                    <Link href='/'>Privacy Policy</Link>
-                </Stack>
-            </Flex>
+        <Box w='100vw' h='212px' fontSize={['xs', 'sm']} bg='#101010'>
+            <Box p={[4, 8]}>
+                <Container
+                    d='flex'
+                    flexDir={{ base: 'column-reverse', md: 'row' }}
+                    justifyContent='space-between'
+                    maxW='4xl'
+                    textAlign={{ base: 'center', md: 'initial' }}
+                >
+                    <Box>
+                        <Text color='#FFFFFF'>BanklessLoans</Text>
+                        <VStack
+                            justify={{ base: 'center', md: 'flex-start' }}
+                            align='flex-start'
+                            spacing={1}
+                            color='#D8D8D8'
+                            pt='10px'
+                        >
+                            <Text>
+                                A small one time fee is added to your debt.
+                            </Text>
+                            <Text>Repay your loan anytime.</Text>
+                            {/* <Button
+                  colorScheme="black"
+                  d="inline-block"
+                  fontWeight="bold"
+                  size="sm"
+                  variant="link"
+                >
+                </Button> */}
+                            <HStack justify='center' align='flex-start'>
+                                <Center
+                                    bg='#6D29FE'
+                                    w='28px'
+                                    h='28px'
+                                    borderRadius='50%'
+                                >
+                                    <Link
+                                        href='https://bankless.community'
+                                        isExternal
+                                    >
+                                        <Icon as={Discord} />
+                                    </Link>
+                                </Center>
+                                <Link
+                                    href='https://bankless.community'
+                                    isExternal
+                                >
+                                    <Image
+                                        alt='bankless logo'
+                                        height='30px'
+                                        width='30px'
+                                        src={logo}
+                                    />
+                                </Link>
+                            </HStack>
+                        </VStack>
+                        <br />
+                    </Box>
+
+                    <HStack
+                        align='flex-start'
+                        justify='center'
+                        pb={12}
+                        pt={{ base: 12, md: 0 }}
+                        spacing={16}
+                    >
+                        <Stack>
+                            <Text variant='sitemap-title'>Navigate</Text>
+                        </Stack>
+                    </HStack>
+                </Container>
+            </Box>
         </Box>
     )
 }
