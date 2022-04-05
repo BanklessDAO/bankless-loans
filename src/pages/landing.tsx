@@ -72,7 +72,6 @@ export default function Landing() {
                     </LightMode>
                 </Stack>
             </Container>
-            <Footer />
         </Stack>
     )
 }
