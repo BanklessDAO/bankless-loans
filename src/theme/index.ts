@@ -43,6 +43,7 @@ const customTheme = extendTheme({
         Box,
         Container,
         Button,
+        Text,
     },
     layerStyles: {
         baseStyle: {
@@ -60,14 +61,6 @@ const customTheme = extendTheme({
             borderRadius: '0px',
         },
     },
-    // components: {
-    //     Section,
-    //     Link,
-    //     Text,
-    //     Heading,
-    //     Popover,
-    //     Checkbox
-    // }
 })
 
 export default customTheme
