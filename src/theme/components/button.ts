@@ -129,6 +129,14 @@ const Button = {
                 bg: 'interactive.gray.24',
             },
         },
+        navBarMobile: {
+            bg: '#B5B5B5',
+            width: '56px',
+            height: '39px',
+            borderRadius: '6px',
+            fontWeight: '700',
+            fontSize: '16px',
+        },
     },
     defaultProps: {},
 }

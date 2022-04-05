@@ -1,10 +1,22 @@
 import React from 'react'
-import { Box, Container } from '@chakra-ui/react'
+import {
+    Box,
+    Container,
+    Button,
+    HStack,
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalBody,
+    useDisclosure,
+} from '@chakra-ui/react'
 import { WalletConnector } from './WalletConnector'
 import { useModal } from 'hooks/ModalContext'
+import NavbarLinks from './NavbarLinks'
 
 export default function NavbarMobile() {
     const modal = useModal()
+    const { isOpen, onOpen, onClose } = useDisclosure()
     return (
         <Container
             maxW='container.xl'
@@ -25,11 +37,24 @@ export default function NavbarMobile() {
                 alignItems='center'
                 justifyContent='center'
             >
-                <WalletConnector
-                    isOpen={modal.isModalOpen}
-                    onOpen={modal.openModal}
-                    onClose={modal.closeModal}
-                />
+                <HStack spacing={3}>
+                    <WalletConnector
+                        isOpen={modal.isModalOpen}
+                        onOpen={modal.openModal}
+                        onClose={modal.closeModal}
+                    />
+                    <Button variant='navBarMobile' onClick={onOpen}>
+                        App
+                    </Button>
+                </HStack>
+                <Modal isOpen={isOpen} onClose={onClose} isCentered>
+                    <ModalOverlay />
+                    <ModalContent w='300px'>
+                        <ModalBody paddingBottom='1.5rem'>
+                            <NavbarLinks />
+                        </ModalBody>
+                    </ModalContent>
+                </Modal>
             </Box>
         </Container>
     )

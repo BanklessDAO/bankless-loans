@@ -2,6 +2,7 @@ import React from 'react'
 import { HStack, Box, Link } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import NextLink from 'next/link'
+import { useBreakpointValue } from '@chakra-ui/react'
 
 type Path = {
     text: string
@@ -86,6 +87,22 @@ const NavbarMenuList = ({
     linkPaths: Array<Path>
     routerPathname: string
 }) => {
+    const isMobile = useBreakpointValue({ base: true, md: false })
+
+    if (isMobile) {
+        return (
+            <>
+                {linkPaths.map((linkData, index) => (
+                    <NavbarMenuListItem
+                        key={index}
+                        {...linkData}
+                        routerPathname={routerPathname}
+                    />
+                ))}
+            </>
+        )
+    }
+
     return (
         <HStack
             display={['none', 'none', 'flex']}
