@@ -7,10 +7,10 @@ const securityHeaders = [
         key: 'X-Frame-Options',
         value: 'DENY',
     },
-    {
-        key: 'Content-Security-Policy',
-        value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim(),
-    },
+//     {
+//         key: 'Content-Security-Policy',
+//         value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim(),
+//     },
 ]
 
 module.exports = {
