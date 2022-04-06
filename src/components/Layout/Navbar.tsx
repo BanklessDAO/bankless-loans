@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Link } from '@chakra-ui/react'
+import { Flex, Link, useBreakpointValue } from '@chakra-ui/react'
 import Logo from 'components/Logo'
 import NavbarLinks from 'components/NavbarLinks'
 import { WalletConnector } from 'components/WalletConnector'
@@ -8,6 +8,8 @@ import NextLink from 'next/link'
 
 export default function Navbar() {
     const modal = useModal()
+    const isMobile = useBreakpointValue({ base: true, md: false })
+    const navbarLinks = !isMobile && <NavbarLinks />
 
     return (
         <Flex
@@ -27,7 +29,7 @@ export default function Navbar() {
                     <Logo />
                 </Link>
             </NextLink>
-            <NavbarLinks />
+            {navbarLinks}
             <Flex
                 as='section'
                 alignItems='center'
