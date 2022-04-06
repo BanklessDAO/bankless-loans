@@ -1,6 +1,7 @@
 const Button = {
     baseStyle: {
         fontWeight: 'medium',
+        color: 'white',
         boxSizing: 'border-box',
         mx: '.25em',
     },
@@ -76,7 +77,7 @@ const Button = {
             flex: '1',
             _hover: {
                 bg: 'interactive.grey',
-                // some views change color to black on hover, future bug will need fix
+                // some views change color to black on hover, futmaure bug will need fix
                 color: 'white',
             },
         },

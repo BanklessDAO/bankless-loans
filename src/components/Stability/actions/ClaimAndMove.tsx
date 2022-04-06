@@ -18,9 +18,17 @@ export const ClaimAndMove: React.FC<ClaimAndMoveProps> = ({
         liquity.send.transferCollateralGainToTrove.bind(liquity.send)
     )
 
+    if (disabled) {
+        return (
+            <Button variant='darkPurple' disabled>
+                {children}
+            </Button>
+        )
+    }
+
     return (
         <Button
-            variant='outline'
+            variant='mainPurple'
             sx={{ mt: 3, width: '100%' }}
             onClick={sendTransaction}
             disabled={disabled}
