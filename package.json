@@ -37,7 +37,7 @@
     "framer-motion": "^6.2.8",
     "@web3-react/walletconnect-connector": "^6.2.13",
     "@web3-react/walletlink-connector": "^6.2.13",
-    "graphql": "^15.7.2",
+    "graphql": "^16.3.0",
     "graphql-tag": "^2.12.5",
     "mrm": "^4.0.0",
     "next": "12.1.0",
