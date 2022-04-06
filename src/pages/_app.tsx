@@ -1,6 +1,14 @@
 import { ReactNode, useEffect, useReducer } from 'react'
 import type { AppProps } from 'next/app'
-import { Flex, Heading, Spinner, Box } from '@chakra-ui/react'
+import {
+    Flex,
+    Heading,
+    Spinner,
+    Box,
+    LightMode,
+    DarkMode,
+    GlobalStyle,
+} from '@chakra-ui/react'
 import { Icon } from '../components/Icon'
 import { Layout } from '../components/Layout/Layout'
 import { ChakraProvider } from '@chakra-ui/react'
@@ -14,6 +22,7 @@ import { DisposableWalletProvider } from '../testUtils/DisposableWalletProvider'
 import WalletContext from 'hooks/WalletContext'
 import { useWalletReducer } from 'hooks/useWalletReducer'
 import { ModalProvider, useModal } from 'hooks/ModalContext'
+import { useRouter } from 'next/router'
 
 declare global {
     interface Window {
@@ -22,24 +31,27 @@ declare global {
 }
 
 const UnsupportedMainnetFallback: React.FC = () => (
-    <Flex
-        sx={{
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '100vh',
-            textAlign: 'center',
-        }}
-    >
-        <Heading sx={{ mb: 3 }}>
-            <Icon name='exclamation-triangle' /> This app is for testing
-            purposes only.
-        </Heading>
+    <DarkMode>
+        <GlobalStyle />
+        <Flex
+            sx={{
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '100vh',
+                textAlign: 'center',
+            }}
+        >
+            <Heading sx={{ mb: 3 }}>
+                <Icon name='exclamation-triangle' /> This app is for testing
+                purposes only.
+            </Heading>
 
-        <Box>
-            Please change your network to Ropsten, Rinkeby, Kovan or Görli.
-        </Box>
-    </Flex>
+            <Box>
+                Please change your network to Ropsten, Rinkeby, Kovan or Görli.
+            </Box>
+        </Flex>
+    </DarkMode>
 )
 
 type appProps = {
@@ -78,6 +90,22 @@ const EthersWeb3ReactProvider = ({ children }: appProps): JSX.Element => {
     )
 }
 
+export const ColorModeWrapper = ({ children }: appProps) => {
+    const { pathname: page } = useRouter()
+    const allowedRoutes = ['/']
+    return allowedRoutes.includes(page) ? (
+        <LightMode>
+            <GlobalStyle />
+            {children}
+        </LightMode>
+    ) : (
+        <DarkMode>
+            <GlobalStyle />
+            {children}
+        </DarkMode>
+    )
+}
+
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
     const [connectionState, dispatch] = useReducer(useWalletReducer, {
         type: 'inactive',
@@ -89,16 +117,18 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
     const modal = useModal()
 
     const loader = (
-        <Flex
-            sx={{
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '100vh',
-            }}
-        >
-            <Spinner color='text' size='lg' />
-            <Heading>Loading...</Heading>
-        </Flex>
+        <ColorModeWrapper>
+            <Flex
+                sx={{
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: '100vh',
+                }}
+            >
+                <Spinner color='text' size='lg' />
+                <Heading>Loading...</Heading>
+            </Flex>
+        </ColorModeWrapper>
     )
 
     const unsupportedNetworkFallback = (chainId: number) => (
@@ -130,7 +160,7 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
                 >
                     <WalletContext.Provider value={providerState}>
                         <Layout>
-                            <PreviewConnector loader={loader}>
+                            <PreviewConnector>
                                 <LiquityProvider
                                     loader={loader}
                                     unsupportedNetworkFallback={

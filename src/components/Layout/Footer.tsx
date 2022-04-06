@@ -1,35 +1,96 @@
-import { Box, Text, Flex, Stack, Spacer } from '@chakra-ui/react'
-import Link from 'next/link'
+import * as React from 'react'
+import Image from 'next/image'
+import {
+    Box,
+    Container,
+    VStack,
+    HStack,
+    Text,
+    Icon,
+    Center,
+    Link,
+} from '@chakra-ui/react'
+import { Discord } from '../../components/LandingLogos'
+import logo from '../../../public/bankless-logo.png'
 
-export default function Footer() {
+export const Footer = () => {
     return (
         <Box
-            height='150px'
-            borderRadius='18px'
-            bg='#1E2230'
-            mt='10px'
-            mb='1px'
-            color='white'
-            pt='50'
-            pl='5%'
-            pr='5%'
-            style={{
-                position: 'fixed',
-                bottom: '0px',
-                width: '100%',
-            }}
+            w='100vw'
+            h={['100vh', '212px']}
+            fontSize={['xs', 'sm']}
+            bg='#101010'
+            p={[4, 8]}
         >
-            <Flex>
-                <Text sx={{ font: '30px', fontWeight: '800' }}>
-                    © Bankless Loans
-                </Text>
-                <Spacer />
-                {/* TODO: Need to work on those two pages to get links working */}
-                <Stack direction={['column', 'row']} spacing='35px'>
-                    <Link href='/'>Terms of use</Link>
-                    <Link href='/'>Privacy Policy</Link>
-                </Stack>
-            </Flex>
+            <Container
+                d='flex'
+                flexDir={{ base: 'column-reverse', md: 'row' }}
+                justifyContent='space-between'
+                maxW='4xl'
+                textAlign={{ base: 'center', md: 'initial' }}
+                pt={4}
+            >
+                <Box>
+                    <Text color='#FFFFFF'>BanklessLoans</Text>
+                    <VStack
+                        justify={{ base: 'center', md: 'flex-start' }}
+                        align='flex-start'
+                        spacing={1}
+                        color='#D8D8D8'
+                        pt='10px'
+                    >
+                        <Text>A small one time fee is added to your debt.</Text>
+                        <Text>Repay your loan anytime.</Text>
+                        <HStack justify='center' align='flex-start' pt={2}>
+                            <Center
+                                bg='#6D29FE'
+                                w='28px'
+                                h='28px'
+                                borderRadius='50%'
+                            >
+                                <Link
+                                    href='https://discord.com/invite/QmjjWghtyX'
+                                    isExternal
+                                >
+                                    <Icon as={Discord} />
+                                </Link>
+                            </Center>
+                            <Link href='https://bankless.community' isExternal>
+                                <Image
+                                    alt='bankless logo'
+                                    height='30px'
+                                    width='30px'
+                                    src={logo}
+                                />
+                            </Link>
+                        </HStack>
+                    </VStack>
+                    <br />
+                </Box>
+                <Box>
+                    <Text color='#FFFFFF'>Liquity</Text>
+                    <VStack
+                        justify={{ base: 'center', md: 'flex-start' }}
+                        align='flex-start'
+                        spacing={1}
+                        color='#6D29FE'
+                        pt='10px'
+                    >
+                        <Link href='https://youtu.be/bxWhnZKulD8' isExternal>
+                            <Text>Liquity Use Cases (Video)</Text>
+                        </Link>
+                        <Link
+                            href='https://www.liquity.org/disclaimer-protocol'
+                            isExternal
+                        >
+                            <Text>Liquity Disclaimer</Text>
+                        </Link>
+                        <Link href='https://docs.liquity.org/' isExternal>
+                            <Text>Liquity Documentation</Text>
+                        </Link>
+                    </VStack>
+                </Box>
+            </Container>
         </Box>
     )
 }

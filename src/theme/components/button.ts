@@ -1,6 +1,7 @@
 const Button = {
     baseStyle: {
         fontWeight: 'medium',
+        color: 'white',
         boxSizing: 'border-box',
         mx: '.25em',
     },
@@ -76,7 +77,7 @@ const Button = {
             flex: '1',
             _hover: {
                 bg: 'interactive.grey',
-                // some views change color to black on hover, future bug will need fix
+                // some views change color to black on hover, futmaure bug will need fix
                 color: 'white',
             },
         },
@@ -128,6 +129,14 @@ const Button = {
             _hover: {
                 bg: 'interactive.gray.24',
             },
+        },
+        navBarMobile: {
+            bg: '#B5B5B5',
+            width: '56px',
+            height: '39px',
+            borderRadius: '6px',
+            fontWeight: '700',
+            fontSize: '16px',
         },
     },
     defaultProps: {},

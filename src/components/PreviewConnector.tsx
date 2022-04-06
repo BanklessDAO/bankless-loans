@@ -2,7 +2,7 @@ import React, { useEffect, useReducer } from 'react'
 import { useRouter } from 'next/router'
 import { useWeb3React } from '@web3-react/core'
 import { useWalletReducer } from '../hooks/useWalletReducer'
-import { Flex } from '@chakra-ui/react'
+import { Flex, DarkMode, GlobalStyle } from '@chakra-ui/react'
 import { useAuthorizedConnection } from '../hooks/useAuthorizedConnection'
 import { TrovePreview } from './Trove/TrovePreview'
 import { StabilityPreview } from './Stability/StabilityPreview'
@@ -22,9 +22,9 @@ export const PreviewConnector: React.FC<PreviewConnectorProps> = ({
         type: 'inactive',
     })
     const router = useRouter()
-    const trovePreview = router.pathname == '/' && <TrovePreview />
-    const stabilityPreview = router.pathname == '/pool' && <StabilityPreview />
-    const stakingPreview = router.pathname == '/stake' && <StakingPreview />
+    const trovePreview = router.pathname === '/borrow' && <TrovePreview />
+    const stabilityPreview = router.pathname === '/pool' && <StabilityPreview />
+    const stakingPreview = router.pathname === '/stake' && <StakingPreview />
 
     useEffect(() => {
         if (error) {
@@ -45,12 +45,13 @@ export const PreviewConnector: React.FC<PreviewConnectorProps> = ({
         return <>{loader}</>
     }
 
-    if (connectionState.type === 'active') {
+    if (connectionState.type === 'active' || router.pathname === '/') {
         return <>{children}</>
     }
 
     return (
-        <>
+        <DarkMode>
+            <GlobalStyle />
             <Flex
                 sx={{
                     height: '100vh',
@@ -62,6 +63,6 @@ export const PreviewConnector: React.FC<PreviewConnectorProps> = ({
                 {stabilityPreview}
                 {stakingPreview}
             </Flex>
-        </>
+        </DarkMode>
     )
 }

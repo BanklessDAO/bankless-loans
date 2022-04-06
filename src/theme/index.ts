@@ -1,5 +1,10 @@
-import { extendTheme } from '@chakra-ui/react'
+import { extendTheme, type ThemeConfig } from '@chakra-ui/react'
 import { createBreakpoints } from '@chakra-ui/theme-tools'
+
+const config: ThemeConfig = {
+    initialColorMode: 'light',
+    useSystemColorMode: false,
+}
 
 const breakpoints = createBreakpoints({
     sm: '30em',
@@ -29,6 +34,7 @@ import Popover from './components/popover'
 import Checkbox from './components/checkbox'
 
 const customTheme = extendTheme({
+    config,
     colors,
     styles,
     fonts,
@@ -37,6 +43,7 @@ const customTheme = extendTheme({
         Box,
         Container,
         Button,
+        Text,
     },
     layerStyles: {
         baseStyle: {
@@ -54,14 +61,6 @@ const customTheme = extendTheme({
             borderRadius: '0px',
         },
     },
-    // components: {
-    //     Section,
-    //     Link,
-    //     Text,
-    //     Heading,
-    //     Popover,
-    //     Checkbox
-    // }
 })
 
 export default customTheme

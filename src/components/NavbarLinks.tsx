@@ -2,6 +2,7 @@ import React from 'react'
 import { HStack, Box, Link } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import NextLink from 'next/link'
+import { useBreakpointValue } from '@chakra-ui/react'
 
 type Path = {
     text: string
@@ -35,9 +36,6 @@ const NavbarMenuListItem = ({
     text: string
 }) => {
     function setLinkBg(linkPath: string, routePath: string) {
-        if (routePath === '' && linkPath === 'borrow') {
-            return 'interactive.gray.24'
-        }
         if (linkPath === routePath) {
             return 'interactive.gray.24'
         } else {
@@ -46,9 +44,6 @@ const NavbarMenuListItem = ({
     }
 
     function setLinkColor(linkPath: string, routePath: string) {
-        if (routePath === '' && linkPath === 'borrow') {
-            return 'interactive.white'
-        }
         if (linkPath !== routePath) {
             return 'interactive.gray.A1'
         } else {
@@ -66,7 +61,7 @@ const NavbarMenuListItem = ({
             bg={setLinkBg(path, routerPathname)}
             _hover={{ backgroundColor: 'interactive.gray.24' }}
         >
-            <NextLink href={path === 'borrow' ? '/' : `/${path}`} passHref>
+            <NextLink href={`/${path}`} passHref>
                 <Link
                     h='100%'
                     w='100%'
@@ -92,6 +87,22 @@ const NavbarMenuList = ({
     linkPaths: Array<Path>
     routerPathname: string
 }) => {
+    const isMobile = useBreakpointValue({ base: true, md: false })
+
+    if (isMobile) {
+        return (
+            <>
+                {linkPaths.map((linkData, index) => (
+                    <NavbarMenuListItem
+                        key={index}
+                        {...linkData}
+                        routerPathname={routerPathname}
+                    />
+                ))}
+            </>
+        )
+    }
+
     return (
         <HStack
             display={['none', 'none', 'flex']}

@@ -15,3 +15,6 @@ export const toHex = (num: string) => {
     const val = Number(num)
     return '0x' + val.toString(16)
 }
+
+export const hasClass = (className: string) =>
+    document.body.classList.contains(className)
