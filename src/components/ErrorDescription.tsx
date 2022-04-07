@@ -15,11 +15,12 @@ export const ErrorDescription: React.FC = ({ children }) => (
             borderRadius: '8px',
             borderColor: 'danger',
             boxShadow: 2,
-            bg: 'rgba(220, 44, 16, 0.05)',
+            bg: '#370b0b',
+            fontSize: '18px',
         }}
     >
-        <Flex sx={{ alignItems: 'center' }}>
-            <Icon name='exclamation-triangle' size='lg' />
+        <Flex align='center' direction='row' wrap='wrap'>
+            <Icon name='exclamation-triangle' size='lg' color='#fee500' />
             <Text sx={{ ml: 2 }}>{children}</Text>
         </Flex>
     </Box>

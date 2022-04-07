@@ -13,17 +13,19 @@ export const ActionDescription: React.FC = ({ children }) => (
             borderRadius: '8px',
             borderColor: 'accent',
             boxShadow: 2,
-            bg: 'rgba(46, 182, 234, 0.05)',
-            fontSize: '22px',
+            bg: '#222222',
+            fontSize: '18px',
         }}
     >
         <Flex sx={{ alignItems: 'center' }}>
-            <Icon name='info-circle' size='lg' />
+            <Icon name='info-circle' size='lg' color='#505050' />
             <Text sx={{ ml: 2 }}>{children}</Text>
         </Flex>
     </Box>
 )
 
 export const Amount: React.FC = ({ children }) => (
-    <Text sx={{ fontWeight: 'bold', whiteSpace: 'nowrap' }}>{children}</Text>
+    <Text sx={{ fontSize: '24px', fontWeight: 'bold', whiteSpace: 'nowrap' }}>
+        {children}
+    </Text>
 )
