@@ -7,7 +7,9 @@ import {
     Button,
     keyframes,
     HStack,
+    Box,
 } from '@chakra-ui/react'
+import { InfoIcon } from '../InfoIcon'
 import { Icon } from '../Icon'
 
 type RowProps = {
@@ -191,15 +193,51 @@ export const StaticRow: React.FC<StaticRowProps> = ({
     </Row>
 )
 
-export const StaticRowV2: React.FC<StaticRowProps> = ({
+type TooltipProps = {
+    tooltipText: string
+}
+
+const Tooltip: React.FC<TooltipProps> = ({ tooltipText }) => {
+    return (
+        <InfoIcon
+            tooltip={
+                <Box
+                    w='300px'
+                    backgroundColor='#222222'
+                    p={4}
+                    borderRadius='4px'
+                >
+                    <p>{tooltipText}</p>
+                </Box>
+            }
+        />
+    )
+}
+
+type StaticAmountsV2Props = {
+    inputID: string
+    labelledBy?: string
+    amount: string
+    unit?: string
+    color?: string
+    pendingAmount?: string
+    pendingColor?: string
+    onClick?: () => void
+    sx?: Record<string, unknown>
+    tooltipText?: string
+}
+
+type StaticRowV2Props = RowProps & StaticAmountsV2Props
+
+export const StaticRowV2: React.FC<StaticRowV2Props> = ({
     label,
     labelId,
     labelFor,
-    infoIcon,
     amount,
     unit,
     pendingAmount,
     pendingColor,
+    tooltipText,
 }) => (
     <HStack
         justifyContent='space-between'
@@ -215,7 +253,7 @@ export const StaticRowV2: React.FC<StaticRowProps> = ({
         >
             <Flex alignItems='center' justifyContent='center'>
                 {label}
-                {infoIcon && infoIcon}
+                {tooltipText && <Tooltip tooltipText={tooltipText} />}
             </Flex>
         </FormLabel>
         <HStack>
