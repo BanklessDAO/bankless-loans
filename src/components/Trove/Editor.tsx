@@ -6,6 +6,7 @@ import {
     Input,
     Button,
     keyframes,
+    HStack,
 } from '@chakra-ui/react'
 import { Icon } from '../Icon'
 
@@ -188,6 +189,44 @@ export const StaticRow: React.FC<StaticRowProps> = ({
     <Row {...{ label, labelId, labelFor, infoIcon }}>
         <StaticAmounts {...props} />
     </Row>
+)
+
+export const StaticRowV2: React.FC<StaticRowProps> = ({
+    label,
+    labelId,
+    labelFor,
+    infoIcon,
+    amount,
+    unit,
+}) => (
+    <HStack
+        justifyContent='space-between'
+        alignItems='center'
+        marginBottom='16px'
+    >
+        <FormLabel
+            id={labelId}
+            htmlFor={labelFor}
+            fontSize={16}
+            color='#CCCCCC'
+            fontFamily='Space Grotesk'
+        >
+            <Flex alignItems='center' justifyContent='center'>
+                {label}
+                {infoIcon && infoIcon}
+            </Flex>
+        </FormLabel>
+        <HStack>
+            <Text fontWeight='bold' fontSize={18}>
+                {amount}
+            </Text>
+            {unit && (
+                <Text fontWeight='light' fontSize={18} opacity={1}>
+                    {unit}
+                </Text>
+            )}
+        </HStack>
+    </HStack>
 )
 
 type DisabledEditableRowProps = Omit<
