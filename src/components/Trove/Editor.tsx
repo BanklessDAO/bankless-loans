@@ -198,6 +198,8 @@ export const StaticRowV2: React.FC<StaticRowProps> = ({
     infoIcon,
     amount,
     unit,
+    pendingAmount,
+    pendingColor,
 }) => (
     <HStack
         justifyContent='space-between'
@@ -207,7 +209,7 @@ export const StaticRowV2: React.FC<StaticRowProps> = ({
         <FormLabel
             id={labelId}
             htmlFor={labelFor}
-            fontSize={16}
+            fontSize={14}
             color='#CCCCCC'
             fontFamily='Space Grotesk'
         >
@@ -224,6 +226,16 @@ export const StaticRowV2: React.FC<StaticRowProps> = ({
                 <Text fontWeight='light' fontSize={18} opacity={1}>
                     {unit}
                 </Text>
+            )}
+            {pendingAmount && (
+                <PendingAmount
+                    sx={{
+                        color: pendingColor,
+                        opacity: 0.8,
+                        fontSize: '18px',
+                    }}
+                    value={pendingAmount}
+                />
             )}
         </HStack>
     </HStack>
