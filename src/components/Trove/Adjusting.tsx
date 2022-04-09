@@ -19,7 +19,7 @@ import { Icon } from '../Icon'
 import { InfoIcon } from '../InfoIcon'
 import { LoadingOverlay } from '../LoadingOverlay'
 import { CollateralRatio } from './CollateralRatio'
-import { EditableRow, StaticRow } from './Editor'
+import { EditableRow, StaticRowV2 } from './Editor'
 import {
     ExpensiveTroveChangeWarning,
     GasEstimationState,
@@ -29,6 +29,8 @@ import {
     selectForTroveChangeValidation,
     validateTroveChange,
 } from './validation/validateTroveChange'
+import { CollateralRatioV2 } from './CollateralRatioV2'
+import { ActionDescriptionV2 } from 'components/ActionDescriptionV2'
 
 const selector = (state: LiquityStoreState) => {
     const { trove, fees, price, accountBalance } = state
@@ -244,84 +246,54 @@ export const Adjusting: React.FC = () => {
                     }
                 />
 
-                <StaticRow
-                    label='Liquidation Reserve'
-                    inputID='trove-liquidation-reserve'
-                    amount={`${LUSD_LIQUIDATION_RESERVE}`}
-                    unit={'LUSD'}
-                    infoIcon={
-                        <InfoIcon
-                            tooltip={
-                                <Box sx={{ width: '200px' }}>
-                                    An amount set aside to cover the
-                                    liquidator’s gas costs if your Trove needs
-                                    to be liquidated. The amount increases your
-                                    debt and is refunded if you close your Trove
-                                    by fully paying off its net debt.
-                                </Box>
-                            }
-                        />
-                    }
-                />
+                <Box marginTop={4} marginBottom={6}>
+                    <StaticRowV2
+                        label='Liquidation Reserve'
+                        inputID='trove-liquidation-reserve'
+                        amount={`${LUSD_LIQUIDATION_RESERVE}`}
+                        unit={'LUSD'}
+                        tooltipText='An amount set aside to cover the liquidator’s gas costs if your Trove needs to be liquidated. The amount increases your debt and is refunded if you close your Trove by fully paying off its net debt.'
+                    />
 
-                <StaticRow
-                    label='Borrowing Fee'
-                    inputID='trove-borrowing-fee'
-                    amount={fee.prettify(2)}
-                    pendingAmount={feePct.toString(2)}
-                    unit={'LUSD'}
-                    infoIcon={
-                        <InfoIcon
-                            tooltip={
-                                <Box sx={{ width: '240px' }}>
-                                    This amount is deducted from the borrowed
-                                    amount as a one-time fee. There are no
-                                    recurring fees for borrowing, which is thus
-                                    interest-free.
-                                </Box>
-                            }
-                        />
-                    }
-                />
+                    <StaticRowV2
+                        label='Borrowing Fee'
+                        inputID='trove-borrowing-fee'
+                        amount={fee.prettify(2)}
+                        pendingAmount={feePct.toString(2)}
+                        unit={'LUSD'}
+                        tooltipText='This amount is deducted from the borrowed amount as a one-time fee. There are no recurring fees for borrowing, which is thus interest-free.'
+                    />
 
-                <StaticRow
-                    label='Total debt'
-                    inputID='trove-total-debt'
-                    amount={totalDebt.prettify(2)}
-                    unit={'LUSD'}
-                    infoIcon={
-                        <InfoIcon
-                            tooltip={
-                                <Box sx={{ width: '240px' }}>
-                                    The total amount of LUSD your Trove will
-                                    hold.{' '}
-                                    {isDirty && (
-                                        <>
-                                            You will need to repay{' '}
-                                            {totalDebt
-                                                .sub(LUSD_LIQUIDATION_RESERVE)
-                                                .prettify(2)}{' '}
-                                            LUSD to reclaim your collateral (
-                                            {LUSD_LIQUIDATION_RESERVE.toString()}{' '}
-                                            LUSD Liquidation Reserve excluded).
-                                        </>
-                                    )}
-                                </Box>
-                            }
-                        />
-                    }
-                />
+                    <StaticRowV2
+                        label='Total debt'
+                        inputID='trove-total-debt'
+                        amount={totalDebt.prettify(2)}
+                        unit={'LUSD'}
+                        tooltipText={`The total amount of LUSD your Trove will hold. ${
+                            isDirty && (
+                                <>
+                                    You will need to repay{' '}
+                                    {totalDebt
+                                        .sub(LUSD_LIQUIDATION_RESERVE)
+                                        .prettify(2)}{' '}
+                                    LUSD to reclaim your collateral (
+                                    {LUSD_LIQUIDATION_RESERVE.toString()} LUSD
+                                    Liquidation Reserve excluded).
+                                </>
+                            )
+                        }`}
+                    />
 
-                <CollateralRatio
-                    value={collateralRatio}
-                    change={collateralRatioChange}
-                />
-
+                    <CollateralRatioV2
+                        value={collateralRatio}
+                        change={collateralRatioChange}
+                    />
+                </Box>
                 {description ?? (
-                    <ActionDescription>
+                    <ActionDescriptionV2>
                         Adjust your Trove by modifying its collateral, debt, or
                         both.
-                    </ActionDescription>
+                    </ActionDescriptionV2>
                 )}
 
                 <ExpensiveTroveChangeWarning
