@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react'
-import { Flex, Button, Box, Heading } from '@chakra-ui/react'
+import { Button, Box, Heading, HStack } from '@chakra-ui/react'
 import {
     LiquityStoreState,
     Decimal,
@@ -206,7 +206,7 @@ export const Adjusting: React.FC = () => {
 
     return (
         <CardBase>
-            <Heading>
+            <Heading marginBottom={4}>
                 Trove
                 {isDirty && !isTransactionPending && (
                     <Button
@@ -304,8 +304,12 @@ export const Adjusting: React.FC = () => {
                     setGasEstimationState={setGasEstimationState}
                 />
 
-                <Flex>
-                    <Button variant='darkGrey' onClick={handleCancelPressed}>
+                <HStack>
+                    <Button
+                        m={0}
+                        variant='darkGrey'
+                        onClick={handleCancelPressed}
+                    >
                         Cancel
                     </Button>
 
@@ -323,7 +327,7 @@ export const Adjusting: React.FC = () => {
                             Confirm
                         </Button>
                     )}
-                </Flex>
+                </HStack>
             </Box>
             {isTransactionPending && <LoadingOverlay />}
         </CardBase>
