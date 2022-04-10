@@ -219,7 +219,13 @@ export const Adjusting: React.FC = () => {
                 )}
             </Heading>
 
-            <Box>
+            <Box
+                sx={{
+                    '& > *:nth-child(2)': {
+                        maxHeight: '69px',
+                    },
+                }}
+            >
                 <EditableRow
                     label='Collateral'
                     inputID='trove-collateral'
