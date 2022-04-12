@@ -20,6 +20,68 @@ type RowProps = {
     sx?: Record<string, unknown>
 }
 
+type PendingAmountProps = {
+    value: string
+    sx: Record<string, unknown>
+}
+
+type TooltipProps = {
+    tooltipText: string
+}
+
+type StaticAmountsProps = {
+    inputID: string
+    labelledBy?: string
+    amount: string
+    unit?: string
+    color?: string
+    pendingAmount?: string
+    pendingColor?: string
+    onClick?: () => void
+    sx?: Record<string, unknown>
+    tooltipText?: string
+}
+
+type StaticRowProps = RowProps & StaticAmountsProps
+
+type DisabledEditableRowProps = Omit<
+    StaticAmountsProps,
+    'labelledBy' | 'onClick'
+> & {
+    label: string
+    sx?: Record<string, unknown>
+}
+
+type EditableRowProps = DisabledEditableRowProps & {
+    editingState: [string | undefined, (editing: string | undefined) => void]
+    editedAmount: string
+    setEditedAmount: (editedAmount: string) => void
+    maxAmount?: string
+    maxedOut?: boolean
+}
+
+const PendingAmount: React.FC<PendingAmountProps> = ({ sx, value }) => (
+    <Text {...{ sx }}>
+        (
+        {value === '++' ? (
+            <Icon name='angle-double-up' />
+        ) : value === '--' ? (
+            <Icon name='angle-double-down' />
+        ) : value?.startsWith('+') ? (
+            <>
+                <Icon name='angle-up' /> {value.substr(1)}
+            </>
+        ) : value?.startsWith('-') ? (
+            <>
+                <Icon name='angle-down' /> {value.substr(1)}
+            </>
+        ) : (
+            value
+        )}
+        )
+    </Text>
+)
+
 export const Row: React.FC<RowProps> = ({
     sx,
     label,
@@ -52,45 +114,6 @@ export const Row: React.FC<RowProps> = ({
             {children}
         </Flex>
     )
-}
-
-type PendingAmountProps = {
-    value: string
-    sx: Record<string, unknown>
-}
-
-const PendingAmount: React.FC<PendingAmountProps> = ({ sx, value }) => (
-    <Text {...{ sx }}>
-        (
-        {value === '++' ? (
-            <Icon name='angle-double-up' />
-        ) : value === '--' ? (
-            <Icon name='angle-double-down' />
-        ) : value?.startsWith('+') ? (
-            <>
-                <Icon name='angle-up' /> {value.substr(1)}
-            </>
-        ) : value?.startsWith('-') ? (
-            <>
-                <Icon name='angle-down' /> {value.substr(1)}
-            </>
-        ) : (
-            value
-        )}
-        )
-    </Text>
-)
-
-type StaticAmountsProps = {
-    inputID: string
-    labelledBy?: string
-    amount: string
-    unit?: string
-    color?: string
-    pendingAmount?: string
-    pendingColor?: string
-    onClick?: () => void
-    sx?: Record<string, unknown>
 }
 
 export const StaticAmounts: React.FC<StaticAmountsProps> = ({
@@ -179,24 +202,6 @@ const graytransition = keyframes`
   from {background: #2F2F2F;}
 `
 
-type StaticRowProps = RowProps & StaticAmountsProps
-
-export const StaticRow: React.FC<StaticRowProps> = ({
-    label,
-    labelId,
-    labelFor,
-    infoIcon,
-    ...props
-}) => (
-    <Row {...{ label, labelId, labelFor, infoIcon }}>
-        <StaticAmounts {...props} />
-    </Row>
-)
-
-type TooltipProps = {
-    tooltipText: string
-}
-
 const Tooltip: React.FC<TooltipProps> = ({ tooltipText }) => {
     return (
         <InfoIcon
@@ -214,22 +219,7 @@ const Tooltip: React.FC<TooltipProps> = ({ tooltipText }) => {
     )
 }
 
-type StaticAmountsV2Props = {
-    inputID: string
-    labelledBy?: string
-    amount: string
-    unit?: string
-    color?: string
-    pendingAmount?: string
-    pendingColor?: string
-    onClick?: () => void
-    sx?: Record<string, unknown>
-    tooltipText?: string
-}
-
-type StaticRowV2Props = RowProps & StaticAmountsV2Props
-
-export const StaticRowV2: React.FC<StaticRowV2Props> = ({
+export const StaticRow: React.FC<StaticRowProps> = ({
     label,
     labelId,
     labelFor,
@@ -280,14 +270,6 @@ export const StaticRowV2: React.FC<StaticRowV2Props> = ({
     </HStack>
 )
 
-type DisabledEditableRowProps = Omit<
-    StaticAmountsProps,
-    'labelledBy' | 'onClick'
-> & {
-    label: string
-    sx?: Record<string, unknown>
-}
-
 export const DisabledEditableRow: React.FC<DisabledEditableRowProps> = ({
     inputID,
     label,
@@ -305,14 +287,6 @@ export const DisabledEditableRow: React.FC<DisabledEditableRowProps> = ({
         />
     </Row>
 )
-
-type EditableRowProps = DisabledEditableRowProps & {
-    editingState: [string | undefined, (editing: string | undefined) => void]
-    editedAmount: string
-    setEditedAmount: (editedAmount: string) => void
-    maxAmount?: string
-    maxedOut?: boolean
-}
 
 export const EditableRow: React.FC<EditableRowProps> = ({
     label,
