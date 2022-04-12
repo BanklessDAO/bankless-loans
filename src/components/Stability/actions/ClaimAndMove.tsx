@@ -20,7 +20,7 @@ export const ClaimAndMove: React.FC<ClaimAndMoveProps> = ({
 
     if (disabled) {
         return (
-            <Button variant='darkPurple' disabled>
+            <Button variant='darkPurple' disabled m={0} w='100%'>
                 {children}
             </Button>
         )
@@ -32,6 +32,8 @@ export const ClaimAndMove: React.FC<ClaimAndMoveProps> = ({
             sx={{ mt: 3, width: '100%' }}
             onClick={sendTransaction}
             disabled={disabled}
+            m={0}
+            w='100%'
         >
             {children}
         </Button>
