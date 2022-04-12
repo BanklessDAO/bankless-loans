@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react'
-import { Button, Box, Heading, HStack } from '@chakra-ui/react'
+import { Button, Box, HStack } from '@chakra-ui/react'
 import {
     LiquityStoreState,
     Decimal,
@@ -11,14 +11,11 @@ import {
 import { useLiquitySelector } from '../../hooks/useLiquitySelector'
 
 import { useStableTroveChange } from '../../hooks/useStableTroveChange'
-import { ActionDescription } from '../ActionDescription'
 import { useMyTransactionState } from '../Transaction'
 import { TroveAction } from './TroveAction'
 import { useTroveView } from './context/TroveViewContext'
 import { Icon } from '../Icon'
-import { InfoIcon } from '../InfoIcon'
 import { LoadingOverlay } from '../LoadingOverlay'
-import { CollateralRatio } from './CollateralRatio'
 import { EditableRow, StaticRowV2 } from './Editor'
 import {
     ExpensiveTroveChangeWarning,
@@ -31,6 +28,7 @@ import {
 } from './validation/validateTroveChange'
 import { CollateralRatioV2 } from './CollateralRatioV2'
 import { ActionDescriptionV2 } from 'components/ActionDescriptionV2'
+import { HeadingBase } from 'components/HeadingBase'
 
 const selector = (state: LiquityStoreState) => {
     const { trove, fees, price, accountBalance } = state
@@ -206,7 +204,7 @@ export const Adjusting: React.FC = () => {
 
     return (
         <CardBase>
-            <Heading marginBottom={4}>
+            <HeadingBase>
                 Trove
                 {isDirty && !isTransactionPending && (
                     <Button
@@ -217,7 +215,7 @@ export const Adjusting: React.FC = () => {
                         <Icon name='history' size='lg' />
                     </Button>
                 )}
-            </Heading>
+            </HeadingBase>
 
             <Box
                 sx={{

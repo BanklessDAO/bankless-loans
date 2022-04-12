@@ -1,21 +1,13 @@
 import React, { useCallback } from 'react'
-import {
-    Container,
-    Heading,
-    Box,
-    Flex,
-    Button,
-    Spacer,
-    HStack,
-} from '@chakra-ui/react'
+import { Box, Button, HStack } from '@chakra-ui/react'
 import { useLiquitySelector } from '../../hooks/useLiquitySelector'
 import { LiquityStoreState } from '@liquity/lib-base'
-import { DisabledEditableRow, StaticRowV2 } from './Editor'
+import { StaticRowV2 } from './Editor'
 import { useTroveView } from './context/TroveViewContext'
 import { Icon } from '../Icon'
-import { CollateralRatio } from './CollateralRatio'
 import { CardBase } from '../Layout/CardBase'
 import { CollateralRatioV2 } from './CollateralRatioV2'
+import { HeadingBase } from 'components/HeadingBase'
 
 const select = ({ trove, price }: LiquityStoreState) => ({ trove, price })
 
@@ -31,7 +23,7 @@ export const ReadOnlyTrove: React.FC = () => {
 
     return (
         <CardBase>
-            <Heading marginBottom={18}>Trove</Heading>
+            <HeadingBase>Trove</HeadingBase>
             <Box overflow='hidden' m={0}>
                 <Box>
                     <StaticRowV2

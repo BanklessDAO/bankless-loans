@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { Flex, Button, Box, Heading, Spinner, HStack } from '@chakra-ui/react'
+import { Button, Box, Spinner, HStack } from '@chakra-ui/react'
 import {
     LiquityStoreState,
     Decimal,
@@ -11,14 +11,11 @@ import {
 import { useLiquitySelector } from '../../hooks/useLiquitySelector'
 
 import { useStableTroveChange } from '../../hooks/useStableTroveChange'
-import { ActionDescription } from '../ActionDescription'
 import { useMyTransactionState } from '../Transaction'
 import { TroveAction } from './TroveAction'
 import { useTroveView } from './context/TroveViewContext'
 import { Icon } from '../Icon'
-import { InfoIcon } from '../InfoIcon'
 import { LoadingOverlay } from '../LoadingOverlay'
-import { CollateralRatio } from './CollateralRatio'
 import { EditableRow, StaticRowV2 } from './Editor'
 import {
     ExpensiveTroveChangeWarning,
@@ -31,6 +28,7 @@ import {
 import { CardBase } from 'components/Layout/CardBase'
 import { CollateralRatioV2 } from './CollateralRatioV2'
 import { ActionDescriptionV2 } from 'components/ActionDescriptionV2'
+import { HeadingBase } from 'components/HeadingBase'
 
 const selector = (state: LiquityStoreState) => {
     const { fees, price, accountBalance } = state
@@ -97,7 +95,7 @@ export const Opening: React.FC = () => {
     //will need to address hard-coded width for mobile
     return (
         <CardBase>
-            <Heading marginBottom={18}>
+            <HeadingBase>
                 Trove
                 {isDirty && !isTransactionPending && (
                     <Button
@@ -108,7 +106,7 @@ export const Opening: React.FC = () => {
                         <Icon name='history' size='lg' />
                     </Button>
                 )}
-            </Heading>
+            </HeadingBase>
 
             <EditableRow
                 label='Collateral'
