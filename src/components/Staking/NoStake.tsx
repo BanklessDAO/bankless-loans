@@ -13,7 +13,7 @@ export const NoStake: React.FC = () => {
             <HeadingBase>Staking</HeadingBase>
             <Box>
                 <ActionDescriptionV2>
-                    {`You have not staked ${GT} yet. Stake {GT} to earn a share of borrowing and redemption fees.`}
+                    {`You have not staked ${GT} yet. Stake ${GT} to earn a share of borrowing and redemption fees.`}
                 </ActionDescriptionV2>
                 <HStack>
                     <Button
