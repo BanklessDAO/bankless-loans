@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from 'react'
-import { Flex, Button } from '@chakra-ui/react'
+import { Button, HStack } from '@chakra-ui/react'
 
 import {
     LiquityStoreState,
@@ -15,7 +15,7 @@ import {
 } from '../../hooks/useLiquityReducer'
 import { useLiquitySelector } from '../../hooks/useLiquitySelector'
 
-import { ActionDescription } from '../ActionDescription'
+import { ActionDescriptionV2 } from '../ActionDescriptionV2'
 import { useMyTransactionState } from '../Transaction'
 
 import { TroveEditor } from './TroveEditor'
@@ -252,18 +252,18 @@ export const TroveManager: React.FC<TroveManagerProps> = ({
         >
             {description ??
                 (openingNewTrove ? (
-                    <ActionDescription>
+                    <ActionDescriptionV2>
                         Start by entering the amount of ETH you&apos;d like to
                         deposit as collateral.
-                    </ActionDescription>
+                    </ActionDescriptionV2>
                 ) : (
-                    <ActionDescription>
+                    <ActionDescriptionV2>
                         Adjust your Trove by modifying its collateral, debt, or
                         both.
-                    </ActionDescription>
+                    </ActionDescriptionV2>
                 ))}
 
-            <Flex>
+            <HStack>
                 <Button variant='cancel' onClick={handleCancel}>
                     Cancel
                 </Button>
@@ -282,7 +282,7 @@ export const TroveManager: React.FC<TroveManagerProps> = ({
                         Confirm
                     </Button>
                 )}
-            </Flex>
+            </HStack>
         </TroveEditor>
     )
 }

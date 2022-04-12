@@ -12,11 +12,12 @@ import {
 } from '@liquity/lib-base'
 import { useLiquitySelector } from '../../hooks/useLiquitySelector'
 
-import { StaticRow } from './Editor'
+import { StaticRowV2 } from './Editor'
 import { LoadingOverlay } from '../LoadingOverlay'
 import { CollateralRatio } from './CollateralRatio'
 import { InfoIcon } from '../InfoIcon'
 import { CardBase } from '../Layout/CardBase'
+import { CollateralRatioV2 } from './CollateralRatioV2'
 
 type TroveEditorProps = {
     original: Trove
@@ -58,17 +59,17 @@ export const TroveEditor: React.FC<TroveEditorProps> = ({
 
     return (
         <CardBase>
-            <Heading>Trove</Heading>
+            <Heading marginBottom={18}>Trove</Heading>
 
-            <Box sx={{ p: [2, 3] }}>
-                <StaticRow
+            <Box>
+                <StaticRowV2
                     label='Collateral'
                     inputID='trove-collateral'
                     amount={edited.collateral.prettify(4)}
                     unit='ETH'
                 />
 
-                <StaticRow
+                <StaticRowV2
                     label='Debt'
                     inputID='trove-debt'
                     amount={edited.debt.prettify()}
@@ -76,52 +77,25 @@ export const TroveEditor: React.FC<TroveEditorProps> = ({
                 />
 
                 {original.isEmpty && (
-                    <StaticRow
+                    <StaticRowV2
                         label='Liquidation Reserve'
                         inputID='trove-liquidation-reserve'
                         amount={`${LUSD_LIQUIDATION_RESERVE}`}
                         unit={'LUSD'}
-                        infoIcon={
-                            <InfoIcon
-                                tooltip={
-                                    <Box sx={{ width: '200px' }}>
-                                        An amount set aside to cover the
-                                        liquidator’s gas costs if your Trove
-                                        needs to be liquidated. The amount
-                                        increases your debt and is refunded if
-                                        you close your Trove by fully paying off
-                                        its net debt.
-                                    </Box>
-                                }
-                            />
-                        }
+                        tooltipText='An amount set aside to cover the liquidator’s gas costs if your Trove needs to be liquidated. The amount increases your debt and is refunded if you close your Trove by fully paying off its net debt.'
                     />
                 )}
 
-                <StaticRow
+                <StaticRowV2
                     label='Borrowing Fee'
                     inputID='trove-borrowing-fee'
                     amount={fee.toString(2)}
                     pendingAmount={feePct.toString(2)}
                     unit={'LUSD'}
-                    infoIcon={
-                        <InfoIcon
-                            tooltip={
-                                <Box
-                                    bg='rgb(25,25,255)'
-                                    sx={{ width: '240px' }}
-                                >
-                                    This amount is deducted from the borrowed
-                                    amount as a one-time fee. There are no
-                                    recurring fees for borrowing, which is thus
-                                    interest-free.
-                                </Box>
-                            }
-                        />
-                    }
+                    tooltipText='This amount is deducted from the borrowed amount as a one-time fee. There are no recurring fees for borrowing, which is thus interest-free.'
                 />
 
-                <CollateralRatio
+                <CollateralRatioV2
                     value={collateralRatio}
                     change={collateralRatioChange}
                 />
