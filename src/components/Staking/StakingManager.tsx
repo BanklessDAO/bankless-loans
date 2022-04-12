@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Flex } from '@chakra-ui/react'
+import { Button, HStack } from '@chakra-ui/react'
 
 import {
     Decimal,
@@ -18,7 +18,7 @@ import { GT, COIN } from '../../strings'
 import { useStakingView } from './context/StakingViewContext'
 import { StakingEditor } from './StakingEditor'
 import { StakingManagerAction } from './StakingManagerAction'
-import { ActionDescription, Amount } from '../ActionDescription'
+import { ActionDescriptionV2, Amount } from '../ActionDescriptionV2'
 import { ErrorDescription } from '../ErrorDescription'
 
 const init = ({ lqtyStake }: LiquityStoreState) => ({
@@ -84,14 +84,14 @@ const StakingManagerActionDescription: React.FC<
 
     if (originalStake.isEmpty && stakeLQTY) {
         return (
-            <ActionDescription>
+            <ActionDescriptionV2>
                 You are staking <Amount>{stakeLQTY}</Amount>.
-            </ActionDescription>
+            </ActionDescriptionV2>
         )
     }
 
     return (
-        <ActionDescription>
+        <ActionDescriptionV2>
             {stakeLQTY && (
                 <>
                     You are adding <Amount>{stakeLQTY}</Amount> to your stake
@@ -120,7 +120,7 @@ const StakingManagerActionDescription: React.FC<
                 </>
             )}
             .
-        </ActionDescription>
+        </ActionDescriptionV2>
     )
 }
 
@@ -161,21 +161,22 @@ export const StakingManager: React.FC = () => {
         >
             {description ??
                 (makingNewStake ? (
-                    <ActionDescription>
+                    <ActionDescriptionV2>
                         Enter the amount of {GT} you would like to stake.
-                    </ActionDescription>
+                    </ActionDescriptionV2>
                 ) : (
-                    <ActionDescription>
+                    <ActionDescriptionV2>
                         Adjust the {GT} amount to stake or withdraw.
-                    </ActionDescription>
+                    </ActionDescriptionV2>
                 ))}
 
-            <Flex>
+            <HStack>
                 <Button
                     variant='darkGrey'
                     onClick={() =>
                         dispatchStakingViewAction({ type: 'cancelAdjusting' })
                     }
+                    m={0}
                 >
                     Cancel
                 </Button>
@@ -188,7 +189,7 @@ export const StakingManager: React.FC = () => {
                         Confirm
                     </Button>
                 )}
-            </Flex>
+            </HStack>
         </StakingEditor>
     )
 }
