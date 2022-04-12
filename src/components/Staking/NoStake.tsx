@@ -1,6 +1,7 @@
-import { Heading, Box, Flex, Button } from '@chakra-ui/react'
+import { Box, Button, HStack } from '@chakra-ui/react'
+import { ActionDescriptionV2 } from 'components/ActionDescriptionV2'
+import { HeadingBase } from 'components/HeadingBase'
 import { GT } from '../../strings'
-import { InfoMessage } from '../InfoMessage'
 import { CardBase } from '../Layout/CardBase'
 import { useStakingView } from './context/StakingViewContext'
 
@@ -9,19 +10,20 @@ export const NoStake: React.FC = () => {
 
     return (
         <CardBase>
-            <Heading>Staking</Heading>
-            <Box sx={{ p: [2, 3] }}>
-                <InfoMessage title={`You have not staked ${GT} yet.`}>
-                    Stake {GT} to earn a share of borrowing and redemption fees.
-                </InfoMessage>
-                <Flex>
+            <HeadingBase>Staking</HeadingBase>
+            <Box>
+                <ActionDescriptionV2>
+                    {`You have not staked ${GT} yet. Stake {GT} to earn a share of borrowing and redemption fees.`}
+                </ActionDescriptionV2>
+                <HStack>
                     <Button
                         variant='mainPurple'
                         onClick={() => dispatch({ type: 'startAdjusting' })}
+                        m={0}
                     >
                         Start staking
                     </Button>
-                </Flex>
+                </HStack>
             </Box>
         </CardBase>
     )
