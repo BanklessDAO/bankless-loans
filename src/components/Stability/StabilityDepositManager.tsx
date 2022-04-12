@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect } from 'react'
-import { Button, Flex } from '@chakra-ui/react'
+import { Button, HStack } from '@chakra-ui/react'
 import { LiquityStoreState, Decimal, Decimalish } from '@liquity/lib-base'
 import { useLiquitySelector } from '../../hooks/useLiquitySelector'
 import { useLiquityReducer } from '../../hooks/useLiquityReducer'
 import { LiquityStoreUpdate } from '../../hooks/useLiquityReducer'
 import { COIN } from '../../strings'
-import { ActionDescription } from '../ActionDescription'
+import { ActionDescriptionV2 } from '../ActionDescriptionV2'
 import { useMyTransactionState } from '../Transaction'
 import { StabilityDepositEditor } from './StabilityDepositEditor'
 import { StabilityDepositAction } from './StabilityDepositAction'
@@ -141,16 +141,16 @@ export const StabilityDepositManager: React.FC = () => {
         >
             {description ??
                 (makingNewDeposit ? (
-                    <ActionDescription>
+                    <ActionDescriptionV2>
                         Enter the amount of {COIN} you&apos;d like to deposit.
-                    </ActionDescription>
+                    </ActionDescriptionV2>
                 ) : (
-                    <ActionDescription>
+                    <ActionDescriptionV2>
                         Adjust the {COIN} amount to deposit or withdraw.
-                    </ActionDescription>
+                    </ActionDescriptionV2>
                 ))}
 
-            <Flex>
+            <HStack>
                 <Button variant='cancel' onClick={handleCancel}>
                     Cancel
                 </Button>
@@ -167,7 +167,7 @@ export const StabilityDepositManager: React.FC = () => {
                         Confirm
                     </Button>
                 )}
-            </Flex>
+            </HStack>
         </StabilityDepositEditor>
     )
 }
