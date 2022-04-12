@@ -250,8 +250,9 @@ export const StaticRowV2: React.FC<StaticRowV2Props> = ({
             fontSize={14}
             color='#CCCCCC'
             fontFamily='Space Grotesk'
+            margin={0}
         >
-            <Flex alignItems='center' justifyContent='center'>
+            <Flex alignItems='center' justifyContent='center' w='100%'>
                 {label}
                 {tooltipText && <Tooltip tooltipText={tooltipText} />}
             </Flex>
