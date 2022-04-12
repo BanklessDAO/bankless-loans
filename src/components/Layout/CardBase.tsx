@@ -10,7 +10,6 @@ export const CardBase: React.FC = ({ children }) => {
             as='article'
             overflow='auto'
             h='fit-content'
-            minH='432px'
             w='100vw'
             maxW={[`${width - stylesPaddingTotal}px`, '555px', '555px']}
             borderWidth={1}
