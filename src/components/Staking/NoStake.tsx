@@ -1,5 +1,5 @@
 import { Box, Button, HStack } from '@chakra-ui/react'
-import { ActionDescriptionV2 } from 'components/ActionDescriptionV2'
+import { ActionDescription } from 'components/ActionDescription'
 import { HeadingBase } from 'components/HeadingBase'
 import { GT } from '../../strings'
 import { CardBase } from '../Layout/CardBase'
@@ -12,9 +12,9 @@ export const NoStake: React.FC = () => {
         <CardBase>
             <HeadingBase>Staking</HeadingBase>
             <Box>
-                <ActionDescriptionV2>
+                <ActionDescription>
                     {`You have not staked ${GT} yet. Stake ${GT} to earn a share of borrowing and redemption fees.`}
-                </ActionDescriptionV2>
+                </ActionDescription>
                 <HStack>
                     <Button
                         variant='mainPurple'

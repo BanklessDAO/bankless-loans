@@ -6,7 +6,7 @@ import { useLiquitySelector } from '../../hooks/useLiquitySelector'
 import { useTroveView } from './context/TroveViewContext'
 import { CardBase } from 'components/Layout/CardBase'
 import { HeadingBase } from 'components/HeadingBase'
-import { ActionDescriptionV2 } from 'components/ActionDescriptionV2'
+import { ActionDescription } from 'components/ActionDescription'
 
 const select = ({ collateralSurplusBalance }: LiquityStoreState) => ({
     hasSurplusCollateral: !collateralSurplusBalance.isZero,
@@ -24,13 +24,13 @@ export const RedeemedTrove: React.FC = () => {
         <CardBase>
             <HeadingBase>Trove</HeadingBase>
             <Box>
-                <ActionDescriptionV2>
+                <ActionDescription>
                     {`Your Trove has been redeemed. ${
                         hasSurplusCollateral
                             ? 'Please reclaim your remaining collateral before opening a new Trove.'
                             : 'You can borrow LUSD by opening a Trove.'
                     }`}
-                </ActionDescriptionV2>
+                </ActionDescription>
 
                 <HStack>
                     {hasSurplusCollateral && <CollateralSurplusAction />}

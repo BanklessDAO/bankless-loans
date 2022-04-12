@@ -27,7 +27,7 @@ import {
     validateTroveChange,
 } from './validation/validateTroveChange'
 import { CollateralRatioV2 } from './CollateralRatioV2'
-import { ActionDescriptionV2 } from 'components/ActionDescriptionV2'
+import { ActionDescription } from 'components/ActionDescription'
 import { HeadingBase } from 'components/HeadingBase'
 
 const selector = (state: LiquityStoreState) => {
@@ -294,10 +294,10 @@ export const Adjusting: React.FC = () => {
                     />
                 </Box>
                 {description ?? (
-                    <ActionDescriptionV2>
+                    <ActionDescription>
                         Adjust your Trove by modifying its collateral, debt, or
                         both.
-                    </ActionDescriptionV2>
+                    </ActionDescription>
                 )}
 
                 <ExpensiveTroveChangeWarning

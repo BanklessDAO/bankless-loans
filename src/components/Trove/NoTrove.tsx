@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import { Box, Button, HStack } from '@chakra-ui/react'
 import { useTroveView } from './context/TroveViewContext'
 import { CardBase } from 'components/Layout/CardBase'
-import { ActionDescriptionV2 } from 'components/ActionDescriptionV2'
+import { ActionDescription } from 'components/ActionDescription'
 import { HeadingBase } from 'components/HeadingBase'
 
 export const NoTrove: React.FC = props => {
@@ -16,9 +16,9 @@ export const NoTrove: React.FC = props => {
         <CardBase>
             <HeadingBase>Trove</HeadingBase>
             <Box>
-                <ActionDescriptionV2>
+                <ActionDescription>
                     {`You haven't borrowed any LUSD yet. You can borrow LUSD by opening a Trove.`}
-                </ActionDescriptionV2>
+                </ActionDescription>
                 <HStack>
                     <Button
                         variant='mainPurple'

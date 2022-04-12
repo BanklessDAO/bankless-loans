@@ -15,7 +15,7 @@ import {
 } from '../../hooks/useLiquityReducer'
 import { useLiquitySelector } from '../../hooks/useLiquitySelector'
 
-import { ActionDescriptionV2 } from '../ActionDescriptionV2'
+import { ActionDescription } from '../ActionDescription'
 import { useMyTransactionState } from '../Transaction'
 
 import { TroveEditor } from './TroveEditor'
@@ -252,15 +252,15 @@ export const TroveManager: React.FC<TroveManagerProps> = ({
         >
             {description ??
                 (openingNewTrove ? (
-                    <ActionDescriptionV2>
+                    <ActionDescription>
                         Start by entering the amount of ETH you&apos;d like to
                         deposit as collateral.
-                    </ActionDescriptionV2>
+                    </ActionDescription>
                 ) : (
-                    <ActionDescriptionV2>
+                    <ActionDescription>
                         Adjust your Trove by modifying its collateral, debt, or
                         both.
-                    </ActionDescriptionV2>
+                    </ActionDescription>
                 ))}
 
             <HStack>

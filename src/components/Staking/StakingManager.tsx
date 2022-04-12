@@ -18,7 +18,7 @@ import { GT, COIN } from '../../strings'
 import { useStakingView } from './context/StakingViewContext'
 import { StakingEditor } from './StakingEditor'
 import { StakingManagerAction } from './StakingManagerAction'
-import { ActionDescriptionV2, Amount } from '../ActionDescriptionV2'
+import { ActionDescription, Amount } from '../ActionDescription'
 import { ErrorDescription } from '../ErrorDescription'
 
 const init = ({ lqtyStake }: LiquityStoreState) => ({
@@ -84,14 +84,14 @@ const StakingManagerActionDescription: React.FC<
 
     if (originalStake.isEmpty && stakeLQTY) {
         return (
-            <ActionDescriptionV2>
+            <ActionDescription>
                 You are staking <Amount>{stakeLQTY}</Amount>.
-            </ActionDescriptionV2>
+            </ActionDescription>
         )
     }
 
     return (
-        <ActionDescriptionV2>
+        <ActionDescription>
             {stakeLQTY && (
                 <>
                     You are adding <Amount>{stakeLQTY}</Amount> to your stake
@@ -120,7 +120,7 @@ const StakingManagerActionDescription: React.FC<
                 </>
             )}
             .
-        </ActionDescriptionV2>
+        </ActionDescription>
     )
 }
 
@@ -161,13 +161,13 @@ export const StakingManager: React.FC = () => {
         >
             {description ??
                 (makingNewStake ? (
-                    <ActionDescriptionV2>
+                    <ActionDescription>
                         Enter the amount of {GT} you would like to stake.
-                    </ActionDescriptionV2>
+                    </ActionDescription>
                 ) : (
-                    <ActionDescriptionV2>
+                    <ActionDescription>
                         Adjust the {GT} amount to stake or withdraw.
-                    </ActionDescriptionV2>
+                    </ActionDescription>
                 ))}
 
             <HStack>

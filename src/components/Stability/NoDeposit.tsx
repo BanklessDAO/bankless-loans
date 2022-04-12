@@ -3,7 +3,7 @@ import { Box, Flex, Button } from '@chakra-ui/react'
 import { useStabilityView } from './context/StabilityViewContext'
 import { CardBase } from 'components/Layout/CardBase'
 import { HeadingBase } from 'components/HeadingBase'
-import { ActionDescriptionV2 } from 'components/ActionDescriptionV2'
+import { ActionDescription } from 'components/ActionDescription'
 
 export const NoDeposit: React.FC = () => {
     const { dispatchEvent } = useStabilityView()
@@ -16,9 +16,9 @@ export const NoDeposit: React.FC = () => {
         <CardBase>
             <HeadingBase>Stability Pool</HeadingBase>
             <Box>
-                <ActionDescriptionV2>
+                <ActionDescription>
                     {`You have no LUSD in the Stability Pool. You can earn ETH and LQTY rewards by depositing LUSD.`}
-                </ActionDescriptionV2>
+                </ActionDescription>
 
                 <Flex>
                     <Button variant='mainPurple' onClick={handleOpenTrove}>

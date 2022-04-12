@@ -27,7 +27,7 @@ import {
 } from './validation/validateTroveChange'
 import { CardBase } from 'components/Layout/CardBase'
 import { CollateralRatioV2 } from './CollateralRatioV2'
-import { ActionDescriptionV2 } from 'components/ActionDescriptionV2'
+import { ActionDescription } from 'components/ActionDescription'
 import { HeadingBase } from 'components/HeadingBase'
 
 const selector = (state: LiquityStoreState) => {
@@ -177,10 +177,10 @@ export const Opening: React.FC = () => {
                 <CollateralRatioV2 value={collateralRatio} />
 
                 {description ?? (
-                    <ActionDescriptionV2>
+                    <ActionDescription>
                         Start by entering the amount of ETH you&apos;d like to
                         deposit as collateral.
-                    </ActionDescriptionV2>
+                    </ActionDescription>
                 )}
 
                 <ExpensiveTroveChangeWarning

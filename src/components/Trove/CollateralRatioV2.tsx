@@ -8,7 +8,7 @@ import {
 } from '@liquity/lib-base'
 
 import { StaticRow } from './Editor'
-import { ActionDescriptionV2 } from '../ActionDescriptionV2'
+import { ActionDescription } from '../ActionDescription'
 
 type CollateralRatioProps = {
     value?: Decimal
@@ -47,10 +47,10 @@ export const CollateralRatioV2: React.FC<CollateralRatioProps> = ({
                 tooltipText='The ratio between the dollar value of the collateral and the debt (in LUSD) you are depositing. While the Minimum Collateral Ratio is 110% during normal operation, it is recommended to keep the Collateral Ratio always above 150% to avoid liquidation under Recovery Mode. A Collateral Ratio above 200% or 250% is recommended for additional safety.'
             />
             {value?.lt(1.5) && (
-                <ActionDescriptionV2>
+                <ActionDescription>
                     Keeping your CR above 150% can help avoid liquidation under
                     Recovery Mode.
-                </ActionDescriptionV2>
+                </ActionDescription>
             )}
         </>
     )

@@ -5,7 +5,7 @@ import { useLiquitySelector } from '../../hooks/useLiquitySelector'
 import { useLiquityReducer } from '../../hooks/useLiquityReducer'
 import { LiquityStoreUpdate } from '../../hooks/useLiquityReducer'
 import { COIN } from '../../strings'
-import { ActionDescriptionV2 } from '../ActionDescriptionV2'
+import { ActionDescription } from '../ActionDescription'
 import { useMyTransactionState } from '../Transaction'
 import { StabilityDepositEditor } from './StabilityDepositEditor'
 import { StabilityDepositAction } from './StabilityDepositAction'
@@ -141,13 +141,13 @@ export const StabilityDepositManager: React.FC = () => {
         >
             {description ??
                 (makingNewDeposit ? (
-                    <ActionDescriptionV2>
+                    <ActionDescription>
                         Enter the amount of {COIN} you&apos;d like to deposit.
-                    </ActionDescriptionV2>
+                    </ActionDescription>
                 ) : (
-                    <ActionDescriptionV2>
+                    <ActionDescription>
                         Adjust the {COIN} amount to deposit or withdraw.
-                    </ActionDescriptionV2>
+                    </ActionDescription>
                 ))}
 
             <HStack>
