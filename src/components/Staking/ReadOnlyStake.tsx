@@ -1,13 +1,14 @@
-import { Heading, Box, Flex, Button } from '@chakra-ui/react'
+import { Heading, Box, Flex, Button, HStack } from '@chakra-ui/react'
 import { LiquityStoreState } from '@liquity/lib-base'
 import { useLiquitySelector } from '../../hooks/useLiquitySelector'
 import { COIN, GT } from '../../strings'
-import { DisabledEditableRow, StaticRow } from '../Trove/Editor'
+import { DisabledEditableRow, StaticRow, StaticRowV2 } from '../Trove/Editor'
 import { LoadingOverlay } from '../LoadingOverlay'
 import { Icon } from '../Icon'
 import { useStakingView } from './context/StakingViewContext'
 import { StakingGainsAction } from './StakingGainsAction'
 import { CardBase } from 'components/Layout/CardBase'
+import { HeadingBase } from 'components/HeadingBase'
 
 const select = ({ lqtyStake, totalStakedLQTY }: LiquityStoreState) => ({
     lqtyStake,
@@ -21,50 +22,53 @@ export const ReadOnlyStake: React.FC = () => {
 
     return (
         <CardBase>
-            <Heading>Staking</Heading>
-            <Box sx={{ p: [2, 3] }}>
-                <DisabledEditableRow
-                    label='Stake'
-                    inputID='stake-lqty'
-                    amount={lqtyStake.stakedLQTY.prettify()}
-                    unit={GT}
-                />
+            <HeadingBase>Staking</HeadingBase>
 
-                <StaticRow
-                    label='Pool share'
-                    inputID='stake-share'
-                    amount={poolShare.prettify(4)}
-                    unit='%'
-                />
+            <StaticRowV2
+                label='Stake'
+                inputID='stake-lqty'
+                amount={lqtyStake.stakedLQTY.prettify()}
+                unit={GT}
+            />
 
-                <StaticRow
-                    label='Redemption gain'
-                    inputID='stake-gain-eth'
-                    amount={lqtyStake.collateralGain.prettify(4)}
-                    color={lqtyStake.collateralGain.nonZero && 'success'}
-                    unit='ETH'
-                />
+            <StaticRowV2
+                label='Pool share'
+                inputID='stake-share'
+                amount={poolShare.prettify(4)}
+                unit='%'
+            />
 
-                <StaticRow
-                    label='Issuance gain'
-                    inputID='stake-gain-lusd'
-                    amount={lqtyStake.lusdGain.prettify()}
-                    color={lqtyStake.lusdGain.nonZero && 'success'}
-                    unit={COIN}
-                />
+            <StaticRowV2
+                label='Redemption gain'
+                inputID='stake-gain-eth'
+                amount={lqtyStake.collateralGain.prettify(4)}
+                color={lqtyStake.collateralGain.nonZero && 'success'}
+                unit='ETH'
+            />
 
-                <Flex>
-                    <Button
-                        variant='darkGrey'
-                        onClick={() => dispatch({ type: 'startAdjusting' })}
-                    >
+            <StaticRowV2
+                label='Issuance gain'
+                inputID='stake-gain-lusd'
+                amount={lqtyStake.lusdGain.prettify()}
+                color={lqtyStake.lusdGain.nonZero && 'success'}
+                unit={COIN}
+            />
+
+            <HStack marginTop={6}>
+                <Button
+                    variant='darkGrey'
+                    onClick={() => dispatch({ type: 'startAdjusting' })}
+                    m={0}
+                >
+                    <HStack>
                         <Icon name='pen' size='sm' />
-                        &nbsp;Adjust
-                    </Button>
+                        <p>Adjust</p>
+                    </HStack>
+                </Button>
 
-                    <StakingGainsAction />
-                </Flex>
-            </Box>
+                <StakingGainsAction />
+            </HStack>
+
             {changePending && <LoadingOverlay />}
         </CardBase>
     )
