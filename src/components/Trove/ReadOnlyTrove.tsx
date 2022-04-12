@@ -6,7 +6,7 @@ import { StaticRow } from './Editor'
 import { useTroveView } from './context/TroveViewContext'
 import { Icon } from '../Icon'
 import { CardBase } from '../Layout/CardBase'
-import { CollateralRatioV2 } from './CollateralRatioV2'
+import { CollateralRatio } from './CollateralRatio'
 import { HeadingBase } from 'components/HeadingBase'
 
 const select = ({ trove, price }: LiquityStoreState) => ({ trove, price })
@@ -40,7 +40,7 @@ export const ReadOnlyTrove: React.FC = () => {
                         unit={'LUSD'}
                     />
 
-                    <CollateralRatioV2 value={trove.collateralRatio(price)} />
+                    <CollateralRatio value={trove.collateralRatio(price)} />
                 </Box>
                 <HStack marginTop={6}>
                     <Button variant='darkGrey' onClick={handleCloseTrove} m={0}>

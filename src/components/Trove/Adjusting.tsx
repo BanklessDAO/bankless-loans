@@ -26,7 +26,7 @@ import {
     selectForTroveChangeValidation,
     validateTroveChange,
 } from './validation/validateTroveChange'
-import { CollateralRatioV2 } from './CollateralRatioV2'
+import { CollateralRatio } from './CollateralRatio'
 import { ActionDescription } from 'components/ActionDescription'
 import { HeadingBase } from 'components/HeadingBase'
 
@@ -288,7 +288,7 @@ export const Adjusting: React.FC = () => {
                         }`}
                     />
 
-                    <CollateralRatioV2
+                    <CollateralRatio
                         value={collateralRatio}
                         change={collateralRatioChange}
                     />

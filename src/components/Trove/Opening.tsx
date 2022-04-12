@@ -26,7 +26,7 @@ import {
     validateTroveChange,
 } from './validation/validateTroveChange'
 import { CardBase } from 'components/Layout/CardBase'
-import { CollateralRatioV2 } from './CollateralRatioV2'
+import { CollateralRatio } from './CollateralRatio'
 import { ActionDescription } from 'components/ActionDescription'
 import { HeadingBase } from 'components/HeadingBase'
 
@@ -174,7 +174,7 @@ export const Opening: React.FC = () => {
                     }`}
                 />
 
-                <CollateralRatioV2 value={collateralRatio} />
+                <CollateralRatio value={collateralRatio} />
 
                 {description ?? (
                     <ActionDescription>

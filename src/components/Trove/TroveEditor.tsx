@@ -14,10 +14,8 @@ import { useLiquitySelector } from '../../hooks/useLiquitySelector'
 
 import { StaticRow } from './Editor'
 import { LoadingOverlay } from '../LoadingOverlay'
-import { CollateralRatio } from './CollateralRatio'
-import { InfoIcon } from '../InfoIcon'
 import { CardBase } from '../Layout/CardBase'
-import { CollateralRatioV2 } from './CollateralRatioV2'
+import { CollateralRatio } from './CollateralRatio'
 
 type TroveEditorProps = {
     original: Trove
@@ -95,7 +93,7 @@ export const TroveEditor: React.FC<TroveEditorProps> = ({
                     tooltipText='This amount is deducted from the borrowed amount as a one-time fee. There are no recurring fees for borrowing, which is thus interest-free.'
                 />
 
-                <CollateralRatioV2
+                <CollateralRatio
                     value={collateralRatio}
                     change={collateralRatioChange}
                 />
