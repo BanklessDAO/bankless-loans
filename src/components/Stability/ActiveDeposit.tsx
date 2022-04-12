@@ -91,7 +91,7 @@ export const ActiveDeposit: React.FC = () => {
                 />
             </Box>
 
-            <HStack my={4}>
+            <HStack marginTop={8} marginBottom={4}>
                 <Button
                     variant='darkGrey'
                     onClick={handleAdjustDeposit}
