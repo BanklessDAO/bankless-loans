@@ -8,7 +8,7 @@ import { COIN, GT } from '../../strings'
 import { Icon } from '../Icon'
 import { LoadingOverlay } from '../LoadingOverlay'
 import { useMyTransactionState } from '../Transaction'
-import { StaticRowV2 } from '../Trove/Editor'
+import { StaticRow } from '../Trove/Editor'
 import { ClaimAndMove } from './actions/ClaimAndMove'
 import { ClaimRewards } from './actions/ClaimRewards'
 import { useStabilityView } from './context/StabilityViewContext'
@@ -59,21 +59,21 @@ export const ActiveDeposit: React.FC = () => {
         <CardBase>
             <HeadingBase>Stability Pool</HeadingBase>
             <Box my={4}>
-                <StaticRowV2
+                <StaticRow
                     label='Deposit'
                     inputID='deposit-lusd'
                     amount={stabilityDeposit.currentLUSD.prettify()}
                     unit={COIN}
                 />
 
-                <StaticRowV2
+                <StaticRow
                     label='Pool share'
                     inputID='deposit-share'
                     amount={poolShare.prettify(4)}
                     unit='%'
                 />
 
-                <StaticRowV2
+                <StaticRow
                     label='Liquidation gain'
                     inputID='deposit-gain'
                     amount={stabilityDeposit.collateralGain.prettify(4)}
@@ -81,7 +81,7 @@ export const ActiveDeposit: React.FC = () => {
                     unit='ETH'
                 />
 
-                <StaticRowV2
+                <StaticRow
                     label='Reward'
                     inputID='deposit-reward'
                     amount={stabilityDeposit.lqtyReward.prettify()}

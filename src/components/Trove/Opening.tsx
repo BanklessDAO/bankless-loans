@@ -16,7 +16,7 @@ import { TroveAction } from './TroveAction'
 import { useTroveView } from './context/TroveViewContext'
 import { Icon } from '../Icon'
 import { LoadingOverlay } from '../LoadingOverlay'
-import { EditableRow, StaticRowV2 } from './Editor'
+import { EditableRow, StaticRow } from './Editor'
 import {
     ExpensiveTroveChangeWarning,
     GasEstimationState,
@@ -134,7 +134,7 @@ export const Opening: React.FC = () => {
                 }
             />
             <Box w='full' marginTop={4}>
-                <StaticRowV2
+                <StaticRow
                     label='Liquidation Reserve'
                     inputID='trove-liquidation-reserve'
                     amount={`${LUSD_LIQUIDATION_RESERVE}`}
@@ -142,7 +142,7 @@ export const Opening: React.FC = () => {
                     tooltipText='An amount set aside to cover the liquidator’s gas costs if your Trove needs to be liquidated. The amount increases your debt and is refunded if you close your Trove by fully paying off its net debt.'
                 />
 
-                <StaticRowV2
+                <StaticRow
                     label='Borrowing Fee'
                     inputID='trove-borrowing-fee'
                     amount={fee.prettify(2)}
@@ -151,7 +151,7 @@ export const Opening: React.FC = () => {
                     tooltipText='This amount is deducted from the borrowed amount as a one-time fee. There are no recurring fees for borrowing, which is thus interest-free.'
                 />
 
-                <StaticRowV2
+                <StaticRow
                     label='Total debt'
                     inputID='trove-total-debt'
                     amount={totalDebt.prettify(2)}

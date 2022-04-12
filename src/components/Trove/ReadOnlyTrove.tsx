@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import { Box, Button, HStack } from '@chakra-ui/react'
 import { useLiquitySelector } from '../../hooks/useLiquitySelector'
 import { LiquityStoreState } from '@liquity/lib-base'
-import { StaticRowV2 } from './Editor'
+import { StaticRow } from './Editor'
 import { useTroveView } from './context/TroveViewContext'
 import { Icon } from '../Icon'
 import { CardBase } from '../Layout/CardBase'
@@ -26,14 +26,14 @@ export const ReadOnlyTrove: React.FC = () => {
             <HeadingBase>Trove</HeadingBase>
             <Box overflow='hidden' m={0}>
                 <Box>
-                    <StaticRowV2
+                    <StaticRow
                         label='Collateral'
                         inputID='trove-collateral'
                         amount={trove.collateral.prettify(4)}
                         unit='ETH'
                     />
 
-                    <StaticRowV2
+                    <StaticRow
                         label='Debt'
                         inputID='trove-debt'
                         amount={trove.debt.prettify()}

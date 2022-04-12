@@ -14,7 +14,7 @@ import { useLiquitySelector } from '../../hooks/useLiquitySelector'
 import { COIN, GT } from '../../strings'
 
 import { Icon } from '../Icon'
-import { EditableRow, StaticRowV2 } from '../Trove/Editor'
+import { EditableRow, StaticRow } from '../Trove/Editor'
 import { LoadingOverlay } from '../LoadingOverlay'
 import { InfoIcon } from '../InfoIcon'
 import { CardBase } from 'components/Layout/CardBase'
@@ -95,13 +95,13 @@ export const StabilityDepositEditor: React.FC<StabilityDepositEditorProps> = ({
                 />
                 <Box my={4}>
                     {newPoolShare.infinite ? (
-                        <StaticRowV2
+                        <StaticRow
                             label='Pool share'
                             inputID='deposit-share'
                             amount='N/A'
                         />
                     ) : (
-                        <StaticRowV2
+                        <StaticRow
                             label='Pool share'
                             inputID='deposit-share'
                             amount={newPoolShare.prettify(4)}
@@ -118,7 +118,7 @@ export const StabilityDepositEditor: React.FC<StabilityDepositEditorProps> = ({
 
                 {!originalDeposit.isEmpty && (
                     <>
-                        <StaticRowV2
+                        <StaticRow
                             label='Liquidation gain'
                             inputID='deposit-gain'
                             amount={originalDeposit.collateralGain.prettify(4)}
@@ -129,7 +129,7 @@ export const StabilityDepositEditor: React.FC<StabilityDepositEditorProps> = ({
                             unit='ETH'
                         />
 
-                        <StaticRowV2
+                        <StaticRow
                             label='Reward'
                             inputID='deposit-reward'
                             amount={originalDeposit.lqtyReward.prettify()}

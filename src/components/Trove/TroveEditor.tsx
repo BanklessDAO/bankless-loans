@@ -12,7 +12,7 @@ import {
 } from '@liquity/lib-base'
 import { useLiquitySelector } from '../../hooks/useLiquitySelector'
 
-import { StaticRowV2 } from './Editor'
+import { StaticRow } from './Editor'
 import { LoadingOverlay } from '../LoadingOverlay'
 import { CollateralRatio } from './CollateralRatio'
 import { InfoIcon } from '../InfoIcon'
@@ -62,14 +62,14 @@ export const TroveEditor: React.FC<TroveEditorProps> = ({
             <Heading marginBottom={18}>Trove</Heading>
 
             <Box>
-                <StaticRowV2
+                <StaticRow
                     label='Collateral'
                     inputID='trove-collateral'
                     amount={edited.collateral.prettify(4)}
                     unit='ETH'
                 />
 
-                <StaticRowV2
+                <StaticRow
                     label='Debt'
                     inputID='trove-debt'
                     amount={edited.debt.prettify()}
@@ -77,7 +77,7 @@ export const TroveEditor: React.FC<TroveEditorProps> = ({
                 />
 
                 {original.isEmpty && (
-                    <StaticRowV2
+                    <StaticRow
                         label='Liquidation Reserve'
                         inputID='trove-liquidation-reserve'
                         amount={`${LUSD_LIQUIDATION_RESERVE}`}
@@ -86,7 +86,7 @@ export const TroveEditor: React.FC<TroveEditorProps> = ({
                     />
                 )}
 
-                <StaticRowV2
+                <StaticRow
                     label='Borrowing Fee'
                     inputID='trove-borrowing-fee'
                     amount={fee.toString(2)}

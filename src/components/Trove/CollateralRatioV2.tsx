@@ -7,7 +7,7 @@ import {
     Percent,
 } from '@liquity/lib-base'
 
-import { StaticRowV2 } from './Editor'
+import { StaticRow } from './Editor'
 import { ActionDescriptionV2 } from '../ActionDescriptionV2'
 
 type CollateralRatioProps = {
@@ -23,7 +23,7 @@ export const CollateralRatioV2: React.FC<CollateralRatioProps> = ({
     const changePct = change && new Percent(change)
     return (
         <>
-            <StaticRowV2
+            <StaticRow
                 label='Collateral ratio'
                 inputID='trove-collateral-ratio'
                 amount={collateralRatioPct.prettify()}

@@ -1,8 +1,8 @@
-import { Heading, Box, Flex, Button, HStack } from '@chakra-ui/react'
+import { Button, HStack } from '@chakra-ui/react'
 import { LiquityStoreState } from '@liquity/lib-base'
 import { useLiquitySelector } from '../../hooks/useLiquitySelector'
 import { COIN, GT } from '../../strings'
-import { DisabledEditableRow, StaticRow, StaticRowV2 } from '../Trove/Editor'
+import { StaticRow } from '../Trove/Editor'
 import { LoadingOverlay } from '../LoadingOverlay'
 import { Icon } from '../Icon'
 import { useStakingView } from './context/StakingViewContext'
@@ -24,21 +24,21 @@ export const ReadOnlyStake: React.FC = () => {
         <CardBase>
             <HeadingBase>Staking</HeadingBase>
 
-            <StaticRowV2
+            <StaticRow
                 label='Stake'
                 inputID='stake-lqty'
                 amount={lqtyStake.stakedLQTY.prettify()}
                 unit={GT}
             />
 
-            <StaticRowV2
+            <StaticRow
                 label='Pool share'
                 inputID='stake-share'
                 amount={poolShare.prettify(4)}
                 unit='%'
             />
 
-            <StaticRowV2
+            <StaticRow
                 label='Redemption gain'
                 inputID='stake-gain-eth'
                 amount={lqtyStake.collateralGain.prettify(4)}
@@ -46,7 +46,7 @@ export const ReadOnlyStake: React.FC = () => {
                 unit='ETH'
             />
 
-            <StaticRowV2
+            <StaticRow
                 label='Issuance gain'
                 inputID='stake-gain-lusd'
                 amount={lqtyStake.lusdGain.prettify()}

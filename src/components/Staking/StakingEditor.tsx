@@ -10,7 +10,7 @@ import {
 import { useLiquitySelector } from '../../hooks/useLiquitySelector'
 import { COIN, GT } from '../../strings'
 import { Icon } from '../Icon'
-import { EditableRow, StaticRowV2 } from '../Trove/Editor'
+import { EditableRow, StaticRow } from '../Trove/Editor'
 import { LoadingOverlay } from '../LoadingOverlay'
 import { CardBase } from '../Layout/CardBase'
 import { useStakingView } from './context/StakingViewContext'
@@ -84,13 +84,13 @@ export const StakingEditor: React.FC<StakingEditorProps> = ({
             />
             <Box py={4}>
                 {newPoolShare.infinite ? (
-                    <StaticRowV2
+                    <StaticRow
                         label='Pool share'
                         inputID='stake-share'
                         amount='N/A'
                     />
                 ) : (
-                    <StaticRowV2
+                    <StaticRow
                         label='Pool share'
                         inputID='stake-share'
                         amount={newPoolShare.prettify(4)}
@@ -103,7 +103,7 @@ export const StakingEditor: React.FC<StakingEditorProps> = ({
                 )}
                 {!originalStake.isEmpty && (
                     <>
-                        <StaticRowV2
+                        <StaticRow
                             label='Redemption gain'
                             inputID='stake-gain-eth'
                             amount={originalStake.collateralGain.prettify(4)}
@@ -114,7 +114,7 @@ export const StakingEditor: React.FC<StakingEditorProps> = ({
                             unit='ETH'
                         />
 
-                        <StaticRowV2
+                        <StaticRow
                             label='Issuance gain'
                             inputID='stake-gain-lusd'
                             amount={originalStake.lusdGain.prettify()}
