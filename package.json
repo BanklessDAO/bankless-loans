@@ -34,7 +34,7 @@
     "@web3-react/core": "^6.1.9",
     "@web3-react/injected-connector": "^6.0.7",
     "ethers": "^5.6.2",
-    "framer-motion": "^6.2.8",
+    "framer-motion": "^6.2.10",
     "@web3-react/walletconnect-connector": "^6.2.13",
     "@web3-react/walletlink-connector": "^6.2.13",
     "graphql": "^16.3.0",
