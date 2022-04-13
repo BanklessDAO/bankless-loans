@@ -163,12 +163,12 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
                             <PreviewConnector>
                                 <LiquityProvider
                                     loader={loader}
-                                    unsupportedNetworkFallback={
-                                        unsupportedNetworkFallback
-                                    }
-                                    unsupportedMainnetFallback={
-                                        <UnsupportedMainnetFallback />
-                                    }
+                                    // unsupportedNetworkFallback={
+                                    //     unsupportedNetworkFallback
+                                    // }
+                                    // unsupportedMainnetFallback={
+                                    //     <UnsupportedMainnetFallback />
+                                    // }
                                 >
                                     <TransactionProvider>
                                         <Component {...pageProps} />

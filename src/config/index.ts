@@ -8,9 +8,9 @@ export type LiquityFrontendConfig = {
 }
 
 const defaultConfig: LiquityFrontendConfig = {
-    frontendTag: process.env.FRONTEND_TAG,
-    infuraApiKey: process.env.INFURA_ID,
-    testnetOnly: true,
+    frontendTag: process.env.NEXT_PUBLIC_FRONTEND_TAG,
+    infuraApiKey: process.env.NEXT_PUBLIC_INFURA_ID,
+    testnetOnly: NEXT_PUBLIC_TESTNET_ONLY,
 }
 
 function hasKey<K extends string>(o: object, k: K): o is Record<K, unknown> {
@@ -28,7 +28,7 @@ const parseConfig = (json: unknown): LiquityFrontendConfig => {
                 config.frontendTag = getAddress(frontendTag)
             } else {
                 console.error('Malformed frontendTag:')
-                console.log(frontendTag)
+                console.log('frontendTag', frontendTag)
             }
         }
 
@@ -39,7 +39,7 @@ const parseConfig = (json: unknown): LiquityFrontendConfig => {
                 config.infuraApiKey = infuraApiKey
             } else {
                 console.error('Malformed infuraApiKey:')
-                console.log(infuraApiKey)
+                console.log('infuraApiKey', infuraApiKey)
             }
         }
 
