@@ -161,7 +161,6 @@ export const validateTroveChange = (
                 <Amount>
                     {LUSD_MINIMUM_DEBT.toString()} {'LUSD'}
                 </Amount>
-                .
             </ErrorDescription>,
         ]
     }
@@ -331,7 +330,6 @@ const validateTroveAdjustment = (
                     <Amount>
                         {LUSD_MINIMUM_DEBT.toString()} {'LUSD'}
                     </Amount>
-                    .
                 </ErrorDescription>
             )
         }
@@ -344,7 +342,6 @@ const validateTroveAdjustment = (
                     <Amount>
                         {repayLUSD.sub(lusdBalance).prettify()} {'LUSD'}
                     </Amount>
-                    .
                 </ErrorDescription>
             )
         }
@@ -357,7 +354,6 @@ const validateTroveAdjustment = (
                 <Amount>
                     {depositCollateral.sub(accountBalance).prettify()} ETH
                 </Amount>
-                .
             </ErrorDescription>
         )
     }

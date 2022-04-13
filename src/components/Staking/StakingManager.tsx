@@ -119,7 +119,6 @@ const StakingManagerActionDescription: React.FC<
                     )}
                 </>
             )}
-            .
         </ActionDescription>
     )
 }

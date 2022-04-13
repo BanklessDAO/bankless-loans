@@ -57,7 +57,6 @@ export const StabilityActionDescription: React.FC<
                     )}
                 </>
             )}
-            .
         </ActionDescription>
     )
 }
