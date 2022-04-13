@@ -24,6 +24,7 @@ export const ClaimRewards: React.FC<ClaimRewardsProps> = ({
             variant='mainPurple'
             onClick={sendTransaction}
             disabled={disabled}
+            m={0}
         >
             {children}
         </Button>

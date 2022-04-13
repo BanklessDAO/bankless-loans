@@ -1,5 +1,15 @@
 import React, { useState } from 'react'
-import { FormLabel, Text, Flex, Input, Button } from '@chakra-ui/react'
+import {
+    FormLabel,
+    Text,
+    Flex,
+    Input,
+    Button,
+    keyframes,
+    HStack,
+    Box,
+} from '@chakra-ui/react'
+import { InfoIcon } from '../InfoIcon'
 import { Icon } from '../Icon'
 
 type RowProps = {
@@ -9,6 +19,68 @@ type RowProps = {
     infoIcon?: React.ReactNode
     sx?: Record<string, unknown>
 }
+
+type PendingAmountProps = {
+    value: string
+    sx: Record<string, unknown>
+}
+
+type TooltipProps = {
+    tooltipText: string
+}
+
+type StaticAmountsProps = {
+    inputID: string
+    labelledBy?: string
+    amount: string
+    unit?: string
+    color?: string
+    pendingAmount?: string
+    pendingColor?: string
+    onClick?: () => void
+    sx?: Record<string, unknown>
+    tooltipText?: string
+}
+
+type StaticRowProps = RowProps & StaticAmountsProps
+
+type DisabledEditableRowProps = Omit<
+    StaticAmountsProps,
+    'labelledBy' | 'onClick'
+> & {
+    label: string
+    sx?: Record<string, unknown>
+}
+
+type EditableRowProps = DisabledEditableRowProps & {
+    editingState: [string | undefined, (editing: string | undefined) => void]
+    editedAmount: string
+    setEditedAmount: (editedAmount: string) => void
+    maxAmount?: string
+    maxedOut?: boolean
+}
+
+const PendingAmount: React.FC<PendingAmountProps> = ({ sx, value }) => (
+    <Text {...{ sx }}>
+        (
+        {value === '++' ? (
+            <Icon name='angle-double-up' />
+        ) : value === '--' ? (
+            <Icon name='angle-double-down' />
+        ) : value?.startsWith('+') ? (
+            <>
+                <Icon name='angle-up' /> {value.substr(1)}
+            </>
+        ) : value?.startsWith('-') ? (
+            <>
+                <Icon name='angle-down' /> {value.substr(1)}
+            </>
+        ) : (
+            value
+        )}
+        )
+    </Text>
+)
 
 export const Row: React.FC<RowProps> = ({
     sx,
@@ -44,45 +116,6 @@ export const Row: React.FC<RowProps> = ({
     )
 }
 
-type PendingAmountProps = {
-    value: string
-    sx: Record<string, unknown>
-}
-
-const PendingAmount: React.FC<PendingAmountProps> = ({ sx, value }) => (
-    <Text {...{ sx }}>
-        (
-        {value === '++' ? (
-            <Icon name='angle-double-up' />
-        ) : value === '--' ? (
-            <Icon name='angle-double-down' />
-        ) : value?.startsWith('+') ? (
-            <>
-                <Icon name='angle-up' /> {value.substr(1)}
-            </>
-        ) : value?.startsWith('-') ? (
-            <>
-                <Icon name='angle-down' /> {value.substr(1)}
-            </>
-        ) : (
-            value
-        )}
-        )
-    </Text>
-)
-
-type StaticAmountsProps = {
-    inputID: string
-    labelledBy?: string
-    amount: string
-    unit?: string
-    color?: string
-    pendingAmount?: string
-    pendingColor?: string
-    onClick?: () => void
-    sx?: Record<string, unknown>
-}
-
 export const StaticAmounts: React.FC<StaticAmountsProps> = ({
     sx,
     inputID,
@@ -111,7 +144,9 @@ export const StaticAmounts: React.FC<StaticAmountsProps> = ({
             <Flex
                 sx={{ alignItems: 'center', justifyContent: 'space-between' }}
             >
-                <Text sx={{ color, fontWeight: 'medium' }}>{amount}</Text>
+                <Text sx={{ color, fontWeight: 'medium', minWidth: '97px' }}>
+                    {amount}
+                </Text>
                 {unit && (
                     <>
                         &nbsp;
@@ -154,35 +189,86 @@ const editableStyle = {
     flexGrow: 1,
     marginBottom: 3,
     paddingLeft: 3,
-    paddingRight: '11px',
-    paddingTop: '28px',
+    paddingRight: 3,
+    paddingTop: 6,
     fontSize: '22px',
     boxShadow: [1, 2],
     border: 1,
     borderColor: 'muted',
 }
 
-type StaticRowProps = RowProps & StaticAmountsProps
+const graytransition = keyframes`
+  to {background: #242424;}
+  from {background: #2F2F2F;}
+`
+
+const Tooltip: React.FC<TooltipProps> = ({ tooltipText }) => {
+    return (
+        <InfoIcon
+            tooltip={
+                <Box
+                    w='300px'
+                    backgroundColor='#222222'
+                    p={4}
+                    borderRadius='4px'
+                >
+                    <p>{tooltipText}</p>
+                </Box>
+            }
+        />
+    )
+}
 
 export const StaticRow: React.FC<StaticRowProps> = ({
     label,
     labelId,
     labelFor,
-    infoIcon,
-    ...props
+    amount,
+    unit,
+    pendingAmount,
+    pendingColor,
+    tooltipText,
 }) => (
-    <Row {...{ label, labelId, labelFor, infoIcon }}>
-        <StaticAmounts {...props} />
-    </Row>
+    <HStack
+        justifyContent='space-between'
+        alignItems='center'
+        marginBottom='16px'
+    >
+        <FormLabel
+            id={labelId}
+            htmlFor={labelFor}
+            fontSize={14}
+            color='#CCCCCC'
+            fontFamily='Space Grotesk'
+            margin={0}
+        >
+            <Flex alignItems='center' justifyContent='center' w='100%'>
+                {label}
+                {tooltipText && <Tooltip tooltipText={tooltipText} />}
+            </Flex>
+        </FormLabel>
+        <HStack>
+            <Text fontWeight='bold' fontSize={18}>
+                {amount}
+            </Text>
+            {unit && (
+                <Text fontWeight='light' fontSize={18} opacity={1}>
+                    {unit}
+                </Text>
+            )}
+            {pendingAmount && (
+                <PendingAmount
+                    sx={{
+                        color: pendingColor,
+                        opacity: 0.8,
+                        fontSize: '18px',
+                    }}
+                    value={pendingAmount}
+                />
+            )}
+        </HStack>
+    </HStack>
 )
-
-type DisabledEditableRowProps = Omit<
-    StaticAmountsProps,
-    'labelledBy' | 'onClick'
-> & {
-    label: string
-    sx?: Record<string, unknown>
-}
 
 export const DisabledEditableRow: React.FC<DisabledEditableRowProps> = ({
     inputID,
@@ -201,14 +287,6 @@ export const DisabledEditableRow: React.FC<DisabledEditableRowProps> = ({
         />
     </Row>
 )
-
-type EditableRowProps = DisabledEditableRowProps & {
-    editingState: [string | undefined, (editing: string | undefined) => void]
-    editedAmount: string
-    setEditedAmount: (editedAmount: string) => void
-    maxAmount?: string
-    maxedOut?: boolean
-}
 
 export const EditableRow: React.FC<EditableRowProps> = ({
     label,
@@ -231,11 +309,12 @@ export const EditableRow: React.FC<EditableRowProps> = ({
         <Row
             {...{ label, labelFor: inputID, unit }}
             sx={{
-                bg: invalid ? 'salmon' : 'background',
+                bg: invalid ? 'salmon' : 'interactive.gray.24',
                 borderRadius: '10px',
-                marginBottom: '16px',
-                height: '70px',
+                marginBottom: 3,
+                height: '69px',
                 position: 'relative',
+                animation: `${graytransition} forwards 250ms ease-out`,
             }}
         >
             <Input
@@ -273,9 +352,9 @@ export const EditableRow: React.FC<EditableRowProps> = ({
             <StaticAmounts
                 sx={{
                     ...editableStyle,
-                    fontSize: '22px',
-                    bg: invalid ? 'salmon' : 'background',
-                    height: '70px',
+                    position: 'relative',
+                    bg: invalid ? 'salmon' : 'interactive.gray.2F',
+                    height: '69px',
                 }}
                 labelledBy={`${inputID}-label`}
                 onClick={() => setEditing(inputID)}
@@ -297,7 +376,7 @@ export const EditableRow: React.FC<EditableRowProps> = ({
                         }}
                         disabled={maxedOut}
                     >
-                        max
+                        <Text>max</Text>
                     </Button>
                 )}
             </StaticAmounts>

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react'
-import { Flex, Button, Box, Heading } from '@chakra-ui/react'
+import { Button, Box, HStack } from '@chakra-ui/react'
 import {
     LiquityStoreState,
     Decimal,
@@ -11,14 +11,11 @@ import {
 import { useLiquitySelector } from '../../hooks/useLiquitySelector'
 
 import { useStableTroveChange } from '../../hooks/useStableTroveChange'
-import { ActionDescription } from '../ActionDescription'
 import { useMyTransactionState } from '../Transaction'
 import { TroveAction } from './TroveAction'
 import { useTroveView } from './context/TroveViewContext'
 import { Icon } from '../Icon'
-import { InfoIcon } from '../InfoIcon'
 import { LoadingOverlay } from '../LoadingOverlay'
-import { CollateralRatio } from './CollateralRatio'
 import { EditableRow, StaticRow } from './Editor'
 import {
     ExpensiveTroveChangeWarning,
@@ -29,6 +26,9 @@ import {
     selectForTroveChangeValidation,
     validateTroveChange,
 } from './validation/validateTroveChange'
+import { CollateralRatio } from './CollateralRatio'
+import { ActionDescription } from 'components/ActionDescription'
+import { HeadingBase } from 'components/HeadingBase'
 
 const selector = (state: LiquityStoreState) => {
     const { trove, fees, price, accountBalance } = state
@@ -204,7 +204,7 @@ export const Adjusting: React.FC = () => {
 
     return (
         <CardBase>
-            <Heading>
+            <HeadingBase>
                 Trove
                 {isDirty && !isTransactionPending && (
                     <Button
@@ -215,9 +215,15 @@ export const Adjusting: React.FC = () => {
                         <Icon name='history' size='lg' />
                     </Button>
                 )}
-            </Heading>
+            </HeadingBase>
 
-            <Box>
+            <Box
+                sx={{
+                    '& > *:nth-child(2)': {
+                        maxHeight: '69px',
+                    },
+                }}
+            >
                 <EditableRow
                     label='Collateral'
                     inputID='trove-collateral'
@@ -244,79 +250,49 @@ export const Adjusting: React.FC = () => {
                     }
                 />
 
-                <StaticRow
-                    label='Liquidation Reserve'
-                    inputID='trove-liquidation-reserve'
-                    amount={`${LUSD_LIQUIDATION_RESERVE}`}
-                    unit={'LUSD'}
-                    infoIcon={
-                        <InfoIcon
-                            tooltip={
-                                <Box sx={{ width: '200px' }}>
-                                    An amount set aside to cover the
-                                    liquidator’s gas costs if your Trove needs
-                                    to be liquidated. The amount increases your
-                                    debt and is refunded if you close your Trove
-                                    by fully paying off its net debt.
-                                </Box>
-                            }
-                        />
-                    }
-                />
+                <Box marginTop={4} marginBottom={6}>
+                    <StaticRow
+                        label='Liquidation Reserve'
+                        inputID='trove-liquidation-reserve'
+                        amount={`${LUSD_LIQUIDATION_RESERVE}`}
+                        unit={'LUSD'}
+                        tooltipText='An amount set aside to cover the liquidator’s gas costs if your Trove needs to be liquidated. The amount increases your debt and is refunded if you close your Trove by fully paying off its net debt.'
+                    />
 
-                <StaticRow
-                    label='Borrowing Fee'
-                    inputID='trove-borrowing-fee'
-                    amount={fee.prettify(2)}
-                    pendingAmount={feePct.toString(2)}
-                    unit={'LUSD'}
-                    infoIcon={
-                        <InfoIcon
-                            tooltip={
-                                <Box sx={{ width: '240px' }}>
-                                    This amount is deducted from the borrowed
-                                    amount as a one-time fee. There are no
-                                    recurring fees for borrowing, which is thus
-                                    interest-free.
-                                </Box>
-                            }
-                        />
-                    }
-                />
+                    <StaticRow
+                        label='Borrowing Fee'
+                        inputID='trove-borrowing-fee'
+                        amount={fee.prettify(2)}
+                        pendingAmount={feePct.toString(2)}
+                        unit={'LUSD'}
+                        tooltipText='This amount is deducted from the borrowed amount as a one-time fee. There are no recurring fees for borrowing, which is thus interest-free.'
+                    />
 
-                <StaticRow
-                    label='Total debt'
-                    inputID='trove-total-debt'
-                    amount={totalDebt.prettify(2)}
-                    unit={'LUSD'}
-                    infoIcon={
-                        <InfoIcon
-                            tooltip={
-                                <Box sx={{ width: '240px' }}>
-                                    The total amount of LUSD your Trove will
-                                    hold.{' '}
-                                    {isDirty && (
-                                        <>
-                                            You will need to repay{' '}
-                                            {totalDebt
-                                                .sub(LUSD_LIQUIDATION_RESERVE)
-                                                .prettify(2)}{' '}
-                                            LUSD to reclaim your collateral (
-                                            {LUSD_LIQUIDATION_RESERVE.toString()}{' '}
-                                            LUSD Liquidation Reserve excluded).
-                                        </>
-                                    )}
-                                </Box>
-                            }
-                        />
-                    }
-                />
+                    <StaticRow
+                        label='Total debt'
+                        inputID='trove-total-debt'
+                        amount={totalDebt.prettify(2)}
+                        unit={'LUSD'}
+                        tooltipText={`The total amount of LUSD your Trove will hold. ${
+                            isDirty && (
+                                <>
+                                    You will need to repay{' '}
+                                    {totalDebt
+                                        .sub(LUSD_LIQUIDATION_RESERVE)
+                                        .prettify(2)}{' '}
+                                    LUSD to reclaim your collateral (
+                                    {LUSD_LIQUIDATION_RESERVE.toString()} LUSD
+                                    Liquidation Reserve excluded).
+                                </>
+                            )
+                        }`}
+                    />
 
-                <CollateralRatio
-                    value={collateralRatio}
-                    change={collateralRatioChange}
-                />
-
+                    <CollateralRatio
+                        value={collateralRatio}
+                        change={collateralRatioChange}
+                    />
+                </Box>
                 {description ?? (
                     <ActionDescription>
                         Adjust your Trove by modifying its collateral, debt, or
@@ -332,8 +308,12 @@ export const Adjusting: React.FC = () => {
                     setGasEstimationState={setGasEstimationState}
                 />
 
-                <Flex>
-                    <Button variant='darkGrey' onClick={handleCancelPressed}>
+                <HStack>
+                    <Button
+                        m={0}
+                        variant='darkGrey'
+                        onClick={handleCancelPressed}
+                    >
                         Cancel
                     </Button>
 
@@ -351,7 +331,7 @@ export const Adjusting: React.FC = () => {
                             Confirm
                         </Button>
                     )}
-                </Flex>
+                </HStack>
             </Box>
             {isTransactionPending && <LoadingOverlay />}
         </CardBase>

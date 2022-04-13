@@ -1,8 +1,9 @@
 import React, { useCallback } from 'react'
-import { Heading, Box, Flex, Button } from '@chakra-ui/react'
-import { InfoMessage } from '../InfoMessage'
+import { Box, Button, HStack } from '@chakra-ui/react'
 import { useTroveView } from './context/TroveViewContext'
 import { CardBase } from 'components/Layout/CardBase'
+import { ActionDescription } from 'components/ActionDescription'
+import { HeadingBase } from 'components/HeadingBase'
 
 export const NoTrove: React.FC = props => {
     const { dispatchEvent } = useTroveView()
@@ -13,17 +14,20 @@ export const NoTrove: React.FC = props => {
 
     return (
         <CardBase>
-            <Heading>Trove</Heading>
-            <Box sx={{ p: [2, 3] }}>
-                <InfoMessage title="You haven't borrowed any LUSD yet.">
-                    You can borrow LUSD by opening a Trove.
-                </InfoMessage>
-
-                <Flex>
-                    <Button variant='mainPurple' onClick={handleOpenTrove}>
+            <HeadingBase>Trove</HeadingBase>
+            <Box>
+                <ActionDescription>
+                    {`You haven't borrowed any LUSD yet. You can borrow LUSD by opening a Trove.`}
+                </ActionDescription>
+                <HStack>
+                    <Button
+                        variant='mainPurple'
+                        onClick={handleOpenTrove}
+                        margin='0'
+                    >
                         Open Trove
                     </Button>
-                </Flex>
+                </HStack>
             </Box>
         </CardBase>
     )

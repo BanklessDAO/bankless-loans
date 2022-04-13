@@ -10,7 +10,6 @@ export const CardBase: React.FC = ({ children }) => {
             as='article'
             overflow='auto'
             h='fit-content'
-            minH='432px'
             w='100vw'
             maxW={[`${width - stylesPaddingTotal}px`, '555px', '555px']}
             borderWidth={1}
@@ -18,7 +17,7 @@ export const CardBase: React.FC = ({ children }) => {
             bg='interactive.gray.13'
             color='interactive.white'
             m='0px !important'
-            p={[4, 4, 8]}
+            p={[8, 8, 8]}
         >
             {children && children}
         </Box>
