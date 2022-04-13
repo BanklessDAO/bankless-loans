@@ -19,7 +19,7 @@ export const ErrorDescription: React.FC = ({ children }) => (
             fontSize: '18px',
         }}
     >
-        <Flex align='center' direction='row' wrap='wrap'>
+        <Flex align='center' direction='row' wrap='nowrap'>
             <Icon name='exclamation-triangle' size='lg' color='#fee500' />
             <Text sx={{ ml: 2 }}>{children}</Text>
         </Flex>

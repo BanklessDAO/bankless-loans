@@ -219,7 +219,7 @@ export const Adjusting: React.FC = () => {
 
             <Box
                 sx={{
-                    '& > *:nth-child(2)': {
+                    '& > *:nth-of-type(2)': {
                         maxHeight: '69px',
                     },
                 }}

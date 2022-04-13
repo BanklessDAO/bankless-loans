@@ -1,3 +1,4 @@
+import { Flex, Text } from '@chakra-ui/react'
 import {
     Decimal,
     LUSD_MINIMUM_DEBT,
@@ -87,7 +88,6 @@ const TroveChangeDescription: React.FC<TroveAdjustmentDescriptionParams> = ({
                 </Amount>
             </>
         )}
-        .
     </ActionDescription>
 )
 
@@ -156,11 +156,13 @@ export const validateTroveChange = (
         // Trying to create a Trove with negative net debt
         return [
             undefined,
-            <ErrorDescription>
-                Total debt must be at least{' '}
-                <Amount>
-                    {LUSD_MINIMUM_DEBT.toString()} {'LUSD'}
-                </Amount>
+            <ErrorDescription key='invalid-creation'>
+                <Text ml='0.25rem'>
+                    Total debt must be at least{' '}
+                    <Amount>
+                        {LUSD_MINIMUM_DEBT.toString()} {'LUSD'}
+                    </Amount>
+                </Text>
             </ErrorDescription>,
         ]
     }
@@ -192,11 +194,12 @@ const validateTroveCreation = (
     if (borrowLUSD.lt(LUSD_MINIMUM_NET_DEBT)) {
         return (
             <ErrorDescription>
-                You must borrow at least{' '}
-                <Amount>
-                    {LUSD_MINIMUM_NET_DEBT.toString()} {'LUSD'}
-                </Amount>
-                .
+                <Text ml='0.25rem'>
+                    You must borrow at least{' '}
+                    <Amount>
+                        {LUSD_MINIMUM_NET_DEBT.toString()} {'LUSD'}
+                    </Amount>
+                </Text>
             </ErrorDescription>
         )
     }
@@ -216,8 +219,10 @@ const validateTroveCreation = (
         if (resultingTrove.collateralRatioIsBelowMinimum(price)) {
             return (
                 <ErrorDescription>
-                    Collateral ratio must be at least{' '}
-                    <Amount>{mcrPercent}</Amount>.
+                    <Text ml='0.25rem'>
+                        Collateral ratio must be at least{' '}
+                        <Amount>{mcrPercent}</Amount>
+                    </Text>
                 </ErrorDescription>
             )
         }
@@ -237,11 +242,13 @@ const validateTroveCreation = (
     if (depositCollateral.gt(accountBalance)) {
         return (
             <ErrorDescription>
-                The amount you&apos;re trying to deposit exceeds your balance by{' '}
-                <Amount>
-                    {depositCollateral.sub(accountBalance).prettify()} ETH
-                </Amount>
-                .
+                <Text ml='0.25rem'>
+                    The amount you&apos;re trying to deposit exceeds your
+                    balance by{' '}
+                    <Amount>
+                        {depositCollateral.sub(accountBalance).prettify()} ETH
+                    </Amount>
+                </Text>
             </ErrorDescription>
         )
     }
@@ -270,8 +277,10 @@ const validateTroveAdjustment = (
         if (withdrawCollateral) {
             return (
                 <ErrorDescription>
-                    You&apos;re not allowed to withdraw collateral during
-                    recovery mode.
+                    <Text ml='0.25rem'>
+                        You&apos;re not allowed to withdraw collateral during
+                        recovery mode.
+                    </Text>
                 </ErrorDescription>
             )
         }
@@ -304,8 +313,10 @@ const validateTroveAdjustment = (
         if (resultingTrove.collateralRatioIsBelowMinimum(price)) {
             return (
                 <ErrorDescription>
-                    Collateral ratio must be at least{' '}
-                    <Amount>{mcrPercent}</Amount>.
+                    <Text ml='0.25rem'>
+                        Collateral ratio must be at least{' '}
+                        <Amount>{mcrPercent}</Amount>
+                    </Text>
                 </ErrorDescription>
             )
         }
@@ -326,10 +337,12 @@ const validateTroveAdjustment = (
         if (resultingTrove.debt.lt(LUSD_MINIMUM_DEBT)) {
             return (
                 <ErrorDescription>
-                    Total debt must be at least{' '}
-                    <Amount>
-                        {LUSD_MINIMUM_DEBT.toString()} {'LUSD'}
-                    </Amount>
+                    <Text ml='0.25rem'>
+                        Total debt must be at least{' '}
+                        <Amount>
+                            {LUSD_MINIMUM_DEBT.toString()} {'LUSD'}
+                        </Amount>
+                    </Text>
                 </ErrorDescription>
             )
         }
@@ -337,11 +350,13 @@ const validateTroveAdjustment = (
         if (repayLUSD.gt(lusdBalance)) {
             return (
                 <ErrorDescription>
-                    The amount you&apos;re trying to repay exceeds your balance
-                    by{' '}
-                    <Amount>
-                        {repayLUSD.sub(lusdBalance).prettify()} {'LUSD'}
-                    </Amount>
+                    <Text ml='0.25rem'>
+                        The amount you&apos;re trying to repay exceeds your
+                        balance by{' '}
+                        <Amount>
+                            {repayLUSD.sub(lusdBalance).prettify()} {'LUSD'}
+                        </Amount>
+                    </Text>
                 </ErrorDescription>
             )
         }
@@ -350,10 +365,13 @@ const validateTroveAdjustment = (
     if (depositCollateral?.gt(accountBalance)) {
         return (
             <ErrorDescription>
-                The amount you&apos;re trying to deposit exceeds your balance by{' '}
-                <Amount>
-                    {depositCollateral.sub(accountBalance).prettify()} ETH
-                </Amount>
+                <Text ml='0.25rem'>
+                    The amount you&apos;re trying to deposit exceeds your
+                    balance by{' '}
+                    <Amount>
+                        {depositCollateral.sub(accountBalance).prettify()} ETH
+                    </Amount>
+                </Text>
             </ErrorDescription>
         )
     }
@@ -373,8 +391,10 @@ const validateTroveClosure = (
     if (numberOfTroves === 1) {
         return (
             <ErrorDescription>
-                You&apos;re not allowed to close your Trove when there are no
-                other Troves in the system.
+                <Text ml='0.25rem'>
+                    You&apos;re not allowed to close your Trove when there are
+                    no other Troves in the system.
+                </Text>
             </ErrorDescription>
         )
     }
@@ -382,8 +402,10 @@ const validateTroveClosure = (
     if (recoveryMode) {
         return (
             <ErrorDescription>
-                You&apos;re not allowed to close your Trove during recovery
-                mode.
+                <Text ml='0.25rem'>
+                    You&apos;re not allowed to close your Trove during recovery
+                    mode.
+                </Text>
             </ErrorDescription>
         )
     }
@@ -391,11 +413,13 @@ const validateTroveClosure = (
     if (repayLUSD?.gt(lusdBalance)) {
         return (
             <ErrorDescription>
-                You need{' '}
-                <Amount>
-                    {repayLUSD.sub(lusdBalance).prettify()} {'LUSD'}
-                </Amount>{' '}
-                more to close your Trove.
+                <Text ml='0.25rem'>
+                    You need{' '}
+                    <Amount>
+                        {repayLUSD.sub(lusdBalance).prettify()} {'LUSD'}
+                    </Amount>{' '}
+                    more to close your Trove.
+                </Text>
             </ErrorDescription>
         )
     }

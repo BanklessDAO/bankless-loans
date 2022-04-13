@@ -141,7 +141,6 @@ export const StakingManager: React.FC = () => {
                   <Amount>
                       {change.stakeLQTY.sub(lqtyBalance).prettify()} {GT}
                   </Amount>
-                  .
               </ErrorDescription>,
           ]
         : [

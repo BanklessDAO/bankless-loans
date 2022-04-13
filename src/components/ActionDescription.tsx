@@ -3,7 +3,7 @@ import { Icon } from './Icon'
 
 export const ActionDescription: React.FC = ({ children }) => (
     <HStack
-        justifyContent='space-around'
+        justifyContent='flex-start'
         mb={6}
         px={6}
         py={2}
@@ -14,7 +14,7 @@ export const ActionDescription: React.FC = ({ children }) => (
         bg='interactive.gray.22'
         fontSize={24}
         sx={{
-            '& > *:first-child': {
+            '& > *:first-of-type': {
                 marginRight: '0.25em',
             },
         }}
@@ -27,5 +27,5 @@ export const ActionDescription: React.FC = ({ children }) => (
 )
 
 export const Amount: React.FC = ({ children }) => (
-    <Text sx={{ fontWeight: 'bold', whiteSpace: 'nowrap' }}>{children}</Text>
+    <span style={{ fontWeight: 'bold', whiteSpace: 'nowrap' }}>{children}</span>
 )
