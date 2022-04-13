@@ -10,7 +10,7 @@ export type LiquityFrontendConfig = {
 const defaultConfig: LiquityFrontendConfig = {
     frontendTag: process.env.NEXT_PUBLIC_FRONTEND_TAG,
     infuraApiKey: process.env.NEXT_PUBLIC_INFURA_ID,
-    testnetOnly: NEXT_PUBLIC_TESTNET_ONLY,
+    testnetOnly: false,
 }
 
 function hasKey<K extends string>(o: object, k: K): o is Record<K, unknown> {
