@@ -1,12 +1,13 @@
 import React, { useCallback } from 'react'
-import { Container, Heading, Box, Flex, Button, Spacer } from '@chakra-ui/react'
+import { Box, Button, HStack } from '@chakra-ui/react'
 import { useLiquitySelector } from '../../hooks/useLiquitySelector'
 import { LiquityStoreState } from '@liquity/lib-base'
-import { DisabledEditableRow } from './Editor'
+import { StaticRow } from './Editor'
 import { useTroveView } from './context/TroveViewContext'
 import { Icon } from '../Icon'
-import { CollateralRatio } from './CollateralRatio'
 import { CardBase } from '../Layout/CardBase'
+import { CollateralRatio } from './CollateralRatio'
+import { HeadingBase } from 'components/HeadingBase'
 
 const select = ({ trove, price }: LiquityStoreState) => ({ trove, price })
 
@@ -22,33 +23,36 @@ export const ReadOnlyTrove: React.FC = () => {
 
     return (
         <CardBase>
-            <Heading>Trove</Heading>
+            <HeadingBase>Trove</HeadingBase>
             <Box overflow='hidden' m={0}>
                 <Box>
-                    <DisabledEditableRow
+                    <StaticRow
                         label='Collateral'
                         inputID='trove-collateral'
                         amount={trove.collateral.prettify(4)}
                         unit='ETH'
                     />
 
-                    <DisabledEditableRow
+                    <StaticRow
                         label='Debt'
                         inputID='trove-debt'
                         amount={trove.debt.prettify()}
                         unit={'LUSD'}
                     />
+
                     <CollateralRatio value={trove.collateralRatio(price)} />
                 </Box>
-                <Flex>
-                    <Button variant='darkGrey' onClick={handleCloseTrove}>
+                <HStack marginTop={6}>
+                    <Button variant='darkGrey' onClick={handleCloseTrove} m={0}>
                         Close Trove
                     </Button>
                     <Button variant='mainPurple' onClick={handleAdjustTrove}>
-                        <Icon name='pen' size='sm' />
-                        &nbsp;Adjust
+                        <HStack>
+                            <Icon name='pen' size='sm' />
+                            <p>Adjust</p>
+                        </HStack>
                     </Button>
-                </Flex>
+                </HStack>
             </Box>
         </CardBase>
     )

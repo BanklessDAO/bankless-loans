@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Flex, Heading, Box, Button } from '@chakra-ui/react'
+import { Box, Button } from '@chakra-ui/react'
 import {
     Decimal,
     Decimalish,
@@ -14,6 +14,7 @@ import { EditableRow, StaticRow } from '../Trove/Editor'
 import { LoadingOverlay } from '../LoadingOverlay'
 import { CardBase } from '../Layout/CardBase'
 import { useStakingView } from './context/StakingViewContext'
+import { HeadingBase } from 'components/HeadingBase'
 
 const select = ({ lqtyBalance, totalStakedLQTY }: LiquityStoreState) => ({
     lqtyBalance,
@@ -56,7 +57,7 @@ export const StakingEditor: React.FC<StakingEditorProps> = ({
 
     return (
         <CardBase>
-            <Heading>
+            <HeadingBase>
                 {title}
                 {edited && !changePending && (
                     <Button
@@ -67,21 +68,21 @@ export const StakingEditor: React.FC<StakingEditorProps> = ({
                         <Icon name='history' size='lg' />
                     </Button>
                 )}
-            </Heading>
-            <Box sx={{ p: [2, 3] }}>
-                <EditableRow
-                    label='Stake'
-                    inputID='stake-lqty'
-                    amount={editedLQTY.prettify()}
-                    maxAmount={maxAmount.toString()}
-                    maxedOut={maxedOut}
-                    unit={GT}
-                    {...{ editingState }}
-                    editedAmount={editedLQTY.toString(2)}
-                    setEditedAmount={newValue =>
-                        dispatch({ type: 'setStake', newValue })
-                    }
-                />
+            </HeadingBase>
+            <EditableRow
+                label='Stake'
+                inputID='stake-lqty'
+                amount={editedLQTY.prettify()}
+                maxAmount={maxAmount.toString()}
+                maxedOut={maxedOut}
+                unit={GT}
+                {...{ editingState }}
+                editedAmount={editedLQTY.toString(2)}
+                setEditedAmount={newValue =>
+                    dispatch({ type: 'setStake', newValue })
+                }
+            />
+            <Box py={4}>
                 {newPoolShare.infinite ? (
                     <StaticRow
                         label='Pool share'
@@ -122,8 +123,8 @@ export const StakingEditor: React.FC<StakingEditorProps> = ({
                         />
                     </>
                 )}
-                {children}
             </Box>
+            {children}
             {changePending && <LoadingOverlay />}
         </CardBase>
     )

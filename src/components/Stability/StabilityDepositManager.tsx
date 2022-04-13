@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react'
-import { Button, Flex } from '@chakra-ui/react'
+import { Button, HStack } from '@chakra-ui/react'
 import { LiquityStoreState, Decimal, Decimalish } from '@liquity/lib-base'
 import { useLiquitySelector } from '../../hooks/useLiquitySelector'
 import { useLiquityReducer } from '../../hooks/useLiquityReducer'
@@ -150,7 +150,7 @@ export const StabilityDepositManager: React.FC = () => {
                     </ActionDescription>
                 ))}
 
-            <Flex>
+            <HStack>
                 <Button variant='cancel' onClick={handleCancel}>
                     Cancel
                 </Button>
@@ -167,7 +167,7 @@ export const StabilityDepositManager: React.FC = () => {
                         Confirm
                     </Button>
                 )}
-            </Flex>
+            </HStack>
         </StabilityDepositEditor>
     )
 }

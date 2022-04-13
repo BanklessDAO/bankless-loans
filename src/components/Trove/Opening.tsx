@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { Flex, Button, Box, Heading, Spinner } from '@chakra-ui/react'
+import { Button, Box, Spinner, HStack } from '@chakra-ui/react'
 import {
     LiquityStoreState,
     Decimal,
@@ -11,14 +11,11 @@ import {
 import { useLiquitySelector } from '../../hooks/useLiquitySelector'
 
 import { useStableTroveChange } from '../../hooks/useStableTroveChange'
-import { ActionDescription } from '../ActionDescription'
 import { useMyTransactionState } from '../Transaction'
 import { TroveAction } from './TroveAction'
 import { useTroveView } from './context/TroveViewContext'
 import { Icon } from '../Icon'
-import { InfoIcon } from '../InfoIcon'
 import { LoadingOverlay } from '../LoadingOverlay'
-import { CollateralRatio } from './CollateralRatio'
 import { EditableRow, StaticRow } from './Editor'
 import {
     ExpensiveTroveChangeWarning,
@@ -29,6 +26,9 @@ import {
     validateTroveChange,
 } from './validation/validateTroveChange'
 import { CardBase } from 'components/Layout/CardBase'
+import { CollateralRatio } from './CollateralRatio'
+import { ActionDescription } from 'components/ActionDescription'
+import { HeadingBase } from 'components/HeadingBase'
 
 const selector = (state: LiquityStoreState) => {
     const { fees, price, accountBalance } = state
@@ -95,7 +95,7 @@ export const Opening: React.FC = () => {
     //will need to address hard-coded width for mobile
     return (
         <CardBase>
-            <Heading>
+            <HeadingBase>
                 Trove
                 {isDirty && !isTransactionPending && (
                     <Button
@@ -106,68 +106,40 @@ export const Opening: React.FC = () => {
                         <Icon name='history' size='lg' />
                     </Button>
                 )}
-            </Heading>
+            </HeadingBase>
 
-            <Box w='full'>
-                <EditableRow
-                    label='Collateral'
-                    inputID='trove-collateral'
-                    amount={collateral.prettify(4)}
-                    maxAmount={maxCollateral.toString()}
-                    maxedOut={collateralMaxedOut}
-                    editingState={editingState}
-                    unit='ETH'
-                    editedAmount={collateral.toString(4)}
-                    setEditedAmount={(amount: string) =>
-                        setCollateral(Decimal.from(amount))
-                    }
-                />
+            <EditableRow
+                label='Collateral'
+                inputID='trove-collateral'
+                amount={collateral.prettify(4)}
+                maxAmount={maxCollateral.toString()}
+                maxedOut={collateralMaxedOut}
+                editingState={editingState}
+                unit='ETH'
+                editedAmount={collateral.toString(4)}
+                setEditedAmount={(amount: string) =>
+                    setCollateral(Decimal.from(amount))
+                }
+            />
 
-                <EditableRow
-                    label='Borrow'
-                    inputID='trove-borrow-amount'
-                    amount={borrowAmount.prettify()}
-                    unit={'LUSD'}
-                    editingState={editingState}
-                    editedAmount={borrowAmount.toString(2)}
-                    setEditedAmount={(amount: string) =>
-                        setBorrowAmount(Decimal.from(amount))
-                    }
-                />
-
+            <EditableRow
+                label='Borrow'
+                inputID='trove-borrow-amount'
+                amount={borrowAmount.prettify()}
+                unit={'LUSD'}
+                editingState={editingState}
+                editedAmount={borrowAmount.toString(2)}
+                setEditedAmount={(amount: string) =>
+                    setBorrowAmount(Decimal.from(amount))
+                }
+            />
+            <Box w='full' marginTop={4}>
                 <StaticRow
                     label='Liquidation Reserve'
                     inputID='trove-liquidation-reserve'
                     amount={`${LUSD_LIQUIDATION_RESERVE}`}
                     unit={'LUSD'}
-                    infoIcon={
-                        <InfoIcon
-                            tooltip={
-                                <Box
-                                    borderWidth='1px'
-                                    borderRadius='md'
-                                    borderColor='#aaa'
-                                    overflow='hidden'
-                                    sx={{
-                                        padding: '10px',
-                                        bg: '#a7a7e3',
-                                        fontSize: '1em',
-                                        color: '#333',
-                                        minW: '12.5vw',
-                                        height: 'auto',
-                                        maxW: '33vm',
-                                        fontStyle: 'italic',
-                                    }}
-                                >
-                                    An amount set aside to cover the
-                                    liquidator’s gas costs if your Trove needs
-                                    to be liquidated. The amount increases your
-                                    debt and is refunded if you close your Trove
-                                    by fully paying off its net debt.
-                                </Box>
-                            }
-                        />
-                    }
+                    tooltipText='An amount set aside to cover the liquidator’s gas costs if your Trove needs to be liquidated. The amount increases your debt and is refunded if you close your Trove by fully paying off its net debt.'
                 />
 
                 <StaticRow
@@ -176,33 +148,7 @@ export const Opening: React.FC = () => {
                     amount={fee.prettify(2)}
                     pendingAmount={feePct.toString(2)}
                     unit={'LUSD'}
-                    infoIcon={
-                        <InfoIcon
-                            tooltip={
-                                <Box
-                                    borderWidth='1px'
-                                    borderRadius='md'
-                                    borderColor='#aaa'
-                                    overflow='hidden'
-                                    sx={{
-                                        padding: '10px',
-                                        bg: '#a7a7e3',
-                                        fontSize: '1em',
-                                        color: '#333',
-                                        minW: '12.5vw',
-                                        height: 'auto',
-                                        maxW: '33vm',
-                                        fontStyle: 'italic',
-                                    }}
-                                >
-                                    This amount is deducted from the borrowed
-                                    amount as a one-time fee. There are no
-                                    recurring fees for borrowing, which is thus
-                                    interest-free.
-                                </Box>
-                            }
-                        />
-                    }
+                    tooltipText='This amount is deducted from the borrowed amount as a one-time fee. There are no recurring fees for borrowing, which is thus interest-free.'
                 />
 
                 <StaticRow
@@ -210,43 +156,22 @@ export const Opening: React.FC = () => {
                     inputID='trove-total-debt'
                     amount={totalDebt.prettify(2)}
                     unit={'LUSD'}
-                    infoIcon={
-                        <InfoIcon
-                            placement='right'
-                            tooltip={
-                                <Box
-                                    borderWidth='1px'
-                                    borderRadius='md'
-                                    borderColor='#aaa'
-                                    overflow='hidden'
-                                    sx={{
-                                        padding: '10px',
-                                        bg: '#a7a7e3',
-                                        fontSize: '1em',
-                                        color: '#333',
-                                        minW: '12.5vw',
-                                        height: 'auto',
-                                        maxW: '33vm',
-                                        fontStyle: 'italic',
-                                    }}
-                                >
-                                    The total amount of LUSD your Trove will
-                                    hold.{' '}
-                                    {isDirty && (
-                                        <>
-                                            You will need to repay{' '}
-                                            {totalDebt
-                                                .sub(LUSD_LIQUIDATION_RESERVE)
-                                                .prettify(2)}{' '}
-                                            LUSD to reclaim your collateral (
-                                            {LUSD_LIQUIDATION_RESERVE.toString()}{' '}
-                                            LUSD Liquidation Reserve excluded).
-                                        </>
-                                    )}
-                                </Box>
-                            }
-                        />
-                    }
+                    tooltipText={`The total amount of LUSD your Trove will
+                    hold. ${
+                        isDirty ? (
+                            <>
+                                You will need to repay{' '}
+                                {totalDebt
+                                    .sub(LUSD_LIQUIDATION_RESERVE)
+                                    .prettify(2)}{' '}
+                                LUSD to reclaim your collateral (
+                                {LUSD_LIQUIDATION_RESERVE.toString()} LUSD
+                                Liquidation Reserve excluded).
+                            </>
+                        ) : (
+                            ''
+                        )
+                    }`}
                 />
 
                 <CollateralRatio value={collateralRatio} />
@@ -266,8 +191,12 @@ export const Opening: React.FC = () => {
                     setGasEstimationState={setGasEstimationState}
                 />
 
-                <Flex>
-                    <Button variant='darkGrey' onClick={handleCancelPressed}>
+                <HStack>
+                    <Button
+                        variant='darkGrey'
+                        onClick={handleCancelPressed}
+                        margin='0px'
+                    >
                         Cancel
                     </Button>
 
@@ -287,7 +216,7 @@ export const Opening: React.FC = () => {
                     ) : (
                         <Button disabled>Confirm</Button>
                     )}
-                </Flex>
+                </HStack>
             </Box>
             {isTransactionPending && <LoadingOverlay />}
         </CardBase>

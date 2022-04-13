@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Flex } from '@chakra-ui/react'
+import { Button, HStack } from '@chakra-ui/react'
 
 import {
     Decimal,
@@ -170,12 +170,13 @@ export const StakingManager: React.FC = () => {
                     </ActionDescription>
                 ))}
 
-            <Flex>
+            <HStack>
                 <Button
                     variant='darkGrey'
                     onClick={() =>
                         dispatchStakingViewAction({ type: 'cancelAdjusting' })
                     }
+                    m={0}
                 >
                     Cancel
                 </Button>
@@ -188,7 +189,7 @@ export const StakingManager: React.FC = () => {
                         Confirm
                     </Button>
                 )}
-            </Flex>
+            </HStack>
         </StakingEditor>
     )
 }

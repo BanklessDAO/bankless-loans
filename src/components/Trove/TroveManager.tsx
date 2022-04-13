@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from 'react'
-import { Flex, Button } from '@chakra-ui/react'
+import { Button, HStack } from '@chakra-ui/react'
 
 import {
     LiquityStoreState,
@@ -263,7 +263,7 @@ export const TroveManager: React.FC<TroveManagerProps> = ({
                     </ActionDescription>
                 ))}
 
-            <Flex>
+            <HStack>
                 <Button variant='cancel' onClick={handleCancel}>
                     Cancel
                 </Button>
@@ -282,7 +282,7 @@ export const TroveManager: React.FC<TroveManagerProps> = ({
                         Confirm
                     </Button>
                 )}
-            </Flex>
+            </HStack>
         </TroveEditor>
     )
 }
