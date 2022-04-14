@@ -153,31 +153,33 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
     return (
         <EthersWeb3ReactProvider>
             <ChakraProvider theme={customTheme}>
-                <ModalProvider
-                    isModalOpen={modal.isModalOpen}
-                    openModal={modal.openModal}
-                    closeModal={modal.closeModal}
-                >
-                    <WalletContext.Provider value={providerState}>
-                        <Layout>
-                            <PreviewConnector>
-                                <LiquityProvider
-                                    loader={loader}
-                                    unsupportedNetworkFallback={
-                                        unsupportedNetworkFallback
-                                    }
-                                    unsupportedMainnetFallback={
-                                        <UnsupportedMainnetFallback />
-                                    }
-                                >
-                                    <TransactionProvider>
-                                        <Component {...pageProps} />
-                                    </TransactionProvider>
-                                </LiquityProvider>
-                            </PreviewConnector>
-                        </Layout>
-                    </WalletContext.Provider>
-                </ModalProvider>
+                <ColorModeWrapper>
+                    <ModalProvider
+                        isModalOpen={modal.isModalOpen}
+                        openModal={modal.openModal}
+                        closeModal={modal.closeModal}
+                    >
+                        <WalletContext.Provider value={providerState}>
+                            <Layout>
+                                <PreviewConnector>
+                                    <LiquityProvider
+                                        loader={loader}
+                                        unsupportedNetworkFallback={
+                                            unsupportedNetworkFallback
+                                        }
+                                        unsupportedMainnetFallback={
+                                            <UnsupportedMainnetFallback />
+                                        }
+                                    >
+                                        <TransactionProvider>
+                                            <Component {...pageProps} />
+                                        </TransactionProvider>
+                                    </LiquityProvider>
+                                </PreviewConnector>
+                            </Layout>
+                        </WalletContext.Provider>
+                    </ModalProvider>
+                </ColorModeWrapper>
             </ChakraProvider>
         </EthersWeb3ReactProvider>
     )
