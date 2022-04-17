@@ -8,8 +8,8 @@ export type LiquityFrontendConfig = {
 }
 
 const defaultConfig: LiquityFrontendConfig = {
-    frontendTag: process.env.FRONTEND_TAG,
-    infuraApiKey: process.env.INFURA_ID,
+    frontendTag: process.env.NEXT_PUBLIC_FRONTEND_TAG,
+    infuraApiKey: process.env.NEXT_PUBLIC_INFURA_ID,
     testnetOnly: true,
 }
 
@@ -17,12 +17,12 @@ function hasKey<K extends string>(o: object, k: K): o is Record<K, unknown> {
     return k in o
 }
 
-const parseConfig = (json: unknown): LiquityFrontendConfig => {
+const parseConfig = (object: unknown): LiquityFrontendConfig => {
     const config = { ...defaultConfig }
 
-    if (typeof json === 'object' && json !== null) {
-        if (hasKey(json, 'frontendTag') && json.frontendTag !== '') {
-            const { frontendTag } = json
+    if (typeof object === 'object' && object !== null) {
+        if (hasKey(object, 'frontendTag') && object.frontendTag !== '') {
+            const { frontendTag } = object
 
             if (typeof frontendTag === 'string' && isAddress(frontendTag)) {
                 config.frontendTag = getAddress(frontendTag)
@@ -32,8 +32,8 @@ const parseConfig = (json: unknown): LiquityFrontendConfig => {
             }
         }
 
-        if (hasKey(json, 'infuraApiKey') && json.infuraApiKey !== '') {
-            const { infuraApiKey } = json
+        if (hasKey(object, 'infuraApiKey') && object.infuraApiKey !== '') {
+            const { infuraApiKey } = object
 
             if (typeof infuraApiKey === 'string') {
                 config.infuraApiKey = infuraApiKey
@@ -43,8 +43,8 @@ const parseConfig = (json: unknown): LiquityFrontendConfig => {
             }
         }
 
-        if (hasKey(json, 'testnetOnly')) {
-            const { testnetOnly } = json
+        if (hasKey(object, 'testnetOnly')) {
+            const { testnetOnly } = object
 
             if (typeof testnetOnly === 'boolean') {
                 config.testnetOnly = testnetOnly
@@ -55,7 +55,7 @@ const parseConfig = (json: unknown): LiquityFrontendConfig => {
         }
     } else {
         console.error('Malformed config:')
-        console.log(json)
+        console.log(object)
     }
 
     return config
@@ -64,7 +64,7 @@ const parseConfig = (json: unknown): LiquityFrontendConfig => {
 let configPromise: Promise<LiquityFrontendConfig> | undefined = undefined
 
 const fetchConfig = async () => {
-    return { ...defaultConfig }
+    return parseConfig(defaultConfig)
 }
 
 export const getConfig = (): Promise<LiquityFrontendConfig> => {
