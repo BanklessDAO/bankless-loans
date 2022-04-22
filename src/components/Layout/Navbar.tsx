@@ -24,6 +24,7 @@ export default function Navbar() {
             width='100%'
             templateColumns={['120px', '120px', '1fr 435px 1fr']}
             justifyContent={['center', 'center']}
+            alignContent='center'
             padding='28px 5vw'
             position='relative'
         >
