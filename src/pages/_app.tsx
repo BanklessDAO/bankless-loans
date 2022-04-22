@@ -1,14 +1,6 @@
 import { ReactNode, useEffect, useReducer } from 'react'
 import type { AppProps } from 'next/app'
-import {
-    Flex,
-    Heading,
-    Spinner,
-    Box,
-    LightMode,
-    DarkMode,
-    GlobalStyle,
-} from '@chakra-ui/react'
+import { Flex, Heading, Spinner, Box } from '@chakra-ui/react'
 import { Icon } from '../components/Icon'
 import { Layout } from '../components/Layout/Layout'
 import { ChakraProvider } from '@chakra-ui/react'
@@ -22,7 +14,6 @@ import { DisposableWalletProvider } from '../testUtils/DisposableWalletProvider'
 import WalletContext from 'hooks/WalletContext'
 import { useWalletReducer } from 'hooks/useWalletReducer'
 import { ModalProvider, useModal } from 'hooks/ModalContext'
-import { useRouter } from 'next/router'
 
 declare global {
     interface Window {
@@ -31,27 +22,24 @@ declare global {
 }
 
 const UnsupportedMainnetFallback: React.FC = () => (
-    <DarkMode>
-        <GlobalStyle />
-        <Flex
-            sx={{
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '100vh',
-                textAlign: 'center',
-            }}
-        >
-            <Heading sx={{ mb: 3 }}>
-                <Icon name='exclamation-triangle' /> This app is for testing
-                purposes only.
-            </Heading>
+    <Flex
+        sx={{
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: '100vh',
+            textAlign: 'center',
+        }}
+    >
+        <Heading sx={{ mb: 3 }}>
+            <Icon name='exclamation-triangle' /> This app is for testing
+            purposes only.
+        </Heading>
 
-            <Box>
-                Please change your network to Ropsten, Rinkeby, Kovan or Görli.
-            </Box>
-        </Flex>
-    </DarkMode>
+        <Box>
+            Please change your network to Ropsten, Rinkeby, Kovan or Görli.
+        </Box>
+    </Flex>
 )
 
 type appProps = {
@@ -90,22 +78,6 @@ const EthersWeb3ReactProvider = ({ children }: appProps): JSX.Element => {
     )
 }
 
-export const ColorModeWrapper = ({ children }: appProps) => {
-    const { pathname: page } = useRouter()
-    const allowedRoutes = ['/']
-    return allowedRoutes.includes(page) ? (
-        <LightMode>
-            <GlobalStyle />
-            {children}
-        </LightMode>
-    ) : (
-        <DarkMode>
-            <GlobalStyle />
-            {children}
-        </DarkMode>
-    )
-}
-
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
     const [connectionState, dispatch] = useReducer(useWalletReducer, {
         type: 'inactive',
@@ -117,18 +89,16 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
     const modal = useModal()
 
     const loader = (
-        <ColorModeWrapper>
-            <Flex
-                sx={{
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    height: '100vh',
-                }}
-            >
-                <Spinner color='text' size='lg' />
-                <Heading>Loading...</Heading>
-            </Flex>
-        </ColorModeWrapper>
+        <Flex
+            sx={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '100vh',
+            }}
+        >
+            <Spinner color='text' size='lg' />
+            <Heading>Loading...</Heading>
+        </Flex>
     )
 
     const unsupportedNetworkFallback = (chainId: number) => (
@@ -153,33 +123,31 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
     return (
         <EthersWeb3ReactProvider>
             <ChakraProvider theme={customTheme}>
-                <ColorModeWrapper>
-                    <ModalProvider
-                        isModalOpen={modal.isModalOpen}
-                        openModal={modal.openModal}
-                        closeModal={modal.closeModal}
-                    >
-                        <WalletContext.Provider value={providerState}>
-                            <Layout>
-                                <PreviewConnector>
-                                    <LiquityProvider
-                                        loader={loader}
-                                        unsupportedNetworkFallback={
-                                            unsupportedNetworkFallback
-                                        }
-                                        unsupportedMainnetFallback={
-                                            <UnsupportedMainnetFallback />
-                                        }
-                                    >
-                                        <TransactionProvider>
-                                            <Component {...pageProps} />
-                                        </TransactionProvider>
-                                    </LiquityProvider>
-                                </PreviewConnector>
-                            </Layout>
-                        </WalletContext.Provider>
-                    </ModalProvider>
-                </ColorModeWrapper>
+                <ModalProvider
+                    isModalOpen={modal.isModalOpen}
+                    openModal={modal.openModal}
+                    closeModal={modal.closeModal}
+                >
+                    <WalletContext.Provider value={providerState}>
+                        <Layout>
+                            <PreviewConnector>
+                                <LiquityProvider
+                                    loader={loader}
+                                    unsupportedNetworkFallback={
+                                        unsupportedNetworkFallback
+                                    }
+                                    unsupportedMainnetFallback={
+                                        <UnsupportedMainnetFallback />
+                                    }
+                                >
+                                    <TransactionProvider>
+                                        <Component {...pageProps} />
+                                    </TransactionProvider>
+                                </LiquityProvider>
+                            </PreviewConnector>
+                        </Layout>
+                    </WalletContext.Provider>
+                </ModalProvider>
             </ChakraProvider>
         </EthersWeb3ReactProvider>
     )
