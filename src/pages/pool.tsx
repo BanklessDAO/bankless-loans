@@ -1,3 +1,4 @@
+import { Flex } from '@chakra-ui/react'
 import { Wallet } from '@ethersproject/wallet'
 import { Decimal, Difference, Trove } from '@liquity/lib-base'
 import { useLiquity } from '../hooks/LiquityContext'
@@ -26,9 +27,11 @@ const Pool = ({ loader }: LiquityFrontendProps): JSX.Element => {
     return (
         <LiquityStoreProvider {...{ loader }} store={liquity.store}>
             <StabilityViewProvider>
-                <VStackBase>
-                    <Stability />
-                </VStackBase>
+                <Flex h='100vh'>
+                    <VStackBase>
+                        <Stability />
+                    </VStackBase>
+                </Flex>
             </StabilityViewProvider>
         </LiquityStoreProvider>
     )
