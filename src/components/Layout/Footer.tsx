@@ -15,13 +15,7 @@ import logo from '../../../public/bankless-logo.png'
 
 export const Footer = () => {
     return (
-        <Box
-            w='100vw'
-            h={['100vh', '212px']}
-            fontSize={['xs', 'sm']}
-            bg='#101010'
-            p={[4, 8]}
-        >
+        <Box w='100%' h='212px' fontSize={['xs', 'sm']} bg='#101010' p={[4, 8]}>
             <Container
                 d='flex'
                 flexDir={{ base: 'column-reverse', md: 'row' }}
