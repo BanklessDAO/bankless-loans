@@ -1,4 +1,5 @@
 import React from 'react'
+import { Flex } from '@chakra-ui/react'
 import { Wallet } from '@ethersproject/wallet'
 import { Decimal, Difference, Trove } from '@liquity/lib-base'
 import { LiquityStoreProvider } from '../components/LiquityStoreProvider'
@@ -28,9 +29,11 @@ const Borrow = ({ loader }: LiquityFrontendProps): JSX.Element => {
     return (
         <LiquityStoreProvider {...{ loader }} store={liquity.store}>
             <TroveViewProvider>
-                <VStackBase>
-                    <TroveEditor />
-                </VStackBase>
+                <Flex h='100vh'>
+                    <VStackBase>
+                        <TroveEditor />
+                    </VStackBase>
+                </Flex>
             </TroveViewProvider>
             <TransactionMonitor />
         </LiquityStoreProvider>
