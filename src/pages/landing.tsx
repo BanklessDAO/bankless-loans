@@ -17,7 +17,7 @@ import { Footer } from '../components/Layout/Footer'
 
 export default function Landing() {
     return (
-        <Stack justify='space-between' minH='100vh'>
+        <Stack justify='space-between'>
             <Container as='section' maxW='6xl' pt={[4, 8]} px={[4, 8]}>
                 <Stack spacing={[4, 8]}>
                     <LightMode>
@@ -31,7 +31,7 @@ export default function Landing() {
                             Borrow, Earn and Stake with the fully decentralised
                             Bankless DAO App, built on the Liquity protocol.
                         </Text>
-                        <Box as='section' pt={[0, 12]}>
+                        <Box as='section' pt={[0, 12]} pb={[0, 16]}>
                             <Container
                                 as={VStack}
                                 maxW='6xl'
