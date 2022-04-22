@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Link, useBreakpointValue } from '@chakra-ui/react'
+import { Flex, Link, useBreakpointValue, Grid } from '@chakra-ui/react'
 import Logo from 'components/Logo'
 import NavbarLinks from 'components/NavbarLinks'
 import { WalletConnector } from 'components/WalletConnector'
@@ -12,11 +12,11 @@ export default function Navbar() {
     const navbarLinks = !isMobile && <NavbarLinks />
 
     return (
-        <Flex
+        <Grid
             as='nav'
             height='130px'
             width='100%'
-            justifyContent={['center', 'center', 'space-between']}
+            templateColumns='repeat(3, 1fr)'
             alignItems='center'
             padding='28px 5vw'
             position='relative'
@@ -34,6 +34,7 @@ export default function Navbar() {
                 as='section'
                 alignItems='center'
                 display={['none', 'none', 'flex']}
+                justify='flex-end'
             >
                 <WalletConnector
                     isOpen={modal.isModalOpen}
@@ -41,6 +42,6 @@ export default function Navbar() {
                     onClose={modal.closeModal}
                 />
             </Flex>
-        </Flex>
+        </Grid>
     )
 }
