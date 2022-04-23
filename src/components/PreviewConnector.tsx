@@ -7,6 +7,7 @@ import { useAuthorizedConnection } from '../hooks/useAuthorizedConnection'
 import { TrovePreview } from './Trove/TrovePreview'
 import { StabilityPreview } from './Stability/StabilityPreview'
 import { StakingPreview } from './Staking/StakingPreview'
+import { VStackBase } from '../components/Layout/VStackBase'
 
 type PreviewConnectorProps = {
     loader?: React.ReactNode
@@ -50,16 +51,12 @@ export const PreviewConnector: React.FC<PreviewConnectorProps> = ({
     }
 
     return (
-        <Flex
-            sx={{
-                height: '100vh',
-                justifyContent: 'center',
-                alignItems: 'center',
-            }}
-        >
-            {trovePreview}
-            {stabilityPreview}
-            {stakingPreview}
+        <Flex h='100vh'>
+            <VStackBase>
+                {trovePreview}
+                {stabilityPreview}
+                {stakingPreview}
+            </VStackBase>
         </Flex>
     )
 }
