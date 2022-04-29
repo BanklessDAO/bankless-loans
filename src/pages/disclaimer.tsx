@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import { Button, Box, HStack } from '@chakra-ui/react'
+import { Button, Box, HStack, Heading, Text } from '@chakra-ui/react'
 import { VStackBase } from 'components/Layout/VStackBase'
 import { CardBase } from 'components/Layout/CardBase'
-import { HeadingBase } from 'components/HeadingBase'
 import { ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons'
 
 type SlideProps = {
@@ -13,9 +12,11 @@ type SlideProps = {
 const Slide = ({ title, paras }: SlideProps): JSX.Element => {
     return (
         <>
-            <h3>{title}</h3>
+            <Heading as='h3' size='md' marginBottom={2}>
+                {title}
+            </Heading>
             {paras.map(para => (
-                <p>{para}</p>
+                <Text my={2}>{para}</Text>
             ))}
         </>
     )
@@ -88,9 +89,9 @@ const Disclaimer = (): JSX.Element => {
     return (
         <VStackBase maxH='auto'>
             <CardBase>
-                <HStack>
-                    <HeadingBase>Disclaimer</HeadingBase>
-                    <HStack direction='row' spacing={4}>
+                <HStack marginBottom={4} justifyContent='space-between'>
+                    <Heading>Disclaimer</Heading>
+                    <HStack spacing={2}>
                         <Button
                             leftIcon={<ArrowBackIcon />}
                             variant='solid'
@@ -109,12 +110,14 @@ const Disclaimer = (): JSX.Element => {
                 </HStack>
 
                 <Box overflow='hidden' m={0}>
-                    <h2>BanklessLoans Liquity Frontend Disclaimer</h2>
-                    <p>
+                    <Heading as='h2' size='md' marginBottom={2}>
+                        BanklessLoans Liquity Frontend Disclaimer
+                    </Heading>
+                    <Text marginBottom={6}>
                         Please read this Disclaimer carefully before accessing,
                         interacting with, or using Liquity through the
                         BanklessLoans frontend at banklessloans.finance.
-                    </p>
+                    </Text>
 
                     <Slide {...slides[activeSlide]} />
                 </Box>
