@@ -22,7 +22,7 @@ export const Layout = ({ children }: LayoutProps): JSX.Element => {
     const footer = router.pathname === '/' && <Footer />
     const bg = router.pathname === '/' ? gradientAndImage : gradient
     return (
-        <Container bg={bg} maxW='full' p={0}>
+        <Container bg={bg} maxW='full' p={0} minH='100vh'>
             <VStack align='center' as='main' position='relative'>
                 <Navbar />
                 {children}
