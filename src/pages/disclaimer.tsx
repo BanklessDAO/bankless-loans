@@ -11,6 +11,7 @@ import {
 import { VStackBase } from 'components/Layout/VStackBase'
 import { CardBase } from 'components/Layout/CardBase'
 import { ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons'
+import useIsMobile from '../hooks/useIsMobile'
 
 type SlideProps = {
     title: string
@@ -75,6 +76,7 @@ const SlidePips = ({ slides, activeSlide }: SlidePipsProps) => {
 const Disclaimer = (): JSX.Element => {
     const fullText = false // Switches between slides and full text
     const [activeSlide, setActiveSlide] = useState(0)
+    const isMobile = useIsMobile()
     const slides = [
         {
             title: 'A. BanklessLoans General Terms & Conditions',
@@ -147,22 +149,44 @@ const Disclaimer = (): JSX.Element => {
                 <CardBase>
                     <HStack marginBottom={4} justifyContent='space-between'>
                         <Heading>{pageHeaderText}</Heading>
-                        <HStack spacing={2}>
-                            <Button
-                                leftIcon={<ArrowBackIcon />}
-                                variant='solid'
-                                onClick={() => goBackwards()}
-                            >
-                                Prev
-                            </Button>
-                            <Button
-                                rightIcon={<ArrowForwardIcon />}
-                                variant='solid'
-                                onClick={() => goForward()}
-                            >
-                                Next
-                            </Button>
-                        </HStack>
+                        {!isMobile && (
+                            <HStack spacing={2}>
+                                <Button
+                                    leftIcon={<ArrowBackIcon />}
+                                    variant='solid'
+                                    onClick={() => goBackwards()}
+                                    px={[0, 0, 2]}
+                                >
+                                    Prev
+                                </Button>
+                                <Button
+                                    rightIcon={<ArrowForwardIcon />}
+                                    variant='solid'
+                                    onClick={() => goForward()}
+                                    px={[0, 0, 2]}
+                                >
+                                    Next
+                                </Button>
+                            </HStack>
+                        )}
+                        {isMobile && (
+                            <HStack spacing={2}>
+                                <Button
+                                    variant='solid'
+                                    onClick={() => goBackwards()}
+                                    px={[0, 0, 2]}
+                                >
+                                    <ArrowBackIcon />
+                                </Button>
+                                <Button
+                                    variant='solid'
+                                    onClick={() => goForward()}
+                                    px={[0, 0, 2]}
+                                >
+                                    <ArrowForwardIcon />
+                                </Button>
+                            </HStack>
+                        )}
                     </HStack>
 
                     <Box overflow='hidden' m={0}>
