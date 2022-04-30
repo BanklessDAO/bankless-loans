@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/react'
 import { Discord } from '../../components/LandingLogos'
 import logo from '../../../public/bankless-logo.png'
+import DisclaimerLink from 'components/DisclaimerLink'
 
 export const Footer = () => {
     return (
@@ -34,7 +35,9 @@ export const Footer = () => {
                         pt='10px'
                     >
                         <Text>A small one time fee is added to your debt.</Text>
-                        <Text>Repay your loan anytime.</Text>
+                        <Text>
+                            Repay your loan anytime. <DisclaimerLink />
+                        </Text>
                         <HStack justify='center' align='flex-start' pt={2}>
                             <Center
                                 bg='#6D29FE'
