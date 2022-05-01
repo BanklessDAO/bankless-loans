@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/react'
 import { WalletConnector } from './WalletConnector'
 import { useModal } from 'hooks/ModalContext'
-import NavbarLinks from './NavbarLinks'
+import { NavbarLinks } from './NavbarLinks'
 
 export default function NavbarMobile() {
     const modal = useModal()
@@ -51,7 +51,7 @@ export default function NavbarMobile() {
                     <ModalOverlay />
                     <ModalContent w='300px'>
                         <ModalBody paddingBottom='1.5rem'>
-                            <NavbarLinks />
+                            <NavbarLinks closeModal={onClose} />
                         </ModalBody>
                     </ModalContent>
                 </Modal>
