@@ -16,6 +16,7 @@ export const CardBase: React.FC = ({ children }) => {
             borderRadius='31px'
             bg='interactive.gray.13'
             color='interactive.white'
+            borderStyle='none'
             m='0px !important'
             p={[8, 8, 8]}
         >
