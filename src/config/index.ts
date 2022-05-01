@@ -28,7 +28,6 @@ const parseConfig = (object: unknown): LiquityFrontendConfig => {
                 config.frontendTag = getAddress(frontendTag)
             } else {
                 console.error('Malformed frontendTag:')
-                console.log(frontendTag)
             }
         }
 
@@ -39,7 +38,6 @@ const parseConfig = (object: unknown): LiquityFrontendConfig => {
                 config.infuraApiKey = infuraApiKey
             } else {
                 console.error('Malformed infuraApiKey:')
-                console.log(infuraApiKey)
             }
         }
 
