@@ -103,7 +103,7 @@ export const ActiveDeposit: React.FC = () => {
                 </Button>
 
                 <ClaimRewards disabled={!hasGain && !hasReward}>
-                    Claim ETH and LQTY
+                    Claim ETH &amp; LQTY
                 </ClaimRewards>
             </HStack>
 

@@ -30,7 +30,7 @@ const Borrow = ({ loader }: LiquityFrontendProps): JSX.Element => {
         <LiquityStoreProvider {...{ loader }} store={liquity.store}>
             <TroveViewProvider>
                 <Flex h='100vh'>
-                    <VStackBase>
+                    <VStackBase maxH='auto'>
                         <TroveEditor />
                     </VStackBase>
                 </Flex>

@@ -28,7 +28,7 @@ const Stake = ({ loader }: LiquityFrontendProps): JSX.Element => {
         <LiquityStoreProvider {...{ loader }} store={liquity.store}>
             <StakingViewProvider>
                 <Flex h='100vh'>
-                    <VStackBase>
+                    <VStackBase maxH='auto'>
                         <Staking />
                     </VStackBase>
                 </Flex>
