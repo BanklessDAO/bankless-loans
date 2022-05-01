@@ -59,10 +59,6 @@ export const LiquityProvider: React.FC<LiquityProviderProps> = ({
     const router = useRouter()
 
     const connection = useMemo(() => {
-        console.log('config', config)
-        console.log('provider', provider)
-        console.log('account', account)
-        console.log('chainId', chainId)
         if (config && provider && account && chainId) {
             try {
                 return _connectByChainId(
