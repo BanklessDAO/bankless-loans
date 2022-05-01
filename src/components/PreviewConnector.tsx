@@ -52,7 +52,7 @@ export const PreviewConnector: React.FC<PreviewConnectorProps> = ({
 
     return (
         <Flex h='100vh'>
-            <VStackBase>
+            <VStackBase maxH='auto'>
                 {trovePreview}
                 {stabilityPreview}
                 {stakingPreview}
