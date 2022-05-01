@@ -9,6 +9,21 @@ type Path = {
     path: string
 }
 
+type navBarProps = {
+    closeModal?: () => void
+}
+
+type menuListProps = navBarProps & {
+    linkPaths: Array<Path>
+    routerPathname: string
+}
+
+type menuListItemProps = navBarProps & {
+    path: string
+    routerPathname: string
+    text: string
+}
+
 const PATH_DATA: Array<Path> = [
     {
         text: 'Borrow',
@@ -30,11 +45,8 @@ const NavbarMenuListItem = ({
     path,
     routerPathname,
     text,
-}: {
-    path: string
-    routerPathname: string
-    text: string
-}) => {
+    closeModal,
+}: menuListItemProps): JSX.Element => {
     function setLinkBg(linkPath: string, routePath: string) {
         if (linkPath === routePath) {
             return 'interactive.gray.24'
@@ -72,6 +84,7 @@ const NavbarMenuListItem = ({
                     color={setLinkColor(path, routerPathname)}
                     textDecoration='none'
                     _hover={{ textDecoration: 'none' }}
+                    onClick={closeModal}
                 >
                     {text}
                 </Link>
@@ -83,10 +96,8 @@ const NavbarMenuListItem = ({
 const NavbarMenuList = ({
     linkPaths,
     routerPathname,
-}: {
-    linkPaths: Array<Path>
-    routerPathname: string
-}) => {
+    closeModal,
+}: menuListProps): JSX.Element => {
     const isMobile = useBreakpointValue({ base: true, md: false })
 
     if (isMobile) {
@@ -97,6 +108,7 @@ const NavbarMenuList = ({
                         key={index}
                         {...linkData}
                         routerPathname={routerPathname}
+                        closeModal={closeModal}
                     />
                 ))}
             </>
@@ -128,11 +140,15 @@ const NavbarMenuList = ({
     )
 }
 
-export default function NavbarLinks() {
+export const NavbarLinks = ({ closeModal }: navBarProps): JSX.Element => {
     const router = useRouter()
     const [_, routerPathname] = router.pathname.split('/')
 
     return (
-        <NavbarMenuList linkPaths={PATH_DATA} routerPathname={routerPathname} />
+        <NavbarMenuList
+            linkPaths={PATH_DATA}
+            routerPathname={routerPathname}
+            closeModal={closeModal}
+        />
     )
 }

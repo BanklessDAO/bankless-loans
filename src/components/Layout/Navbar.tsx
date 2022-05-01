@@ -7,7 +7,7 @@ import {
     GridItem,
 } from '@chakra-ui/react'
 import Logo from 'components/Logo'
-import NavbarLinks from 'components/NavbarLinks'
+import { NavbarLinks } from 'components/NavbarLinks'
 import { WalletConnector } from 'components/WalletConnector'
 import { useModal } from 'hooks/ModalContext'
 import NextLink from 'next/link'
