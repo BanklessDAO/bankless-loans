@@ -34,6 +34,7 @@ export const ClaimAndMove: React.FC<ClaimAndMoveProps> = ({
             disabled={disabled}
             m={0}
             w='100%'
+            fontSize={['14px', '18px', '18px']}
         >
             {children}
         </Button>

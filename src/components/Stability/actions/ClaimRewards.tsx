@@ -25,6 +25,7 @@ export const ClaimRewards: React.FC<ClaimRewardsProps> = ({
             onClick={sendTransaction}
             disabled={disabled}
             m={0}
+            fontSize={['14px', '18px', '18px']}
         >
             {children}
         </Button>
