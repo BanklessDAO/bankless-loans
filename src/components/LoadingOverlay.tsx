@@ -4,8 +4,9 @@ import { Container, Spinner } from '@chakra-ui/react'
 export const LoadingOverlay: React.FC = () => (
     <Container
         variant='disabledOverlay'
-        size='14px'
-        style={{ display: 'flex', justifyContent: 'flex-end' }}
+        mt='32px'
+        size='16px'
+        style={{ display: 'flex', justifyContent: 'center' }}
     >
         <Spinner size='lg' color='text' />
     </Container>
