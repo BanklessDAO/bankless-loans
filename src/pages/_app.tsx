@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useReducer } from 'react'
 import type { AppProps } from 'next/app'
-import { Flex, Heading, Spinner, Box } from '@chakra-ui/react'
+import { Flex, Heading, Spinner, Box, HStack } from '@chakra-ui/react'
 import { Icon } from '../components/Icon'
 import { Layout } from '../components/Layout/Layout'
 import { ChakraProvider } from '@chakra-ui/react'
@@ -89,16 +89,16 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
     const modal = useModal()
 
     const loader = (
-        <Flex
+        <HStack
             sx={{
                 alignItems: 'center',
                 justifyContent: 'center',
                 height: '100vh',
             }}
         >
-            <Spinner color='text' size='lg' />
+            <Spinner color='text' size='lg' mr='16px' />
             <Heading>Loading...</Heading>
-        </Flex>
+        </HStack>
     )
 
     const unsupportedNetworkFallback = (chainId: number) => (
@@ -141,6 +141,7 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
                                     }
                                 >
                                     <TransactionProvider>
+                                        <>{loader}</>
                                         <Component {...pageProps} />
                                     </TransactionProvider>
                                 </LiquityProvider>
