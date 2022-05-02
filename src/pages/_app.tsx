@@ -141,6 +141,7 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
                                     }
                                 >
                                     <TransactionProvider>
+                                        <>{loader}</>
                                         <Component {...pageProps} />
                                     </TransactionProvider>
                                 </LiquityProvider>
