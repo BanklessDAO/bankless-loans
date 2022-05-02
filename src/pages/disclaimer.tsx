@@ -86,32 +86,32 @@ const Disclaimer = (): JSX.Element => {
             ],
         },
         {
-            title: 'B.1 Additional Information About Liquity & DeFi',
+            title: 'B1. Decentralised Finance',
             paras: [
                 "In order to understand the potential risks of using decentralized finance, BanklessLoans strongly encourages users to get acquainted with the workings of the underlying protocol as much as possible. Further general information about Liquity, which you are accessing through our frontend, can be found here. More specific information regarding security audits of the Liquity Protocol Software can be reviewed here, and Liquity's disclaimer regarding use of the smart contracts can be reviewed here.",
             ],
         },
         {
-            title: 'B.2 Additional Information About Liquity & DeFi',
+            title: 'B2. About Liquity Protocol',
             paras: [
                 "Liquity Protocol is a DeFi application that can be integrated into third-party projects or applications, such as Bankless DAO's BanklessLoans. The protocol allows users to create interest-free liquidity in LUSD (a USD pegged stablecoin) by depositing ETH in autonomous smart contracts. LUSD is stabilized by a liquidation mechanism and a Stability Pool, both are fully decentralized and smart contract based. What this means is that the Liquity smart contracts automatically and autonomously deduct technical fees which can be claimed by Liquity users. All functions of Liquity are autonomous and if something goes wrong with the contracts, there is no recourse against a private individual or legal entity. Similarly, while BanklessLoans operates the frontend interface, BanklessLoans is not responsible for issues with the Liquity contracts. BanklessLoans cannot access or control deposits or transactions initiated through the BanklessLoans frontend. BanklessLoans has no relationship with Liquity AG, Liquity, or other Liquity frontend operators. BanklessLoans does not and will not enter into any legal or factual relationship with any user of BanklessLoans beyond provision and maintenance of the frontend.",
             ],
         },
         {
-            title: 'B.3 Additional Information About Liquity & DeFi',
+            title: 'B3. Smart Contract risks',
             paras: [
                 'Liquity is based on experimental blockchain and smart contract technology which carries significant and inherent operational, technological, financial, and regulatory risks. It is a possibility that, as a result of defects, technical bugs, network forks, intentional attacks of third parties, acts of God, unscheduled maintenance, or other events, Liquity experiences disruption, suspension or termination, and/or the value of ETH, LSUD, and LQTY over time may experience extreme volatility or depreciate in full or be lost. Attacks by hackers on Liquity smart contracts or other software used may have unforeseeable consequences, including loss of deposited funds. Also, market conditions may change and no market liquidity is guaranteed. All smart contracts are ultimately controlled by the network of miners. There are also other risks associated with the use of Liquity through BanklessLoans, including those that cannot be anticipated. Users of BanklessLoans declare and confirm that they understand the risks of using experimental autonomous blockchain technology. Use of these products and technology without proper skills and preparation may result in unintended consequences. Users of BanklessLoans expressly acknowledge, understand and agree that use of BanklessLoans and Liquity is at the user\'s sole risk and the service is provided, used, and acquired on an “AS IS" and on an “AS AVAILABLE” basis without representations, warranties, promises or guarantees whatsoever of any kind by any entity and the user shall rely on their own examination and investigation.',
             ],
         },
         {
-            title: 'C.1 IMPORTANT LEGAL STUFF',
+            title: 'C1. IMPORTANT LEGAL STUFF',
             paras: [
                 'BANKLESS LOANS IS NOT LIABLE TO ANY USER FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE, IN CONNECTION WITH THE USE OR INABILITY TO USE THE LIQUITY PROTOCOL SOFTWARE (INCLUDING BUT NOT LIMITED TO LOSS OF ETH, LUSD OR LQTY, NON-ALLOCATION OF TECHNICAL FEES TO LQTY HOLDERS, LOSS OF DATA, BUSINESS INTERRUPTION, DATA BEING RENDERED INACCURATE OR OTHER LOSSES SUSTAINED BY A USER OR THIRD PARTIES RELATED TO THE LIQUITY PROTOCOL SOFTWARE OR A FAILURE OF THE LIQUITY PROTOCOL SOFTWARE.',
                 'THE LIQUITY PROTOCOL SOFTWARE HAS BEEN PROVIDED FOR USE AND INTEGRATION BY THIRD-PARTY FRONTENDS "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.',
             ],
         },
         {
-            title: 'C.2 IMPORTANT LEGAL STUFF',
+            title: 'C2. NO WARRANTIES',
             paras: [
                 'THE LIQUITY PROTOCOL SOFTWARE HAS BEEN PROVIDED FOR USE AND INTEGRATION BY THIRD-PARTY FRONTENDS "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.',
                 'THE LIQUITY PROTOCOL SOFTWARE IS HIGHLY EXPERIMENTAL AND ANY REAL ETH AND/OR LUSD AND/OR LQTY SENT, STAKED OR DEPOSITED TO THE LIQUITY PROTOCOL SOFTWARE ARE AT RISK OF BEING LOST INDEFINITELY, WITHOUT ANY KIND OF CONSIDERATION.',
