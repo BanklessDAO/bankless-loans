@@ -6,6 +6,7 @@ import { Staking } from '../components/Staking/Staking'
 import { StakingViewProvider } from '../components/Staking/context/StakingViewProvider'
 import { LiquityStoreProvider } from 'components/LiquityStoreProvider'
 import { VStackBase } from 'components/Layout/VStackBase'
+import { TransactionMonitor } from '../components/Transaction'
 
 type LiquityFrontendProps = {
     loader?: React.ReactNode
@@ -33,6 +34,7 @@ const Stake = ({ loader }: LiquityFrontendProps): JSX.Element => {
                     </VStackBase>
                 </Flex>
             </StakingViewProvider>
+            <TransactionMonitor />
         </LiquityStoreProvider>
     )
 }
