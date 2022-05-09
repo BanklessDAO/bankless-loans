@@ -298,28 +298,22 @@ const TransactionProgressDonut: React.FC<TransactionProgressDonutProps> = ({
     state,
 }) => {
     const [value, setValue] = useState(0)
-    const maxValue = 1
+    const max = 1
 
     useEffect(() => {
         if (state === 'confirmed') {
-            setTimeout(() => setValue(maxValue), 40)
+            setTimeout(() => setValue(max), 40)
         } else {
-            setTimeout(() => setValue(maxValue * 0.67), 20)
+            setTimeout(() => setValue(max * 0.67), 20)
         }
     }, [state])
 
     return state === 'confirmed' ? (
-        <Donut {...{ value, maxValue }}>
-            <Icon name='check' color='white' size='lg' />
-        </Donut>
+        <Donut {...{ value, max }} />
     ) : state === 'failed' || state === 'cancelled' ? (
-        <Donut value={0} {...{ maxValue }}>
-            <Icon name='times' color='white' size='lg' />
-        </Donut>
+        <Donut value={0} {...{ max }} />
     ) : (
-        <Donut {...{ value, maxValue }}>
-            <Icon name='cog' color='white' size='lg' spin />
-        </Donut>
+        <Donut {...{ value, max }} />
     )
 }
 
