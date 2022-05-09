@@ -460,12 +460,12 @@ export const TransactionMonitor: React.FC = () => {
                 alignItems: 'center',
                 bg:
                     transactionState.type === 'confirmed'
-                        ? 'success'
+                        ? '#20113f'
                         : transactionState.type === 'cancelled'
-                        ? 'warning'
+                        ? '#CECECE'
                         : transactionState.type === 'failed'
-                        ? 'danger'
-                        : 'primary',
+                        ? 'salmon'
+                        : '#4C5E9D',
                 p: 3,
                 pl: 4,
                 position: 'fixed',
@@ -478,7 +478,7 @@ export const TransactionMonitor: React.FC = () => {
                 <TransactionProgressDonut state={transactionState.type} />
             </Box>
 
-            <Text sx={{ fontSize: 3, color: 'white' }}>
+            <Text sx={{ fontSize: '20px', color: 'white' }}>
                 {transactionState.type === 'waitingForConfirmation'
                     ? 'Waiting for confirmation'
                     : transactionState.type === 'cancelled'
