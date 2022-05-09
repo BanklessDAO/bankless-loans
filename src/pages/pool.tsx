@@ -6,6 +6,7 @@ import { Stability } from '../components/Stability/Stability'
 import { StabilityViewProvider } from '../components/Stability/context/StabilityViewProvider'
 import { LiquityStoreProvider } from 'components/LiquityStoreProvider'
 import { VStackBase } from 'components/Layout/VStackBase'
+import { TransactionMonitor } from '../components/Transaction'
 
 type LiquityFrontendProps = {
     loader?: React.ReactNode
@@ -33,6 +34,7 @@ const Pool = ({ loader }: LiquityFrontendProps): JSX.Element => {
                     </VStackBase>
                 </Flex>
             </StabilityViewProvider>
+            <TransactionMonitor />
         </LiquityStoreProvider>
     )
 }
