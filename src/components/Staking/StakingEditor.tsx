@@ -125,7 +125,7 @@ export const StakingEditor: React.FC<StakingEditorProps> = ({
                 )}
             </Box>
             {children}
-            {changePending && <LoadingOverlay />}
+            <LoadingOverlay />
         </CardBase>
     )
 }
