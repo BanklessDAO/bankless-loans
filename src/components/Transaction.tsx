@@ -105,7 +105,7 @@ export const TransactionProvider: React.FC = ({ children }) => {
     )
 }
 
-const useTransactionState = () => {
+export const useTransactionState = () => {
     const transactionState = useContext(TransactionContext)
 
     if (!transactionState) {
@@ -449,38 +449,39 @@ export const TransactionMonitor: React.FC = () => {
     }
 
     return (
-        <Flex
-            sx={{
-                alignItems: 'center',
-                bg:
-                    transactionState.type === 'confirmed'
-                        ? '#20113f'
-                        : transactionState.type === 'cancelled'
-                        ? '#CECECE'
-                        : transactionState.type === 'failed'
-                        ? 'salmon'
-                        : '#4C5E9D',
-                p: 3,
-                pl: 4,
-                position: 'fixed',
-                width: '100vw',
-                bottom: 0,
-                overflow: 'hidden',
-            }}
-        >
-            <Box sx={{ mr: 3, width: '40px', height: '40px' }}>
-                <TransactionProgressDonut state={transactionState.type} />
-            </Box>
+        <></>
+        // <Flex
+        //     sx={{
+        //         alignItems: 'center',
+        //         bg:
+        //             transactionState.type === 'confirmed'
+        //                 ? '#20113f'
+        //                 : transactionState.type === 'cancelled'
+        //                 ? '#CECECE'
+        //                 : transactionState.type === 'failed'
+        //                 ? 'salmon'
+        //                 : '#4C5E9D',
+        //         p: 3,
+        //         pl: 4,
+        //         position: 'fixed',
+        //         width: '100vw',
+        //         bottom: 0,
+        //         overflow: 'hidden',
+        //     }}
+        // >
+        //     <Box sx={{ mr: 3, width: '40px', height: '40px' }}>
+        //         <TransactionProgressDonut state={transactionState.type} />
+        //     </Box>
 
-            <Text sx={{ fontSize: '20px', color: 'white' }}>
-                {transactionState.type === 'waitingForConfirmation'
-                    ? 'Waiting for confirmation'
-                    : transactionState.type === 'cancelled'
-                    ? 'Cancelled'
-                    : transactionState.type === 'failed'
-                    ? transactionState.error.message
-                    : 'Confirmed'}
-            </Text>
-        </Flex>
+        //     <Text sx={{ fontSize: '20px', color: 'white' }}>
+        //         {transactionState.type === 'waitingForConfirmation'
+        //             ? 'Waiting for confirmation'
+        //             : transactionState.type === 'cancelled'
+        //             ? 'Cancelled'
+        //             : transactionState.type === 'failed'
+        //             ? transactionState.error.message
+        //             : 'Confirmed'}
+        //     </Text>
+        // </Flex>
     )
 }
