@@ -69,7 +69,7 @@ export const ReadOnlyStake: React.FC = () => {
                 <StakingGainsAction />
             </HStack>
 
-            {changePending && <LoadingOverlay />}
+            <LoadingOverlay />
         </CardBase>
     )
 }

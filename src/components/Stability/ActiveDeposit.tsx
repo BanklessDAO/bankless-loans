@@ -113,7 +113,7 @@ export const ActiveDeposit: React.FC = () => {
                 </ClaimAndMove>
             )}
 
-            {isWaitingForTransaction && <LoadingOverlay />}
+            <LoadingOverlay />
         </CardBase>
     )
 }
