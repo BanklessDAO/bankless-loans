@@ -218,7 +218,7 @@ export const Opening: React.FC = () => {
                     )}
                 </HStack>
             </Box>
-            {isTransactionPending && <LoadingOverlay />}
+            <LoadingOverlay />
         </CardBase>
     )
 }

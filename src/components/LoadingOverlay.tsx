@@ -48,9 +48,9 @@ const LoadingFeedback = ({ type }: LoadingFeedbackProps) => {
         const messageCapitalised =
             messageWithSpaces.charAt(0).toUpperCase() +
             messageWithSpaces.slice(1)
-        const oddCases = ['cancelled', 'failed']
+        const specialCases = ['cancelled', 'failed', 'confirmed']
 
-        return oddCases.includes(type)
+        return specialCases.includes(type)
             ? `Transaction ${messageCapitalised}!`
             : messageCapitalised
     }
@@ -60,32 +60,31 @@ const LoadingFeedback = ({ type }: LoadingFeedbackProps) => {
         }
     }, [type])
     return (
-        <Container
-            variant='disabledOverlay'
-            p={0}
-            mt='32px'
-            size='16px'
-            style={{
-                display: 'flex',
-                justifyContent: 'start',
-                alignItems: 'center',
-            }}
-        >
+        <>
             {localType && localType !== 'idle' && (
-                <>
+                <Container
+                    variant='disabledOverlay'
+                    p={0}
+                    mt='32px'
+                    size='16px'
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'start',
+                        alignItems: 'center',
+                    }}
+                >
                     <Spinner size='lg' color='text' />
                     <LoadingBadge type={localType} />
                     <Text ml='16px' px={0}>
                         {parseType(localType)}
                     </Text>
-                </>
+                </Container>
             )}
-        </Container>
+        </>
     )
 }
 
 export const LoadingOverlay: React.FC = () => {
     const [transactionState] = useTransactionState()
-    console.log('transaction St :', transactionState)
     return <LoadingFeedback type={transactionState.type} />
 }

@@ -144,7 +144,7 @@ export const StabilityDepositEditor: React.FC<StabilityDepositEditorProps> = ({
                 {children}
             </Box>
 
-            {changePending && <LoadingOverlay />}
+            <LoadingOverlay />
         </CardBase>
     )
 }
