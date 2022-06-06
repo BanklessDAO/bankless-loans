@@ -28,7 +28,7 @@ const Pool = ({ loader }: LiquityFrontendProps): JSX.Element => {
     return (
         <LiquityStoreProvider {...{ loader }} store={liquity.store}>
             <StabilityViewProvider>
-                <Flex h='100vh'>
+                <Flex h='100%'>
                     <VStackBase maxH='auto'>
                         <Stability />
                     </VStackBase>

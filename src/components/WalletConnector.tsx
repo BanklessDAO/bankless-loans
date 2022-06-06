@@ -25,6 +25,7 @@ import {
     Text,
     Link,
 } from '@chakra-ui/react'
+import { truncateAddress } from '../utils'
 
 interface MaybeHasMetaMask {
     ethereum?: {
@@ -43,6 +44,7 @@ type WalletConnectorProps = {
 export const WalletConnector = ({ loader }: WalletConnectorProps) => {
     const { account, active, activate, error, deactivate } =
         useWeb3React<unknown>()
+    const address = account ? account : ''
     const triedAuthorizedConnection = useAuthorizedConnection()
     const [tried, setTried] = useState(false)
     const [isMetaMask, setIsMetaMask] = useState(false)
@@ -124,6 +126,20 @@ export const WalletConnector = ({ loader }: WalletConnectorProps) => {
                             />
                             <ModalBody paddingBottom='1.5rem'>
                                 <VStack>
+                                    <HStack>
+                                        <Text color='#20113f'>
+                                            Connected with:
+                                        </Text>
+                                        <Text
+                                            as='p'
+                                            isTruncated
+                                            noOfLines={0}
+                                            maxWidth='126px'
+                                            color='#20113f'
+                                        >
+                                            {truncateAddress(address)}
+                                        </Text>
+                                    </HStack>
                                     <Button
                                         variant='outline'
                                         onClick={() => {
@@ -148,7 +164,10 @@ export const WalletConnector = ({ loader }: WalletConnectorProps) => {
                 {(connectionState.type !== 'active' || !isAccount) && (
                     <Modal
                         isOpen={modal.isModalOpen}
-                        onClose={modal.closeModal}
+                        onClose={() => {
+                            setIsAccount(!isAccount)
+                            modal.closeModal()
+                        }}
                         isCentered
                     >
                         <ModalOverlay />
@@ -168,6 +187,7 @@ export const WalletConnector = ({ loader }: WalletConnectorProps) => {
                                                 type: 'startActivating',
                                                 connector: Injected,
                                             })
+                                            setIsAccount(!isAccount)
                                             activate(Injected)
                                             modal.closeModal()
                                         }}
@@ -194,6 +214,7 @@ export const WalletConnector = ({ loader }: WalletConnectorProps) => {
                                                 type: 'startActivating',
                                                 connector: WalletConnect,
                                             })
+                                            setIsAccount(!isAccount)
                                             activate(WalletConnect)
                                             modal.closeModal()
                                         }}
@@ -220,6 +241,7 @@ export const WalletConnector = ({ loader }: WalletConnectorProps) => {
                                                 type: 'startActivating',
                                                 connector: CoinbaseWallet,
                                             })
+                                            setIsAccount(!isAccount)
                                             activate(CoinbaseWallet)
                                             modal.closeModal()
                                         }}
@@ -246,12 +268,14 @@ export const WalletConnector = ({ loader }: WalletConnectorProps) => {
                 )}
             </Flex>
             {connectionState.type === 'failed' && (
-                <Modal
-                    isOpen={connectionState.type === 'failed'}
-                    onClose={() => modal.closeModal()}
-                >
+                <Modal isOpen={modal.isModalOpen} onClose={modal.closeModal}>
                     <ModalOverlay />
                     <ModalContent>
+                        <ModalCloseButton
+                            _focus={{
+                                boxShadow: 'none',
+                            }}
+                        />
                         <ModalBody>
                             <RetryDialog
                                 title={
@@ -291,12 +315,14 @@ export const WalletConnector = ({ loader }: WalletConnectorProps) => {
                 </Modal>
             )}
             {connectionState.type === 'rejectedByUser' && (
-                <Modal
-                    isOpen={connectionState.type === 'rejectedByUser'}
-                    onClose={() => modal.closeModal()}
-                >
+                <Modal isOpen={modal.isModalOpen} onClose={modal.closeModal}>
                     <ModalOverlay />
                     <ModalContent>
+                        <ModalCloseButton
+                            _focus={{
+                                boxShadow: 'none',
+                            }}
+                        />
                         <RetryDialog
                             title='Cancel connection?'
                             onCancel={() => dispatch({ type: 'cancel' })}
@@ -314,12 +340,14 @@ export const WalletConnector = ({ loader }: WalletConnectorProps) => {
                 </Modal>
             )}
             {connectionState.type === 'alreadyPending' && (
-                <Modal
-                    isOpen={connectionState.type === 'alreadyPending'}
-                    onClose={() => modal.closeModal()}
-                >
+                <Modal isOpen={modal.isModalOpen} onClose={modal.closeModal}>
                     <ModalOverlay />
                     <ModalContent>
+                        <ModalCloseButton
+                            _focus={{
+                                boxShadow: 'none',
+                            }}
+                        />
                         <RetryDialog
                             title='Connection already requested'
                             onCancel={() => dispatch({ type: 'cancel' })}
