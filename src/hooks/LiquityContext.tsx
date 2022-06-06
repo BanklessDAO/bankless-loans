@@ -113,7 +113,7 @@ export const LiquityProvider: React.FC<LiquityProviderProps> = ({
         }
     }, [config, connection])
 
-    if (router.pathname === '/') {
+    if (router.pathname === '/' || router.pathname === '/disclaimer') {
         return <>{children}</>
     }
 
