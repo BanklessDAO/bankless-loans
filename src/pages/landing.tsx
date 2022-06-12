@@ -17,8 +17,8 @@ import { Footer } from '../components/Layout/Footer'
 
 export default function Landing() {
     return (
-        <Stack justify='space-between'>
-            <Container as='section' maxW='6xl' pt={[4, 8]} px={[4, 8]}>
+        <Stack justify='space-between' h='100%'>
+            <Container as='section' maxW='6xl' pt={[4, 8]} px={[4, 8]} h='100%'>
                 <Stack spacing={[4, 8]}>
                     <LightMode>
                         <GlobalStyle />

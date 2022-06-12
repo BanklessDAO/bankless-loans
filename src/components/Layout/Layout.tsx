@@ -1,4 +1,4 @@
-import { Container, VStack } from '@chakra-ui/react'
+import { Container, VStack, useBreakpointValue } from '@chakra-ui/react'
 import Navbar from './Navbar'
 import NavbarMobile from '../NavbarMobile'
 import { useRouter } from 'next/router'
@@ -21,14 +21,24 @@ export const Layout = ({ children }: LayoutProps): JSX.Element => {
     const router = useRouter()
     const footer = router.pathname === '/' && <Footer />
     const bg = router.pathname === '/' ? gradientAndImage : gradient
+    const isMobile = useBreakpointValue({ base: true, md: false })
+    const justify =
+        router.pathname === '/' || isMobile ? 'space-between' : 'flex-start'
     return (
-        <Container bg={bg} maxW='full' p={0} minH='100vh'>
-            <VStack align='center' as='main' position='relative'>
-                <Navbar />
-                {children}
-                {footer}
-                <NavbarMobile />
-            </VStack>
-        </Container>
+        <VStack
+            bg={bg}
+            maxW='full'
+            p={0}
+            minH='100vh'
+            justify={justify}
+            align='center'
+            as='main'
+            position='relative'
+        >
+            <Navbar />
+            {children}
+            {footer}
+            <NavbarMobile />
+        </VStack>
     )
 }
