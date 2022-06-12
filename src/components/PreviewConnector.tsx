@@ -46,7 +46,11 @@ export const PreviewConnector: React.FC<PreviewConnectorProps> = ({
         return <>{loader}</>
     }
 
-    if (connectionState.type === 'active' || router.pathname === '/') {
+    if (
+        connectionState.type === 'active' ||
+        router.pathname === '/' ||
+        router.pathname === '/disclaimer'
+    ) {
         return <>{children}</>
     }
 

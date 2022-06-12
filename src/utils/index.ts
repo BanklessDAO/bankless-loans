@@ -3,7 +3,7 @@ export function escapeRegExp(string: string): string {
 }
 
 export const truncateAddress = (address: string | null) => {
-    if (!address) return 'No Account'
+    if (!address) return ''
     const match = address.match(
         /^(0x[a-zA-Z0-9]{2})[a-zA-Z0-9]+([a-zA-Z0-9]{2})$/
     )

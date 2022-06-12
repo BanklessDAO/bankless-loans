@@ -8,7 +8,8 @@ export const CardBase: React.FC = ({ children }) => {
     return (
         <Box
             as='article'
-            overflow='auto'
+            overflowY='auto'
+            overflowX='hidden'
             h='fit-content'
             w='100vw'
             maxW={[`${width - stylesPaddingTotal}px`, '555px', '555px']}
