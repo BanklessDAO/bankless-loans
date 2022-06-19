@@ -15,7 +15,7 @@ const gradient = `radial-gradient(circle at left, rgba(109, 41, 254, 0.3) 0%,
 const gradientAndImage = `radial-gradient(circle at left, rgba(109, 41, 254, 0.3) 0%,
     rgba(109, 41, 254, 0) 30%), radial-gradient(circle at right,
     rgba(255, 4, 16, 0.24) 0%, rgba(255, 4, 16, 0) 30%),
-    center top url(/futuristic-background.png), #000000`
+    center top url(https://images.ctfassets.net/0kmtt14e2vpq/6oqorGAv5LOchoNPjo6kBu/72870577492b4ae20a4827bf3635b58c/futuristic-background.png), #000000`
 
 export const Layout = ({ children }: LayoutProps): JSX.Element => {
     const router = useRouter()

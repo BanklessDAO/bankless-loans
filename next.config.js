@@ -24,4 +24,20 @@ module.exports = {
             },
         ]
     },
+    experimental: {
+        images: {
+            unoptimized: true,
+        },
+    },
+    exportPathMap: async function (
+        defaultPathMap,
+        { dev, dir, outDir, distDir, buildId }
+    ) {
+        return {
+            '/': { page: '/' },
+            '/borrow': { page: '/borrow' },
+            '/pool': { page: '/pool' },
+            '/stake': { page: '/stake' },
+        }
+    },
 }

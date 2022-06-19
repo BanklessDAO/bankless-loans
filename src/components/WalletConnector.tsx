@@ -1,7 +1,6 @@
 import React, { useEffect, useReducer, useState } from 'react'
 import { useWeb3React } from '@web3-react/core'
 import { AbstractConnector } from '@web3-react/abstract-connector'
-import Image from 'next/image'
 import {
     connectors,
     CoinbaseWallet,
@@ -148,7 +147,7 @@ export const WalletConnector = ({ loader }: WalletConnectorProps) => {
                                         >
                                             {truncateAddress(address)}
                                         </Text>
-                                        <Image
+                                        <img
                                             src={walletProvider.icon}
                                             alt={walletProvider.name}
                                             width={25}
@@ -173,7 +172,7 @@ export const WalletConnector = ({ loader }: WalletConnectorProps) => {
                                         justifyContent='center'
                                         sx={{ borderRadius: '3px' }}
                                     >
-                                        <Image
+                                        <img
                                             src='/metamask-logo.png'
                                             alt='Metamask Logo'
                                             width={25}
@@ -199,7 +198,7 @@ export const WalletConnector = ({ loader }: WalletConnectorProps) => {
                                         justifyContent='center'
                                         sx={{ borderRadius: '3px' }}
                                     >
-                                        <Image
+                                        <img
                                             src='/wallet-connect.png'
                                             alt='Wallet Connect Logo'
                                             width={26}
@@ -225,7 +224,7 @@ export const WalletConnector = ({ loader }: WalletConnectorProps) => {
                                         justifyContent='center'
                                         sx={{ borderRadius: '3px' }}
                                     >
-                                        <Image
+                                        <img
                                             src='/cbw.png'
                                             alt='Coinbase Wallet Logo'
                                             width={25}
