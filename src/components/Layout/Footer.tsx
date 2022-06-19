@@ -1,5 +1,4 @@
 import * as React from 'react'
-import Image from 'next/image'
 import {
     Box,
     Container,
@@ -11,7 +10,6 @@ import {
     Link,
 } from '@chakra-ui/react'
 import { Discord } from '../../components/LandingLogos'
-import logo from '../../../public/bankless-logo.png'
 import DisclaimerLink from 'components/DisclaimerLink'
 
 export const Footer = () => {
@@ -53,11 +51,11 @@ export const Footer = () => {
                                 </Link>
                             </Center>
                             <Link href='https://bankless.community' isExternal>
-                                <Image
+                                <img
                                     alt='bankless logo'
                                     height='30px'
                                     width='30px'
-                                    src={logo}
+                                    src='/bankless-logo.png'
                                 />
                             </Link>
                         </HStack>
