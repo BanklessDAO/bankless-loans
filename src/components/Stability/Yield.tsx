@@ -3,7 +3,6 @@ import { Box, Text } from '@chakra-ui/react'
 import { Decimal, LiquityStoreState } from '@liquity/lib-base'
 import { useLiquitySelector } from '../../hooks/useLiquitySelector'
 import { InfoIcon } from '../InfoIcon'
-import { useLiquity } from '../../hooks/LiquityContext'
 import { Badge } from '../Badge'
 import { fetchLqtyPrice } from './context/fetchLqtyPrice'
 
@@ -16,29 +15,23 @@ const selector = ({
 })
 
 export const Yield: React.FC = () => {
-    const {
-        liquity: {
-            connection: { addresses },
-        },
-    } = useLiquity()
     const { lusdInStabilityPool, remainingStabilityPoolLQTYReward } =
         useLiquitySelector(selector)
 
     const [lqtyPrice, setLqtyPrice] = useState<Decimal | undefined>(undefined)
     const hasZeroValue =
         remainingStabilityPoolLQTYReward.isZero || lusdInStabilityPool.isZero
-    const lqtyTokenAddress = addresses['lqtyToken']
 
     useEffect(() => {
         ;(async () => {
             try {
-                const { lqtyPriceUSD } = await fetchLqtyPrice(lqtyTokenAddress)
+                const { lqtyPriceUSD } = await fetchLqtyPrice()
                 setLqtyPrice(lqtyPriceUSD)
             } catch (error) {
                 console.error(error)
             }
         })()
-    }, [lqtyTokenAddress])
+    }, [])
 
     if (hasZeroValue || lqtyPrice === undefined) return null
 
