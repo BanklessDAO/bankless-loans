@@ -1,4 +1,3 @@
-import { AddressZero } from '@ethersproject/constants'
 import { isAddress, getAddress } from '@ethersproject/address'
 
 export type LiquityFrontendConfig = {
@@ -10,7 +9,7 @@ export type LiquityFrontendConfig = {
 const defaultConfig: LiquityFrontendConfig = {
     frontendTag: process.env.NEXT_PUBLIC_FRONTEND_TAG,
     infuraApiKey: process.env.NEXT_PUBLIC_INFURA_ID,
-    testnetOnly: true,
+    testnetOnly: false,
 }
 
 function hasKey<K extends string>(o: object, k: K): o is Record<K, unknown> {
