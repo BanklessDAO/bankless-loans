@@ -44,7 +44,7 @@ export const Footer = () => {
                                 borderRadius='50%'
                             >
                                 <Link
-                                    href='https://discord.gg/eeExAAb6'
+                                    href='https://discord.gg/VVArjx8P6h'
                                     isExternal
                                 >
                                     <Icon as={Discord} />

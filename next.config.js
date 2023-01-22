@@ -39,6 +39,7 @@ module.exports = {
             '/borrow': { page: '/borrow' },
             '/pool': { page: '/pool' },
             '/stake': { page: '/stake' },
+            '/disclaimer': { page: '/disclaimer' },
         }
     },
 }

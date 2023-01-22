@@ -128,7 +128,7 @@ const Disclaimer = (): JSX.Element => {
     const pageHeaderText = 'Disclaimer'
     const pageSubHeaderText = 'BanklessLoans Liquity Frontend Disclaimer'
     const pageDescText =
-        'Please read this Disclaimer carefully before accessing, interacting with, or using Liquity through the BanklessLoans frontend at banklessloans.finance.'
+        'Please read this Disclaimer carefully before accessing, interacting with, or using Liquity through the BanklessLoans frontend at banklessloans.eth.limo.'
     function goForward() {
         if (activeSlide + 1 !== slides.length) {
             setActiveSlide(activeSlide + 1)
