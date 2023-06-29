@@ -13,7 +13,8 @@ import {
 } from '@chakra-ui/react'
 import { GlassCard } from '../components/Layout/GlassCard'
 import { Lifebuoy, PalmUp, Blocks } from '../components/LandingLogos'
-import { Footer } from '../components/Layout/Footer'
+import { Yield } from '../components/Stability/Yield'
+
 
 export default function Landing() {
     return (
@@ -64,7 +65,9 @@ export default function Landing() {
                                             title='Stake'
                                             header='Stake LQTY'
                                             body='Earn LUSD & ETH'
-                                        />
+                                        >  
+                                            <Yield />
+                                        </GlassCard>
                                     </WrapItem>
                                 </Wrap>
                             </Container>
