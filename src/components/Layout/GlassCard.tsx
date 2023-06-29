@@ -8,6 +8,7 @@ interface GlassCardProps {
     body: string
     icon?: React.ReactNode
     iconBoxColor: string
+    children?: React.ReactNode
 }
 export const GlassCard = ({
     title,
@@ -15,6 +16,7 @@ export const GlassCard = ({
     body,
     icon,
     iconBoxColor,
+    children
 }: GlassCardProps): JSX.Element => {
     const { width } = useWindowSize()
     const stylesPaddingTotal = 38 * 2 // 38px on each side
@@ -75,6 +77,7 @@ export const GlassCard = ({
                 >
                     {body}
                 </Text>
+                {children}
             </Box>
         </>
     )
