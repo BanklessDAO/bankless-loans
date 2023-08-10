@@ -17,7 +17,7 @@
     "@emotion/styled": "^11",
     "@ethersproject/address": "^5.5.0",
     "@ethersproject/constants": "^5.5.0",
-    "@ethersproject/providers": "^5.3.1",
+    "@ethersproject/providers": "^5.7.2",
     "@fontsource/clear-sans": "^4.5.3",
     "@fontsource/open-sans": "^4.5.5",
     "@fontsource/space-grotesk": "^4.5.3",
